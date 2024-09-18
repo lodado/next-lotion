@@ -1,0 +1,49 @@
+{
+  "LOGIN": {
+    "KAKAO": "通过Kakao登录",
+    "GOOGLE": "通过Google登录",
+    "GITHUB": "通过GitHub登录",
+    "TOOLTIP-LASTLOGINTEXT": "🔑 最近登录",
+    "TOOLTIP-TEXT": "⚡️ 3秒内开始登录",
+    "SUBTITLE": "手中的AI口语教练",
+    "TITLE": "Pokitoki"
+  },
+  "DASHBOARD": {
+    "LEARNING-STATUS": "学习现状",
+    "SELECTIVE-LEARNING": "选择性学习"
+  },
+  "COMMON": {
+    "LOGO": "Pokitoki"
+  },
+  "LEARN": {
+    "FREETALKING": "自由对话",
+    "FREETALKING-BUTTON-TEXT": "自由开始自由对话",
+    "TOPIC-BASED-SITUATION-TALKING-BUTTON": "主题情景对话",
+    "SELECT-TOPIC-BASED-SITUATION-TALKING": "请选择主题情境对话",
+    "CUSTOMIZE-CONVERSATION-PARTNER-SECTION-TITLE": "自定义对话伙伴角色",
+    "CUSTOMIZE-PERSONA-OR-CHOOSE-RECOMMENDED-PERSONA": "直接自定义对话伙伴或选择推荐角色",
+    "BUTTON-FOR-CUSTOMIZING-PERSONA": "自定义角色",
+    "DIALOG-HEADER": "主题情境对话",
+    "DIALOG-BODY": "请安静地整理周围环境并开始学习🤫"
+  },
+  "DIFFICULTY": {
+    "RATING": "难度 {rating}"
+  },
+  "STAT": {
+    "USERNAME": "{username}您好",
+    "CHEERUP-MESSAGE": "今天也请与波奇托奇一起努力吧😊",
+    "RECOMMEND-TITLE": "今日推荐的学习",
+    "RECOMMEND-DESCRIPTION": "完成今天的主题对话学习！",
+    "HISTORY-SCRIPT-TITLE": "最近的历史剧本",
+    "HISTORY-SCRIPT-BUTTON": "历史",
+    "HISTORY-SCRIPT-DESCRIPTION": "查看您的最近历史剧本",
+    "ATTENDANCE-TITLE": "{month}考勤检查",
+    "ATTENDANCE-BUTTON": "检查考勤",
+    "ATTENDANCE-DESCRIPTION": "检查{username}的考勤。"
+  },
+  "ENTERDIALOG": {
+    "DIALOG-BODY": "请安静地整理周围环境并开始学习🤫",
+    "SUBMITTEXT": "开始",
+    "CANCELTEXT": "停止"
+  }
+}

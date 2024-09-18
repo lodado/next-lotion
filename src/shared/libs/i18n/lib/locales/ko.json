@@ -1,0 +1,49 @@
+{
+  "LOGIN": {
+    "KAKAO": "카카오로 회원가입하기",
+    "GOOGLE": "구글로 회원가입하기",
+    "GITHUB": "깃허브로 회원가입하기",
+    "TOOLTIP-LASTLOGINTEXT": "🔑 최근 로그인",
+    "TOOLTIP-TEXT": "⚡️ 3초만에 로그인으로 시작하세요",
+    "SUBTITLE": "내 손안의 AI 스피킹 튜터",
+    "TITLE": "Pokitoki"
+  },
+  "DASHBOARD": {
+    "LEARNING-STATUS": "학습현황",
+    "SELECTIVE-LEARNING": "선택학습"
+  },
+  "COMMON": {
+    "LOGO": "Pokitoki"
+  },
+  "LEARN": {
+    "FREETALKING": "프리토킹",
+    "FREETALKING-BUTTON-TEXT": "자유롭게 프리토킹을 시작하세요",
+    "TOPIC-BASED-SITUATION-TALKING-BUTTON": "주제별 상황 토킹",
+    "SELECT-TOPIC-BASED-SITUATION-TALKING": "주제별 상황 토킹을 선택해 주세요",
+    "CUSTOMIZE-CONVERSATION-PARTNER-SECTION-TITLE": "대화 상대 페르소나 커스텀",
+    "CUSTOMIZE-PERSONA-OR-CHOOSE-RECOMMENDED-PERSONA": "대화 상대를 직접 커스텀하거나 추천 페르소나를 선택해주세요",
+    "BUTTON-FOR-CUSTOMIZING-PERSONA": "페르소나 커스텀",
+    "DIALOG-HEADER": "주제별 상황 토킹",
+    "DIALOG-BODY": "주변 환경을 조용히 정리하고 학습을 시작해주세요🤫"
+  },
+  "DIFFICULTY": {
+    "RATING": "난이도 {rating}"
+  },
+  "STAT": {
+    "USERNAME": "{username}님",
+    "CHEERUP-MESSAGE": "오늘도 포키토키와 함께 달려보아요😊",
+    "RECOMMEND-TITLE": "오늘의 추천 학습",
+    "RECOMMEND-DESCRIPTION": "오늘의 주제별 토킹 학습을 모두 달성해보아요!",
+    "HISTORY-SCRIPT-TITLE": "최근 히스토리 스트립트",
+    "HISTORY-SCRIPT-BUTTON": "히스토리",
+    "HISTORY-SCRIPT-DESCRIPTION": "최근 히스토리 스크립트를 확인해보아요",
+    "ATTENDANCE-TITLE": "{month} 출석 확인",
+    "ATTENDANCE-BUTTON": "출석 확인",
+    "ATTENDANCE-DESCRIPTION": "{username}님의 출석을 확인하세요."
+  },
+  "ENTERDIALOG": {
+    "DIALOG-BODY": "주변 환경을 조용히 정리하고 학습을 시작해주세요🤫",
+    "SUBMITTEXT": "시작하기",
+    "CANCELTEXT": "그만두기"
+  }
+}

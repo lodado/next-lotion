@@ -1,0 +1,49 @@
+{
+  "LOGIN": {
+    "KAKAO": "Kakaoでサインイン",
+    "GOOGLE": "Googleでサインイン",
+    "GITHUB": "GitHubでサインイン",
+    "TOOLTIP-LASTLOGINTEXT": "🔑 最後のログイン",
+    "TOOLTIP-TEXT": "⚡️ 3秒でログインを開始",
+    "SUBTITLE": "手の中のAIスピーキングチューター",
+    "TITLE": "Pokitoki"
+  },
+  "DASHBOARD": {
+    "LEARNING-STATUS": "学習状況",
+    "SELECTIVE-LEARNING": "選択学習"
+  },
+  "COMMON": {
+    "LOGO": "Pokitoki"
+  },
+  "LEARN": {
+    "FREETALKING": "フリートーキング",
+    "FREETALKING-BUTTON-TEXT": "自由にフリートーキングを始めてください",
+    "TOPIC-BASED-SITUATION-TALKING-BUTTON": "トピック別の状況トーキング",
+    "SELECT-TOPIC-BASED-SITUATION-TALKING": "トピックベースのシチュエーショントーキングを選んでください",
+    "CUSTOMIZE-CONVERSATION-PARTNER-SECTION-TITLE": "会話相手のペルソナをカスタマイズ",
+    "CUSTOMIZE-PERSONA-OR-CHOOSE-RECOMMENDED-PERSONA": "会話相手を直接カスタマイズするか、推奨されるペルソナを選んでください",
+    "BUTTON-FOR-CUSTOMIZING-PERSONA": "ペルソナのカスタマイズ",
+    "DIALOG-HEADER": "テーマ別状況トーキング",
+    "DIALOG-BODY": "周囲の環境を静かに整理して学習を始めてください🤫"
+  },
+  "DIFFICULTY": {
+    "RATING": "難易度 {rating}"
+  },
+  "STAT": {
+    "USERNAME": "{username}様",
+    "CHEERUP-MESSAGE": "今日もポキトキと一緒に走りましょう😊",
+    "RECOMMEND-TITLE": "今日の推奨学習",
+    "RECOMMEND-DESCRIPTION": "今日のテーマ別トーキング学習を完了しましょう！",
+    "HISTORY-SCRIPT-TITLE": "最近のヒストリースクリプト",
+    "HISTORY-SCRIPT-BUTTON": "ヒストリー",
+    "HISTORY-SCRIPT-DESCRIPTION": "最近のヒストリースクリプトを確認しましょう",
+    "ATTENDANCE-TITLE": "{month}の出席確認",
+    "ATTENDANCE-BUTTON": "出席確認",
+    "ATTENDANCE-DESCRIPTION": "{username}様の出席を確認してください。"
+  },
+  "ENTERDIALOG": {
+    "DIALOG-BODY": "周囲の環境を静かに整理して学習を始めてください🤫",
+    "SUBMITTEXT": "始める",
+    "CANCELTEXT": "やめる"
+  }
+}
