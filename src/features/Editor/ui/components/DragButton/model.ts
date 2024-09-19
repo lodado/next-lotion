@@ -5,14 +5,14 @@ import { useEditorSelector } from "@/features/Editor/hooks";
  
 interface DragButtonState {
   position: Position;
-  pos: ResolvedPos | null;
+  targetPosition: number | null;
   dragFlag: boolean;
   isOpen: boolean;
 }
 
 const initialState: DragButtonState = {
   position: { x: 0, y: 0 },
-  pos: null,
+  targetPosition: null,
   dragFlag: false,
   isOpen: false,
 };
@@ -24,13 +24,12 @@ const dragButtonSlice = createSlice({
     DRAG_BUTTON_SET_DRAG_FLAG(state, action: PayloadAction<boolean>) {
       state.dragFlag = action.payload;
     },
-    openTrigger(state, action: PayloadAction<{ x: number; y: number; pos: ResolvedPos }>) {
+    openTrigger(state, action: PayloadAction<{ x: number; y: number; targetPosition: number }>) {
       if (state.dragFlag) return;
-      const { x, y, pos } = action.payload;
+      const { x, y, targetPosition } = action.payload;
       state.position = { x: 24, y: y - 10 };
 
-      // @ts-ignore
-      state.pos = pos;
+      state.targetPosition = targetPosition;
       state.isOpen = true;
     },
     closeTrigger(state) {

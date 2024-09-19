@@ -2,21 +2,23 @@
 
 import { Provider as ReduxProvider } from "react-redux";
 
-import React from "react";
+import React, { useMemo } from "react";
 
 import { WidgetController } from "./components";
 import { EditorProvider } from "./EditorProvider";
-import { EditorReduxLocalStore } from "../models";
+import { createEditorReduxLocalStore, EditorReduxStore } from "../models";
 import { useEditorView } from "../hooks/useEditorView";
 
 const Editor = () => {
+  // const EditorReduxLocalStore = useMemo(() => createEditorReduxLocalStore(), []);
+
   const { isMounted, editorRef, view, editorState } = useEditorView();
 
   return (
-    <ReduxProvider store={EditorReduxLocalStore}>
+    <ReduxProvider store={EditorReduxStore}>
       <EditorProvider view={view!} editorState={editorState!}>
-        <div className="pl-10">
-          <div ref={editorRef} />
+        <div className="pl-10 ">
+          <div className="w-[500px] h-[500px]" ref={editorRef} />
         </div>
 
         {isMounted && <WidgetController.Widgets />}

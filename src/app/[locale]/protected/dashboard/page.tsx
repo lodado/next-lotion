@@ -6,6 +6,9 @@ const Page = () => {
       <AuthButton />
       dummy page
       <Editor />
+      <div>123</div>
+      <Editor />
+      <Editor />
       <LoginDialog />
     </div>
   );

@@ -29,7 +29,13 @@ export default class DragButtonWidget extends Widget {
 
               if (node && node.type.name !== "doc") {
                 // Adjust this condition as needed
-                this.store.dispatch(openTrigger({ x: actualCoords.left, y: actualCoords.bottom - 20, pos: $pos }));
+                this.store.dispatch(
+                  openTrigger({
+                    x: actualCoords.left,
+                    y: actualCoords.bottom - 20,
+                    targetPosition: $pos.pos,
+                  })
+                );
               } else {
                 this.store.dispatch(closeTrigger());
               }

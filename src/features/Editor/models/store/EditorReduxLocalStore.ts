@@ -5,20 +5,24 @@ import dropdownSlice from "../../ui/components/Dropdown/model";
 import dragButtonSlice from "../../ui/components/DragButton/model";
 import  blockCreateButtonSlice   from "../../ui/components/BlockCreateButton/model";
  
-export const EditorReduxLocalStore = configureStore({
-  reducer: {
-    dropdown: dropdownSlice.reducer,
-    dragButton: dragButtonSlice.reducer,
-    blockCreateButton: blockCreateButtonSlice.reducer,
-  },
+export const createEditorReduxLocalStore = () => {
+  return configureStore({
+    reducer: {
+      dropdown: dropdownSlice.reducer,
+      dragButton: dragButtonSlice.reducer,
+      blockCreateButton: blockCreateButtonSlice.reducer,
+    },
 
-  middleware: (getDefaultMiddleware) => {
-    const middlewares = getDefaultMiddleware({ thunk: false });
+    middleware: (getDefaultMiddleware) => {
+      const middlewares = getDefaultMiddleware({ thunk: false });
 
-    if (process.env.NODE_ENV === "development") {
-      middlewares.concat(logger);
-    }
+      if (process.env.NODE_ENV === "development") {
+        middlewares.concat(logger);
+      }
 
-    return middlewares;
-  },
-});
+      return middlewares;
+    },
+  });
+};
+
+export const EditorReduxStore = createEditorReduxLocalStore();

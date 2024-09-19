@@ -26,11 +26,9 @@ export const DragButton = () => {
     handleShowPlaceholder,
   } = useNodeDnDPlaceHolder();
 
-  const { isOpen, pos: dragButtonPos, position } = useDragButtonSelector();
+  const { isOpen, targetPosition, position } = useDragButtonSelector();
   const { hoverDndPlaceholderDispatcher, resetHoverDndPlaceholderDispatcher } = blockDnDHoverPluginDispatcher(view);
   const editorDispatch = useEditorDispatch();
-
-  if (!isOpen) return null;
 
   const handleMouseDown: MouseEventHandler<HTMLButtonElement> = (event: SyntheticEvent) => {
     event.preventDefault();
@@ -95,10 +93,10 @@ export const DragButton = () => {
       document.removeEventListener("mouseup", onMouseUp);
 
       try {
-        const targetPoss = dragButtonPos!;
+        if (!targetPosition) return;
 
         // eslint-disable-next-line prefer-const
-        let { node: targetNode, pos: targetPos } = findTopLevelNode(view.state.doc, targetPoss.pos);
+        let { node: targetNode, pos: targetPos } = findTopLevelNode(view.state.doc, targetPosition!);
 
         const pos = view.posAtCoords({ left: e.clientX + 80, top: e.clientY });
         const node = pos && pos.inside >= 0 && view.state.doc.nodeAt(pos.inside);
@@ -137,25 +135,27 @@ export const DragButton = () => {
         }
       } catch (error) {
         console.error(error);
+      } finally {
+        resetHoverDndPlaceholderDispatcher();
+
+        handleNodeContent(null);
+        handleShowPlaceholder(false);
+
+        editorDispatch(DRAG_BUTTON_SET_DRAG_FLAG(false));
+
+        (event.target as HTMLButtonElement).style.transform = "";
+        (event.target as HTMLButtonElement).style.opacity = `1`;
+        (event.target as HTMLButtonElement).style.cursor = `pointer`;
+
+        document.body.style.cursor = "default";
       }
-
-      resetHoverDndPlaceholderDispatcher();
-
-      handleNodeContent(null);
-      handleShowPlaceholder(false);
-
-      editorDispatch(DRAG_BUTTON_SET_DRAG_FLAG(false));
-
-      (event.target as HTMLButtonElement).style.transform = "";
-      (event.target as HTMLButtonElement).style.opacity = `1`;
-      (event.target as HTMLButtonElement).style.cursor = `pointer`;
-
-      document.body.style.cursor = "default";
     };
 
     document.addEventListener("mousemove", onMouseMove);
     document.addEventListener("mouseup", onMouseUp);
   };
+
+  if (!isOpen) return null;
 
   return (
     <Root>

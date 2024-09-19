@@ -6,7 +6,7 @@ import { EditorView } from "prosemirror-view";
 import React, { useEffect, useRef, useState } from "react";
 
 import { createState, createView } from "../ui/core";
-
+ 
 export const useEditorView = () => {
   const editorRef = useRef<HTMLDivElement>(null);
   const [isMounted, setIsMounted] = useState(false);
@@ -23,6 +23,11 @@ export const useEditorView = () => {
     setView(viewInstance);
 
     setIsMounted(true);
+
+    viewInstance.dom.addEventListener("input", () => {
+      if (viewInstance.state.doc) {
+      }
+    });
 
     return () => viewInstance.destroy();
   }, []);
