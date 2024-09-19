@@ -1,10 +1,9 @@
 import { Plugin, PluginKey } from "prosemirror-state";
 import React, { PropsWithChildren, useState } from "react";
-
-import { getActualCoord } from "../../../src/utils";
 import Widget from "../Widget";
-import DragButtonStore from "./model";
+import DragButtonStore, { closeTrigger, openTrigger } from "./model";
 import { DragButton } from "./ui";
+import { getActualCoord } from "@/features/Editor/utils";
 
 export default class DragButtonWidget extends Widget {
   render() {
@@ -30,9 +29,9 @@ export default class DragButtonWidget extends Widget {
 
               if (node && node.type.name !== "doc") {
                 // Adjust this condition as needed
-                DragButtonStore.openTrigger({ x: actualCoords.left, y: actualCoords.bottom - 20, node, pos: $pos });
+                this.store.dispatch(openTrigger({ x: actualCoords.left, y: actualCoords.bottom - 20, pos: $pos }));
               } else {
-                DragButtonStore.closeTrigger();
+                this.store.dispatch(closeTrigger());
               }
 
               return false;

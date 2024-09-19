@@ -1,8 +1,7 @@
 /* eslint-disable no-param-reassign */
-import { ScreenReaderOnly } from "@custompackages/designsystem";
-import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
+ 
 import { Root } from "@radix-ui/react-portal";
-import { observer } from "mobx-react";
+
 import { Fragment, Node as ProseMirrorNode, Schema, Slice } from "prosemirror-model";
 import { dropPoint } from "prosemirror-transform";
 import { Decoration, DecorationSet, EditorView } from "prosemirror-view";
@@ -12,9 +11,11 @@ import { findTopLevelNode } from "../../core/nodes/utils";
 import { BlockDnDHighlightPlugin, blockDnDHoverPluginDispatcher } from "../../core/plugins/highlightPlugin";
 import { useEditorContext } from "../../EditorProvider";
 import { useNodeDnDPlaceHolder } from "./hook";
-import dragButtonStore from "./model";
+import dragButtonStore, { DRAG_BUTTON_SET_DRAG_FLAG, useDragButtonSelector } from "./model";
+import { useEditorDispatch } from "@/features/Editor/models";
+import { ScreenReaderOnly } from "@/shared";
 
-export const DragButton = observer(() => {
+export const DragButton = () => {
   const { view, editorState } = useEditorContext();
   const {
     placeholderPos,
@@ -25,14 +26,15 @@ export const DragButton = observer(() => {
     handleShowPlaceholder,
   } = useNodeDnDPlaceHolder();
 
-  const { isOpen, position, dragFlag, setDragFlag } = dragButtonStore;
+  const { isOpen, pos: dragButtonPos, position } = useDragButtonSelector();
   const { hoverDndPlaceholderDispatcher, resetHoverDndPlaceholderDispatcher } = blockDnDHoverPluginDispatcher(view);
+  const editorDispatch = useEditorDispatch();
 
   if (!isOpen) return null;
 
   const handleMouseDown: MouseEventHandler<HTMLButtonElement> = (event: SyntheticEvent) => {
     event.preventDefault();
-    setDragFlag(true);
+    editorDispatch(DRAG_BUTTON_SET_DRAG_FLAG(true));
     handleShowPlaceholder(true);
 
     let dragStartPos: { x: number; y: number } | null = null;
@@ -93,7 +95,7 @@ export const DragButton = observer(() => {
       document.removeEventListener("mouseup", onMouseUp);
 
       try {
-        const targetPoss = dragButtonStore.pos!;
+        const targetPoss = dragButtonPos!;
 
         // eslint-disable-next-line prefer-const
         let { node: targetNode, pos: targetPos } = findTopLevelNode(view.state.doc, targetPoss.pos);
@@ -108,8 +110,6 @@ export const DragButton = observer(() => {
         }
 
         if (pos && node) {
-          const target: number | null = pos.pos;
-
           // 트랜잭션을 실행하여 노드 이동
           const { tr } = view.state;
 
@@ -143,15 +143,14 @@ export const DragButton = observer(() => {
 
       handleNodeContent(null);
       handleShowPlaceholder(false);
-      setDragFlag(false);
 
-      if (true) {
-        (event.target as HTMLButtonElement).style.transform = "";
-        (event.target as HTMLButtonElement).style.opacity = `1`;
-        (event.target as HTMLButtonElement).style.cursor = `pointer`;
+      editorDispatch(DRAG_BUTTON_SET_DRAG_FLAG(false));
 
-        document.body.style.cursor = "default";
-      }
+      (event.target as HTMLButtonElement).style.transform = "";
+      (event.target as HTMLButtonElement).style.opacity = `1`;
+      (event.target as HTMLButtonElement).style.cursor = `pointer`;
+
+      document.body.style.cursor = "default";
     };
 
     document.addEventListener("mousemove", onMouseMove);
@@ -173,8 +172,7 @@ export const DragButton = observer(() => {
         }}
         onMouseDown={handleMouseDown}
       >
-        <DragIndicatorIcon role="none presentation" aria-hidden={false} />
-        <ScreenReaderOnly>Drag button</ScreenReaderOnly>
+        <div role="none presentation" aria-hidden={false} />+<ScreenReaderOnly>Drag button</ScreenReaderOnly>
       </button>
 
       {showPlaceholder && (
@@ -193,4 +191,4 @@ export const DragButton = observer(() => {
       )}
     </Root>
   );
-});
+};
