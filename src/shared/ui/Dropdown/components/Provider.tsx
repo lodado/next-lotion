@@ -1,8 +1,8 @@
-import { contextBuildHelper } from '@custompackages/shared'
+import { contextBuildHelper } from "@/shared/utils/contextBuildHelper";
 
 export const [DropdownProvider, useDropdownContext] = contextBuildHelper<{
-  isVisible: boolean
-  setVisible: (value: boolean) => void
+  isVisible: boolean;
+  setVisible: (value: boolean) => void;
 }>({
-  id: 'dropdown',
-})
+  id: "dropdown",
+});
