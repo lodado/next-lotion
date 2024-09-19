@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Node as ProseMirrorNode, ResolvedPos } from "prosemirror-model";
 import { Position } from "./type";
-import { useEditorSelector } from "@/features/Editor/models";
-
+import { useEditorSelector } from "@/features/Editor/hooks";
+ 
 interface DragButtonState {
   position: Position;
   pos: ResolvedPos | null;

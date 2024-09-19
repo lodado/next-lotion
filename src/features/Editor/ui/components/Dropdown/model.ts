@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { DropdownPosition } from "./type";
-import { useEditorSelector } from "@/features/Editor/models";
+import { useEditorSelector } from "@/features/Editor/hooks";
+ 
 
 interface DropdownState {
   position: DropdownPosition;

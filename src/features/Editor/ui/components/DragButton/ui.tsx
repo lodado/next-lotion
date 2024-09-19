@@ -2,18 +2,18 @@
  
 import { Root } from "@radix-ui/react-portal";
 
-import { Fragment, Node as ProseMirrorNode, Schema, Slice } from "prosemirror-model";
+import { Fragment, Node as ProseMirrorNode, Slice } from "prosemirror-model";
 import { dropPoint } from "prosemirror-transform";
-import { Decoration, DecorationSet, EditorView } from "prosemirror-view";
-import React, { MouseEventHandler, SyntheticEvent, useState } from "react";
+import React, { MouseEventHandler, SyntheticEvent } from "react";
 
 import { findTopLevelNode } from "../../core/nodes/utils";
-import { BlockDnDHighlightPlugin, blockDnDHoverPluginDispatcher } from "../../core/plugins/highlightPlugin";
+import { blockDnDHoverPluginDispatcher } from "../../core/plugins/highlightPlugin";
 import { useEditorContext } from "../../EditorProvider";
 import { useNodeDnDPlaceHolder } from "./hook";
-import dragButtonStore, { DRAG_BUTTON_SET_DRAG_FLAG, useDragButtonSelector } from "./model";
-import { useEditorDispatch } from "@/features/Editor/models";
+import { DRAG_BUTTON_SET_DRAG_FLAG, useDragButtonSelector } from "./model";
+ 
 import { ScreenReaderOnly } from "@/shared";
+import { useEditorDispatch } from "@/features/Editor/hooks";
 
 export const DragButton = () => {
   const { view, editorState } = useEditorContext();

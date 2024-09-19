@@ -1,15 +1,15 @@
-import { Dropdown, ScreenReaderOnly } from '@custompackages/designsystem'
-import AddRoundedIcon from '@mui/icons-material/AddRounded'
-import { Root } from '@radix-ui/react-portal'
-import { observer } from 'mobx-react'
-import React from 'react'
+import AddRoundedIcon from "@mui/icons-material/AddRounded";
+import { Root } from "@radix-ui/react-portal";
 
-import { BlockCreateContent } from './components/BlockCreateContent'
-import blockCreateButtonStore from './model'
+import React from "react";
 
-export const BlockCreateButton = observer(() => {
-  const { isOpen, position } = blockCreateButtonStore
-  if (!isOpen) return null
+import { BlockCreateContent } from "./components/BlockCreateContent";
+import { useBlockCreateButtonSelector } from "./model";
+import { Dropdown, ScreenReaderOnly } from "@/shared";
+
+export const BlockCreateButton = () => {
+  const { isOpen, position } = useBlockCreateButtonSelector();
+  if (!isOpen) return null;
 
   return (
     <Root>
@@ -18,10 +18,10 @@ export const BlockCreateButton = observer(() => {
           type="button"
           className="bg-transparent text-cancel-default"
           style={{
-            position: 'absolute',
+            position: "absolute",
 
-            width: '37px',
-            height: '37px',
+            width: "37px",
+            height: "37px",
             top: position.y,
             left: position.x,
           }}
@@ -38,5 +38,5 @@ export const BlockCreateButton = observer(() => {
         </BlockCreateContent>
       </Dropdown>
     </Root>
-  )
-})
+  );
+};

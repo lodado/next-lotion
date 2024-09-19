@@ -1,31 +1,34 @@
-import { action, makeAutoObservable, makeObservable, observable } from 'mobx'
+ 
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Position } from "./type";
+import { useEditorSelector } from "@/features/Editor/hooks";
 
-import OpenableStore from '../model/OpenableStore'
-import { Position } from './type'
-
-class BlockCreateButtonStore extends OpenableStore {
-  position: Position = { x: 0, y: 0 }
-
-  constructor() {
-    super()
-    makeObservable(this, {
-      position: observable,
-      openTrigger: action,
-      closeTrigger: action,
-    })
-  }
-
-  openTrigger({ x, y }: Position) {
-    this.position = { x: 0, y: y - 10 }
-
-    this.open()
-  }
-
-  closeTrigger() {
-    this.isOpen = false
-    this.close()
-  }
+interface BlockCreateButtonState {
+  position: Position;
+  isOpen: boolean;
 }
 
-const blockCreateButtonStore = new BlockCreateButtonStore()
-export default blockCreateButtonStore
+const initialState: BlockCreateButtonState = {
+  position: { x: 0, y: 0 },
+  isOpen: false,
+};
+
+const blockCreateButtonSlice = createSlice({
+  name: "blockCreateButton-slice",
+  initialState,
+  reducers: {
+    SHOW_BLOCK_CREATE_BUTTON(state, action: PayloadAction<Position>) {
+      const { y } = action.payload;
+      state.position = { x: 0, y: y - 10 };
+      state.isOpen = true;
+    },
+    DISAPPEAR_BLOCK_CREATE_BUTTON(state) {
+      state.isOpen = false;
+    },
+  },
+});
+
+export const { SHOW_BLOCK_CREATE_BUTTON, DISAPPEAR_BLOCK_CREATE_BUTTON } = blockCreateButtonSlice.actions;
+export default blockCreateButtonSlice;
+
+export const useBlockCreateButtonSelector = () => useEditorSelector((state) => state.blockCreateButton);

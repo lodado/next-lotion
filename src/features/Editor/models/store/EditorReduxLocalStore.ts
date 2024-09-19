@@ -3,11 +3,13 @@ import logger from "redux-logger";
 import { useDispatch as _useDisPatch, useSelector as _useSelector } from "react-redux";
 import dropdownSlice from "../../ui/components/Dropdown/model";
 import dragButtonSlice from "../../ui/components/DragButton/model";
-
+import  blockCreateButtonSlice   from "../../ui/components/BlockCreateButton/model";
+ 
 export const EditorReduxLocalStore = configureStore({
   reducer: {
     dropdown: dropdownSlice.reducer,
     dragButton: dragButtonSlice.reducer,
+    blockCreateButton: blockCreateButtonSlice.reducer,
   },
 
   middleware: (getDefaultMiddleware) => {
@@ -20,11 +22,3 @@ export const EditorReduxLocalStore = configureStore({
     return middlewares;
   },
 });
-
-export type EditorRootState = ReturnType<typeof EditorReduxLocalStore.getState>;
-export type EditorDispatch = typeof EditorReduxLocalStore.dispatch;
-
-export const useEditorDispatch = _useDisPatch.withTypes<EditorDispatch>();
-export const useEditorSelector = _useSelector.withTypes<EditorRootState>();
-
- 

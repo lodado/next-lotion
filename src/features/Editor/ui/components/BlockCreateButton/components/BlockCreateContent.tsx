@@ -1,36 +1,25 @@
-import { Dropdown, Input } from '@custompackages/designsystem'
-import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded'
-import ImageRoundedIcon from '@mui/icons-material/ImageRounded'
-import React, { PropsWithChildren } from 'react'
-
+import { Dropdown, Input } from "@/shared";
+import React, { PropsWithChildren } from "react";
+ 
 const BlockCreateItem = ({ children }: PropsWithChildren) => {
   return (
     <Dropdown.Item className="flex items-center justify-between body-01-r">
       <div className="flex flex-row items-center gap-1 text-text-01">
-        <ImageRoundedIcon
-          width="20px"
-          height="20px"
-          className="text-cancel-default"
-          role="none presentation"
-          aria-hidden={false}
-        />
+        {/*<ImageRoundedIcon  width="20px" height="20px" /> */}
+        <div className="text-cancel-default" role="none presentation" aria-hidden={false} />
         {children}
       </div>
 
       <div className="flex flex-row gap-[10px] items-center">
         <span className="text-text-04">Shortcut Text</span>
 
-        <ChevronRightRoundedIcon
-          width="20px"
-          height="20px"
-          className="text-secondary-default"
-          role="none presentation"
-          aria-hidden={false}
-        />
+        {/*ChevronRightRoundedIcon  width="20px"
+          height="20px" */}
+        <div className="text-secondary-default" role="none presentation" aria-hidden={false} />
       </div>
     </Dropdown.Item>
-  )
-}
+  );
+};
 
 export const BlockCreateContent = ({ children }: PropsWithChildren) => {
   return (
@@ -41,7 +30,7 @@ export const BlockCreateContent = ({ children }: PropsWithChildren) => {
 
       {children}
     </Dropdown.Content>
-  )
-}
+  );
+};
 
-BlockCreateContent.Item = BlockCreateItem
+BlockCreateContent.Item = BlockCreateItem;
