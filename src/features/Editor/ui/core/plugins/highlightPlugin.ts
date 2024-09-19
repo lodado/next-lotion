@@ -45,22 +45,3 @@ export const BlockDnDHighlightPlugin = new Plugin({
     },
   },
 })
-
-/* FIXME 
-  나중 css 관리법 정하면 이동시키기
-*/
-const style = document.createElement('style')
-style.textContent = `
-  .hover-border {
-   
-  }
-
-  .hover-border.start {
-    border-top: 4px solid blue; 
-  }
-
-  .hover-border.end {
-    border-bottom: 4px solid blue; 
-  }
-`
-document.head.appendChild(style)

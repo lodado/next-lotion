@@ -1,5 +1,7 @@
+"use client";
+
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
-import { Root } from "@radix-ui/react-portal";yar
+import { Root } from "@radix-ui/react-portal";
 
 import React from "react";
 

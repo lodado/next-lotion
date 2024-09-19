@@ -1,3 +1,5 @@
+"use client";
+
 import { contextBuildHelper } from "@/shared";
 import { EditorState } from "prosemirror-state";
 import { EditorView } from "prosemirror-view";

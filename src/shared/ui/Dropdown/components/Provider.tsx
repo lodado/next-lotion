@@ -1,3 +1,5 @@
+"use client";
+
 import { contextBuildHelper } from "@/shared/utils/contextBuildHelper";
 
 export const [DropdownProvider, useDropdownContext] = contextBuildHelper<{

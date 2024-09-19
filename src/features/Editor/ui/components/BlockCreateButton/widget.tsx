@@ -1,10 +1,10 @@
 import { Plugin, PluginKey } from "prosemirror-state";
-import React, { PropsWithChildren, useState } from "react";
+import React from "react";
 
-import { getActualCoord } from "../../../src/utils";
 import Widget from "../Widget";
-import blockCreateButtonStore from "./model";
+import { DISAPPEAR_BLOCK_CREATE_BUTTON, SHOW_BLOCK_CREATE_BUTTON } from "./model";
 import { BlockCreateButton } from "./ui";
+import { getActualCoord } from "@/features/Editor/utils";
 
 export default class BlockCreateButtonWidget extends Widget {
   render() {
@@ -30,9 +30,9 @@ export default class BlockCreateButtonWidget extends Widget {
 
               if (node && node.type.name !== "doc") {
                 // Adjust this condition as needed
-                blockCreateButtonStore.openTrigger({ x: actualCoords.left, y: actualCoords.bottom - 20 });
+                this.store.dispatch(SHOW_BLOCK_CREATE_BUTTON({ x: actualCoords.left, y: actualCoords.bottom - 20 }));
               } else {
-                blockCreateButtonStore.closeTrigger();
+                this.store.dispatch(DISAPPEAR_BLOCK_CREATE_BUTTON());
               }
 
               return false;

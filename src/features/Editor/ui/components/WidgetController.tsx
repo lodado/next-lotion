@@ -1,10 +1,10 @@
 import React from "react";
 
-import DropdownWidget from "./Dropdown/widget";
+import EditorDropdownWidget from "./Dropdown/widget";
 import DragButtonWidget from "./DragButton/widget";
+import BlockCreateButtonWidget from "./BlockCreateButton/widget";
 
-const WIDGET_REGISTER = [new DragButtonWidget()]; // [new DragButtonWidget(), new BlockCreateButtonWidget()];
-
+const WIDGET_REGISTER = [new DragButtonWidget(), new BlockCreateButtonWidget()];  
 class _WidgetController {
   widgets = WIDGET_REGISTER;
 

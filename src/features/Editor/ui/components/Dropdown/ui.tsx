@@ -1,10 +1,12 @@
+"use client";
+
 import { Root } from "@radix-ui/react-portal";
 
 import React from "react";
 
-import dropdownStore, { useDropdownSelector } from "./model";
+import { useDropdownSelector } from "./model";
 
-export const Dropdown = () => {
+export const EditorDropdown = () => {
   const { isOpen, position } = useDropdownSelector();
   if (!isOpen) return null;
 

@@ -4,11 +4,11 @@ import React, { PropsWithChildren, useState } from "react";
 import Widget from "../Widget";
 import dropdownStore, { openTrigger } from "./model";
 
-import { Dropdown } from "./ui";
+import { EditorDropdown } from "./ui";
 
-export default class DropdownWidget extends Widget {
+export default class EditorDropdownWidget extends Widget {
   render() {
-    return <Dropdown />;
+    return <EditorDropdown />;
   }
 
   plugin() {

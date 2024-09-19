@@ -1,5 +1,5 @@
-/* eslint-disable no-param-reassign */
- 
+"use client";
+
 import { Root } from "@radix-ui/react-portal";
 
 import { Fragment, Node as ProseMirrorNode, Slice } from "prosemirror-model";
@@ -11,7 +11,7 @@ import { blockDnDHoverPluginDispatcher } from "../../core/plugins/highlightPlugi
 import { useEditorContext } from "../../EditorProvider";
 import { useNodeDnDPlaceHolder } from "./hook";
 import { DRAG_BUTTON_SET_DRAG_FLAG, useDragButtonSelector } from "./model";
- 
+
 import { ScreenReaderOnly } from "@/shared";
 import { useEditorDispatch } from "@/features/Editor/hooks";
 
