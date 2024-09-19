@@ -3,8 +3,7 @@ import { Node as ProsemirrorNode } from 'prosemirror-model'
 import { EditorState, Transaction } from 'prosemirror-state'
 import { EditorView, NodeViewConstructor } from 'prosemirror-view'
 
-import CodeBlockView from './nodes/CodeMirror/CodeMirrorView'
-
+ 
 interface CreateViewParams {
   editor: HTMLElement
   state: EditorState

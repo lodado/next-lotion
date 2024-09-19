@@ -83,7 +83,7 @@ export const DragButton = () => {
         (event.target as HTMLButtonElement).style.cursor = `grabbing`;
         document.body.style.cursor = "grabbing";
 
-        handlePlaceholderPos({ x: e.pageX + 50, y: e.pageY });
+        handlePlaceholderPos({ x: e.clientX + 50, y: e.clientY });
       });
     };
 
