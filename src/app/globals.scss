@@ -1,3 +1,97 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+* {
+  box-sizing: border-box;
+}
+
+/* editor css */
+
+.editor-placeholder {
+  position: absolute;
+  color: var(--text-placeholder, #C1C1C1);
+  opacity: 0;
+}
+
+.editor-placeholder:hover {
+  opacity: 1;
+}
+
+.split-screen {
+  display: flex;
+  flex-direction: row;
+}
+
+
+.ProseMirror {
+  width: 100%;
+  height: 100%;
+
+  background: var(--tertiary-default, #FFF);
+
+  border: black 1px solid;
+}
+ 
+
+
+.editor-block {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 1em;  
+
+  padding: var(--Spacing-2, 8px);
+
+  gap: var(--Spacing-1, 4px);
+  
+  background-color: transparent;
+  color: var(--text-02, #555);
+}
+
+.editor-block:hover {
+  background: var(--tertiary-hover, #F7F7F7);
+}
+ 
+.ProseMirror .empty-node::before {
+  content: attr(data-placeholder);
+  color: #aaa;
+  float: left;
+  height: 0;
+}
+
+/** split**/
+
+.split-screen.vertical {
+  flex-direction: row;
+}
+
+.split-screen.horizontal {
+  flex-direction: column;
+}
+
+.split-screen:hover{
+  border: 1px solid red;
+}
+
+
+.split-screen > * {
+  flex: 1;
+  overflow: auto; /* 내용이 많을 경우 스크롤 */
+
+  border: 1px solid red;
+}
+
+
+.split-divider {
+  flex: 1;
+  cursor: row-resize; /* 커서를 분할 선 모양으로 변경 */
+  height: 100%;
+  width: 2px;
+  background-color: #666;
+}
+ 
+ 

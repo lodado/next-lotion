@@ -4,3 +4,4 @@ import { store } from "@/app";
 export type RootState = ReturnType<typeof store.getState>;
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type Dispatch = typeof store.dispatch;
+
