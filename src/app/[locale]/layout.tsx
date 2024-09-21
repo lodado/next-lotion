@@ -6,6 +6,7 @@ import { LocaleProps, ThemeScript } from "@/shared";
 import ScreenVhScript from "./ScreenVhScript";
 import { RootProvider } from "../provider";
 import Head from "next/head";
+import { GlobalDialogContainer } from "@/widgets";
 
 /** TODO - GA 설치 */
 // import { GA } from "@/shared/lib/GA";
@@ -68,6 +69,8 @@ const RootLayout: React.FunctionComponent<LocaleProps> = ({ children, params: { 
           <NextIntlClientProvider locale={locale} messages={messages}>
             {children}
             {/* <PageLoading /> */}
+
+            <GlobalDialogContainer />
           </NextIntlClientProvider>
         </RootProvider>
         {/* <GA nonce={nonce} /> */}

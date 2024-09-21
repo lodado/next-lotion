@@ -18,7 +18,11 @@ const LoginDialogContainer = () => {
         dispatch(action());
       }}
     >
-      <AlertDialog.Header>Test</AlertDialog.Header>
+      <div className="flex relative h-[200px] bg-[#00C7E6] justify-center items-center">
+        <AlertDialog.Close className="absolute right-[10px] top-[10px]" />
+      </div>
+
+      <AlertDialog.Header>Login</AlertDialog.Header>
       <AlertDialog.Body className="w-[900px]">
         <LoginForm />
       </AlertDialog.Body>
