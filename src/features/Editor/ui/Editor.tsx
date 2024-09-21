@@ -2,17 +2,33 @@
 
 import { Provider as ReduxProvider } from "react-redux";
 
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 import { WidgetController } from "./components";
 import { EditorProvider } from "./EditorProvider";
-import { createEditorReduxLocalStore, EditorReduxStore } from "../models";
+import { createEditorReduxLocalStore, createMarkdownView, EditorReduxStore } from "../models";
 import { useEditorView } from "../hooks/useEditorView";
 
 const Editor = () => {
   // const EditorReduxLocalStore = useMemo(() => createEditorReduxLocalStore(), []);
 
   const { isMounted, editorRef, view, editorState } = useEditorView();
+
+  const [a, setD] = useState(0);
+
+  useEffect(() => {
+    const req = () => {
+      if (view) {
+        console.log(123, createMarkdownView({ view }));
+      }
+
+      setD((d) => d + 1);
+
+      setTimeout(req, 1500);
+    };
+
+    if (view) req();
+  }, [view]);
 
   return (
     <ReduxProvider store={EditorReduxStore}>
@@ -23,6 +39,8 @@ const Editor = () => {
 
         {isMounted && <WidgetController.Widgets />}
       </EditorProvider>
+
+      {view && createMarkdownView({ view })}
     </ReduxProvider>
   );
 };

@@ -5,7 +5,7 @@ import { EditorState } from "prosemirror-state";
 import { EditorView } from "prosemirror-view";
 import React, { useEffect, useRef, useState } from "react";
 
-import { createState, createView } from "../ui/core";
+import { createState, createView } from "../models/core";
  
 export const useEditorView = () => {
   const editorRef = useRef<HTMLDivElement>(null);

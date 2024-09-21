@@ -1,7 +1,5 @@
 /* eslint-disable no-param-reassign */
 import { NodeSpec, Schema } from "prosemirror-model";
-import { Plugin } from "prosemirror-state";
-import React from "react";
 
 import BaseNode from "./BaseNode";
 import Break from "./Break";
@@ -12,6 +10,8 @@ import Indent from "./Indent";
 import { BulletList, UnorderedList } from "./List";
 import Paragraph from "./Paragraph";
 import SplitScreen from "./Split";
+import { MarkdownSerializerState } from "prosemirror-markdown";
+import { ProseMirrorNode } from "../types";
 
 /**
  * paragraph를 가장 먼저 안 읽으면 화면 터짐
@@ -65,6 +65,23 @@ class _NodeController {
       obj[node.name] = node.createSchema;
       return obj;
     }, {});
+  }
+
+  getMarkdownSerializer() {
+    return {
+      text(state: MarkdownSerializerState, node: ProseMirrorNode) {
+        if (node.text) state.text(node.text);
+      },
+
+      ...this.nodes.reduce(
+        (obj: Record<string, (state: MarkdownSerializerState, node: ProseMirrorNode) => void>, node) => {
+          obj[node.name] = node.markdownSerializer()[node.name];
+
+          return obj;
+        },
+        {}
+      ),
+    };
   }
 }
 

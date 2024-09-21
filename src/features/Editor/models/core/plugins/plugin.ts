@@ -5,7 +5,7 @@ import { history, redo, undo } from "prosemirror-history";
 import { keymap } from "prosemirror-keymap";
 import { Schema } from "prosemirror-model";
 
-import { WidgetController } from "../../components";
+import { WidgetController } from "../../../ui/components";
 import { MarkController } from "../marks";
 import { NodeController } from "../nodes";
 import { BlockDnDHighlightPlugin } from "./highlightPlugin";
