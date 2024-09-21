@@ -5,3 +5,4 @@ export * from "./PublisherSubscriber";
 export * from "./StorageStrategy";
 export * from "./noop";
 export * from "./cn";
+export * from "./cloneWithPropsIfAbsent";
