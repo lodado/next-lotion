@@ -35,12 +35,7 @@ const SubmitForm = ({ submitText, cancelText, onSubmit, onClose, onError }: Dial
 };
 
 const DialogHeader = ({ children }: { children?: ReactNode }) => {
-  return (
-    <Title className="flex flex-row justify-between w-full mb-3 text-text-01 heading-04 ">
-      {children}
-      <Dialog.Close />
-    </Title>
-  );
+  return <Title className="flex flex-row justify-between w-full mb-3 text-text-01 heading-04 ">{children}</Title>;
 };
 
 const DialogBody = ({ className, children }: { className?: string; children: ReactNode }) => {
@@ -66,7 +61,7 @@ export interface AlertDialogProps extends Omit<DialogTemplateProps, "children"> 
 export const AlertDialog = ({ Trigger, isVisible, onChangeVisible, children }: AlertDialogProps) => {
   return (
     <DialogTemplate isVisible={isVisible} onChangeVisible={onChangeVisible} Trigger={Trigger}>
-      <div className="flex-col p-6 border-solid rounded-lg bg-surface-up border-1 border-border-01 w-80 shadow-card-01">
+      <div className="flex-col border-solid rounded-lg bg-surface-up border-1 border-border-01 w-80 shadow-card-01">
         {children}
       </div>
     </DialogTemplate>
@@ -76,5 +71,6 @@ export const AlertDialog = ({ Trigger, isVisible, onChangeVisible, children }: A
 AlertDialog.Header = DialogHeader;
 AlertDialog.Body = DialogBody;
 AlertDialog.SubmitForm = SubmitForm;
+AlertDialog.Close = Dialog.Close;
 
 AlertDialog.displayName = "dialog";

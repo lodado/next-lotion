@@ -10,10 +10,10 @@ const [DialogProvider, useDialogContext] = contextBuildHelper<{
   onChangeVisibleStatus: (newVisibleStatus: boolean) => void;
 }>({ id: "dialog" });
 
-const DialogClose = () => {
+const DialogClose = ({ className }: { className: string }) => {
   return (
     <Close asChild>
-      <button type="button" className="IconButton" aria-label="Close">
+      <button className={`IconButton ${className}`} type="button" aria-label="Close">
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g id="Dismiss">
             <path
