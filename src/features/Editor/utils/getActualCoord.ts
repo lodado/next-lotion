@@ -21,3 +21,20 @@ export const getActualCoord = ({ view, pos }: { view: EditorView; pos: number })
 
   return actualCoords
 }
+
+export const getNodeRelativeCoord = ({ view, pos }: { view: EditorView; pos: number }) => {
+  const $pos = view.state.doc.resolve(pos);
+
+  const coords = view.coordsAtPos(pos);
+  const domNode = view.nodeDOM($pos.start());
+
+  if (!(domNode instanceof HTMLElement)) return null;
+
+  const domNodeRect = domNode.getBoundingClientRect();
+  const editorRect = view.dom.getBoundingClientRect();
+
+  const relativeLeft = domNodeRect.left + window.scrollX - editorRect.left;
+  const relativeTop = domNodeRect.top + window.scrollY - editorRect.top;
+
+  return { left: relativeLeft, top: relativeTop };
+};
