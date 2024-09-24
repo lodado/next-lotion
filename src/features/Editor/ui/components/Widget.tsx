@@ -12,10 +12,12 @@ const generateID = () => {
 /** FSD의 widget layer가 아니라 GUI Widget을 뜻함 */
 export default abstract class Widget {
   key = generateID();
-  store: typeof EditorReduxStore;
+  store!: typeof EditorReduxStore;
 
-  constructor() {
-    this.store = EditorReduxStore;
+  constructor() {}
+
+  public setStore(store: typeof EditorReduxStore) {
+    this.store = store;
   }
 
   public abstract render(): JSX.Element;

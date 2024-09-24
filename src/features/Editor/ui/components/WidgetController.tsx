@@ -3,10 +3,16 @@ import React from "react";
 import EditorDropdownWidget from "./Dropdown/widget";
 import DragButtonWidget from "./DragButton/widget";
 import BlockCreateButtonWidget from "./BlockCreateButton/widget";
+import { EditorReduxStore } from "../../models";
 
-const WIDGET_REGISTER = [new DragButtonWidget(), new BlockCreateButtonWidget()];  
-class _WidgetController {
-  widgets = WIDGET_REGISTER;
+export default class WidgetController {
+  widgets = [new DragButtonWidget(), new BlockCreateButtonWidget()];
+
+  constructor(store: typeof EditorReduxStore) {
+    this.widgets.forEach((widget) => {
+      widget.setStore(store);
+    });
+  }
 
   getPlugins() {
     return this.widgets.flatMap((widget) => widget.plugin());
@@ -21,7 +27,4 @@ class _WidgetController {
       </>
     );
   };
-}
-
-const WidgetController = new _WidgetController();
-export default WidgetController;
+} 

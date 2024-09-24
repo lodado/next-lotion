@@ -1,7 +1,7 @@
 import { Plugin, PluginKey } from "prosemirror-state";
 import React, { PropsWithChildren, useState } from "react";
 import Widget from "../Widget";
-import DragButtonStore, { closeTrigger, openTrigger } from "./model";
+import DragButtonStore, { DRAG_BUTTON_END, DRAG_BUTTON_START } from "./model";
 import { DragButton } from "./ui";
 import { getActualCoord } from "@/features/Editor/utils";
 
@@ -30,14 +30,14 @@ export default class DragButtonWidget extends Widget {
               if (node && node.type.name !== "doc") {
                 // Adjust this condition as needed
                 this.store.dispatch(
-                  openTrigger({
+                  DRAG_BUTTON_START({
                     x: actualCoords.left,
                     y: actualCoords.bottom - 20,
                     targetPosition: $pos.pos,
                   })
                 );
               } else {
-                this.store.dispatch(closeTrigger());
+                this.store.dispatch(DRAG_BUTTON_END());
               }
 
               return false;

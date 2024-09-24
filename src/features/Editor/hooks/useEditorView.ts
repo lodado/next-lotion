@@ -6,16 +6,22 @@ import { EditorView } from "prosemirror-view";
 import React, { useEffect, useRef, useState } from "react";
 
 import { createState, createView } from "../models/core";
- 
-export const useEditorView = () => {
+import { WidgetController } from "../ui/components";
+import { EditorReduxStore } from "../models";
+
+export const useEditorView = (ReduxLocalStore: typeof EditorReduxStore) => {
   const editorRef = useRef<HTMLDivElement>(null);
   const [isMounted, setIsMounted] = useState(false);
 
   const [view, setView] = useState<EditorView | null>(null);
   const [editorState, setEditorState] = useState<EditorState | null>(null);
+  const [widgetController] = useState(() => new WidgetController(ReduxLocalStore));
 
   useEffect(() => {
-    const state = createState({ getDoc: (schema) => DOMParser.fromSchema(schema).parse(editorRef.current!) });
+    const state = createState({
+      widgetController,
+      getDoc: (schema) => DOMParser.fromSchema(schema).parse(editorRef.current!),
+    });
 
     const viewInstance = createView({ editor: editorRef.current!, state });
 
@@ -32,5 +38,5 @@ export const useEditorView = () => {
     return () => viewInstance.destroy();
   }, []);
 
-  return { isMounted, editorRef, editorState, view };
+  return { isMounted, editorRef, editorState, view, widgetController };
 };
