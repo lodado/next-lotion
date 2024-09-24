@@ -5,7 +5,7 @@ import Widget from "../Widget";
 import { DISAPPEAR_BLOCK_CREATE_BUTTON, SHOW_BLOCK_CREATE_BUTTON } from "./model";
 import { BlockCreateButton } from "./ui";
 import { getActualCoord } from "@/features/Editor/utils";
-
+ 
 export default class BlockCreateButtonWidget extends Widget {
   render() {
     return <BlockCreateButton />;
@@ -29,10 +29,9 @@ export default class BlockCreateButtonWidget extends Widget {
               const actualCoords = getActualCoord({ view, pos });
 
               if (node && node.type.name !== "doc") {
-                // Adjust this condition as needed
-                this.store.dispatch(SHOW_BLOCK_CREATE_BUTTON({ x: actualCoords.left, y: actualCoords.bottom - 20 }));
+                this.store.dispatch(SHOW_BLOCK_CREATE_BUTTON({ x: 0, y: actualCoords.bottom - 20 }));
               } else {
-                this.store.dispatch(DISAPPEAR_BLOCK_CREATE_BUTTON());
+                // this.store.dispatch(DISAPPEAR_BLOCK_CREATE_BUTTON());
               }
 
               return false;

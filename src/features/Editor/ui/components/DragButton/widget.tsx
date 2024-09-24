@@ -3,7 +3,7 @@ import React, { PropsWithChildren, useState } from "react";
 import Widget from "../Widget";
 import DragButtonStore, { DRAG_BUTTON_END, DRAG_BUTTON_START } from "./model";
 import { DragButton } from "./ui";
-import { getActualCoord } from "@/features/Editor/utils";
+import { getActualCoord, getNodeRelativeCoord } from "@/features/Editor/utils";
 
 export default class DragButtonWidget extends Widget {
   render() {
@@ -31,13 +31,13 @@ export default class DragButtonWidget extends Widget {
                 // Adjust this condition as needed
                 this.store.dispatch(
                   DRAG_BUTTON_START({
-                    x: actualCoords.left,
+                    x: 24,
                     y: actualCoords.bottom - 20,
                     targetPosition: $pos.pos,
                   })
                 );
               } else {
-                this.store.dispatch(DRAG_BUTTON_END());
+                // this.store.dispatch(DRAG_BUTTON_END());
               }
 
               return false;

@@ -13,21 +13,21 @@ export default class Indent extends BaseNode {
 
   get createSchema(): NodeSpec {
     return {
-      content: 'block*',
-      group: 'block',
+      content: "block*",
+      group: "block",
       attrs: {
         indent: { default: INDENT },
       },
       parseDOM: [
         {
-          tag: 'div',
+          tag: "div",
           getAttrs: (dom) => ({
-            indent: Number(dom.style.marginLeft ?? 0) > 0 ? parseInt(dom.style.marginLeft, 10) / 2 : 0,
+            indent: Number(dom.style.paddingLeft ?? 0) > 0 ? parseInt(dom.style.paddingLeft, 10) / 2 : 0,
           }),
         },
       ],
-      toDOM: (node) => ['div', { style: `margin-left: ${node.attrs.indent}em` }, 0],
-    }
+      toDOM: (node) => ["div", { style: `padding-left: ${node.attrs.indent}em` }, 0],
+    };
   }
 
   wrapIndentCommand(): Command {

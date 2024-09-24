@@ -21,7 +21,6 @@ const atomics = {
 
   heading: new Heading(),
   break: new Break(),
-  indent: new Indent(),
 };
 
 const molecules = {
@@ -38,7 +37,6 @@ const Organisms = {
   UnorderedList: new UnorderedList({
     paragraph: atomics.paragraph,
     bulletList: molecules.BulletList,
-    indent: atomics.indent,
   }),
 };
 
