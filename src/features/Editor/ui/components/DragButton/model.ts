@@ -24,7 +24,7 @@ const dragButtonSlice = createSlice({
     DRAG_BUTTON_SET_DRAG_FLAG(state, action: PayloadAction<boolean>) {
       state.dragFlag = action.payload;
     },
-    openTrigger(state, action: PayloadAction<{ x: number; y: number; targetPosition: number }>) {
+    DRAG_BUTTON_START(state, action: PayloadAction<{ x: number; y: number; targetPosition: number }>) {
       if (state.dragFlag) return;
       const { x, y, targetPosition } = action.payload;
       state.position = { x: 24, y: y - 10 };
@@ -32,12 +32,12 @@ const dragButtonSlice = createSlice({
       state.targetPosition = targetPosition;
       state.isOpen = true;
     },
-    closeTrigger(state) {
+    DRAG_BUTTON_END(state) {
       if (state.dragFlag) return;
       state.isOpen = false;
     },
   },
 });
 
-export const { DRAG_BUTTON_SET_DRAG_FLAG, openTrigger, closeTrigger } = dragButtonSlice.actions;
+export const { DRAG_BUTTON_SET_DRAG_FLAG, DRAG_BUTTON_START, DRAG_BUTTON_END } = dragButtonSlice.actions;
 export default dragButtonSlice;

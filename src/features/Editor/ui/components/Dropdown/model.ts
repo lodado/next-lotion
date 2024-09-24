@@ -17,15 +17,17 @@ const dropdownSlice = createSlice({
   name: "dropdown-slice",
   initialState,
   reducers: {
-    openTrigger: (state, action: PayloadAction<DropdownPosition>) => {
+    EDITOR_DROPDOWN_OPEN: (state, action: PayloadAction<DropdownPosition>) => {
       state.position = action.payload;
       state.isOpen = true;
     },
-    closeTrigger: (state) => {
+    EDITOR_DROPDOWN_CLOSE: (state) => {
       state.isOpen = false;
     },
   },
 });
 
-export const { openTrigger, closeTrigger } = dropdownSlice.actions;
-export default dropdownSlice; 
+ 
+export const { EDITOR_DROPDOWN_OPEN, EDITOR_DROPDOWN_CLOSE } = dropdownSlice.actions;
+export default dropdownSlice;
+ 

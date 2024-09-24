@@ -11,9 +11,9 @@ import { NodeController } from "../nodes";
 import { BlockDnDHighlightPlugin } from "./highlightPlugin";
 import { saveDocument } from "./utils/saveDocument";
 
-export const createPlugin = (schema: Schema) => {
+export const createPlugin = (schema: Schema, widgetController: WidgetController) => {
   return [
-    ...WidgetController.getPlugins(),
+    ...widgetController.getPlugins(),
     ...NodeController.getPlugins(schema),
     ...MarkController.getPlugins(schema),
     keymap({

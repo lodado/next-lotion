@@ -2,7 +2,7 @@ import { Plugin, PluginKey } from "prosemirror-state";
 import React, { PropsWithChildren, useState } from "react";
 
 import Widget from "../Widget";
-import dropdownStore, { openTrigger } from "./model";
+import dropdownStore, { EDITOR_DROPDOWN_OPEN } from "./model";
 
 import { EditorDropdown } from "./ui";
 
@@ -23,7 +23,7 @@ export default class EditorDropdownWidget extends Widget {
 
             if (node) {
               const coords = view.coordsAtPos(pos);
-              this.store.dispatch(openTrigger({ x: coords.left, y: coords.bottom }));
+              this.store.dispatch(EDITOR_DROPDOWN_OPEN({ x: coords.left, y: coords.bottom }));
             }
             return false;
           },
