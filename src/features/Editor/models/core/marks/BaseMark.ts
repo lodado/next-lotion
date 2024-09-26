@@ -4,42 +4,55 @@ import { MarkSpec, MarkType, Node as ProsemirrorNode, NodeType, Schema } from 'p
 import { Command, EditorState, Plugin } from 'prosemirror-state'
 
 import { getMarksAtRange, uniqueMarks } from './utils'
+import { MarkdownSerializerState } from "prosemirror-markdown";
 
 export default abstract class BaseMark {
-  schema!: Schema
-  type!: MarkType
+  schema!: Schema;
+  type!: MarkType;
 
-  abstract get name(): string
+  abstract get name(): string;
 
   get createSchema(): MarkSpec {
-    return {}
+    return {};
   }
 
   get defaultOptions() {
-    return {}
+    return {};
   }
 
   setMetadata({ type, schema }: { type: MarkType; schema: Schema<any, any> }) {
-    this.schema = schema
-    this.type = type
+    this.schema = schema;
+    this.type = type;
   }
 
   plugins(): Plugin[] {
-    const inputRulesPlugin = inputRules({ rules: this.inputRules() })
+    const inputRulesPlugin = inputRules({ rules: this.inputRules() });
 
-    return [keymap(this.keys()), inputRulesPlugin]
+    return [keymap(this.keys()), inputRulesPlugin];
   }
 
   inputRules(): InputRule[] {
-    return []
+    return [];
   }
 
   keys(): Record<string, Command> | Record<string, (...any: any) => boolean> {
-    return {}
+    return {};
   }
 
   commands() {
-    return (attrs: any) => {}
+    return (attrs: any) => {};
+  }
+
+  toMarkdown(): { open: string; close: string; mixable?: boolean; expelEnclosingWhitespace?: boolean } {
+    throw new Error("toMarkdown method is not implemented");
+  }
+
+  parseMarkdown() {
+    return { mark: this.name };
+  }
+
+  markdownSerializer(): { open: string; close: string; mixable: boolean; expelEnclosingWhitespace: boolean } {
+    return { mixable: true, expelEnclosingWhitespace: true, ...this.toMarkdown() };
   }
 
   /**
@@ -52,13 +65,13 @@ export default abstract class BaseMark {
    * @returns The updated editor transaction.
    */
   protected updateMark = (state: EditorState, match: RegExpMatchArray, start: number, end: number) => {
-    const { tr } = state
+    const { tr } = state;
 
-    const marks = getMarksAtRange(state, start, end)
+    const marks = getMarksAtRange(state, start, end);
 
     if (match[1]) {
-      tr.replaceWith(Math.max(start, 1), end, this.schema.text(match[1], uniqueMarks([this.type.create(), ...marks])))
+      tr.replaceWith(Math.max(start, 1), end, this.schema.text(match[1], uniqueMarks([this.type.create(), ...marks])));
     }
-    return tr
-  }
+    return tr;
+  };
 }

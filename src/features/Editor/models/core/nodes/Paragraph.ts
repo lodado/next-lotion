@@ -62,8 +62,6 @@ export default class Paragraph extends BaseNode {
   }
 
   toMarkdown(state: MarkdownSerializerState, node: ProseMirrorNode) {
-    console.log("node", node, ";123");
-
     if (node.textContent.trim() === "" && node.childCount === 0 /* && !state.inTable */) {
       state.write("\\\n");
     } else {
@@ -76,5 +74,9 @@ export default class Paragraph extends BaseNode {
     return {
       [this.name]: this.toMarkdown,
     };
+  }
+
+  parseMarkdown() {
+    return { block: "paragraph" };
   }
 }

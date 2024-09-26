@@ -6,33 +6,42 @@ import BaseMark from './BaseMark'
 
 class Strike extends BaseMark {
   get name() {
-    return 'strike'
+    return "strike";
   }
 
   get createSchema(): MarkSpec {
     return {
-      parseDOM: [{ tag: 's' }, { tag: 'del' }, { style: 'text-decoration=line-through' }],
-      toDOM: () => ['s', 0] satisfies DOMOutputSpec,
-    }
+      parseDOM: [{ tag: "s" }, { tag: "del" }, { style: "text-decoration=line-through" }],
+      toDOM: () => ["s", 0] satisfies DOMOutputSpec,
+    };
   }
 
   inputRules(): InputRule[] {
     return [
       new InputRule(/~([^~]+)~$/, (state, match, start, end) => {
-        return this.updateMark(state, match, start, end)
+        return this.updateMark(state, match, start, end);
       }),
-    ]
+    ];
   }
 
   keys() {
     return {
-      'Mod-d': toggleMark(this.type),
-    }
+      "Mod-d": toggleMark(this.type),
+    };
   }
 
   commands() {
-    return (attrs: any) => toggleMark(this.type, attrs)
+    return (attrs: any) => toggleMark(this.type, attrs);
   }
+
+  toMarkdown() {
+    return {
+      open: "~~",
+      close: "~~",
+      mixable: true,
+      expelEnclosingWhitespace: true,
+    };
+  } 
 }
 
 export default Strike

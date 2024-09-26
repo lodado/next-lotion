@@ -81,6 +81,19 @@ class _NodeController {
       ),
     };
   }
+
+  getMarkdownParser() {
+    return {
+      ...this.nodes.reduce(
+        (obj: Record<string, {block: string }>, node) => {
+          obj[node.name] = node.parseMarkdown();
+
+          return obj;
+        },
+        {}
+      ),
+    };
+  }
 }
 
 const NodeController = new _NodeController();

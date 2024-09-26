@@ -9,32 +9,40 @@ const CODE_STYLE =
 
 export default class InlineCodeSnippet extends BaseMark {
   get name() {
-    return 'inlineCodeSnippet'
+    return "inlineCodeSnippet";
   }
 
   get createSchema(): MarkSpec {
     return {
-      parseDOM: [{ tag: 'span.code' }],
-      toDOM: () => ['span', { class: 'code', style: CODE_STYLE }, 0],
-    }
+      parseDOM: [{ tag: "span.code" }],
+      toDOM: () => ["span", { class: "code", style: CODE_STYLE }, 0],
+    };
   }
 
   inputRules(): InputRule[] {
     return [
       new InputRule(/`([^`]+)`$/, (state, match, start, end) => {
-        const tr = this.updateMark(state, match, start, end)
-        return tr
+        const tr = this.updateMark(state, match, start, end);
+        return tr;
       }),
-    ]
+    ];
   }
 
   keys() {
     return {
-      'Mod-`': toggleMark(this.type),
-    }
+      "Mod-`": toggleMark(this.type),
+    };
   }
 
   commands() {
-    return (attrs: any) => toggleMark(this.type, attrs)
+    return (attrs: any) => toggleMark(this.type, attrs);
+  }
+
+  toMarkdown() {
+    return {
+      open: "`",
+      close: "`",
+      escape: false, // 인라인 코드 내부의 문자를 이스케이프하지 않음
+    };
   }
 }

@@ -50,6 +50,10 @@ export default abstract class BaseNode {
     throw new Error("toMarkdown method is not implemented");
   }
 
+  parseMarkdown(): { block: string } {
+    return { block: this.name };
+  }
+
   markdownSerializer(): Record<string, (state: MarkdownSerializerState, node: ProsemirrorNode) => void> {
     return {
       [this.name]: this.toMarkdown,

@@ -11,6 +11,8 @@ import Italic from './Italic'
 import Strike from './Strike'
 import Underline from './Underline'
 import { isCursorInMark } from './utils'
+import { MarkdownSerializerState } from "prosemirror-markdown";
+import BaseMark from "./BaseMark";
 
 const MARK_REGISTER = [
   new Bold(),
@@ -19,61 +21,95 @@ const MARK_REGISTER = [
   new Highlight(),
   new Strike(),
   new InlineCodeSnippet(),
-]
+];
 
 class _MarkController {
-  marks = MARK_REGISTER
+  marks = MARK_REGISTER;
 
   private moveCursorOutOfMark = (state: EditorState, dispatch?: (tr: Transaction) => void): boolean => {
-    if (!dispatch) return false
+    if (!dispatch) return false;
 
-    const { schema, selection } = state
-    const { from, $from } = selection
+    const { schema, selection } = state;
+    const { from, $from } = selection;
 
-    const isInmark = isCursorInMark(state)
+    const isInmark = isCursorInMark(state);
 
     if (isInmark) {
-      const blockEnd = $from.end()
+      const blockEnd = $from.end();
       if (from === blockEnd) {
-        const tempChar = SPACE
-        let tr = state.tr.insert(blockEnd, schema.text(tempChar))
+        const tempChar = SPACE;
+        let tr = state.tr.insert(blockEnd, schema.text(tempChar));
 
         // Ensure the new position is within the document bounds
-        const newPos = blockEnd + 1
-        tr = tr.setSelection(TextSelection.create(tr.doc, newPos))
-        dispatch(tr)
+        const newPos = blockEnd + 1;
+        tr = tr.setSelection(TextSelection.create(tr.doc, newPos));
+        dispatch(tr);
       }
     }
 
-    return false
-  }
+    return false;
+  };
 
   private globalMarkKeymaps = () => {
     return keymap({
       ArrowRight: (state: EditorState, dispatch?: (tr: Transaction) => void) =>
         this.moveCursorOutOfMark(state, dispatch),
-    })
-  }
+    });
+  };
 
   getPlugins(schema: Schema) {
     const plugins = this.marks.flatMap((mark) => {
-      const type = schema.marks[mark.name]
+      const type = schema.marks[mark.name];
 
-      mark.setMetadata({ type, schema })
-      return mark.plugins()
-    })
+      mark.setMetadata({ type, schema });
+      return mark.plugins();
+    });
 
-    plugins.push(this.globalMarkKeymaps())
+    plugins.push(this.globalMarkKeymaps());
 
-    return plugins
+    return plugins;
   }
 
   getMarks() {
     return this.marks.reduce((obj: { [key in string]: MarkSpec }, mark) => {
-      obj[mark.name] = mark.createSchema
-      return obj
-    }, {})
+      obj[mark.name] = mark.createSchema;
+      return obj;
+    }, {});
   }
+
+  getMarkdownSerializer() {
+    return {
+      ...this.marks.reduce(
+        (
+          obj: Record<string, { open: string; close: string; mixable: boolean; expelEnclosingWhitespace: boolean }>,
+          mark: BaseMark
+        ) => {
+          obj[mark.name] = mark.markdownSerializer();
+
+          return obj;
+        },
+        {}
+      ),
+    };
+  }
+
+
+  getMarkdownParser() {
+    return {
+      ...this.marks.reduce(
+        (
+          obj: Record<string, { mark: string}>,
+          mark: BaseMark
+        ) => {
+          obj[mark.name] = mark.parseMarkdown();
+
+          return obj;
+        },
+        {}
+      ),
+    };
+  }
+
 }
 
 const MarkController = new _MarkController()
