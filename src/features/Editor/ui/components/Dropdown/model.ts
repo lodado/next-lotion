@@ -28,6 +28,4 @@ const dropdownSlice = createSlice({
 });
 
 export const { openTrigger, closeTrigger } = dropdownSlice.actions;
-export default dropdownSlice;
-
-export const useDropdownSelector = () => useEditorSelector((state) => state.dropdown);
+export default dropdownSlice; 

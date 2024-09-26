@@ -25,9 +25,3 @@ export const loginDialogReducer = createReducer(initialState, (builder) => {
   });
 });
 
-// Other code such as selectors can use the imported `RootState` type
-export const useLoginDialogSelector = () => {
-  const selector = useSelector((state) => state.loginDialog);
-
-  return selector;
-};

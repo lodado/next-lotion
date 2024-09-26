@@ -4,10 +4,12 @@ import { Root } from "@radix-ui/react-portal";
 
 import React from "react";
 
-import { useDropdownSelector } from "./model";
+import { useEditorSelector } from "@/features/Editor/hooks";
 
 export const EditorDropdown = () => {
-  const { isOpen, position } = useDropdownSelector();
+  const isOpen = useEditorSelector((state) => state.dropdown.isOpen);
+  const position = useEditorSelector((state) => state.dropdown.position);
+
   if (!isOpen) return null;
 
   return (

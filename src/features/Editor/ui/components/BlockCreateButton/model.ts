@@ -30,5 +30,3 @@ const blockCreateButtonSlice = createSlice({
 
 export const { SHOW_BLOCK_CREATE_BUTTON, DISAPPEAR_BLOCK_CREATE_BUTTON } = blockCreateButtonSlice.actions;
 export default blockCreateButtonSlice;
-
-export const useBlockCreateButtonSelector = () => useEditorSelector((state) => state.blockCreateButton);

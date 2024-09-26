@@ -41,5 +41,3 @@ const dragButtonSlice = createSlice({
 
 export const { DRAG_BUTTON_SET_DRAG_FLAG, openTrigger, closeTrigger } = dragButtonSlice.actions;
 export default dragButtonSlice;
-
-export const useDragButtonSelector = () => useEditorSelector((state) => state.dragButton);

@@ -37,10 +37,3 @@ export const authReducer = createReducer(initialState, (builder) => {
     state.user = initUserState;
   });
 });
-
-// Other code such as selectors can use the imported `RootState` type
-export const useAuthSelector = () => {
-  const selector = useSelector((state) => state.auth);
-
-  return selector;
-};

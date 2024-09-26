@@ -10,10 +10,10 @@ import { findTopLevelNode } from "../../../models/core/nodes/utils";
 import { blockDnDHoverPluginDispatcher } from "../../../models/core/plugins/highlightPlugin";
 import { useEditorContext } from "../../EditorProvider";
 import { useNodeDnDPlaceHolder } from "./hook";
-import { DRAG_BUTTON_SET_DRAG_FLAG, useDragButtonSelector } from "./model";
+import { DRAG_BUTTON_SET_DRAG_FLAG } from "./model";
 
 import { ScreenReaderOnly } from "@/shared";
-import { useEditorDispatch } from "@/features/Editor/hooks";
+import { useEditorDispatch, useEditorSelector } from "@/features/Editor/hooks";
 
 export const DragButton = () => {
   const { view, editorState } = useEditorContext();
@@ -26,7 +26,10 @@ export const DragButton = () => {
     handleShowPlaceholder,
   } = useNodeDnDPlaceHolder();
 
-  const { isOpen, targetPosition, position } = useDragButtonSelector();
+  const isOpen = useEditorSelector((state) => state.dragButton.isOpen);
+  const targetPosition = useEditorSelector((state) => state.dragButton.targetPosition);
+  const position = useEditorSelector((state) => state.dragButton.position);
+
   const { hoverDndPlaceholderDispatcher, resetHoverDndPlaceholderDispatcher } = blockDnDHoverPluginDispatcher(view);
   const editorDispatch = useEditorDispatch();
 

@@ -1,13 +1,13 @@
 "use client";
 
-import { AUTH_LOGOUT_ACTION, AuthClientRepository, useAuthSelector } from "@/entities";
+import { AUTH_LOGOUT_ACTION, AuthClientRepository } from "@/entities";
 import { LogoutUseCase } from "@/entities/Auth/core";
 import { LOGIN_DIALOG_OPEN_ACTION } from "@/features";
-import { useDispatch, useErrorBoundary } from "@/shared";
+import { useDispatch, useErrorBoundary, useSelector } from "@/shared";
 import React from "react";
 
 const AuthButton = () => {
-  const { isLogin } = useAuthSelector();
+  const isLogin = useSelector((state) => state.auth.isLogin);
   const { setError } = useErrorBoundary();
   const dispatch = useDispatch();
 

@@ -1,13 +1,13 @@
 "use client";
 
 import React from "react";
-import { LOGIN_DIALOG_CLOSE_ACTION, LOGIN_DIALOG_OPEN_ACTION, useLoginDialogSelector } from "../../models";
-import { useDispatch } from "@/shared";
+import { LOGIN_DIALOG_CLOSE_ACTION, LOGIN_DIALOG_OPEN_ACTION } from "../../models";
+import { useDispatch, useSelector } from "@/shared";
 import { AlertDialog } from "@/shared/ui/Dialog";
 import LoginForm from "./LoginForm";
 
 const LoginDialogContainer = () => {
-  const { isOpened } = useLoginDialogSelector();
+  const isOpened = useSelector((state) => state.loginDialog.isOpened);
   const dispatch = useDispatch();
 
   return (
