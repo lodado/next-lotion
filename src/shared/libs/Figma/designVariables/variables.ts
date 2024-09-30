@@ -37,14 +37,14 @@ function transformColorsForTailwind(
 
 const COLOR = transformColorsForTailwind({
   light: {
-    ...RAW_COLOR.Light.colors,
+    ...RAW_COLOR.Light.color,
     ...SEMANTIC.Light.colors,
   },
   dark: {
-    ...RAW_COLOR.Dark.colors,
+    ...RAW_COLOR.Dark.color,
     ...SEMANTIC.Dark.colors,
   },
-})
+});
 
 const VARIABLES = { COLOR, SPACE }
 export default VARIABLES
