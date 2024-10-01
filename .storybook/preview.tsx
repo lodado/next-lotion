@@ -6,8 +6,15 @@ import React from "react";
 
 import RootProvider from "../src/app/provider/RootProvider";
 import ClientProvider from "../src/app/provider/ClientProvider";
-
+ 
 const preview: Preview = {
+  globalTypes: {
+    adsTheme: {
+      description: "Atlassian Design System theming options",
+      defaultValue: "light",
+    },
+  },
+
   parameters: {
     controls: {
       matchers: {

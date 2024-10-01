@@ -8,31 +8,45 @@ type NestedColorObject = { [key: string]: ColorValue | NestedColorObject }
 function transformColorsForTailwind(
   data: NestedColorObject,
   result: NestedColorObject = {},
-  parentKey: string = '',
+  parentKey: string = ""
 ): NestedColorObject {
   Object.entries(data).forEach(([key, value]) => {
-    const newKey = parentKey ? `${parentKey}-${key}` : key
+    const newKey = parentKey ? `${parentKey}-${key}` : key;
 
-    if (typeof value === 'object' && value !== null && !(value instanceof Array)) {
-      transformColorsForTailwind(value as NestedColorObject, result, newKey)
+    if (typeof value === "object" && value !== null && !(value instanceof Array)) {
+      transformColorsForTailwind(value as NestedColorObject, result, newKey);
     } else {
-      let currentDict: NestedColorObject = result
-      const keyParts = newKey.split('-')
+      const strings = newKey.split("-");
 
-      keyParts.forEach((part, index) => {
-        if (index === keyParts.length - 1) {
-          currentDict[part] = value as ColorValue
+      const target = strings[0];
+      const color = strings.slice(1).join("-");
+
+      let currentDict = result;
+
+      [target, color].forEach((part, index) => {
+        if (index === 1) {
+          currentDict[part] = value as ColorValue;
         } else {
           if (!(part in currentDict)) {
-            currentDict[part] = {}
+            currentDict[part] = {};
           }
-          currentDict = currentDict[part] as NestedColorObject
+          currentDict = currentDict[part] as NestedColorObject;
         }
-      })
-    }
-  })
+      });
 
-  return result
+      /* 
+      NestedColorObject = {
+        [strings[0]]: {
+          [strings[1]]: {
+            [strings[2]]: strings.slice(2).join("-"),
+          },
+        },
+      };
+      */
+    }
+  });
+
+  return result;
 }
 
 const COLOR = transformColorsForTailwind({
@@ -45,6 +59,6 @@ const COLOR = transformColorsForTailwind({
     ...SEMANTIC.Dark.colors,
   },
 });
-
+ 
 const VARIABLES = { COLOR, SPACE }
 export default VARIABLES
