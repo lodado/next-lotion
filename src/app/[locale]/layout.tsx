@@ -8,6 +8,10 @@ import { RootProvider } from "../provider";
 import Head from "next/head";
 import { GlobalDialogContainer } from "@/widgets";
 
+import { Inter } from "@next/font/google";
+
+const inter = Inter({ subsets: ["latin"] });
+
 /** TODO - GA 설치 */
 // import { GA } from "@/shared/lib/GA";
 // import GlobalAdapterServer from '@/shared/ui/GlobalAdapter/GlobalAdapter.server'
@@ -62,7 +66,7 @@ const RootLayout: React.FunctionComponent<LocaleProps> = ({ children, params: { 
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <body style={{ display: "flex", flexDirection: "column" }}>
+      <body className={inter.className} style={{ display: "flex", flexDirection: "column" }}>
         <ThemeScript nonce={nonce} />
         <ScreenVhScript nonce={nonce} />
         <RootProvider>
