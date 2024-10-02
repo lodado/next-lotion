@@ -1,7 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { DropdownPosition } from "./type";
-import { useEditorSelector } from "@/features/Editor/hooks";
- 
 
 interface DropdownState {
   position: DropdownPosition;
@@ -17,6 +15,10 @@ const dropdownSlice = createSlice({
   name: "dropdown-slice",
   initialState,
   reducers: {
+    RESET_EDITOR_DROPDOWN: () => {
+      return initialState;
+    },
+
     EDITOR_DROPDOWN_OPEN: (state, action: PayloadAction<DropdownPosition>) => {
       state.position = action.payload;
       state.isOpen = true;
@@ -27,7 +29,6 @@ const dropdownSlice = createSlice({
   },
 });
 
- 
-export const { EDITOR_DROPDOWN_OPEN, EDITOR_DROPDOWN_CLOSE } = dropdownSlice.actions;
+export const { RESET_EDITOR_DROPDOWN, EDITOR_DROPDOWN_OPEN, EDITOR_DROPDOWN_CLOSE } = dropdownSlice.actions;
 export default dropdownSlice;
  
