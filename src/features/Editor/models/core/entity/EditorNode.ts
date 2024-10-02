@@ -7,6 +7,7 @@ class EditorNode {
 
   constructor({ content }: { content: ProseMirrorNode }) {
     this.content = content;
+    this.validate();
   }
 
   // Add validation logic if needed to check if the content follows ProseMirror structure

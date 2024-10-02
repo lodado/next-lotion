@@ -19,5 +19,6 @@ export const createState = ({
   return EditorState.create({
     doc: getDoc(schemaData),
     plugins: createPlugin(schemaData, widgetController),
+    schema: schemaData,
   });
 };

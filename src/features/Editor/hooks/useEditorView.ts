@@ -1,13 +1,14 @@
 "use client";
 
-import { DOMParser } from "prosemirror-model";
+import { DOMParser, Schema } from "prosemirror-model";
 import { EditorState } from "prosemirror-state";
 import { EditorView } from "prosemirror-view";
 import React, { useEffect, useRef, useState } from "react";
 
-import { createState, createView } from "../models/editor";
+import { createSchema, createState, createView, ProseMirrorNode } from "../models/editor";
 import { WidgetController } from "../ui/components";
 import { EditorReduxStore } from "../models";
+import useEditorData from "./useEditorData";
 
 export const useEditorView = (ReduxLocalStore: typeof EditorReduxStore) => {
   const editorRef = useRef<HTMLDivElement>(null);
@@ -15,23 +16,44 @@ export const useEditorView = (ReduxLocalStore: typeof EditorReduxStore) => {
 
   const [view, setView] = useState<EditorView | null>(null);
   const [editorState, setEditorState] = useState<EditorState | null>(null);
-  const [widgetController] = useState(() => new WidgetController(ReduxLocalStore));
+  const [widgetController, setWidgetController] = useState(() => new WidgetController(ReduxLocalStore));
 
-  useEffect(() => {
+  const { content, handleSaveContent, editorIndexedDBRepository } = useEditorData({ view: view });
+
+  const initEditor = (
+    domParser = (schema: Schema<any, any>) => DOMParser.fromSchema(schema).parse(editorRef.current!)
+  ) => {
+    setIsMounted(false);
+
+    const newWidgetController = new WidgetController(ReduxLocalStore);
+
     const state = createState({
-      widgetController,
-      getDoc: (schema) => DOMParser.fromSchema(schema).parse(editorRef.current!),
+      widgetController: newWidgetController,
+      getDoc: domParser,
     });
 
-    const viewInstance = createView({ editor: editorRef.current!, state });
+    const viewInstance = createView({
+      editor: editorRef.current!,
+      state,
+    });
 
     setEditorState(state);
     setView(viewInstance);
 
     setIsMounted(true);
+    setWidgetController(newWidgetController);
 
     return () => viewInstance.destroy();
-  }, []);
+  };
 
-  return { isMounted, editorRef, editorState, view, widgetController };
+  useEffect(() => {
+    const domParser =
+      view && content ? (schema: Schema<any, any>) => ProseMirrorNode.fromJSON(schema, content.toJSON()) : undefined;
+
+    const destroyView = initEditor(domParser);
+
+    return destroyView;
+  }, [content]);
+
+  return { isMounted, editorRef, editorState, view, widgetController, handleSaveContent, editorIndexedDBRepository };
 };

@@ -7,21 +7,17 @@ import React, { useEffect, useMemo, useState } from "react";
 import { EditorProvider } from "./EditorProvider";
 import { createEditorReduxLocalStore, createMarkdownView } from "../models";
 import { useEditorView } from "../hooks/useEditorView";
+import useEditorData from "../hooks/useEditorData";
 
 const Editor = () => {
   const EditorReduxLocalStore = useMemo(() => createEditorReduxLocalStore(), []);
-  const { isMounted, editorRef, view, editorState, widgetController } = useEditorView(EditorReduxLocalStore);
-
-  const handleSaveContent = () => {
-    if (view) {
-      const savedData = view.state.doc.toJSON();
-    }
-  };
+  const { isMounted, editorRef, view, editorState, widgetController, handleSaveContent, editorIndexedDBRepository } =
+    useEditorView(EditorReduxLocalStore);
 
   return (
     <ReduxProvider store={EditorReduxLocalStore}>
       <EditorProvider view={view!} editorState={editorState!}>
-        <button type="button" onClick={handleSaveContent}>
+        <button type="button" onClick={handleSaveContent(editorIndexedDBRepository)}>
           save
         </button>
 
