@@ -6,6 +6,7 @@ import dragButtonSlice from "../../ui/components/DragButton/model";
 import  blockCreateButtonSlice   from "../../ui/components/BlockCreateButton/model";
 import createSagaMiddleware from "redux-saga";
 import { rootSaga } from "./saga";
+import editorSlice from "./EditorContentSlice";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -15,10 +16,16 @@ export const createEditorReduxLocalStore = () => {
       dropdown: dropdownSlice.reducer,
       dragButton: dragButtonSlice.reducer,
       blockCreateButton: blockCreateButtonSlice.reducer,
+      editorContent: editorSlice.reducer,
     },
 
     middleware: (getDefaultMiddleware) => {
-      const middlewares = getDefaultMiddleware({ thunk: false }).concat(sagaMiddleware);
+      const middlewares = getDefaultMiddleware({
+        thunk: false,
+        serializableCheck: {
+          ignoredPaths: ["editorContent"], // 직렬화 검사를 무시할 상태 경로
+        },
+      }).concat(sagaMiddleware);
 
       if (process.env.NODE_ENV === "development") {
         middlewares.concat(logger);

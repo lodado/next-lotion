@@ -2,7 +2,7 @@
 
 import { Provider as ReduxProvider } from "react-redux";
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { cloneElement, ReactElement, useMemo } from "react";
 
 import { EditorProvider } from "./EditorProvider";
 import { createEditorReduxLocalStore, createMarkdownView } from "../models";
@@ -12,10 +12,10 @@ import useEditorData from "../hooks/useEditorData";
 const EditorContainer = ({
   EditorReduxLocalStore,
 }: {
-  EditorReduxLocalStore: ReturnType<typeof createEditorReduxLocalStore>;
+  EditorReduxLocalStore?: ReturnType<typeof createEditorReduxLocalStore>;
 }) => {
-  const { isMounted, editorRef, view, editorState, widgetController, handleSaveContent, editorIndexedDBRepository } =
-    useEditorView(EditorReduxLocalStore);
+  const { isMounted, editorRef, view, editorState, widgetController } = useEditorView(EditorReduxLocalStore!);
+  const { handleSaveContent, editorIndexedDBRepository } = useEditorData({ view: view });
 
   return (
     <EditorProvider view={view!} editorState={editorState!}>
@@ -32,14 +32,14 @@ const EditorContainer = ({
   );
 };
 
-const Editor = () => {
+const EditorRoot = ({ children }: { children: ReactElement }) => {
   const EditorReduxLocalStore = useMemo(() => createEditorReduxLocalStore(), []);
 
   return (
-    <ReduxProvider store={EditorReduxLocalStore}>
-      <EditorContainer EditorReduxLocalStore={EditorReduxLocalStore} />
-    </ReduxProvider>
+    <ReduxProvider store={EditorReduxLocalStore}>{cloneElement(children, { EditorReduxLocalStore })}</ReduxProvider>
   );
 };
 
-export default Editor;
+EditorRoot.Editor = EditorContainer;
+
+export default EditorRoot;

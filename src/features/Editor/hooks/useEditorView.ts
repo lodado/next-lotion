@@ -5,7 +5,7 @@ import { EditorState } from "prosemirror-state";
 import { EditorView } from "prosemirror-view";
 import React, { useEffect, useRef, useState } from "react";
 
-import { createSchema, createState, createView, ProseMirrorNode } from "../models/editor";
+import { createState, createView, ProseMirrorNode } from "../models/editor";
 import { WidgetController } from "../ui/components";
 import { EditorReduxStore } from "../models";
 import useEditorData from "./useEditorData";
@@ -22,7 +22,7 @@ export const useEditorView = (ReduxLocalStore: typeof EditorReduxStore) => {
   const [editorState, setEditorState] = useState<EditorState | null>(null);
   const [widgetController, setWidgetController] = useState(() => new WidgetController(ReduxLocalStore));
 
-  const { content, handleSaveContent, editorIndexedDBRepository } = useEditorData({ view: view });
+  const { content } = useEditorData({ view: view });
 
   const initEditor = (
     domParser = (schema: Schema<any, any>) => DOMParser.fromSchema(schema).parse(editorRef.current!)
@@ -51,6 +51,8 @@ export const useEditorView = (ReduxLocalStore: typeof EditorReduxStore) => {
     return () => viewInstance.destroy();
   };
 
+  /** anti patten이긴 한데 ㅠ
+    content 상태 update시 자동으로 proseMirror에 상태 반영함 */
   useEffect(() => {
     const domParser =
       view && content ? (schema: Schema<any, any>) => ProseMirrorNode.fromJSON(schema, content.toJSON()) : undefined;
@@ -60,5 +62,5 @@ export const useEditorView = (ReduxLocalStore: typeof EditorReduxStore) => {
     return destroyView;
   }, [content]);
 
-  return { isMounted, editorRef, editorState, view, widgetController, handleSaveContent, editorIndexedDBRepository };
+  return { isMounted, editorRef, editorState, view, widgetController };
 };
