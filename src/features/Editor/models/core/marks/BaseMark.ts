@@ -47,12 +47,14 @@ export default abstract class BaseMark {
     throw new Error("toMarkdown method is not implemented");
   }
 
-  parseMarkdown() {
-    return { mark: this.name };
-  }
-
   markdownSerializer(): { open: string; close: string; mixable: boolean; expelEnclosingWhitespace: boolean } {
     return { mixable: true, expelEnclosingWhitespace: true, ...this.toMarkdown() };
+  }
+
+  parseMarkdown() {
+    return {
+      [this.name]: { mark: this.name },
+    };
   }
 
   /**

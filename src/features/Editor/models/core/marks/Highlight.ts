@@ -3,8 +3,13 @@ import { DOMOutputSpec, MarkSpec, MarkType } from 'prosemirror-model'
 import { Command, EditorState, Transaction } from 'prosemirror-state'
 
 import BaseMark from './BaseMark'
+import { InputRule } from "prosemirror-inputrules";
 
 export default class Highlight extends BaseMark {
+  get tag() {
+    return "highlight";
+  }
+
   get name(): string {
     return "highlight";
   }
@@ -54,6 +59,14 @@ export default class Highlight extends BaseMark {
 
     return toggleMark(markType, attrs)(state, dispatch);
   };
+
+  inputRules() {
+    return [
+      new InputRule(/(?:\=\=)([^*]+)(?:\=\=)$/, (state, match, start, end) => {
+        return this.updateMark(state, match, start, end);
+      }),
+    ];
+  }
 
   keys() {
     return {

@@ -30,11 +30,6 @@ export const useEditorView = (ReduxLocalStore: typeof EditorReduxStore) => {
 
     setIsMounted(true);
 
-    viewInstance.dom.addEventListener("input", () => {
-      if (viewInstance.state.doc) {
-      }
-    });
-
     return () => viewInstance.destroy();
   }, []);
 
