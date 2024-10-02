@@ -5,7 +5,7 @@ import { EditorState } from "prosemirror-state";
 import { EditorView } from "prosemirror-view";
 import React, { useEffect, useRef, useState } from "react";
 
-import { createState, createView } from "../models/core";
+import { createState, createView } from "../models/editor";
 import { WidgetController } from "../ui/components";
 import { EditorReduxStore } from "../models";
 

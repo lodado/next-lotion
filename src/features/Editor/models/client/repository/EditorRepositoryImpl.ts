@@ -1,4 +1,4 @@
-import { ProseMirrorNode } from "../../core";
+import { ProseMirrorNode } from "../../editor";
 import { EditorNode } from "../entity";
 
 export interface EditorRepositoryImpl {

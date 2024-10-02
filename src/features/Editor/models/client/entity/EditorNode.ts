@@ -1,5 +1,5 @@
 import { EntityError } from "@/shared";
-import { ProseMirrorNode } from "../../core";
+import { ProseMirrorNode } from "../../editor";
 
 // ProseMirrorNode.ts
 class EditorNode {

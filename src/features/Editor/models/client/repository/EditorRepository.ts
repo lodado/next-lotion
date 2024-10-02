@@ -1,5 +1,5 @@
 import { mapEntityErrorToRepositoryError, RepositoryError } from "@/shared";
-import { ProseMirrorNode } from "../../core";
+import { ProseMirrorNode } from "../../editor";
 import { EditorRepositoryImpl } from "./EditorRepositoryImpl";
 import { EditorNode } from "../entity";
 
