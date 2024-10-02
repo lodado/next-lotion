@@ -1,9 +1,9 @@
 import { mapEntityErrorToRepositoryError, RepositoryError } from "@/shared";
-import { ProseMirrorNode } from "../../editor";
-import { EditorRepositoryImpl } from "./EditorRepositoryImpl";
-import { EditorNode } from "../entity";
+import { EditorRepositoryImpl } from "../../core/repository";
+import { EditorNode } from "../../core/entity";
 
 export class ProseMirrorRepository implements EditorRepositoryImpl {
+  // @todo 나중에 api 구현
   path = "/node";
 
   constructor(path: string = "/node") {
@@ -14,7 +14,7 @@ export class ProseMirrorRepository implements EditorRepositoryImpl {
     try {
       const response = await fetch(`/${this.path}/${id}`);
       if (!response.ok) {
-        throw new Error("Failed to fetch editor state.");
+        throw new RepositoryError({ message: "Failed to fetch editor state." });
       }
       const data = await response.json();
 
@@ -24,11 +24,11 @@ export class ProseMirrorRepository implements EditorRepositoryImpl {
     }
   }
 
-  async put({ id, node }: { id: string; node: ProseMirrorNode }): Promise<void> {
+  async put({ id, node }: { id: string; node: EditorNode }): Promise<void> {
     try {
       const response = await fetch(`/${this.path}/${id}`, {
         method: "PUT",
-        body: JSON.stringify({ content: node }),
+        body: JSON.stringify({ content: node.content }),
         headers: {
           "Content-Type": "application/json",
         },
