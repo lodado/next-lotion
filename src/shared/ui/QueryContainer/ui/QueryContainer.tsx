@@ -1,6 +1,8 @@
-import { useQuery, UseQueryOptions } from "@tanstack/react-query";
+import { UseQueryOptions } from "@tanstack/react-query";
 
 import { cloneWithPropsIfAbsent } from "@/shared/utils";
+
+import { useQueryContainer } from "../hooks";
 
 export default function QueryContainer<RESPONSE, VARIABLE extends Record<string, unknown>>({
   children,
@@ -19,15 +21,11 @@ export default function QueryContainer<RESPONSE, VARIABLE extends Record<string,
   loadingComponent?: JSX.Element;
   errorComponent?: JSX.Element;
 }) {
-  const parsedQueryKey = [queryKey, ...Object.entries(variables!).flatMap(([key, value]) => [key, value])];
-
-  const query = useQuery({
-    retry: 1,
-    queryFn: () => {
-      return queryFn(variables!);
-    },
-    ...queryOptions,
-    queryKey: parsedQueryKey,
+  const { query, parsedQueryKey } = useQueryContainer({
+    queryKey,
+    queryFn,
+    variables,
+    queryOptions,
   });
 
   const response = query?.isError ? undefined : query?.data;
