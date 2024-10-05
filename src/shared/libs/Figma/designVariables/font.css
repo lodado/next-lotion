@@ -9,10 +9,9 @@ body {
 
 .heading-01 {
   font-family: 'Inter', sans-serif;
-  font-weight: 500; /* Medium */
+  font-weight: 700; /* Medium */
   font-size: 38px; /* Size set to 38 */
   text-transform: none; /* No transform */
-  text-align: center; /* Center align */
   letter-spacing: -0.02em; /* Letter spacing is -0.02em */
   line-height: 52px; /* Line height set to 52px */
   
@@ -27,7 +26,7 @@ body {
 
 .heading-02 {
   font-family: 'Inter', sans-serif;
-  font-weight: 500; /* Medium */
+  font-weight: 600; /* Medium */
   font-size: 28px; /* Size set to 28 for L breakpoint */
   text-transform: none; /* No transform */
   text-align: left; /* Left align */

@@ -53,25 +53,25 @@ export default class Heading extends BaseNode {
         },
         collapsed: { default: false },
       },
-      content: '(inline|text)*',
-      group: 'block',
+      content: "(inline|text)*",
+      group: "block",
       defining: true,
       parseDOM: this.defaultOptions.levels.map((level) => ({
         tag: `h${level}`,
         attrs: () => {
-          return { level, collapsed: this.defaultOptions.collapsed }
+          return { level, collapsed: this.defaultOptions.collapsed };
         },
       })),
       toDOM: (node: Node) =>
         [
           `h${node.attrs.level}`,
           {
-            class: this.defaultClassName,
-            'data-collapsed': node.attrs.collapsed ? 'true' : 'false',
+            class: `${this.defaultClassName} heading-0${node.attrs.level}`,
+            "data-collapsed": node.attrs.collapsed ? "true" : "false",
           },
           0,
         ] satisfies DOMOutputSpec,
-    }
+    };
   }
 
   commands() {

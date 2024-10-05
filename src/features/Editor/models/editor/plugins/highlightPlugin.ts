@@ -40,7 +40,9 @@ export const BlockDnDHighlightPlugin = new Plugin({
         return old
       }
 
-      const deco = Decoration.node(start, end, { class: `hover-border ${point < end ? 'start' : 'end'}` })
+      const deco = Decoration.node(start, end, {
+        class: `hover-border ${point < end ? "start" : "end"}`,
+      });
       return DecorationSet.create(tr.doc, [deco])
     },
   },
