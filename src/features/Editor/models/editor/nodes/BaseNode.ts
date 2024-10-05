@@ -10,8 +10,8 @@ export default abstract class BaseNode {
 
   abstract get name(): string;
 
-  get defaultClassName() {
-    return "editor-block body-02-r";
+  defaultClassName() {
+    return "editor-block";
   }
 
   get createSchema(): NodeSpec {

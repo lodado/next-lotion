@@ -12,6 +12,10 @@ export default class Paragraph extends BaseNode {
     return "paragraph";
   }
 
+  defaultClassName() {
+    return `${super.defaultClassName()} body-02`;
+  }
+
   get createSchema(): NodeSpec {
     return {
       content: "inline*",
@@ -24,7 +28,7 @@ export default class Paragraph extends BaseNode {
           tag: "p",
         },
       ],
-      toDOM: (node) => ["p", { class: this.defaultClassName }, 0],
+      toDOM: (node) => ["p", { class: this.defaultClassName() }, 0],
     };
   }
 
@@ -47,7 +51,7 @@ export default class Paragraph extends BaseNode {
             doc.descendants((node, pos) => {
               if (node.type.name === this.name && node.content.size < 1) {
                 const widget = document.createElement("span");
-                widget.className = "editor-placeholder";
+                widget.className = "editor-placeholder body-02";
                 widget.textContent = "Type something...";
 
                 decorations.push(Decoration.widget(pos + 1, widget, { side: -1 }));

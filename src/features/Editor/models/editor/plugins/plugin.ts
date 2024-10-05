@@ -26,7 +26,10 @@ export const createPlugin = (schema: Schema, widgetController: WidgetController)
 
     history(),
     gapCursor(),
-    dropCursor(),
+    dropCursor({
+      width: 4,
+      color: "var(--Color-Background-Accent-Blue-Subtler-Default)",
+    }),
 
     BlockDnDHighlightPlugin,
   ];
