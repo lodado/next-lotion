@@ -26,20 +26,25 @@ const atomics = {
 const molecules = {
   proseImage: new ProseImage({ paragraph: atomics.paragraph }),
 
-  splitScreen: new SplitScreen({ paragraph: atomics.paragraph }),
-  code: new Code({ paragraph: atomics.paragraph }),
+  // splitScreen: new SplitScreen({ paragraph: atomics.paragraph }),
+
+  // code: new Code({ paragraph: atomics.paragraph }),
   // codeMirror: new CodeMirror({ paragraph: atomics.paragraph }),
 
-  BulletList: new BulletList({ paragraph: atomics.paragraph }),
+  // BulletList: new BulletList({ paragraph: atomics.paragraph }),
 };
 
 const Organisms = {
+  /* 
   UnorderedList: new UnorderedList({
     paragraph: atomics.paragraph,
     bulletList: molecules.BulletList,
   }),
+  */
 };
 
+// TO DO - 주석들 구현
+// @ts-ignore
 const NODE_REGISTER: BaseNode[] = [
   ...Object.values(atomics),
   ...Object.values(molecules),

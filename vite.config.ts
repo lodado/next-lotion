@@ -17,6 +17,8 @@ export default defineConfig({
     globals: true, // Enables global describe, it, expect
     environment: "jsdom",
 
+    setupFiles: ["./src/shared/libs/vitest/setupTests.ts"], // Setup file for tailwindcss
+
     include: ["src/**/*.test.{ts,tsx}"], // Includes all test files
   },
 });

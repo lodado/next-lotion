@@ -17,6 +17,10 @@ const blockCreateButtonSlice = createSlice({
   name: "blockCreateButton-slice",
   initialState,
   reducers: {
+    RESET_BLOCK_CREATE: () => {
+      return initialState;
+    },
+
     SHOW_BLOCK_CREATE_BUTTON(state, action: PayloadAction<Position>) {
       const { y } = action.payload;
       state.position = { x: 0, y: y - 10 };
@@ -28,5 +32,6 @@ const blockCreateButtonSlice = createSlice({
   },
 });
 
-export const { SHOW_BLOCK_CREATE_BUTTON, DISAPPEAR_BLOCK_CREATE_BUTTON } = blockCreateButtonSlice.actions;
+export const { RESET_BLOCK_CREATE, SHOW_BLOCK_CREATE_BUTTON, DISAPPEAR_BLOCK_CREATE_BUTTON } =
+  blockCreateButtonSlice.actions;
 export default blockCreateButtonSlice;

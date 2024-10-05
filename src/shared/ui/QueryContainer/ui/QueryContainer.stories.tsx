@@ -48,6 +48,7 @@ export const QueryContainerExample = () => {
           <div>error</div>
         </RefetchContainer>
       }
+      queryOptions={{}}
     >
       <ResponseComponent />
     </QueryContainer>

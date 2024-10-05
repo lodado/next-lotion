@@ -6,8 +6,8 @@ import { Fragment, Node as ProseMirrorNode, Slice } from "prosemirror-model";
 import { dropPoint } from "prosemirror-transform";
 import React, { MouseEventHandler, SyntheticEvent } from "react";
 
-import { findTopLevelNode } from "../../../models/core/nodes/utils";
-import { blockDnDHoverPluginDispatcher } from "../../../models/core/plugins/highlightPlugin";
+import { findTopLevelNode } from "../../../models/editor/nodes/utils";
+import { blockDnDHoverPluginDispatcher } from "../../../models/editor/plugins/highlightPlugin";
 import { useEditorContext } from "../../EditorProvider";
 import { useNodeDnDPlaceHolder } from "./hook";
 import { DRAG_BUTTON_SET_DRAG_FLAG } from "./model";

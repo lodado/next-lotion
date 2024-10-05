@@ -1,19 +1,21 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import Editor from "./Editor";
+import EditorRoot from "./Editor";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
-const meta: Meta<typeof Editor> = {
+const meta: Meta<typeof EditorRoot> = {
   title: "Features/Editor",
-  component: Editor,
+  component: EditorRoot,
   argTypes: {},
 };
 
 export default meta;
 
-type Story = StoryObj<typeof Editor>;
+type Story = StoryObj<typeof EditorRoot>;
 
-export const NavigationExample: Story = {
-  args: {},
+export const EditorExample = () => {
+  return (
+    <EditorRoot>
+      <EditorRoot.Editor />
+    </EditorRoot>
+  );
 };
-
-export const EditorExample = Editor;

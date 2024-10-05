@@ -21,6 +21,10 @@ const dragButtonSlice = createSlice({
   name: "dragButton-slice",
   initialState,
   reducers: {
+    RESET_DRAG_BUTTON: () => {
+      return initialState;
+    },
+
     DRAG_BUTTON_SET_DRAG_FLAG(state, action: PayloadAction<boolean>) {
       state.dragFlag = action.payload;
     },
@@ -39,5 +43,6 @@ const dragButtonSlice = createSlice({
   },
 });
 
-export const { DRAG_BUTTON_SET_DRAG_FLAG, DRAG_BUTTON_START, DRAG_BUTTON_END } = dragButtonSlice.actions;
+export const { RESET_DRAG_BUTTON, DRAG_BUTTON_SET_DRAG_FLAG, DRAG_BUTTON_START, DRAG_BUTTON_END } =
+  dragButtonSlice.actions;
 export default dragButtonSlice;

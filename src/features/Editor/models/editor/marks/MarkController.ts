@@ -101,7 +101,9 @@ class _MarkController {
           obj: Record<string, { mark: string}>,
           mark: BaseMark
         ) => {
-          obj[mark.name] = mark.parseMarkdown();
+          const [[key, value], _] = Object.entries(mark.parseMarkdown());
+
+          obj[key] = value;
 
           return obj;
         },

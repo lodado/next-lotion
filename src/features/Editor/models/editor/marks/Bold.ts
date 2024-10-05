@@ -1,11 +1,14 @@
 import { toggleMark } from 'prosemirror-commands'
 import { InputRule } from 'prosemirror-inputrules'
-import { DOMOutputSpec, Mark, Node } from 'prosemirror-model'
-import { EditorState } from 'prosemirror-state'
+import { DOMOutputSpec, Mark, Node } from "prosemirror-model";
 
 import BaseMark from './BaseMark'
 
 export default class Bold extends BaseMark {
+  get tag() {
+    return "strong";
+  }
+
   get name() {
     return "bold";
   }
@@ -47,6 +50,12 @@ export default class Bold extends BaseMark {
       close: "**",
       mixable: true,
       expelEnclosingWhitespace: true,
+    };
+  }
+
+  parseMarkdown() {
+    return {
+      [this.tag]: { mark: this.name },
     };
   }
 }

@@ -1,10 +1,11 @@
-import { defaultMarkdownSerializer, MarkdownParser, MarkdownSerializer } from "prosemirror-markdown";
+import { MarkdownParser, MarkdownSerializer } from "prosemirror-markdown";
 import { Node as ProsemirrorNode, Schema } from "prosemirror-model";
 import { EditorState, Transaction } from "prosemirror-state";
 import { EditorView } from "prosemirror-view";
 import { NodeController } from "./nodes";
 import { MarkController } from "./marks";
-import markdownit from "markdown-it";
+
+import { generateMarkdownParser } from "./markdownParser";
 
 interface CreateViewParams {
   editor: HTMLElement;
@@ -25,23 +26,33 @@ export const createView = ({ editor, state }: CreateViewParams): EditorView => {
 };
 
 // NodeController에서 수집한 markdownSerializer 사용
-const myMarkdownSerializer = new MarkdownSerializer(
+export const myMarkdownSerializer = new MarkdownSerializer(
   NodeController.getMarkdownSerializer(),
   MarkController.getMarkdownSerializer()
 );
 
-export const createMarkdownView = ({ view }: { view: EditorView }): string => {
-  const doc = view.state.doc;
-
+export const createMarkdownView = ({ node }: { node: ProsemirrorNode }): string => {
   // ProseMirror 문서를 마크다운으로 변환
-  const markdown = myMarkdownSerializer.serialize(doc);
+  const markdown = myMarkdownSerializer.serialize(node);
 
   return markdown;
 };
 
-export const parseMarkdown = (schema: Schema) =>
-  new MarkdownParser(schema, markdownit(), {
+/* TODO - 홀리;
+  커스텀 파서를 직접 구현해야함 
+
+  https://tilnote.io/pages/61d9811d9d70a7c3a37012e6
+*/
+export const parseMarkdown = ({ schema, string }: { string: string; schema: Schema }) => {
+  const { paragraph } = NodeController.getMarkdownParser();
+  const { strong, highlight } = MarkController.getMarkdownParser();
+
+  return new MarkdownParser(schema, generateMarkdownParser(), {
     text: { node: "text" },
-    ...NodeController.getMarkdownParser(),
-    ...MarkController.getMarkdownParser(),
-  });
+
+    paragraph,
+
+    highlight,
+    strong,
+  }).parse(string);
+};
