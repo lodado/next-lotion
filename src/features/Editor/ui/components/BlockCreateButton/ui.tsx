@@ -9,6 +9,7 @@ import { BlockCreateContent } from "./components/BlockCreateContent";
  
 import { Dropdown, ScreenReaderOnly } from "@/shared";
 import { useEditorSelector } from "@/features/Editor/hooks";
+import { ICON_BUTTON_SIZE } from "@/features/Editor/constants";
 
 export const BlockCreateButton = () => {
   const isOpen = useEditorSelector((state) => state.blockCreateButton.isOpen);
@@ -25,8 +26,8 @@ export const BlockCreateButton = () => {
           style={{
             position: "absolute",
 
-            width: "37px",
-            height: "37px",
+            width: `${ICON_BUTTON_SIZE}px`,
+            height: `${ICON_BUTTON_SIZE}px`,
             top: position.y,
             left: position.x,
           }}

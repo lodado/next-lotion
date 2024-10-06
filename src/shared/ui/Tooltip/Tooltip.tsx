@@ -27,15 +27,15 @@ interface TooltipProps {
   onOpenChange?: () => void
 }
 
-const Tooltip = ({ children, open, defaultOpen, onOpenChange }: TooltipProps) => {
+const Tooltip = ({  children, open, defaultOpen, onOpenChange }: TooltipProps) => {
   return (
     <Provider delayDuration={0}>
       <Root open={open} defaultOpen={defaultOpen} onOpenChange={onOpenChange}>
         {children}
       </Root>
     </Provider>
-  )
-}
+  );
+};
 
 Tooltip.displayName = 'Tooltip'
 

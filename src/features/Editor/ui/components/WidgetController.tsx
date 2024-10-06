@@ -1,12 +1,12 @@
 import React from "react";
-
-import EditorDropdownWidget from "./Dropdown/widget";
+ 
 import DragButtonWidget from "./DragButton/widget";
 import BlockCreateButtonWidget from "./BlockCreateButton/widget";
 import { EditorReduxStore } from "../../models";
+import EditorMarkTooltipWidget from "./MarkTooltip/widget";
 
 export default class WidgetController {
-  widgets = [new DragButtonWidget(), new BlockCreateButtonWidget()];
+  widgets = [new DragButtonWidget(), new BlockCreateButtonWidget(), new EditorMarkTooltipWidget()];
 
   constructor(store: typeof EditorReduxStore) {
     this.widgets.forEach((widget) => {

@@ -1,6 +1,7 @@
 import { Plugin } from "prosemirror-state";
-import { EditorView } from "prosemirror-view";
+ 
 import { EditorReduxStore } from "../../models";
+import { debounce } from "lodash-es";
 
 let id = 0;
 
@@ -25,4 +26,8 @@ export default abstract class Widget {
   public plugin(): Plugin[] {
     return [];
   }
+
+  protected debouncedDispatch = debounce((action) => {
+    this.store.dispatch(action);
+  }, 100);
 }

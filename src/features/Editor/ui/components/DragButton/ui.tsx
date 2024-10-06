@@ -16,6 +16,7 @@ import { ScreenReaderOnly } from "@/shared";
 import { useEditorDispatch, useEditorSelector } from "@/features/Editor/hooks";
 
 import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
+import { ICON_BUTTON_SIZE } from "@/features/Editor/constants";
 
 export const DragButton = () => {
   const { view, editorState } = useEditorContext();
@@ -169,8 +170,8 @@ export const DragButton = () => {
         className="bg-transparent  text-cancel-default"
         style={{
           position: "absolute",
-          width: "37px",
-          height: "37px",
+          width: `${ICON_BUTTON_SIZE}px`,
+          height: `${ICON_BUTTON_SIZE}px`,
           top: position.y,
           left: position.x,
           cursor: "pointer",
