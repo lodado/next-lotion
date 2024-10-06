@@ -57,7 +57,7 @@ const useEditorData = ({ view }: { view?: EditorView | null }) => {
         }
       }
     },
-    []
+    [view]
   );
 
   return { content, handleSaveContent, handleLoadContent, editorIndexedDBRepository };

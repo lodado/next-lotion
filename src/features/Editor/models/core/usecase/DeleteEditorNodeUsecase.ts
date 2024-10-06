@@ -1,21 +1,31 @@
-import { mapRepositoryErrorToUseCaseError } from "@/shared";
+import { mapRepositoryErrorToUseCaseError, RepositoryError } from "@/shared";
 import { ProseMirrorNode } from "../../editor";
 import { EditorNode } from "../entity";
 import { EditorRepositoryImpl } from "../repository";
+import { AuthRepositoryImpl } from "@/entities/Auth/core";
 
 /**
  * Use case to delete a ProseMirrorNode.
  */
-export class DeleteNodeUseCase {
-  private repository: EditorRepositoryImpl;
+export class DeleteEditorNodeUseCase {
+  private editorRepository: EditorRepositoryImpl;
+  private authRepository: AuthRepositoryImpl;
 
-  constructor(repository: EditorRepositoryImpl) {
-    this.repository = repository;
+  constructor(EditorRepository: EditorRepositoryImpl, AuthRepository: AuthRepositoryImpl) {
+    this.editorRepository = EditorRepository;
+    this.authRepository = AuthRepository;
   }
 
-  async execute({ id }: { id: string }): Promise<void> {
+  async execute(): Promise<void> {
     try {
-      await this.repository.deleteById({ id });
+      const userEntity = await this.authRepository.getUserInfo();
+      const id = userEntity?.id;
+
+      if (!id) {
+        throw new RepositoryError({ message: "User id is not found" });
+      }
+
+      await this.editorRepository.deleteById({ id });
     } catch (error) {
       throw mapRepositoryErrorToUseCaseError(error);
     }
