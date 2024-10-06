@@ -51,7 +51,7 @@ export const DragButton = () => {
     if (initPos) {
       const resolvedPos = view.state.doc.resolve(initPos.pos);
       const node = resolvedPos.node(resolvedPos.depth);
-      handleNodeContent(node.content);
+      handleNodeContent(node);
     }
 
     const onMouseMove = (e: MouseEvent) => {
