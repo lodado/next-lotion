@@ -1,0 +1,10 @@
+:root, :root[data-theme][data-theme='light'] {
+  --Background: #fff;
+  --Background-Inverse: #000;
+}
+
+:root[data-theme][data-theme='dark'] {
+  --Background: #000;
+  --Background-Inverse: #fff;
+
+}

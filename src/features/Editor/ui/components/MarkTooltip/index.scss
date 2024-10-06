@@ -5,10 +5,15 @@ $popup-ease: cubic-bezier(0.25, 1, 0.5, 1);
 	animation-duration: 400ms;
 	animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 	will-change: transform, opacity;
+
+
+	& svg {
+		fill :var(--Color-Text-Default);
+	}
 }
 
 .TooltipContent[data-side="top"] {
-	margin-top: -65px;
+	margin-top: -45px;
 }
 
 .TooltipContent[data-side="bottom"] {
