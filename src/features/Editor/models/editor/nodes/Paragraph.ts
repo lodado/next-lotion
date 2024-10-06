@@ -22,13 +22,17 @@ export default class Paragraph extends BaseNode {
       group: "block",
       attrs: {
         indent: { default: 0 },
+        id: { default: undefined }, // 초기 생성 시 고유 ID 할당
       },
       parseDOM: [
         {
           tag: "p",
+          getAttrs: (dom) => ({
+            id: dom.getAttribute("id"),
+          }),
         },
       ],
-      toDOM: (node) => ["p", { class: this.defaultClassName() }, 0],
+      toDOM: (node) => ["p", { class: this.defaultClassName(), id: node.attrs.id }, 0],
     };
   }
 
