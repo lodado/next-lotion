@@ -1,33 +1,44 @@
 import { Fragment } from 'prosemirror-model'
 import { ReactNode, useState } from 'react'
 
-const fragmentToReactNode = (fragment: Fragment): ReactNode => {
-  const children: ReactNode[] = []
+type FragmentToReactNodeProps = {
+  fragment: Fragment;
+};
 
-  fragment.forEach((node, offset, index) => {
-    if (node.type.name === 'image') {
-      children.push(
+const FragmentToReactNode = ({ fragment }: FragmentToReactNodeProps): ReactNode => {
+  const renderNode = (node: any, index: number): ReactNode => {
+    if (node.type.name === "image") {
+      return (
         <img
           key={node.type.name + index}
           src={node.attrs.src}
-          alt="Content"
-          style={{ maxWidth: '100%', maxHeight: '100%' }}
-        />,
-      )
-    } else if (node.type.name === 'br') {
-      children.push(<br key={node.type.name + index} />)
+          alt={node.attrs.alt || "Content"}
+          style={{ maxWidth: "100%", maxHeight: "100%" }}
+        />
+      );
+    } else if (node.type.name === "br") {
+      return <br key={node.type.name + index} />;
     } else if (node.isText) {
-      children.push(<span key={node.type.name + index}>{node.text}</span>)
+      return <span key={node.type.name + index} dangerouslySetInnerHTML={{ __html: node.text }} />;
     } else if (node.isBlock) {
-      children.push(<div key={node.type.name + index}>{fragmentToReactNode(node.content)}</div>)
+      return <div key={node.type.name + index}>{renderFragment(node.content)}</div>;
     } else {
-      children.push(<span key={node.type.name + index}>Unsupported content</span>)
+      return <span key={node.type.name + index}>Unsupported content</span>;
     }
-  })
+  };
 
-  return <>{children}</>
-}
+  const renderFragment = (fragment: Fragment): ReactNode => {
+    const children: ReactNode[] = [];
+    fragment.forEach((node, offset, index) => {
+      children.push(renderNode(node, index));
+    });
 
+    return <>{children}</>;
+  };
+
+  return renderFragment(fragment);
+};
+ 
 export const useNodeDnDPlaceHolder = () => {
   const [placeholderPos, setPlaceholderPos] = useState({ x: 0, y: 0 })
   const [showPlaceholder, setShowPlaceholder] = useState(false)
@@ -40,7 +51,7 @@ export const useNodeDnDPlaceHolder = () => {
       return
     }
 
-    setNodeContent(fragmentToReactNode(content))
+    setNodeContent(FragmentToReactNode({ fragment: content }));
   }
 
   const handlePlaceholderPos = ({ x, y }: { x: number; y: number }) => {

@@ -15,6 +15,8 @@ import { DRAG_BUTTON_SET_DRAG_FLAG } from "./model";
 import { ScreenReaderOnly } from "@/shared";
 import { useEditorDispatch, useEditorSelector } from "@/features/Editor/hooks";
 
+import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
+
 export const DragButton = () => {
   const { view, editorState } = useEditorContext();
   const {
@@ -164,7 +166,7 @@ export const DragButton = () => {
     <Root>
       <button
         type="button"
-        className="bg-transparent text-cancel-default"
+        className="bg-transparent  text-cancel-default"
         style={{
           position: "absolute",
           width: "37px",
@@ -175,7 +177,13 @@ export const DragButton = () => {
         }}
         onMouseDown={handleMouseDown}
       >
-        <div role="none presentation" aria-hidden={false} />+<ScreenReaderOnly>Drag button</ScreenReaderOnly>
+        <div role="none presentation" aria-hidden={false} />
+        <DragIndicatorIcon
+          style={{ fill: "var(--Color-Background-Accent-Gray-Subtlest-Pressed)" }}
+          width="20px"
+          height="20px"
+        />
+        <ScreenReaderOnly>Drag button</ScreenReaderOnly>
       </button>
 
       {showPlaceholder && (

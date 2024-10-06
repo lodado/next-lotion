@@ -31,7 +31,11 @@ export const BlockCreateButton = () => {
             left: position.x,
           }}
         >
-          <AddRoundedIcon role="none presentation" aria-hidden={false} />
+          <AddRoundedIcon
+            style={{ fill: "var(--Color-Background-Accent-Gray-Subtlest-Pressed)" }}
+            role="none presentation"
+            aria-hidden={false}
+          />
           <ScreenReaderOnly>Create block</ScreenReaderOnly>
         </Dropdown.Trigger>
 
