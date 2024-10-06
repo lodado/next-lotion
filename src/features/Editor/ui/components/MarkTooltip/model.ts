@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { MarkTooltipPosition } from "./type";
+import { MARGIN_LEFT_EDITOR } from "@/features/Editor/constants";
 
 interface markTooltipState {
   position: MarkTooltipPosition;
@@ -7,7 +8,7 @@ interface markTooltipState {
 }
 
 const initialState: markTooltipState = {
-  position: { x: 0, y: 0 },
+  position: { x: MARGIN_LEFT_EDITOR, y: 0 },
   isOpen: false,
 };
 
@@ -15,8 +16,8 @@ const markTooltipSlice = createSlice({
   name: "markTooltip-slice",
   initialState,
   reducers: {
-    RESET_EDITOR_MARK_TOOLTIP: () => {
-      return initialState;
+    RESET_EDITOR_MARK_TOOLTIP: (state) => {
+      state.isOpen = false;
     },
 
     OPEN_EDITOR_MARK_TOOLTIP: (state, action: PayloadAction<MarkTooltipPosition>) => {

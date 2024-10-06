@@ -1,5 +1,5 @@
 import { cva, VariantProps } from "class-variance-authority";
-import React, { HTMLAttributes, ReactNode } from "react";
+import React, { HTMLAttributes, ReactNode, ComponentProps } from "react";
 import { PopperContentProps } from "@radix-ui/react-popper";
 import { Arrow, Content, Portal, Provider, Root, Trigger } from "./radix";
 
@@ -19,7 +19,7 @@ const tooltipContentStyles = cva(
   }
 );
 
-interface TooltipContentProps extends HTMLAttributes<HTMLDivElement>, VariantProps<typeof tooltipContentStyles> {
+interface TooltipContentProps extends ComponentProps<typeof Content>, VariantProps<typeof tooltipContentStyles> {
   children: ReactNode;
   side?: PopperContentProps["side"];
   align?: PopperContentProps["align"];
@@ -31,14 +31,7 @@ export const TooltipTrigger = ({ children }: { children: ReactNode }) => {
   return <Trigger asChild>{children}</Trigger>;
 };
 
-export const TooltipContent = ({
-  className,
-  children,
-  side = "top",
-  align = "center",
-  variant = "primary",
-  ...rest
-}: TooltipContentProps) => {
+export const TooltipContent = ({ className, children, side, align, variant = "primary", ...rest }: TooltipContentProps) => {
   return (
     <Portal>
       <Content className={tooltipContentStyles({ variant, className })} side={side} align={align} {...rest}>

@@ -5,10 +5,6 @@ import Widget from "../Widget";
 import { OPEN_EDITOR_MARK_TOOLTIP, RESET_EDITOR_MARK_TOOLTIP } from "./model";
 import { EditorMarkTooltip } from "./ui";
 import { MARGIN_LEFT_EDITOR } from "@/features/Editor/constants";
-import { debounce } from "lodash-es";
-
-const DIRECTION_UP = "up";
-const DIRECTION_DOWN = "down";
 
 export default class EditorMarkTooltipWidget extends Widget {
   render() {
@@ -41,20 +37,10 @@ export default class EditorMarkTooltipWidget extends Widget {
                     initialSelection = { from, to };
                   }
 
-                  const direction = from < initialSelection.from ? DIRECTION_UP : DIRECTION_DOWN;
+                  // const direction = from < initialSelection.from ? DIRECTION_UP : DIRECTION_DOWN;
+                  const startCoords = view.coordsAtPos(Math.min(from, initialSelection.from));
 
-                  let yCoords;
-
-                  switch (direction) {
-                    case DIRECTION_UP:
-                      const startCoords = view.coordsAtPos(Math.min(from, initialSelection.from));
-                      yCoords = startCoords.top - 85;
-                      break;
-                    case DIRECTION_DOWN:
-                    default:
-                      const endCoords = view.coordsAtPos(Math.max(to, initialSelection.to));
-                      yCoords = endCoords.bottom - 85;
-                  }
+                  let yCoords = startCoords.top;
 
                   // Dispatch an action with the coordinates of the selection
                   widgetInstance.debouncedDispatch(
