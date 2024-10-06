@@ -1,6 +1,6 @@
 :root, :root[data-theme][data-theme='light'] {
   /* color */
-  --Color-Background-Disabled: var(--Neutral-Alpha-Neutral100a, #091e4208);
+  --Color-Background-Disabled: var(#091e4208);
   --Color-Background-Accent-Blue-Bolder-Default: var(--Blue-Blue700, #0c66e4);
   --Color-Background-Accent-Blue-Bolder-Hovered: var(--Blue-Blue800, #0055cc);
   --Color-Background-Accent-Blue-Bolder-Pressed: var(--Blue-Blue900, #09326c);

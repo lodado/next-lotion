@@ -1,10 +1,18 @@
-const SEMANTIC = {
+const CUSTOM = {
   Light: {
-    colors: {},
+    colors: {
+      "background-inverse": "#000000",
+      background: "#ffffff",
+      "text-default": "var(--Color-Background-Input-Hovered)",
+    },
   },
   Dark: {
-    colors: {},
+    colors: {
+      "background-inverse": "#ffffff",
+      background: "#000000",
+      "text-default": "var(--Color-Background-Input-Hovered)",
+    },
   },
 };
 
-export default SEMANTIC
+export default CUSTOM;

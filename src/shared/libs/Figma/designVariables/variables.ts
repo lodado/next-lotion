@@ -1,5 +1,5 @@
 import RAW_COLOR from './variables/color'
-import SEMANTIC from './variables/semantic'
+import CUSTOM from "./variables/semantic";
 import SPACE from './variables/space'
 
 type ColorValue = string
@@ -52,11 +52,11 @@ function transformColorsForTailwind(
 const COLOR = transformColorsForTailwind({
   light: {
     ...RAW_COLOR.Light.color,
-    ...SEMANTIC.Light.colors,
+    ...CUSTOM.Light.colors,
   },
   dark: {
     ...RAW_COLOR.Dark.color,
-    ...SEMANTIC.Dark.colors,
+    ...CUSTOM.Dark.colors,
   },
 });
  

@@ -11,17 +11,17 @@ import Italic from './Italic'
 import Strike from './Strike'
 import Underline from './Underline'
 import { isCursorInMark } from './utils'
-import { MarkdownSerializerState } from "prosemirror-markdown";
+ 
 import BaseMark from "./BaseMark";
 
-const MARK_REGISTER = [
-  new Bold(),
-  new Italic(),
-  new Underline(),
-  new Highlight(),
-  new Strike(),
-  new InlineCodeSnippet(),
-];
+const MARK_REGISTER = {
+  Bold: new Bold(),
+  Highlight: new Highlight(),
+  InlineCodeSnippet: new InlineCodeSnippet(),
+  Italic: new Italic(),
+  Strike: new Strike(),
+  Underline: new Underline(),
+};
 
 class _MarkController {
   marks = MARK_REGISTER;
@@ -58,7 +58,7 @@ class _MarkController {
   };
 
   getPlugins(schema: Schema) {
-    const plugins = this.marks.flatMap((mark) => {
+    const plugins = Object.values(this.marks).flatMap((mark) => {
       const type = schema.marks[mark.name];
 
       mark.setMetadata({ type, schema });
@@ -71,7 +71,7 @@ class _MarkController {
   }
 
   getMarks() {
-    return this.marks.reduce((obj: { [key in string]: MarkSpec }, mark) => {
+    return Object.values(this.marks).reduce((obj: { [key in string]: MarkSpec }, mark) => {
       obj[mark.name] = mark.createSchema;
       return obj;
     }, {});
@@ -79,7 +79,7 @@ class _MarkController {
 
   getMarkdownSerializer() {
     return {
-      ...this.marks.reduce(
+      ...Object.values(this.marks).reduce(
         (
           obj: Record<string, { open: string; close: string; mixable: boolean; expelEnclosingWhitespace: boolean }>,
           mark: BaseMark
@@ -93,25 +93,17 @@ class _MarkController {
     };
   }
 
-
   getMarkdownParser() {
     return {
-      ...this.marks.reduce(
-        (
-          obj: Record<string, { mark: string}>,
-          mark: BaseMark
-        ) => {
-          const [[key, value], _] = Object.entries(mark.parseMarkdown());
+      ...Object.values(this.marks).reduce((obj: Record<string, { mark: string }>, mark: BaseMark) => {
+        const [[key, value], _] = Object.entries(mark.parseMarkdown());
 
-          obj[key] = value;
+        obj[key] = value;
 
-          return obj;
-        },
-        {}
-      ),
+        return obj;
+      }, {}),
     };
   }
-
 }
 
 const MarkController = new _MarkController()
