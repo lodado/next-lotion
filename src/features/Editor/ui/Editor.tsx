@@ -17,6 +17,7 @@ const EditorContainer = ({
   const { isMounted, editorRef, view, editorState, widgetController } = useEditorView(EditorReduxLocalStore!);
   const { handleSaveContent, editorIndexedDBRepository } = useEditorData({ view: view });
 
+
   return (
     <EditorProvider view={view!} editorState={editorState!}>
       <button type="button" onClick={handleSaveContent(editorIndexedDBRepository)}>

@@ -1,10 +1,12 @@
 "use client";
-import { useRef } from "react";
-import { Provider } from "react-redux";
+import { createContext, useRef } from "react";
+import { createSelectorHook, Provider } from "react-redux";
 
 import { store } from "@/app";
 import { NextAuthSessionResponse } from "@/entities/Auth/server/type";
 import { AUTH_LOGIN_ACTION, AUTH_LOGOUT_ACTION } from "@/entities";
+
+export const GlobalReduxContext = createContext<any>(undefined);
 
 /**
  * ReduxInitStoreProvider component initializes the Redux store and provides it to the React component tree.
@@ -43,5 +45,9 @@ export default function ReduxInitStoreProvider({
     }
   }
 
-  return <Provider store={storeRef.current}>{children}</Provider>;
+  return (
+    <Provider store={storeRef.current} context={GlobalReduxContext}>
+      {children}
+    </Provider>
+  );
 }

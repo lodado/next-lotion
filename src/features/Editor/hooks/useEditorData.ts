@@ -1,24 +1,34 @@
+import { UpdateEditorNodeUseCase } from "./../models/core/usecase/UpdateEditorNodeUsecase";
 import { useEditorDispatch, useEditorSelector } from "./useEditorDispatcher";
 import { EditorView } from "prosemirror-view";
 import { EditorNode, EditorRepositoryImpl, SET_EDITOR_CONTENT } from "../models";
 import { EditorIndexedDBRepository } from "../models/client/repository/EditorIndexedDBRepository";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useContext, useEffect, useMemo, useState } from "react";
+import { GetEditorNodeUseCase } from "../models/core/usecase/GetEditorNodeUseCase";
+import { AuthClientRepository } from "@/entities";
+import { useSelector } from "@/shared";
 
 /**
  * // TODO
  * tanstack query로 migration
  */
 const useEditorData = ({ view }: { view?: EditorView | null }) => {
+  const userInfo = useSelector((state) => state.auth.user);
+
   const content = useEditorSelector((state) => state.editorContent.content);
   const editorIndexedDBRepository = useMemo(() => new EditorIndexedDBRepository(), []);
   const editorDispatch = useEditorDispatch();
 
   const handleSaveContent = useCallback(
-    (repository: EditorRepositoryImpl) => async () => {
+    (editorRepository: EditorRepositoryImpl) => async () => {
       if (view) {
+        const authClientRepository = new AuthClientRepository(userInfo);
         const savedData = new EditorNode({ content: view.state.doc.toJSON() });
+
         try {
-          await repository.put({ id: "editor-content", node: savedData });
+          await new UpdateEditorNodeUseCase(editorRepository, authClientRepository).execute({
+            content: savedData.content,
+          });
 
           editorDispatch(SET_EDITOR_CONTENT(savedData));
 
@@ -32,10 +42,12 @@ const useEditorData = ({ view }: { view?: EditorView | null }) => {
   );
 
   const handleLoadContent = useCallback(
-    (repository: EditorRepositoryImpl) => async () => {
+    (editorRepository: EditorRepositoryImpl) => async () => {
       if (view) {
         try {
-          const savedNode = await repository.getById({ id: "editor-content" }); // Fetch content with a unique ID
+          const authClientRepository = new AuthClientRepository(userInfo);
+
+          const savedNode = await new GetEditorNodeUseCase(editorRepository, authClientRepository).execute();
 
           if (savedNode) {
             editorDispatch(SET_EDITOR_CONTENT(savedNode));

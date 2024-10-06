@@ -1,7 +1,7 @@
 import { createReducer } from "@reduxjs/toolkit";
 
 import { AUTH_LOGIN_ACTION, AUTH_LOGOUT_ACTION } from "./action";
-import { useSelector } from "@/shared";
+ 
 import { UserEntity } from "@/entities/Auth/core";
 
 // Define a type for the slice state

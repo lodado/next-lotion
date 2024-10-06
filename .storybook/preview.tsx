@@ -7,6 +7,8 @@ import React, { useEffect } from "react";
 import RootProvider from "../src/app/provider/RootProvider";
 import ClientProvider from "../src/app/provider/ClientProvider";
 import { useDarkMode } from "storybook-dark-mode";
+import ReduxInitStoreProvider from "../src/app/provider/ReduxInitStoreProvider";
+import { MyProvider, store } from "../src/app/models/store";
 
 const preview: Preview = {
   globalTypes: {
@@ -25,6 +27,7 @@ const preview: Preview = {
     },
   },
 };
+ 
 
 export const decorators = [
   (Story: any) => {
@@ -39,7 +42,16 @@ export const decorators = [
 
   (Story) => {
     return (
-      <ClientProvider session={{}}>
+      <ClientProvider
+        session={{
+          user: {
+            id: "test",
+            name: "test",
+            email: "test",
+            image: "test",
+          },
+        }}
+      >
         <Story />
       </ClientProvider>
     );
