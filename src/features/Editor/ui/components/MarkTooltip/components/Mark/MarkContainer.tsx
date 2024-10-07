@@ -11,10 +11,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import LinkIcon from "@mui/icons-material/Link";
 
 import { ICON_MARK_BUTTON_SIZE } from "@/features/Editor/constants";
-import { MarkController } from "@/features/Editor/models/editor/marks";
-import { toggleMark } from "prosemirror-commands";
-import { useEditorContext } from "@/features/Editor/ui/EditorProvider";
-import { TextSelection } from "prosemirror-state";
+ 
 import useMarkCommand from "./useMarkCommand";
 
 const MarkContainer = () => {

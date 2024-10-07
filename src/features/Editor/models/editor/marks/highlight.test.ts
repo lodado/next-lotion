@@ -8,8 +8,7 @@ import { createEditorReduxLocalStore } from "../../store";
 
 import { EditorView } from "prosemirror-view";
 import Highlight from "./Highlight";
- 
-import {} from "../nodes";
+
 import { setMark } from "@/shared/libs/vitest/setMark";
 
 const highLight = new Highlight();
