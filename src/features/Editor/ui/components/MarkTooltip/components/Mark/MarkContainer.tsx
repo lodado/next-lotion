@@ -11,20 +11,27 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import LinkIcon from "@mui/icons-material/Link";
 
 import { ICON_MARK_BUTTON_SIZE } from "@/features/Editor/constants";
+import { MarkController } from "@/features/Editor/models/editor/marks";
+import { toggleMark } from "prosemirror-commands";
+import { useEditorContext } from "@/features/Editor/ui/EditorProvider";
+import { TextSelection } from "prosemirror-state";
+import useMarkCommand from "./useMark";
 
 const MarkContainer = () => {
+  const { toggleMarkCommand } = useMarkCommand();
+
   return (
     <div className="flex space-x-2 items-center justify-center gap-x-[0.1rem]">
-      <IconButton variant="custom" size="small" aria-label="Bold">
+      <IconButton onClick={toggleMarkCommand("Bold")} variant="custom" size="small" aria-label="Bold">
         <FormatBoldIcon style={{ width: `${ICON_MARK_BUTTON_SIZE}px`, height: `${ICON_MARK_BUTTON_SIZE}px` }} />
       </IconButton>
-      <IconButton variant="custom" size="small" aria-label="Italic">
+      <IconButton onClick={toggleMarkCommand("Italic")} variant="custom" size="small" aria-label="Italic">
         <FormatItalicIcon style={{ width: `${ICON_MARK_BUTTON_SIZE}px`, height: `${ICON_MARK_BUTTON_SIZE}px` }} />
       </IconButton>
-      <IconButton variant="custom" size="small" aria-label="Underline">
+      <IconButton onClick={toggleMarkCommand("Underline")} variant="custom" size="small" aria-label="Underline">
         <FormatUnderlinedIcon style={{ width: `${ICON_MARK_BUTTON_SIZE}px`, height: `${ICON_MARK_BUTTON_SIZE}px` }} />
       </IconButton>
-      <IconButton variant="custom" size="small" aria-label="Strikethrough">
+      <IconButton onClick={toggleMarkCommand("Strike")} variant="custom" size="small" aria-label="Strikethrough">
         <FormatStrikethroughIcon
           style={{ width: `${ICON_MARK_BUTTON_SIZE}px`, height: `${ICON_MARK_BUTTON_SIZE}px` }}
         />

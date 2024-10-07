@@ -5,7 +5,8 @@ import { EditorView } from 'prosemirror-view'
 import BaseNode from '../BaseNode' // BaseNode가 저장된 파일의 경로를 지정하세요.
 import Paragraph from '../Paragraph'
 import { exit } from '../utils'
-import { sanitizeUrl } from './sanitizeUrl'
+import { sanitizeUrl } from "../../utils";
+ 
 
 export default class ProseImage extends BaseNode {
   paragraph: Paragraph
