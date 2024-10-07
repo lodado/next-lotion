@@ -1,5 +1,5 @@
+import { useDebounce } from "@/shared";
 import { useQueryClient } from "@tanstack/react-query";
-import { useDebounce } from "lodash-es";
 
 const useDebouncedQueryInvalidate = ({ queryKey }: { queryKey: string }) => {
   const queryClient = useQueryClient();
