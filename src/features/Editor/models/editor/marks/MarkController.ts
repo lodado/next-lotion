@@ -77,6 +77,7 @@ class _MarkController {
     }, {});
   }
 
+  /*
   getMarkdownSerializer() {
     return {
       ...Object.values(this.marks).reduce(
@@ -92,6 +93,7 @@ class _MarkController {
       ),
     };
   }
+  */
 
   getMarkdownParser() {
     return {

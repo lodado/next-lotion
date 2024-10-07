@@ -43,6 +43,7 @@ export default abstract class BaseMark {
     return (attrs: any) => {};
   }
 
+  /*
   toMarkdown(): { open: string; close: string; mixable?: boolean; expelEnclosingWhitespace?: boolean } {
     throw new Error("toMarkdown method is not implemented");
   }
@@ -50,6 +51,7 @@ export default abstract class BaseMark {
   markdownSerializer(): { open: string; close: string; mixable: boolean; expelEnclosingWhitespace: boolean } {
     return { mixable: true, expelEnclosingWhitespace: true, ...this.toMarkdown() };
   }
+  */
 
   parseMarkdown() {
     return {

@@ -1,17 +1,29 @@
 import { toggleMark } from "prosemirror-commands";
 import { InputRule } from "prosemirror-inputrules";
-import { DOMOutputSpec } from "prosemirror-model";
+import { DOMOutputSpec, Mark } from "prosemirror-model";
 
 import BaseMark from "./BaseMark";
 import { sanitizeUrl } from "../utils";
+import { EditorState, Plugin, Transaction } from "prosemirror-state";
 
-export default class Italic extends BaseMark {
+const LINK_INPUT_REGEX = /\[([^[]+)]\((\S+)\)$/;
+
+export default class Link extends BaseMark {
   get name(): string {
     return "link";
   }
 
   get createSchema() {
     return {
+      attrs: {
+        href: {
+          default: "",
+        },
+        title: {
+          default: null,
+        },
+      },
+
       parseDOM: [
         {
           tag: "a[href]",
@@ -21,32 +33,48 @@ export default class Italic extends BaseMark {
           }),
         },
       ],
-      toDOM: (node) => [
-        "a",
-        {
-          title: node.attrs.title,
-          href: sanitizeUrl(node.attrs.href),
-          class: "use-hover-preview",
-          rel: "noopener noreferrer nofollow",
-        },
-        0,
-      ],
+      toDOM: (node: Mark) =>
+        [
+          "a",
+          {
+            title: node.attrs.title,
+            href: sanitizeUrl(node.attrs.href),
+            class: "",
+            rel: "noopener noreferrer nofollow",
+          },
+          0,
+        ] as DOMOutputSpec, // Add the type assertion to DOMOutputSpec
     };
   }
 
-  /** Bold와 혼용되지 않게 조심 */
   inputRules(): InputRule[] {
     return [
-      new InputRule(/(?<!\*)\*(?!\*)([^*]+)(?<!\*)\*(?!\*)/, (state, match, start, end) => {
-        return this.updateMark(state, match, start, end);
+      new InputRule(LINK_INPUT_REGEX, (state, match, start, end) => {
+        const [okay, alt, href] = match;
+        const { tr } = state;
+
+        if (okay) {
+          tr.replaceWith(start, end, this.schema.text(alt)).addMark(
+            start,
+            start + alt.length,
+            this.type.create({ href })
+          );
+        }
+
+        return tr;
       }),
     ];
   }
 
   keys() {
     return {
-      "Mod-i": toggleMark(this.type),
-      "Mod-I": toggleMark(this.type),
+      "Mod-k": (state: EditorState, dispatch: (tr: Transaction) => void) => {
+        if (state.selection.empty) {
+          return true;
+        }
+
+        return toggleMark(this.type, { href: "" })(state, dispatch);
+      },
     };
   }
 
@@ -55,11 +83,31 @@ export default class Italic extends BaseMark {
   }
 
   toMarkdown() {
-    return {
-      open: "*",
-      close: "*",
-      mixable: true,
-      expelEnclosingWhitespace: true,
-    };
+    throw new Error("Method not implemented.");
+  }
+
+  plugins() {
+    return [
+      ...super.plugins(),
+
+      new Plugin({
+        props: {
+          handleDOMEvents: {
+            click: (view, event) => {
+              const { target } = event;
+
+              /**TO DO - readMode - editorMode 분리 */
+              if (target instanceof HTMLElement && target.tagName === "A") {
+                event.preventDefault();
+                window.open(target.getAttribute("href")!, "_blank");
+              }
+
+              return false;
+            },
+          },
+        },
+      }),
+    ];
   }
 }
+
