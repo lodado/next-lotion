@@ -15,10 +15,10 @@ import { MarkController } from "@/features/Editor/models/editor/marks";
 import { toggleMark } from "prosemirror-commands";
 import { useEditorContext } from "@/features/Editor/ui/EditorProvider";
 import { TextSelection } from "prosemirror-state";
-import useMarkCommand from "./useMark";
+import useMarkCommand from "./useMarkCommand";
 
 const MarkContainer = () => {
-  const { toggleMarkCommand } = useMarkCommand();
+  const { toggleMarkCommand, isSelectionWithinNode } = useMarkCommand();
 
   return (
     <div className="flex space-x-2 items-center justify-center gap-x-[0.1rem]">
@@ -37,13 +37,20 @@ const MarkContainer = () => {
         />
       </IconButton>
 
-      <button type="button" className="flex justify-center items-center " aria-label="Insert link">
-        <svg className="relative" style={{ width: `${ICON_MARK_BUTTON_SIZE}px`, height: `${ICON_MARK_BUTTON_SIZE}px` }}>
-          <LinkIcon />
-        </svg>
+      {isSelectionWithinNode() && (
+        <button type="button" className="flex justify-center items-center disabled:opacity-1" aria-label="Insert link">
+          <svg
+            className="relative"
+            style={{ width: `${ICON_MARK_BUTTON_SIZE}px`, height: `${ICON_MARK_BUTTON_SIZE}px` }}
+          >
+            <LinkIcon />
+          </svg>
 
-        <ExpandMoreIcon style={{ width: `${ICON_MARK_BUTTON_SIZE / 2}px`, height: `${ICON_MARK_BUTTON_SIZE / 2}px` }} />
-      </button>
+          <ExpandMoreIcon
+            style={{ width: `${ICON_MARK_BUTTON_SIZE / 2}px`, height: `${ICON_MARK_BUTTON_SIZE / 2}px` }}
+          />
+        </button>
+      )}
 
       <button type="button" className="flex justify-center items-center " aria-label="Change color">
         <div

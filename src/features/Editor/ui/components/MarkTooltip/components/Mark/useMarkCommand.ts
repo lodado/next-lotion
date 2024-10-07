@@ -1,5 +1,6 @@
 import { useEditorContext } from "@/features";
 import { MarkController } from "@/features/Editor/models/editor/marks";
+import { isSelectionWithinSingleNode } from "@/features/Editor/utils";
 import { toggleMark } from "prosemirror-commands";
 import React from "react";
 
@@ -7,6 +8,10 @@ const marks = MarkController.marks;
 
 const useMarkCommand = () => {
   const { view } = useEditorContext();
+
+  const isSelectionWithinNode = () => {
+    return isSelectionWithinSingleNode(view?.state.selection);
+  };
 
   const toggleMarkCommand = (markType: keyof typeof marks) => () => {
     const { state, dispatch } = view;
@@ -17,7 +22,7 @@ const useMarkCommand = () => {
     }
   };
 
-  return { toggleMarkCommand };
+  return { isSelectionWithinNode, toggleMarkCommand };
 };
 
 export default useMarkCommand;

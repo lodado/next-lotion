@@ -13,6 +13,7 @@ import Underline from './Underline'
 import { isCursorInMark } from './utils'
  
 import BaseMark from "./BaseMark";
+import Link from "./Link";
 
 const MARK_REGISTER = {
   Bold: new Bold(),
@@ -21,6 +22,7 @@ const MARK_REGISTER = {
   Italic: new Italic(),
   Strike: new Strike(),
   Underline: new Underline(),
+  Link: new Link(),
 };
 
 class _MarkController {

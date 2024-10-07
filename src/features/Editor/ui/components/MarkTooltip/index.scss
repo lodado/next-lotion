@@ -70,8 +70,4 @@ $popup-ease: cubic-bezier(0.25, 1, 0.5, 1);
 .TooltipContent[data-state="delayed-open"][data-side="top"] {
 	animation: slideDownAndFade $popup-duration $popup-ease !important;
 }
-
-.TooltipContent[data-state="closed"][data-side="top"] {
-	animation: slideUpAndFade $popup-duration $popup-ease !important;
-}
-
+ 

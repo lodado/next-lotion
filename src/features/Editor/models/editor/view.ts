@@ -25,6 +25,8 @@ export const createView = ({ editor, state }: CreateViewParams): EditorView => {
   return view;
 };
 
+/*
+
 // NodeController에서 수집한 markdownSerializer 사용
 export const myMarkdownSerializer = new MarkdownSerializer(
   NodeController.getMarkdownSerializer(),
@@ -42,7 +44,7 @@ export const createMarkdownView = ({ node }: { node: ProsemirrorNode }): string 
   커스텀 파서를 직접 구현해야함 
 
   https://tilnote.io/pages/61d9811d9d70a7c3a37012e6
-*/
+
 export const parseMarkdown = ({ schema, string }: { string: string; schema: Schema }) => {
   const { paragraph } = NodeController.getMarkdownParser();
   const { strong, highlight } = MarkController.getMarkdownParser();
@@ -56,3 +58,4 @@ export const parseMarkdown = ({ schema, string }: { string: string; schema: Sche
     strong,
   }).parse(string);
 };
+*/
