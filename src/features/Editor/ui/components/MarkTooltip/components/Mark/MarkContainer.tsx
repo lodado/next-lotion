@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { IconButton, ScreenReaderOnly, Tooltip } from "@/shared";
+import { Button, cn, IconButton, ScreenReaderOnly, Tooltip } from "@/shared";
 
 import FormatBoldIcon from "@mui/icons-material/FormatBold";
 import FormatItalicIcon from "@mui/icons-material/FormatItalic";
@@ -15,6 +15,7 @@ import { ICON_MARK_BUTTON_SIZE } from "@/features/Editor/constants";
 
 import useMarkCommand from "./useMarkCommand";
 import CommandTooltipContent from "../CommandTooltip/CommandTooltipContent";
+import { MarkSelection } from "./style";
 
 const buttonData = [
   {
@@ -70,7 +71,7 @@ const buttonData = [
 ] as const;
 
 const MarkContainer = () => {
-  const { toggleMarkCommand, isSelectionWithinNode } = useMarkCommand();
+  const { toggleMarkCommand, isSelectionWithinNode, hasMarkInSelection } = useMarkCommand();
 
   return (
     <div className="flex space-x-2 items-center justify-center gap-x-[0.1rem]">
@@ -80,12 +81,18 @@ const MarkContainer = () => {
             <Tooltip key={label || index}>
               <Tooltip.Trigger>
                 <IconButton
+                  className={cn(MarkSelection({ markState: hasMarkInSelection(command) }), "p-1")}
                   onClick={command ? toggleMarkCommand(command) : undefined}
-                  variant="custom"
+                  variant="text"
                   size="small"
                   aria-label={label}
                 >
-                  <Icon style={{ width: `${width}px`, height: `${height}px` }} />
+                  <Icon
+                    style={{
+                      width: `${width}px`,
+                      height: `${height}px`,
+                    }}
+                  />
                 </IconButton>
               </Tooltip.Trigger>
 
@@ -98,14 +105,15 @@ const MarkContainer = () => {
             </Tooltip>
           )
       )}
-
       {isSelectionWithinNode() && (
         <>
           <Tooltip>
             <Tooltip.Trigger>
-              <button
+              <Button
+                size="custom"
                 type="button"
-                className="flex justify-center items-center disabled:opacity-1"
+                variant="text"
+                className="flex justify-center items-center p-1 disabled:opacity-1"
                 aria-label="Insert link"
               >
                 <svg
@@ -118,7 +126,7 @@ const MarkContainer = () => {
                 <ExpandMoreIcon
                   style={{ width: `${ICON_MARK_BUTTON_SIZE / 2}px`, height: `${ICON_MARK_BUTTON_SIZE / 2}px` }}
                 />
-              </button>
+              </Button>
             </Tooltip.Trigger>
 
             <CommandTooltipContent>
@@ -128,10 +136,15 @@ const MarkContainer = () => {
           </Tooltip>
         </>
       )}
-
       <Tooltip>
         <Tooltip.Trigger>
-          <button type="button" className="flex justify-center items-center " aria-label="Change color">
+          <Button
+            size="custom"
+            type="button"
+            variant="text"
+            className="flex justify-center p-1 items-center"
+            aria-label="Change color"
+          >
             <div
               className="rounded-full bg-background border-dashed border-[0.1px] border-background-inverse mr-1"
               style={{ width: `${ICON_MARK_BUTTON_SIZE / 1.5}px`, height: `${ICON_MARK_BUTTON_SIZE / 1.5}px` }}
@@ -143,7 +156,7 @@ const MarkContainer = () => {
             />
 
             <ScreenReaderOnly>Change Color</ScreenReaderOnly>
-          </button>
+          </Button>
         </Tooltip.Trigger>
 
         <CommandTooltipContent>

@@ -1,2 +1,2 @@
 export * from './getActualCoord'
-export * from "./isSelectionWithinSingleNode";
+export * from "./selection";
