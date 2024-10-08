@@ -15,7 +15,7 @@ export default class InlineCodeSnippet extends BaseMark {
   get createSchema(): MarkSpec {
     return {
       parseDOM: [{ tag: "span.code" }],
-      toDOM: () => ["span", { class: "code", style: CODE_STYLE }, 0],
+      toDOM: () => ["span", { class: "prose-code", style: CODE_STYLE }, 0],
     };
   }
 

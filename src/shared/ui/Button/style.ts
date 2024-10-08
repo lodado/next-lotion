@@ -10,20 +10,24 @@ export const rawButtonVariants = cva(`rounded-[4px] inline-flex justify-center i
       secondary: `bg-tertiary-default border border-solid border-border-01 text-text-01 hover:bg-tertiary-hover active:bg-tertiary-press 
       focus:border-2 focus:border-solid focus:border-border-selected
       disabled:bg-background-extension-disabled-bg disabled:border-border-disabled disabled:text-text-disabled`,
-      custom: '',
+
+      text: `
+        bg-transparent text-text-01 hover:bg-background-hover active:bg-background-press
+      `,
+      custom: "",
     },
 
     size: {
-      medium: 'gap-spacing-1 body-02-r',
-      large: 'gap-spacing-1 body-03-r',
-      small: 'gap-spacing-1 body-01-r',
+      medium: "gap-spacing-1 body-02-r",
+      large: "gap-spacing-1 body-03-r",
+      small: "gap-spacing-1 body-01-r",
     },
   },
   defaultVariants: {
-    variant: 'primary',
-    size: 'medium',
+    variant: "primary",
+    size: "medium",
   },
-})
+});
 
 export const buttonVariants = cva('', {
   variants: {
