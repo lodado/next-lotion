@@ -1,14 +1,16 @@
 import { useEditorContext } from "@/features";
+import { useEditorDispatch, useEditorSelector } from "@/features/Editor/hooks";
 import { MarkController } from "@/features/Editor/models/editor/marks";
 import { checkMarkInSelection, isSelectionWithinSingleNode } from "@/features/Editor/utils";
-import useForceRender from "@/shared/hooks/useForceRender";
 import { toggleMark } from "prosemirror-commands";
+import { FORCE_RERENDER_EDITOR_MARK_TOOLTIP } from "../../model";
 
 const marks = MarkController.marks;
 
 const useMarkCommand = () => {
   const { view } = useEditorContext();
-  const forceRender = useForceRender();
+  const forceRenderObserver = useEditorSelector((state) => state.markToolTip.forceRender);
+  const editorDispatch = useEditorDispatch();
 
   const isSelectionWithinNode = () => {
     return isSelectionWithinSingleNode(view?.state.selection);
@@ -22,15 +24,16 @@ const useMarkCommand = () => {
 
   const toggleMarkCommand = (markType: keyof typeof marks) => () => {
     const { state, dispatch } = view;
-    const command = toggleMark(marks[markType].type);
+
+    const command = toggleMark(marks[markType].type, marks[markType].defaultOptions, { removeWhenPresent: false });
 
     if (command(state, dispatch)) {
       view.focus();
-      forceRender()
+      editorDispatch(FORCE_RERENDER_EDITOR_MARK_TOOLTIP());
     }
   };
 
-  return { isSelectionWithinNode, hasMarkInSelection, toggleMarkCommand };
+  return { forceRenderObserver, isSelectionWithinNode, hasMarkInSelection, toggleMarkCommand };
 };
 
 export default useMarkCommand;

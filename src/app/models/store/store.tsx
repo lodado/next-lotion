@@ -6,8 +6,7 @@ import rootSaga from "./PublisherSubscriber/rootSaga";
 import { authReducer } from "@/entities";
 import { loginDialogReducer } from "@/features";
 
-import React, { PropsWithChildren } from "react";
-import { Provider, createStoreHook, createDispatchHook, createSelectorHook } from "react-redux";
+import markTooltipSlice from "@/features/Editor/ui/components/MarkTooltip/model";
 
 const sagaMiddleware = createSagaMiddleware();
 

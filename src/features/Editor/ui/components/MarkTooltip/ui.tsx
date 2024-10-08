@@ -3,17 +3,14 @@
 import React from "react";
 
 import { useEditorDispatch, useEditorSelector } from "@/features/Editor/hooks";
-import { IconButton, ScreenReaderOnly, Tooltip } from "@/shared";
+import { Tooltip } from "@/shared";
 
 import "./index.scss";
- 
-import { ICON_MARK_BUTTON_SIZE } from "@/features/Editor/constants";
 
 import { Comment } from "./components";
-
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import Divider from "./components/Divider";
 import { MarkContainer, NodeContainer } from "./components";
+import AdditionalOptionDropdown from "./components/AdditionalOptionDropdown/AdditionalOptionDropdown";
 
 export const EditorMarkTooltip = () => {
   const isOpen = useEditorSelector((state) => state.markToolTip.isOpen);
@@ -36,7 +33,7 @@ export const EditorMarkTooltip = () => {
         variant="primary"
         side={"top"}
       >
-        <div   className="flex space-x-2 items-center justify-center gap-x-[0.1rem]">
+        <div className="flex space-x-2 items-center justify-center gap-x-[0.1rem]">
           <Comment />
 
           <MarkContainer />
@@ -47,9 +44,7 @@ export const EditorMarkTooltip = () => {
 
           <Divider />
 
-          <IconButton variant="custom" size="small" aria-label="More options">
-            <MoreHorizIcon style={{ width: `${ICON_MARK_BUTTON_SIZE}px`, height: `${ICON_MARK_BUTTON_SIZE}px` }} />
-          </IconButton>
+          <AdditionalOptionDropdown />
         </div>
       </Tooltip.Content>
     </Tooltip>

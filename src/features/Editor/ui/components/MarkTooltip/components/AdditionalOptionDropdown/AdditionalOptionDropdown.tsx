@@ -1,11 +1,13 @@
 import React from "react";
-import InsertCommentIcon from "@mui/icons-material/InsertComment";
+
 import { ICON_MARK_BUTTON_SIZE } from "@/features/Editor/constants";
-import { Button, cn, IconButton, Tooltip } from "@/shared";
+import { Button, cn, Tooltip } from "@/shared";
 import Divider from "../Divider";
 import CommandTooltipContent from "../CommandTooltip/CommandTooltipContent";
 
-const Comment = () => {
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+
+const AdditionalOptionDropdown = () => {
   return (
     <>
       <Tooltip>
@@ -17,19 +19,16 @@ const Comment = () => {
             size="small"
             aria-label={"add comment"}
           >
-            <InsertCommentIcon style={{ width: `${ICON_MARK_BUTTON_SIZE}px`, height: `${ICON_MARK_BUTTON_SIZE}px` }} />
-            &nbsp;(0)
+            <MoreHorizIcon style={{ width: `${ICON_MARK_BUTTON_SIZE}px`, height: `${ICON_MARK_BUTTON_SIZE}px` }} />
           </Button>
         </Tooltip.Trigger>
 
         <CommandTooltipContent>
-          <CommandTooltipContent.Description>comment (not released yet!)</CommandTooltipContent.Description>
+          <CommandTooltipContent.Description>additional options (not released yet!)</CommandTooltipContent.Description>
         </CommandTooltipContent>
       </Tooltip>
-
-      <Divider />
     </>
   );
 };
 
-export default Comment;
+export default AdditionalOptionDropdown;

@@ -68,13 +68,14 @@ export default abstract class BaseMark {
    * @param end - The end position of the range.
    * @returns The updated editor transaction.
    */
-  protected updateMark = (state: EditorState, match: RegExpMatchArray, start: number, end: number) => {
+  updateMark = (state: EditorState, match: RegExpMatchArray, start: number, end: number) => {
     const { tr } = state;
 
     const marks = getMarksAtRange(state, start, end);
 
     if (match[1]) {
       tr.replaceWith(Math.max(start, 1), end, this.schema.text(match[1], uniqueMarks([this.type.create(), ...marks])));
+      
     }
     return tr;
   };

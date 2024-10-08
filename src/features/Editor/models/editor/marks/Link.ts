@@ -13,14 +13,21 @@ export default class Link extends BaseMark {
     return "link";
   }
 
+  get defaultOptions() {
+    return {
+      href: "",
+      title: null,
+    };
+  }
+
   get createSchema() {
     return {
       attrs: {
         href: {
-          default: "",
+          default: this.defaultOptions.href,
         },
         title: {
-          default: null,
+          default: this.defaultOptions.title,
         },
       },
 
