@@ -3,15 +3,12 @@ import { NodeSpec, Schema } from "prosemirror-model";
 
 import BaseNode from "./BaseNode";
 import Break from "./Break";
-import Code from "./Code";
 import Heading from "./Heading";
 import ProseImage from "./Image/Image";
-import Indent from "./Indent";
-import { BulletList, UnorderedList } from "./List";
 import Paragraph from "./Paragraph";
-import SplitScreen from "./Split";
 import { MarkdownSerializerState } from "prosemirror-markdown";
 import { ProseMirrorNode } from "../types";
+import { EditorReduxStore } from "../../store";
 
 /**
  * paragraph를 가장 먼저 안 읽으면 화면 터짐
@@ -51,8 +48,13 @@ const NODE_REGISTER: BaseNode[] = [
   ...Object.values(Organisms),
 ].reverse();
 
-class _NodeController {
+export class _NodeController {
   nodes = NODE_REGISTER;
+  store: typeof EditorReduxStore;
+
+  constructor(store: typeof EditorReduxStore) {
+    this.store = store;
+  }
 
   getPlugins(schema: Schema) {
     return this.nodes.flatMap((node) => {
@@ -89,17 +91,11 @@ class _NodeController {
 
   getMarkdownParser() {
     return {
-      ...this.nodes.reduce(
-        (obj: Record<string, {block: string }>, node) => {
-          obj[node.name] = node.parseMarkdown();
+      ...this.nodes.reduce((obj: Record<string, { block: string }>, node) => {
+        obj[node.name] = node.parseMarkdown();
 
-          return obj;
-        },
-        {}
-      ),
+        return obj;
+      }, {}),
     };
   }
 }
-
-const NodeController = new _NodeController();
-export default NodeController;

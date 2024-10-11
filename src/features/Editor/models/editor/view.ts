@@ -2,10 +2,6 @@ import { MarkdownParser, MarkdownSerializer } from "prosemirror-markdown";
 import { Node as ProsemirrorNode, Schema } from "prosemirror-model";
 import { EditorState, Transaction } from "prosemirror-state";
 import { EditorView } from "prosemirror-view";
-import { NodeController } from "./nodes";
-import { MarkController } from "./marks";
-
-import { generateMarkdownParser } from "./markdownParser";
 
 interface CreateViewParams {
   editor: HTMLElement;

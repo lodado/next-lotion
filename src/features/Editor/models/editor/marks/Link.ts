@@ -80,14 +80,10 @@ export default class Link extends BaseMark {
           return true;
         }
 
-        return toggleMark(this.type, { href: "" })(state, dispatch);
+        return this.toggleMarkDecorator()(state, dispatch);
       },
     };
-  }
-
-  commands() {
-    return (attrs: {}) => toggleMark(this.type, attrs);
-  }
+  } 
 
   toMarkdown() {
     throw new Error("Method not implemented.");

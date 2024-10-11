@@ -48,14 +48,12 @@ export default class Highlight extends BaseMark {
     };
   }
 
-  commands() {
-    return (attr: { background?: string; color?: string }) => toggleMark(this.type, attr);
-  }
-
   private toggleHighlightMark = (state: EditorState, dispatch: (tr: Transaction) => void) => {
     const { schema, tr } = state;
     const markType: MarkType = this.type;
     const attrs = this.defaultOptions;
+
+    /** TO DO - toggleMark대신 dropdown 생성 */
 
     return toggleMark(markType, attrs)(state, dispatch);
   };

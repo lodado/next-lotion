@@ -1,5 +1,7 @@
+"use client";
+
 import React from "react";
- 
+
 import DragButtonWidget from "./DragButton/widget";
 import BlockCreateButtonWidget from "./BlockCreateButton/widget";
 import { EditorReduxStore } from "../../models";
@@ -27,4 +29,4 @@ export default class WidgetController {
       </>
     );
   };
-} 
+}

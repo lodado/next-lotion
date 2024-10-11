@@ -35,13 +35,9 @@ export default class Bold extends BaseMark {
 
   keys() {
     return {
-      "Mod-b": toggleMark(this.type),
-      "Mod-B": toggleMark(this.type),
+      "Mod-b": this.toggleMarkDecorator(),
+      "Mod-B": this.toggleMarkDecorator(),
     };
-  }
-
-  commands() {
-    return (attrs: {}) => toggleMark(this.type, attrs);
   }
 
   toMarkdown() {

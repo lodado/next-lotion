@@ -1,4 +1,3 @@
-import { toggleMark } from 'prosemirror-commands'
 import { InputRule } from 'prosemirror-inputrules'
 import { DOMOutputSpec, Mark, MarkSpec } from 'prosemirror-model'
 
@@ -26,12 +25,8 @@ class Strike extends BaseMark {
 
   keys() {
     return {
-      "Mod-d": toggleMark(this.type),
+      "Mod-d": this.toggleMarkDecorator(),
     };
-  }
-
-  commands() {
-    return (attrs: any) => toggleMark(this.type, attrs);
   }
 
   toMarkdown() {
@@ -41,7 +36,7 @@ class Strike extends BaseMark {
       mixable: true,
       expelEnclosingWhitespace: true,
     };
-  } 
+  }
 }
 
 export default Strike

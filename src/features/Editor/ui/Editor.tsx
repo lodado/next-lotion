@@ -5,7 +5,7 @@ import { Provider as ReduxProvider } from "react-redux";
 import React, { cloneElement, ReactElement, useMemo } from "react";
 
 import { EditorProvider } from "./EditorProvider";
-import { createEditorReduxLocalStore, createMarkdownView } from "../models";
+import { createEditorReduxLocalStore } from "../models";
 import { useEditorView } from "../hooks/useEditorView";
 import useEditorData from "../hooks/useEditorData";
 
@@ -14,12 +14,18 @@ const EditorContainer = ({
 }: {
   EditorReduxLocalStore?: ReturnType<typeof createEditorReduxLocalStore>;
 }) => {
-  const { isMounted, editorRef, view, editorState, widgetController } = useEditorView(EditorReduxLocalStore!);
+  const { isMounted, editorRef, view, editorState, widgetController, NodeController, MarkController } = useEditorView(
+    EditorReduxLocalStore!
+  );
   const { handleSaveContent, editorIndexedDBRepository } = useEditorData({ view: view });
 
-
   return (
-    <EditorProvider view={view!} editorState={editorState!}>
+    <EditorProvider
+      view={view!}
+      editorState={editorState!}
+      NodeController={NodeController}
+      MarkController={MarkController}
+    >
       <button type="button" onClick={handleSaveContent(editorIndexedDBRepository)}>
         save
       </button>

@@ -6,12 +6,17 @@ import { keymap } from "prosemirror-keymap";
 import { Schema } from "prosemirror-model";
 
 import { WidgetController } from "../../../ui/components";
-import { MarkController } from "../marks";
-import { NodeController } from "../nodes";
 import { BlockDnDHighlightPlugin } from "./highlightPlugin";
 import { saveDocument } from "./utils/saveDocument";
+import { _NodeController } from "../nodes/NodeController";
+import { _MarkController } from "../marks/MarkController";
 
-export const createPlugin = (schema: Schema, widgetController: WidgetController) => {
+export const createPlugin = (
+  schema: Schema,
+  widgetController: WidgetController,
+  NodeController: _NodeController,
+  MarkController: _MarkController
+) => {
   return [
     ...widgetController.getPlugins(),
     ...NodeController.getPlugins(schema),

@@ -3,13 +3,10 @@ import "../src/shared/libs/Figma/index.scss";
 
 import type { Preview } from "@storybook/react";
 import React, { useEffect } from "react";
-
-import RootProvider from "../src/app/provider/RootProvider";
+ 
 import ClientProvider from "../src/app/provider/ClientProvider";
 import { useDarkMode } from "storybook-dark-mode";
-import ReduxInitStoreProvider from "../src/app/provider/ReduxInitStoreProvider";
-import { MyProvider, store } from "../src/app/models/store";
-
+ 
 const preview: Preview = {
   globalTypes: {
     adsTheme: {

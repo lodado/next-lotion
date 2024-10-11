@@ -30,12 +30,8 @@ export default class InlineCodeSnippet extends BaseMark {
 
   keys() {
     return {
-      "Mod-`": toggleMark(this.type),
+      "Mod-`": this.toggleMarkDecorator(),
     };
-  }
-
-  commands() {
-    return (attrs: any) => toggleMark(this.type, attrs);
   }
 
   toMarkdown() {

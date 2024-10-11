@@ -32,13 +32,9 @@ export default class Italic extends BaseMark {
 
   keys() {
     return {
-      "Mod-i": toggleMark(this.type),
-      "Mod-I": toggleMark(this.type),
+      "Mod-i": this.toggleMarkDecorator(),
+      "Mod-I": this.toggleMarkDecorator(),
     };
-  }
-
-  commands() {
-    return (attrs: {}) => toggleMark(this.type, attrs);
   }
 
   toMarkdown() {

@@ -28,12 +28,8 @@ export default class Underline extends BaseMark {
 
   keys() {
     return {
-      "Mod-u": toggleMark(this.type),
+      "Mod-u": this.toggleMarkDecorator(),
     };
-  }
-
-  commands() {
-    return (attrs: {}) => toggleMark(this.type, attrs);
   }
 
   toMarkdown() {

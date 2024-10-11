@@ -1,14 +1,14 @@
 import { useEditorContext } from "@/features";
 import { useEditorDispatch, useEditorSelector } from "@/features/Editor/hooks";
-import { MarkController } from "@/features/Editor/models/editor/marks";
 import { checkMarkInSelection, isSelectionWithinSingleNode } from "@/features/Editor/utils";
 import { toggleMark } from "prosemirror-commands";
 import { FORCE_RERENDER_EDITOR_MARK_TOOLTIP } from "../../model";
 
-const marks = MarkController.marks;
 
 const useMarkCommand = () => {
-  const { view } = useEditorContext();
+  const { view, MarkController } = useEditorContext();
+  const marks = MarkController.marks;
+
   const forceRenderObserver = useEditorSelector((state) => state.markToolTip.forceRender);
   const editorDispatch = useEditorDispatch();
 

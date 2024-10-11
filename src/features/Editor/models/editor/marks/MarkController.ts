@@ -14,6 +14,7 @@ import { isCursorInMark } from './utils'
  
 import BaseMark from "./BaseMark";
 import Link from "./Link";
+import { EditorReduxStore } from "../../store";
 
 const MARK_REGISTER = {
   Bold: new Bold(),
@@ -25,8 +26,17 @@ const MARK_REGISTER = {
   Link: new Link(),
 };
 
-class _MarkController {
+export class _MarkController {
   marks = MARK_REGISTER;
+  store: typeof EditorReduxStore;
+
+  constructor(store: typeof EditorReduxStore) {
+    this.store = store;
+
+    Object.entries(this.marks).forEach(([key, element]) => {
+      element.setStore(store);
+    });
+  }
 
   private moveCursorOutOfMark = (state: EditorState, dispatch?: (tr: Transaction) => void): boolean => {
     if (!dispatch) return false;
@@ -109,6 +119,4 @@ class _MarkController {
     };
   }
 }
-
-const MarkController = new _MarkController()
-export default MarkController
+ 

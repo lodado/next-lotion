@@ -1,14 +1,22 @@
 import { InputRule, inputRules } from 'prosemirror-inputrules'
 import { keymap } from 'prosemirror-keymap'
 import { MarkSpec, MarkType, Node as ProsemirrorNode, NodeType, Schema } from 'prosemirror-model'
-import { Command, EditorState, Plugin } from 'prosemirror-state'
+import { Command, EditorState, Plugin, Transaction } from "prosemirror-state";
 
-import { getMarksAtRange, uniqueMarks } from './utils'
+import { getMarksAtRange, uniqueMarks } from "./utils";
 import { MarkdownSerializerState } from "prosemirror-markdown";
+import { toggleMark } from "prosemirror-commands";
+import { EditorReduxStore } from "../../store";
+import { FORCE_RERENDER_EDITOR_MARK_TOOLTIP } from "@/features/Editor/ui/components/MarkTooltip/model";
 
 export default abstract class BaseMark {
   schema!: Schema;
   type!: MarkType;
+  store!: typeof EditorReduxStore;
+
+  setStore(store: typeof EditorReduxStore) {
+    this.store = store;
+  }
 
   abstract get name(): string;
 
@@ -59,6 +67,19 @@ export default abstract class BaseMark {
     };
   }
 
+  toggleMarkDecorator = () => (state: EditorState, dispatch: (tr: Transaction) => void) => {
+    const command = toggleMark(this.type, this.defaultOptions, {
+      removeWhenPresent: false,
+    });
+
+    if (command(state, dispatch)) {
+      this.store.dispatch(FORCE_RERENDER_EDITOR_MARK_TOOLTIP());
+      return true;
+    }
+
+    return false;
+  };
+
   /**
    * Merges marks within the specified range in the editor state.
    *
@@ -75,8 +96,9 @@ export default abstract class BaseMark {
 
     if (match[1]) {
       tr.replaceWith(Math.max(start, 1), end, this.schema.text(match[1], uniqueMarks([this.type.create(), ...marks])));
-      
+      this.store.dispatch(FORCE_RERENDER_EDITOR_MARK_TOOLTIP());
     }
+
     return tr;
   };
 }

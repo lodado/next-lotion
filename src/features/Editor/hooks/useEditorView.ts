@@ -11,6 +11,8 @@ import { EditorReduxStore } from "../models";
 import useEditorData from "./useEditorData";
 import { useEditorDispatch } from "./useEditorDispatcher";
 import { RESET_EDITOR_STATUS } from "../models/store/saga";
+import { _NodeController } from "../models/editor/nodes/NodeController";
+import { _MarkController } from "../models/editor/marks/MarkController";
 
 export const useEditorView = (ReduxLocalStore: typeof EditorReduxStore) => {
   const editorRef = useRef<HTMLDivElement>(null);
@@ -21,6 +23,13 @@ export const useEditorView = (ReduxLocalStore: typeof EditorReduxStore) => {
   const [view, setView] = useState<EditorView | null>(null);
   const [editorState, setEditorState] = useState<EditorState | null>(null);
   const [widgetController, setWidgetController] = useState(() => new WidgetController(ReduxLocalStore));
+  const [NodeController] = useState(() => {
+    return new _NodeController(ReduxLocalStore);
+  });
+
+  const [MarkController] = useState(() => {
+    return new _MarkController(ReduxLocalStore);
+  });
 
   const { content } = useEditorData({ view: view });
 
@@ -34,6 +43,9 @@ export const useEditorView = (ReduxLocalStore: typeof EditorReduxStore) => {
     const state = createState({
       widgetController: newWidgetController,
       getDoc: domParser,
+
+      NodeController,
+      MarkController,
     });
 
     const viewInstance = createView({
@@ -62,5 +74,5 @@ export const useEditorView = (ReduxLocalStore: typeof EditorReduxStore) => {
     return destroyView;
   }, [content]);
 
-  return { isMounted, editorRef, editorState, view, widgetController };
+  return { isMounted, editorRef, editorState, view, widgetController, NodeController, MarkController };
 };

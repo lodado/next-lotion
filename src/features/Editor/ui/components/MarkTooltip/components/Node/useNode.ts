@@ -1,13 +1,12 @@
 import { useEditorContext } from "@/features";
-import { MarkController } from "@/features/Editor/models/editor/marks";
+
 import { isSelectionWithinSingleNode } from "@/features/Editor/utils";
 import { toggleMark } from "prosemirror-commands";
 import React from "react";
 
-const marks = MarkController.marks;
-
 const useNodeCommand = () => {
-  const { view } = useEditorContext();
+  const { view, MarkController } = useEditorContext();
+  const marks = MarkController.marks;
 
   const isSelectionWithinNode = () => {
     return isSelectionWithinSingleNode(view?.state.selection);
