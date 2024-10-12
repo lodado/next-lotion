@@ -2,7 +2,7 @@ import { mapEntityErrorToRepositoryError, RepositoryError } from "@/shared";
 import { EditorRepositoryImpl } from "../../core/repository";
 import { EditorNode } from "../../core/entity";
 
-export class ProseMirrorRepository implements EditorRepositoryImpl {
+export class EditorClientRepository implements EditorRepositoryImpl {
   // @todo 나중에 api 구현
   path = "/node";
 

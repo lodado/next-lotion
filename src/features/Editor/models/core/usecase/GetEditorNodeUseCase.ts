@@ -15,7 +15,7 @@ export class GetEditorNodeUseCase {
     this.authRepository = AuthRepository;
   }
 
-  async execute(): Promise<EditorNode> {
+  async execute(p0: { id: string; }): Promise<EditorNode> {
     try {
       const userEntity = await this.authRepository.getUserInfo();
       const id = userEntity?.id;
