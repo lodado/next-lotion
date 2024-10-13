@@ -1,0 +1,8 @@
+{
+  "EDITORLINKDIALOG": {
+    "SUBMITTEXT": "送信",
+    "CANCELTEXT": "キャンセル",
+    "HEADER": "リンク説明とURL入力モーダル",
+    "DESCRIPTION": "選択したテキストに挿入するリンクの説明とURLを入力してください。"
+  }
+}

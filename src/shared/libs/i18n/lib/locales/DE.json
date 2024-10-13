@@ -1,0 +1,8 @@
+{
+  "EDITORLINKDIALOG": {
+    "SUBMITTEXT": "Einreichen",
+    "CANCELTEXT": "Abbrechen",
+    "HEADER": "Link-Beschreibung und URL-Eingabemodal",
+    "DESCRIPTION": "Bitte geben Sie die Linkbeschreibung und die URL für den ausgewählten Text ein."
+  }
+}

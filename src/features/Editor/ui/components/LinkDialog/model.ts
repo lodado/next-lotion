@@ -1,34 +1,30 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { DropdownPosition } from "./type";
 
-interface DropdownState {
-  position: DropdownPosition;
+interface LinkDialogState {
   isOpen: boolean;
 }
 
-const initialState: DropdownState = {
-  position: { x: 0, y: 0 },
+const initialState: LinkDialogState = {
   isOpen: false,
 };
 
-const dropdownSlice = createSlice({
-  name: "dropdown-slice",
+const LinkDialogSlice = createSlice({
+  name: "LinkDialog-slice",
   initialState,
   reducers: {
-    RESET_EDITOR_DROPDOWN: () => {
+    RESET_EDITOR_LINK_DIALOG: () => {
       return initialState;
     },
 
-    EDITOR_DROPDOWN_OPEN: (state, action: PayloadAction<DropdownPosition>) => {
-      state.position = action.payload;
+    EDITOR_LINK_DIALOG_OPEN: (state) => {
       state.isOpen = true;
     },
-    EDITOR_DROPDOWN_CLOSE: (state) => {
+    EDITOR_LINK_DIALOG_CLOSE: (state) => {
       state.isOpen = false;
     },
   },
 });
 
-export const { RESET_EDITOR_DROPDOWN, EDITOR_DROPDOWN_OPEN, EDITOR_DROPDOWN_CLOSE } = dropdownSlice.actions;
-export default dropdownSlice;
+export const { RESET_EDITOR_LINK_DIALOG,  EDITOR_LINK_DIALOG_OPEN, EDITOR_LINK_DIALOG_CLOSE } = LinkDialogSlice.actions;
+export default LinkDialogSlice;
  

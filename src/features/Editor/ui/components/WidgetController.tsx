@@ -6,9 +6,15 @@ import DragButtonWidget from "./DragButton/widget";
 import BlockCreateButtonWidget from "./BlockCreateButton/widget";
 import { EditorReduxStore } from "../../models";
 import EditorMarkTooltipWidget from "./MarkTooltip/widget";
+import EditorLinkDialogWidget from "./LinkDialog/widget";
 
 export default class WidgetController {
-  widgets = [new DragButtonWidget(), new BlockCreateButtonWidget(), new EditorMarkTooltipWidget()];
+  widgets = [
+    new DragButtonWidget(),
+    new EditorLinkDialogWidget(),
+    new BlockCreateButtonWidget(),
+    new EditorMarkTooltipWidget(),
+  ];
 
   constructor(store: typeof EditorReduxStore) {
     this.widgets.forEach((widget) => {

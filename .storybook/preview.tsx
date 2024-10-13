@@ -6,8 +6,17 @@ import React, { useEffect } from "react";
  
 import ClientProvider from "../src/app/provider/ClientProvider";
 import { useDarkMode } from "storybook-dark-mode";
- 
+import nextIntl from "./next-intl";
+
 const preview: Preview = {
+  initialGlobals: {
+    locale: "en",
+    locales: {
+      en: "English",
+      ko: "Korean",
+    },
+  },
+
   globalTypes: {
     adsTheme: {
       description: "Atlassian Design System theming options",
@@ -16,6 +25,8 @@ const preview: Preview = {
   },
 
   parameters: {
+    nextIntl,
+
     controls: {
       matchers: {
         color: /(background|color)$/i,

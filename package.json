@@ -14,7 +14,8 @@
     "test": "vitest --run",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "postinstall": "husky"
+    "postinstall": "husky",
+    "i18n": "node src/shared/libs/i18n/lib/locales.mjs"
   },
   "dependencies": {
     "@auth/supabase-adapter": "^1.5.0",
@@ -112,6 +113,7 @@
     "sass": "^1.78.0",
     "storybook": "^8.3.0",
     "storybook-dark-mode": "^4.0.2",
+    "storybook-next-intl": "^1.1.4",
     "tailwind-merge": "^2.5.2",
     "tailwind-scrollbar-hide": "^1.1.7",
     "tailwindcss": "^3.4.1",

@@ -8,6 +8,7 @@ import createSagaMiddleware from "redux-saga";
 import { rootSaga } from "./saga";
 import editorSlice from "./EditorContentSlice";
 import markTooltipSlice from "../../ui/components/MarkTooltip/model";
+import LinkDialogSlice from "../../ui/components/LinkDialog/model";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -19,6 +20,7 @@ export const createEditorReduxLocalStore = () => {
       blockCreateButton: blockCreateButtonSlice.reducer,
       editorContent: editorSlice.reducer,
       markToolTip: markTooltipSlice.reducer,
+      linkDialog: LinkDialogSlice.reducer,
     },
 
     middleware: (getDefaultMiddleware) => {

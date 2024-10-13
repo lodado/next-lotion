@@ -1,0 +1,8 @@
+{
+  "EDITORLINKDIALOG": {
+    "SUBMITTEXT": "Invia",
+    "CANCELTEXT": "Annulla",
+    "HEADER": "Descrizione del link e input URL Modal",
+    "DESCRIPTION": "Si prega di inserire la descrizione del link e l'URL per il testo selezionato."
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "EDITORLINKDIALOG": {
+    "SUBMITTEXT": "Gönder",
+    "CANCELTEXT": "İptal etmek",
+    "HEADER": "Bağlantı Açıklaması ve URL Girişi Modalı",
+    "DESCRIPTION": "Lütfen seçilen metin için bağlantı açıklaması ve URL girin."
+  }
+}

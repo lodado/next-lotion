@@ -1,49 +1,8 @@
 {
-  "LOGIN": {
-    "KAKAO": "Sign in with Kakao",
-    "GOOGLE": "Sign in with Google",
-    "GITHUB": "Sign in with GitHub",
-    "TOOLTIP-LASTLOGINTEXT": "🔑 Last login",
-    "TOOLTIP-TEXT": "⚡️ Start signing in 3 seconds",
-    "SUBTITLE": "Your AI Speaking Tutor in Hand",
-    "TITLE": "Pokitoki"
-  },
-  "DASHBOARD": {
-    "LEARNING-STATUS": "Stat",
-    "SELECTIVE-LEARNING": "Learn"
-  },
-  "COMMON": {
-    "LOGO": "Pokitoki"
-  },
-  "LEARN": {
-    "FREETALKING": "Freetalking",
-    "FREETALKING-BUTTON-TEXT": "Start freetalking freely",
-    "TOPIC-BASED-SITUATION-TALKING-BUTTON": "Topic-based situation talking",
-    "SELECT-TOPIC-BASED-SITUATION-TALKING": "Please select topic-based situational talking",
-    "CUSTOMIZE-CONVERSATION-PARTNER-SECTION-TITLE": "Customize conversation partner persona",
-    "CUSTOMIZE-PERSONA-OR-CHOOSE-RECOMMENDED-PERSONA": "Customize the conversation partner directly or choose a recommended persona",
-    "BUTTON-FOR-CUSTOMIZING-PERSONA": "Customize persona",
-    "DIALOG-HEADER": "Topic-Based Situation Talking",
-    "DIALOG-BODY": "Please quietly organize your surroundings and start studying🤫"
-  },
-  "DIFFICULTY": {
-    "RATING": "Difficulty {rating}"
-  },
-  "STAT": {
-    "USERNAME": "{username}",
-    "CHEERUP-MESSAGE": "Let's keep going with Pokitoki today 😊",
-    "RECOMMEND-TITLE": "Today's Recommended Learning",
-    "RECOMMEND-DESCRIPTION": "Complete all of today's topic-based learning sessions!",
-    "HISTORY-SCRIPT-TITLE": "Recent History Script",
-    "HISTORY-SCRIPT-BUTTON": "History",
-    "HISTORY-SCRIPT-DESCRIPTION": "Check your recent history scripts",
-    "ATTENDANCE-TITLE": "{month} Attendance Check",
-    "ATTENDANCE-BUTTON": "Check Attendance",
-    "ATTENDANCE-DESCRIPTION": "Check {username}'s attendance."
-  },
-  "ENTERDIALOG": {
-    "DIALOG-BODY": "Please quietly organize your surroundings and start studying🤫",
-    "SUBMITTEXT": "Start",
-    "CANCELTEXT": "Quit"
+  "EDITORLINKDIALOG": {
+    "SUBMITTEXT": "Submit",
+    "CANCELTEXT": "Cancel",
+    "HEADER": "Link Description and URL Input Modal",
+    "DESCRIPTION": "Please enter the link description and URL for the selected text."
   }
 }

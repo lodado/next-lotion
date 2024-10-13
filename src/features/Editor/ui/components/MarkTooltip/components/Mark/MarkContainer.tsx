@@ -13,9 +13,11 @@ import CodeIcon from "@mui/icons-material/Code";
 
 import { ICON_MARK_BUTTON_SIZE } from "@/features/Editor/constants";
 
-import useMarkCommand from "./useMarkCommand";
+import useMarkCommand from "../../../../../hooks/useMarkCommand";
 import CommandTooltipContent from "../CommandTooltip/CommandTooltipContent";
 import { MarkSelection } from "./style";
+import { EDITOR_LINK_DIALOG_OPEN } from "../../../LinkDialog/model";
+import { useEditorDispatch } from "@/features/Editor/hooks";
 
 const buttonData = [
   {
@@ -72,6 +74,7 @@ const buttonData = [
 
 const MarkContainer = () => {
   const { toggleMarkCommand, isSelectionWithinNode, hasMarkInSelection } = useMarkCommand();
+  const editorDispatch = useEditorDispatch();
 
   return (
     <div className="flex space-x-2 items-center justify-center gap-x-[0.1rem]">
@@ -115,6 +118,9 @@ const MarkContainer = () => {
                 variant="text"
                 className="flex justify-center items-center p-1 disabled:opacity-1"
                 aria-label="Insert link"
+                onClick={() => {
+                  editorDispatch(EDITOR_LINK_DIALOG_OPEN());
+                }}
               >
                 <svg
                   className="relative"

@@ -1,33 +1,49 @@
 "use client";
 
-import { Root } from "@radix-ui/react-portal";
-
 import React from "react";
+import { useTranslations } from 'next-intl';
 
-import { useEditorSelector } from "@/features/Editor/hooks";
+import { useEditorDispatch, useEditorSelector, useMarkCommand } from "@/features/Editor/hooks";
+import { AlertDialog } from "@/shared/ui/Dialog";
+import { EDITOR_LINK_DIALOG_CLOSE } from "./model";
+import { ScreenReaderOnly } from "@/shared";
 
-export const EditorDropdown = () => {
-  const isOpen = useEditorSelector((state) => state.dropdown.isOpen);
-  const position = useEditorSelector((state) => state.dropdown.position);
+const EditorLinkDialog = () => {
+  const t = useTranslations("EDITORLINKDIALOG");
+  const isOpen = useEditorSelector((state) => state.linkDialog.isOpen);
+  const editorDispatch = useEditorDispatch();
+  const { toggleMarkCommand } = useMarkCommand();
 
-  if (!isOpen) return null;
+  const onSubmitLink = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    toggleMarkCommand("Link", { href: "", title: "" })();
+  };
 
   return (
-    <Root>
-      (
-      <ul
-
-        style={{
-          position: "absolute",
-          top: position.y,
-          left: position.x,
-          listStyleType: "none",
-          padding: "8px",
-          backgroundColor: "white",
-          border: "1px solid #ccc",
+    <>
+      <AlertDialog
+        isVisible={isOpen}
+        onChangeVisible={() => {
+          editorDispatch(EDITOR_LINK_DIALOG_CLOSE());
         }}
-      />
-      )
-    </Root>
+      >
+        <AlertDialog.SubmitForm
+          className="p-4"
+          submitText={t("SUBMITTEXT")}
+          cancelText={t("CANCELTEXT")}
+          onSubmit={onSubmitLink}
+        >
+          <ScreenReaderOnly>
+            <AlertDialog.Header className="p-2">{t("HEADER")}</AlertDialog.Header>
+          </ScreenReaderOnly>
+
+          <AlertDialog.Body className="p-2">
+            <AlertDialog.Description>{t("DESCRIPTION")}</AlertDialog.Description>
+          </AlertDialog.Body>
+        </AlertDialog.SubmitForm>
+      </AlertDialog>
+    </>
   );
 };
+
+export default EditorLinkDialog;

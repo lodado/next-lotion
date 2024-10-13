@@ -1,23 +1,39 @@
 import { Slot } from "@radix-ui/react-slot";
-import React, { ReactNode, use, useEffect } from "react";
+import React, { PropsWithChildren, ReactNode, use, useEffect } from "react";
 
 import { Button } from "../Button";
 
 import { Dialog, SubmitFormProps, useDialogContext } from "./components/compound";
-import { Title } from "./components/radix";
+import { Description, Title } from "./components/radix";
 import { DialogTemplate, DialogTemplateProps } from "./DialogTemplate";
 import { cn } from "@/shared";
 
 interface DialogSubmitFormProps extends Omit<SubmitFormProps, "children"> {
+  children: ReactNode;
   submitText: string;
   cancelText: string;
 }
 
-const SubmitForm = ({ submitText, cancelText, onSubmit, onClose, onError }: DialogSubmitFormProps) => {
+const SubmitForm = ({
+  children,
+  className,
+  submitText,
+  cancelText,
+  onSubmit,
+  onClose,
+  onError,
+}: DialogSubmitFormProps) => {
   const { onChangeVisibleStatus } = useDialogContext();
 
   return (
-    <Dialog.SubmitForm className="flex flex-col w-full mt-2" onClose={onClose} onSubmit={onSubmit} onError={onError}>
+    <Dialog.SubmitForm
+      className={cn("flex flex-col w-full", className)}
+      onClose={onClose}
+      onSubmit={onSubmit}
+      onError={onError}
+    >
+      {children}
+
       <Button className="w-full mb-2" type="submit" size="medium" variant="primary">
         {submitText}
       </Button>
@@ -34,8 +50,12 @@ const SubmitForm = ({ submitText, cancelText, onSubmit, onClose, onError }: Dial
   );
 };
 
-const DialogHeader = ({ children }: { children?: ReactNode }) => {
-  return <Title className="flex flex-row justify-between w-full mb-3 text-text-01 heading-04 ">{children}</Title>;
+const DialogHeader = ({ children, className }: { children?: ReactNode; className: string }) => {
+  return (
+    <Title className={cn("flex flex-row justify-between w-full mb-3 text-text-01 heading-04 ", className)}>
+      {children}
+    </Title>
+  );
 };
 
 const DialogBody = ({ className, children }: { className?: string; children: ReactNode }) => {
@@ -58,10 +78,14 @@ export interface AlertDialogProps extends Omit<DialogTemplateProps, "children"> 
   children: ReactNode;
 }
 
+export const AlertDescription = ({ className, children }: PropsWithChildren & { className?: string }) => {
+  return <Description className={`${className}`}>{children}</Description>;
+};
+
 export const AlertDialog = ({ Trigger, isVisible, onChangeVisible, children }: AlertDialogProps) => {
   return (
     <DialogTemplate isVisible={isVisible} onChangeVisible={onChangeVisible} Trigger={Trigger}>
-      <div className="flex-col border-solid rounded-lg bg-surface-up border-1 border-border-01 w-80 shadow-card-01">
+      <div className="text-text-default flex-col border-solid rounded-lg bg-background border-1 border-color-border-brand w-80 shadow-card-01">
         {children}
       </div>
     </DialogTemplate>
@@ -72,5 +96,6 @@ AlertDialog.Header = DialogHeader;
 AlertDialog.Body = DialogBody;
 AlertDialog.SubmitForm = SubmitForm;
 AlertDialog.Close = Dialog.Close;
+AlertDialog.Description = AlertDescription;
 
 AlertDialog.displayName = "dialog";

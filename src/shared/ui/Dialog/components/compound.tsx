@@ -1,6 +1,17 @@
-"use client";
+import "../index.scss";
 
-import React, { Dispatch, FormEvent, ReactComponentElement, ReactElement, ReactNode, useEffect, useState } from "react";
+("use client");
+
+import React, {
+  CSSProperties,
+  Dispatch,
+  FormEvent,
+  ReactComponentElement,
+  ReactElement,
+  ReactNode,
+  useEffect,
+  useState,
+} from "react";
 
 import { Close, Content, Overlay, Portal, Root, Trigger } from "./radix";
 import { contextBuildHelper, noop } from "@/shared";
@@ -42,11 +53,14 @@ const DialogTrigger = ({ children }: { children: ReactNode }) => {
   return <Trigger>{children}</Trigger>;
 };
 
-const DialogContent = ({ children }: { children: ReactNode }) => {
+const DialogContent = ({ children, style }: { children: ReactNode; style?: CSSProperties }) => {
   return (
     <Portal>
       <Overlay className="fixed inset-0" />
-      <Content className="fixed -translate-x-1/2 -translate-y-1/2 dialog-content z-dialog top-2/4 left-2/4">
+      <Content
+        style={style}
+        className="fixed -translate-x-1/2 -translate-y-1/2 dialog-content z-dialog top-2/4 left-2/4"
+      >
         {children}
       </Content>
     </Portal>

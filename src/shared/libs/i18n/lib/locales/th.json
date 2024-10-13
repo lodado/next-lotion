@@ -1,0 +1,8 @@
+{
+  "EDITORLINKDIALOG": {
+    "SUBMITTEXT": "ส่ง",
+    "CANCELTEXT": "ยกเลิก",
+    "HEADER": "คำอธิบายลิงก์และการป้อน URL Modal",
+    "DESCRIPTION": "กรุณาใส่คำอธิบายลิงก์และ URL สำหรับข้อความที่เลือก"
+  }
+}

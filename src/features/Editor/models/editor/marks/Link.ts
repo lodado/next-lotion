@@ -16,7 +16,7 @@ export default class Link extends BaseMark {
   get defaultOptions() {
     return {
       href: "",
-      title: null,
+      title: "",
     };
   }
 

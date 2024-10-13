@@ -9,6 +9,7 @@ const config: StorybookConfig = {
     "@chromatic-com/storybook",
     "@storybook/addon-interactions",
     "storybook-dark-mode",
+    "storybook-next-intl",
   ],
   framework: {
     name: "@storybook/nextjs",

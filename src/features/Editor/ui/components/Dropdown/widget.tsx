@@ -1,8 +1,8 @@
 import { Plugin, PluginKey } from "prosemirror-state";
-import React, { PropsWithChildren, useState } from "react";
+import React from "react";
 
 import Widget from "../Widget";
-import dropdownStore, { EDITOR_DROPDOWN_OPEN } from "./model";
+import { EDITOR_DROPDOWN_OPEN } from "./model";
 
 import { EditorDropdown } from "./ui";
 
@@ -14,7 +14,7 @@ export default class EditorDropdownWidget extends Widget {
   plugin() {
     return [
       new Plugin({
-        key: new PluginKey("menu"),
+        key: new PluginKey("menu-dropdown"),
         props: {
           handleDoubleClick: (view, pos) => {
             const { doc, tr } = view.state;
