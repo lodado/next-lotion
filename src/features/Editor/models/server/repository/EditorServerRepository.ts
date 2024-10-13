@@ -1,10 +1,10 @@
 import { Editor } from "@/features";
 // app/repositories/ProseMirrorRepository.ts
-import { mongoDbClient } from "@/shared/index.server";
 import { ObjectId } from "mongodb";
 import { EditorRepositoryImpl } from "../../core/repository";
 import { EditorNode } from "../../core/entity";
 import { mapEntityErrorToRepositoryError, RepositoryError } from "@/shared";
+import mongoDbClient from "@/shared/libs/mongoDB/mongoDB";
 
 const DOCUMENT_COLLECTION = "feature/editor/documents";
 

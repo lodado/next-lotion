@@ -14,5 +14,10 @@ const config: StorybookConfig = {
     name: "@storybook/nextjs",
     options: {},
   },
+
+  webpackFinal: async (config) => {
+    if (config.resolve?.fallback) config.resolve.fallback = { ...config.resolve.fallback, fs: false };
+    return config;
+  },
 };
 export default config;
