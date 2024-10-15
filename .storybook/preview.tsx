@@ -14,6 +14,7 @@ const preview: Preview = {
     locales: {
       en: "English",
       ko: "Korean",
+      ar: "Arabic",
     },
   },
 

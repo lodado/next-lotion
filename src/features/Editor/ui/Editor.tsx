@@ -30,7 +30,7 @@ const EditorContainer = ({
         save
       </button>
 
-      <div className="pl-10 ">
+      <div className="pl-10 pr-[20px] left-10 bottom-5 ">
         <div className="w-[500px] h-[500px]" data-testid="editor" ref={editorRef} />
       </div>
 

@@ -9,10 +9,32 @@ const plugin = require("tailwindcss/plugin");
 const animated = require("tailwindcss-animate");
 const scrollBarHide = require("tailwind-scrollbar-hide");
 
+const { tailwindLogicalPropertiesPlugins } = require("./logicalProperties");
+
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: ["selector", "class"],
   content: ["./src/**/*.{ts,tsx}"],
+
+  /** logical properties 사용 */
+  corePlugins: {
+    width: false,
+    height: false,
+    margin: false,
+    padding: false,
+    borderWidth: false,
+
+    inset: false,
+    top: false,
+    left: false,
+    bottom: false,
+    right: false,
+
+    float: false,
+    clear: false,
+
+    textAlign: false,
+  },
 
   extend: {
     fontFamily: {
@@ -82,5 +104,6 @@ export default {
     plugin(function ({ addComponents }: any) {
       addComponents({ ...TYPOGRAPHY });
     }),
+    ...tailwindLogicalPropertiesPlugins,
   ],
 };
