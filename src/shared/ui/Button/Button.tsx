@@ -6,7 +6,7 @@ import { ButtonProps } from "./type";
 import { cn } from "@/shared/utils";
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ children, className, LeftIcon, RightIcon, ...props }, ref) => {
+  ({ children, className, LeftIcon, RightIcon, ...props }: ButtonProps, ref) => {
     return (
       <RawButton className={cn(rawButtonVariants(props), buttonVariants(props), className)} ref={ref} {...props}>
         <>
@@ -28,4 +28,5 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     );
   }
 );
+
 export default Button;

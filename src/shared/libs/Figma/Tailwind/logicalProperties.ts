@@ -82,6 +82,17 @@ export const tailwindLogicalPropertiesPlugins = [
         mr: (value: string) => ({
           "margin-inline-end": value,
         }),
+        mx: (value: string) => ({
+          "margin-inline-start": value,
+          "margin-inline-end": value,
+        }),
+        my: (value: string) => ({
+          "margin-block-start": value,
+          "margin-block-end": value,
+        }),
+        m: (value: string) => ({
+          margin: value,
+        }),
         pt: (value: string) => ({
           "padding-block-start": value,
         }),
@@ -94,6 +105,17 @@ export const tailwindLogicalPropertiesPlugins = [
         pr: (value: string) => ({
           "padding-inline-end": value,
         }),
+        px: (value: string) => ({
+          "padding-inline-start": value,
+          "padding-inline-end": value,
+        }),
+        py: (value: string) => ({
+          "padding-block-start": value,
+          "padding-block-end": value,
+        }),
+        p: (value: string) => ({
+          padding: value,
+        }),
         bt: (value: string) => ({
           "border-block-start": value,
         }),
@@ -105,6 +127,17 @@ export const tailwindLogicalPropertiesPlugins = [
         }),
         br: (value: string) => ({
           "border-inline-end": value,
+        }),
+        bx: (value: string) => ({
+          "border-inline-start-width": value,
+          "border-inline-end-width": value,
+        }),
+        by: (value: string) => ({
+          "border-block-start-width": value,
+          "border-block-end-width": value,
+        }),
+        b: (value: string) => ({
+          borderWidth: value,
         }),
       },
       {
@@ -130,6 +163,14 @@ export const tailwindLogicalPropertiesPlugins = [
       acc[`.mr-${key}`] = {
         "margin-inline-end": value,
       };
+      acc[`.mx-${key}`] = {
+        "margin-inline-start": value,
+        "margin-inline-end": value,
+      };
+      acc[`.my-${key}`] = {
+        "margin-block-start": value,
+        "margin-block-end": value,
+      };
       acc[`.m-${key}`] = { margin: value };
       return acc;
     }, {} as Record<string, Record<string, string>>);
@@ -147,6 +188,14 @@ export const tailwindLogicalPropertiesPlugins = [
       acc[`.pr-${key}`] = {
         "padding-inline-end": value,
       };
+      acc[`.px-${key}`] = {
+        "padding-inline-start": value,
+        "padding-inline-end": value,
+      };
+      acc[`.py-${key}`] = {
+        "padding-block-start": value,
+        "padding-block-end": value,
+      };
       acc[`.p-${key}`] = { padding: value };
       return acc;
     }, {} as Record<string, Record<string, string>>);
@@ -163,6 +212,14 @@ export const tailwindLogicalPropertiesPlugins = [
       };
       acc[`.br-${key}`] = {
         "border-inline-end-width": value,
+      };
+      acc[`.bx-${key}`] = {
+        "border-inline-start-width": value,
+        "border-inline-end-width": value,
+      };
+      acc[`.by-${key}`] = {
+        "border-block-start-width": value,
+        "border-block-end-width": value,
       };
       acc[`.b-${key}`] = { borderWidth: value };
       return acc;
