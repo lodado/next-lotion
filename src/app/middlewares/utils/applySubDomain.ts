@@ -1,6 +1,17 @@
+import { LANGUAGE_LIST } from "@/shared";
 import { NextRequest, NextResponse } from "next/server";
 
 const HEADER_LOCALE_NAME = "X-NEXT-INTL-LOCALE";
+
+export const extractLanguageFromUrl = (url: string): string => {
+  const pathSegments = url.split("/");
+
+  // LANGUAGE_LIST에 포함되지 않은 pathSegments만 필터링하여 반환
+  const filteredSegments = pathSegments.filter((segment) => !LANGUAGE_LIST.includes(segment));
+
+  // 필터링된 결과가 있을 경우 반환, 없으면 null 반환
+  return filteredSegments.join("/");
+};
 
 function hasTrailingSlash() {
   try {
@@ -48,17 +59,17 @@ export function applySubDomain(request: NextRequest, url: string, locale: string
   const path = `${requestUrl.pathname}${searchParams.length > 0 ? `?${searchParams}` : ""}`;
   const subDomain = hostname.split(".")[0];
 
-  const urlObj = new URL(url, request.url);
-
-  if (request.nextUrl.basePath) {
-    urlObj.pathname = applyBasePath(`/${subDomain}${path}`, request.nextUrl.basePath);
-  }
+  let parsedURL = `${locale}${extractLanguageFromUrl(path)}`;
 
   if (subDomain !== hostname) {
-    return NextResponse.rewrite(new URL(applyBasePath(`/${subDomain}${path}`, request.nextUrl.basePath), request.url), {
+    parsedURL = `${subDomain}/` + parsedURL;
+
+    return NextResponse.rewrite(new URL(applyBasePath(`/${parsedURL}`, request.nextUrl.basePath), request.url), {
       request: { headers },
     });
   }
+
+  const urlObj = new URL(url, request.url);
 
   return NextResponse.rewrite(urlObj, { request: { headers } });
 }

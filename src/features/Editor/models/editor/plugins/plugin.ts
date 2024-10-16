@@ -31,6 +31,7 @@ export const createPlugin = (
 
     history(),
     gapCursor(),
+
     dropCursor({
       width: 4,
       color: "var(--Color-Background-Accent-Blue-Subtler-Default)",

@@ -9,7 +9,19 @@
 
 /* RTL 기본 스타일 */
 html[dir='rtl'] {
-  direction: rtl;
+  direction: rtl;  
+ 
+  & .editor-container {
+    &[data-direction='rtl']{
+      & .ProseMirror {
+        text-align: right;
+      }
+  
+      & .ProseMirror * {
+        text-align: right;
+      }
+    }
+  }
 }
 
 /* LTR 기본 스타일 (기본값으로 사용할 수 있음) */
@@ -17,7 +29,11 @@ html[dir='ltr'] {
   direction: ltr;
 }
 
+* {
+  text-align: start;
+}
 
+ 
 /* editor css */
 
 .editor-placeholder {
@@ -38,6 +54,7 @@ html[dir='ltr'] {
   display: flex;
   flex-direction: row;
 }
+
 .ProseMirror {
   width: 100%;
   height: 100%;
@@ -49,7 +66,7 @@ html[dir='ltr'] {
 
   border-radius: 10px;
 }
- 
+
 .editor-block {
   position: relative;
 
@@ -78,7 +95,7 @@ html[dir='ltr'] {
 .ProseMirror .empty-node::before {
   content: attr(data-placeholder);
   // color: #aaa;
-  float: left;
+ 
   height: 0;
 }
 
@@ -118,23 +135,23 @@ html[dir='ltr'] {
 .hover-border.start::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-top:4px solid var(--Color-Background-Accent-Blue-Subtler-Default); 
-  z-index: 1; /* background보다 위에 있도록 설정 */
-  pointer-events: none; /* 마우스 이벤트를 방해하지 않게 설정 */
+  inset-block-start: 0; 
+  inset-inline-start: 0;  
+  inset-inline-end: 0;  
+  inset-block-end: 0; 
+  border-block-start: 4px solid var(--Color-Background-Accent-Blue-Subtler-Default);  
+  z-index: 1; 
+  pointer-events: none; 
 }
 
 .hover-border.end::after {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-bottom: 4px solid  var(  --Color-Background-Accent-Blue-Subtler-Default); 
+  inset-block-start: 0; 
+  inset-inline-start: 0;  
+  inset-inline-end: 0;  
+  inset-block-end: 0; 
+  border-block-end: 4px solid  var(  --Color-Background-Accent-Blue-Subtler-Default); 
   z-index: 1; /* background보다 위에 있도록 설정 */
   pointer-events: none; /* 마우스 이벤트를 방해하지 않게 설정 */
 }

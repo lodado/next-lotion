@@ -17,7 +17,7 @@ export const tailwindLogicalPropertiesPlugins = [
     const widthValues = theme("width") as Record<string, string>;
     const widthUtilities = Object.entries(widthValues).reduce((acc, [key, value]) => {
       acc[`.w-${key.replace("/", "\\/")}`] = {
-        width: value,
+        
         "inline-size": value,
       };
       return acc;
@@ -27,7 +27,7 @@ export const tailwindLogicalPropertiesPlugins = [
     const heightValues = theme("height") as Record<string, string>;
     const heightUtilities = Object.entries(heightValues).reduce((acc, [key, value]) => {
       acc[`.h-${key.replace("/", "\\/")}`] = {
-        height: value,
+       
         "block-size": value,
       };
       return acc;
@@ -37,11 +37,11 @@ export const tailwindLogicalPropertiesPlugins = [
     matchUtilities(
       {
         w: (value: string) => ({
-          width: value,
+           
           "inline-size": value,
         }),
         h: (value: string) => ({
-          height: value,
+      
           "block-size": value,
         }),
       },
@@ -71,51 +71,39 @@ export const tailwindLogicalPropertiesPlugins = [
     matchUtilities(
       {
         mt: (value: string) => ({
-          "margin-top": value,
           "margin-block-start": value,
         }),
         mb: (value: string) => ({
-          "margin-bottom": value,
           "margin-block-end": value,
         }),
         ml: (value: string) => ({
-          "margin-left": value,
           "margin-inline-start": value,
         }),
         mr: (value: string) => ({
-          "margin-right": value,
           "margin-inline-end": value,
         }),
         pt: (value: string) => ({
-          "padding-top": value,
           "padding-block-start": value,
         }),
         pb: (value: string) => ({
-          "padding-bottom": value,
           "padding-block-end": value,
         }),
         pl: (value: string) => ({
-          "padding-left": value,
           "padding-inline-start": value,
         }),
         pr: (value: string) => ({
-          "padding-right": value,
           "padding-inline-end": value,
         }),
         bt: (value: string) => ({
-          "border-top": value,
           "border-block-start": value,
         }),
         bb: (value: string) => ({
-          "border-bottom": value,
           "border-block-end": value,
         }),
         bl: (value: string) => ({
-          "border-left": value,
           "border-inline-start": value,
         }),
         br: (value: string) => ({
-          "border-right": value,
           "border-inline-end": value,
         }),
       },
@@ -131,61 +119,52 @@ export const tailwindLogicalPropertiesPlugins = [
 
     const marginUtilities = Object.entries(spacingValues).reduce((acc, [key, value]) => {
       acc[`.mt-${key}`] = {
-        "margin-top": value,
         "margin-block-start": value,
       };
       acc[`.mb-${key}`] = {
-        "margin-bottom": value,
         "margin-block-end": value,
       };
       acc[`.ml-${key}`] = {
-        "margin-left": value,
         "margin-inline-start": value,
       };
       acc[`.mr-${key}`] = {
-        "margin-right": value,
         "margin-inline-end": value,
       };
+      acc[`.m-${key}`] = { margin: value };
       return acc;
     }, {} as Record<string, Record<string, string>>);
 
     const paddingUtilities = Object.entries(spacingValues).reduce((acc, [key, value]) => {
       acc[`.pt-${key}`] = {
-        "padding-top": value,
         "padding-block-start": value,
       };
       acc[`.pb-${key}`] = {
-        "padding-bottom": value,
         "padding-block-end": value,
       };
       acc[`.pl-${key}`] = {
-        "padding-left": value,
         "padding-inline-start": value,
       };
       acc[`.pr-${key}`] = {
-        "padding-right": value,
         "padding-inline-end": value,
       };
+      acc[`.p-${key}`] = { padding: value };
       return acc;
     }, {} as Record<string, Record<string, string>>);
 
     const borderUtilities = Object.entries(borderWidthValues).reduce((acc, [key, value]) => {
       acc[`.bt-${key}`] = {
-        "border-top-width": value,
         "border-block-start-width": value,
       };
       acc[`.bb-${key}`] = {
-        "border-bottom-width": value,
         "border-block-end-width": value,
       };
       acc[`.bl-${key}`] = {
-        "border-left-width": value,
         "border-inline-start-width": value,
       };
       acc[`.br-${key}`] = {
-        "border-right-width": value,
         "border-inline-end-width": value,
       };
+      acc[`.b-${key}`] = { borderWidth: value };
       return acc;
     }, {} as Record<string, Record<string, string>>);
 
@@ -209,19 +188,15 @@ export const tailwindLogicalPropertiesPlugins = [
     matchUtilities(
       {
         top: (value: string) => ({
-          top: value,
           "inset-block-start": value,
         }),
         bottom: (value: string) => ({
-          bottom: value,
           "inset-block-end": value,
         }),
         left: (value: string) => ({
-          left: value,
           "inset-inline-start": value,
         }),
         right: (value: string) => ({
-          right: value,
           "inset-inline-end": value,
         }),
       },
@@ -236,19 +211,16 @@ export const tailwindLogicalPropertiesPlugins = [
 
     const insetUtilities = Object.entries(insetValues).reduce((acc, [key, value]) => {
       acc[`.top-${key.replace("/", "\\/")}`] = {
-        top: value,
         "inset-block-start": value,
       };
       acc[`.bottom-${key.replace("/", "\\/")}`] = {
-        bottom: value,
         "inset-block-end": value,
       };
       acc[`.left-${key.replace("/", "\\/")}`] = {
-        left: value,
         "inset-inline-start": value,
       };
       acc[`.right-${key.replace("/", "\\/")}`] = {
-        right: value,
+
         "inset-inline-end": value,
       };
       return acc;
@@ -417,6 +389,20 @@ export const tailwindLogicalPropertiesPlugins = [
 
     // 기존 Tailwind의 resize 값에 대해 논리적 속성 유틸리티 추가
     addUtilities(resizeUtilities, variants("resize"));
+  },
+
+  ({
+    addUtilities,
+    matchUtilities,
+    theme,
+    variants,
+  }: {
+    addUtilities: AddUtilities;
+    theme: ThemeFunction;
+    matchUtilities: any;
+    variants: VariantsFunction;
+  }) => {
+    
   },
 
   /*

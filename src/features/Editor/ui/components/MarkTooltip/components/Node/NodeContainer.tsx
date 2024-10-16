@@ -13,8 +13,7 @@ export const NodeContainer = () => {
   const { isSelectionWithinNode } = useNodeCommand();
 
   return (
-    <div className="flex space-x-2 items-center justify-center gap-x-[0.1rem]">
-
+    <div className="flex items-center gap-x-2 p-2">
       <IconButton variant="custom" size="small" aria-label="Bulleted list">
         <FormatListBulletedIcon style={{ width: `${ICON_MARK_BUTTON_SIZE}px`, height: `${ICON_MARK_BUTTON_SIZE}px` }} />
       </IconButton>

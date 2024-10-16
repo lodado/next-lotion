@@ -1,6 +1,6 @@
-import "../index.scss";
+"use client";
 
-("use client");
+import "../index.scss";
 
 import React, {
   CSSProperties,

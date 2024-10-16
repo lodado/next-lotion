@@ -1,10 +1,12 @@
-import { Plugin, PluginKey } from "prosemirror-state";
+import { EditorState, Plugin, PluginKey } from "prosemirror-state";
 import React from "react";
 
 import Widget from "../Widget";
 import { OPEN_EDITOR_MARK_TOOLTIP, RESET_EDITOR_MARK_TOOLTIP } from "./model";
 import { EditorMarkTooltip } from "./ui";
 import { MARGIN_LEFT_EDITOR } from "@/features/Editor/constants";
+import { EditorView } from "prosemirror-view";
+import { getRtlCoord } from "@/features/Editor/utils";
 
 export default class EditorMarkTooltipWidget extends Widget {
   render() {
@@ -20,7 +22,7 @@ export default class EditorMarkTooltipWidget extends Widget {
         key: new PluginKey("selection-change"),
         view: (view) => {
           return {
-            update: (view, prevState) => {
+            update: (view: EditorView, prevState: EditorState) => {
               const { state } = view;
               if (!prevState) {
                 prevState = state;
@@ -37,15 +39,12 @@ export default class EditorMarkTooltipWidget extends Widget {
                     initialSelection = { from, to };
                   }
 
-                  // const direction = from < initialSelection.from ? DIRECTION_UP : DIRECTION_DOWN;
-                  const startCoords = view.coordsAtPos(Math.min(from, initialSelection.from));
-
-                  let yCoords = startCoords.top;
+                  const { xCoords, yCoords } = getRtlCoord(view, { newSelection, prevSelection });
 
                   // Dispatch an action with the coordinates of the selection
                   widgetInstance.debouncedDispatch(
                     OPEN_EDITOR_MARK_TOOLTIP({
-                      x: MARGIN_LEFT_EDITOR,
+                      x: xCoords,
                       y: yCoords,
                     })
                   );

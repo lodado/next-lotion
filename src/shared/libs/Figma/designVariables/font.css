@@ -26,7 +26,6 @@ body {
   font-weight: 600;
   font-size: 28px;
   text-transform: none;
-  text-align: left;
   letter-spacing: -0.02em;
   line-height: 36px;
 }
@@ -44,7 +43,6 @@ body {
   font-weight: 500;
   font-size: 20px;
   text-transform: none;
-  text-align: left;
   letter-spacing: -0.01em;
   line-height: 160%;
 }
@@ -63,7 +61,6 @@ body {
   font-size: 16px;
   color: #000000;
   text-transform: none;
-  text-align: left;
   letter-spacing: -0.02em;
   line-height: 160%;
 }
@@ -91,7 +88,6 @@ body {
   font-weight: 400;
   font-size: 17px;
   text-transform: none;
-  text-align: left;
   letter-spacing: 0em;
   line-height: 200%;
 }
@@ -109,7 +105,6 @@ body {
   font-weight: 400;
   font-size: 16px;
   text-transform: none;
-  text-align: left;
   letter-spacing: -0.02em;
  
 }
@@ -119,7 +114,6 @@ body {
   font-weight: 400;
   font-size: 15px;
   text-transform: none;
-  text-align: left;
   letter-spacing: -0.01em;
   line-height: 180%;
 }
@@ -138,7 +132,6 @@ body {
   font-size: 14px;
  
   text-transform: none;
-  text-align: left;
   letter-spacing: -0.01em;
   line-height: 180%;
 }

@@ -12,7 +12,7 @@ const Comment = () => {
         <Tooltip.Trigger>
           <Button
             disabled
-            className={cn("p-1 bg-color-background-disabled")}
+            className={cn("p-1 gap-0.5 bg-color-background-disabled")}
             variant="text"
             size="small"
             aria-label={"add comment"}

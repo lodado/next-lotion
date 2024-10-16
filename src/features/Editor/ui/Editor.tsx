@@ -30,8 +30,16 @@ const EditorContainer = ({
         save
       </button>
 
-      <div className="pl-10 pr-[20px] left-10 bottom-5 ">
-        <div className="w-[500px] h-[500px]" data-testid="editor" ref={editorRef} />
+      <div className="pl-10">
+        <div
+          /** 이거 스타일 안먹이면 rtl일때 proseMirror에서 버그걸림;; */
+          style={{ direction: "ltr" }}
+          /**중요! */
+          data-direction="rtl"
+          className="relative editor-container w-[500px] h-[500px]"
+          data-testid="editor"
+          ref={editorRef}
+        />
       </div>
 
       {isMounted && <widgetController.Widgets />}

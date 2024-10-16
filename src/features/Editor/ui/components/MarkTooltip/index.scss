@@ -8,11 +8,11 @@ $popup-ease: cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .TooltipContent[data-side="top"] {
-	margin-top: -45px;
+	margin-block-start: -45px;
 }
 
 .TooltipContent[data-side="bottom"] {
-	margin-top: 80px;
+	margin-block-start: 80px;
 }
 
 @keyframes slideUpAndFade {

@@ -77,7 +77,7 @@ const MarkContainer = () => {
   const editorDispatch = useEditorDispatch();
 
   return (
-    <div className="flex space-x-2 items-center justify-center gap-x-[0.1rem]">
+    <div className="flex items-center justify-center gap-x-1">
       {buttonData.map(
         ({ label, command, Icon, width, height, showCondition, commandDescription }, index) =>
           showCondition && (

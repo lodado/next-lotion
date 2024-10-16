@@ -20,9 +20,10 @@ export default {
   corePlugins: {
     width: false,
     height: false,
-    margin: false,
+
     padding: false,
-    borderWidth: false,
+    margin: false,
+    border: false,
 
     inset: false,
     top: false,

@@ -26,10 +26,10 @@ export const BlockCreateButton = () => {
           style={{
             position: "absolute",
 
-            width: `${ICON_BUTTON_SIZE}px`,
-            height: `${ICON_BUTTON_SIZE}px`,
-            top: position.y,
-            left: position.x,
+            inlineSize: `${ICON_BUTTON_SIZE}px`, // width -> inline-size
+            blockSize: `${ICON_BUTTON_SIZE}px`, // height -> block-size
+            insetBlockStart: position.y, // top -> inset-block-start
+            insetInlineStart: position.x, // left -> inset-inline-start
           }}
         >
           <AddRoundedIcon

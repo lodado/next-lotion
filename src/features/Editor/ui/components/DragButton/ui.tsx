@@ -17,9 +17,13 @@ import { useEditorDispatch, useEditorSelector } from "@/features/Editor/hooks";
 
 import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
 import { ICON_BUTTON_SIZE } from "@/features/Editor/constants";
+import { isRTL } from "@/features/Editor/utils";
 
 export const DragButton = () => {
   const { view, editorState } = useEditorContext();
+  const isDocumentRTL = isRTL();
+  const EDITOR_MARGIN = isDocumentRTL ? -50 : 50;
+
   const {
     placeholderPos,
     showPlaceholder,
@@ -45,7 +49,7 @@ export const DragButton = () => {
     let animationFrameId: number;
 
     const initPos = view.posAtCoords({
-      left: (event as unknown as MouseEvent).clientX + 50,
+      left: (event as unknown as MouseEvent).clientX + EDITOR_MARGIN,
       top: (event as unknown as MouseEvent).clientY,
     });
 
@@ -60,7 +64,7 @@ export const DragButton = () => {
         dragStartPos = { x: e.clientX, y: e.clientY };
       }
 
-      const pos = view.posAtCoords({ left: e.clientX + 80, top: e.clientY });
+      const pos = view.posAtCoords({ left: e.clientX + EDITOR_MARGIN, top: e.clientY });
       if (!pos) return;
 
       const dx = e.clientX - dragStartPos.x;
@@ -89,7 +93,7 @@ export const DragButton = () => {
         (event.target as HTMLButtonElement).style.cursor = `grabbing`;
         document.body.style.cursor = "grabbing";
 
-        handlePlaceholderPos({ x: e.clientX + 50, y: e.clientY });
+        handlePlaceholderPos({ x: e.clientX + EDITOR_MARGIN, y: e.clientY });
       });
     };
 
@@ -104,7 +108,7 @@ export const DragButton = () => {
         // eslint-disable-next-line prefer-const
         let { node: targetNode, pos: targetPos } = findTopLevelNode(view.state.doc, targetPosition!);
 
-        const pos = view.posAtCoords({ left: e.clientX + 80, top: e.clientY });
+        const pos = view.posAtCoords({ left: e.clientX + EDITOR_MARGIN, top: e.clientY });
         const node = pos && pos.inside >= 0 && view.state.doc.nodeAt(pos.inside);
         let offset = 0;
 
@@ -125,7 +129,7 @@ export const DragButton = () => {
 
           const point = dropPoint(
             view.state.doc,
-            view.posAtCoords({ left: e.clientX + 80, top: e.clientY })!.pos,
+            view.posAtCoords({ left: e.clientX + EDITOR_MARGIN, top: e.clientY })!.pos,
             new Slice(Fragment.from(targetNode), 0, 0)
           );
 
@@ -170,10 +174,10 @@ export const DragButton = () => {
         className="bg-transparent  text-cancel-default"
         style={{
           position: "absolute",
-          width: `${ICON_BUTTON_SIZE}px`,
-          height: `${ICON_BUTTON_SIZE}px`,
-          top: position.y,
-          left: position.x,
+          inlineSize: `${ICON_BUTTON_SIZE}px`, // width -> inline-size
+          blockSize: `${ICON_BUTTON_SIZE}px`, // height -> block-size
+          insetBlockStart: position.y,
+          insetInlineStart: position.x,
           cursor: "pointer",
         }}
         onMouseDown={handleMouseDown}
@@ -191,11 +195,14 @@ export const DragButton = () => {
         <div
           className="drag-placeholder"
           style={{
+            direction: "ltr",
             position: "absolute",
-            top: placeholderPos.y,
-            left: placeholderPos.x,
+            insetBlockStart: placeholderPos.y, // top -> inset-block-start
+            insetInlineStart: placeholderPos.x,
+            color: "var(--Color-Text-Default)",
             pointerEvents: "none",
             opacity: 0.3,
+            zIndex: 9999,
           }}
         >
           {nodeContent}
