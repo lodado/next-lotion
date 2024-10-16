@@ -4,5 +4,14 @@
     "CANCELTEXT": "Batal",
     "HEADER": "Deskripsi Tautan dan Input URL Modal",
     "DESCRIPTION": "Harap masukkan deskripsi tautan dan URL untuk teks yang dipilih."
+  },
+  "LoginDialogContainer": {
+    "DialogTitle": "Masuk",
+    "DialogDescription": "Silakan pilih metode login yang Anda inginkan"
+  },
+  "LoginForm": {
+    "KakaoButton": "Daftar dengan Kakao",
+    "GoogleButton": "Daftar dengan Google",
+    "GithubButton": "Daftar dengan GitHub"
   }
 }

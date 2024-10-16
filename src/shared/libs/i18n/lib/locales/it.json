@@ -4,5 +4,14 @@
     "CANCELTEXT": "Annulla",
     "HEADER": "Descrizione del link e input URL Modal",
     "DESCRIPTION": "Si prega di inserire la descrizione del link e l'URL per il testo selezionato."
+  },
+  "LoginDialogContainer": {
+    "DialogTitle": "Accesso",
+    "DialogDescription": "Si prega di selezionare il metodo di accesso preferito"
+  },
+  "LoginForm": {
+    "KakaoButton": "Iscriviti con Kakao",
+    "GoogleButton": "Iscriviti con Google",
+    "GithubButton": "Iscriviti con GitHub"
   }
 }

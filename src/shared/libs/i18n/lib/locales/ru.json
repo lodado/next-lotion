@@ -4,5 +4,14 @@
     "CANCELTEXT": "Отмена",
     "HEADER": "Описание ссылки и модальный ввод URL",
     "DESCRIPTION": "Пожалуйста, введите описание ссылки и URL для выбранного текста."
+  },
+  "LoginDialogContainer": {
+    "DialogTitle": "Войти",
+    "DialogDescription": "Пожалуйста, выберите предпочтительный метод входа"
+  },
+  "LoginForm": {
+    "KakaoButton": "Зарегистрироваться через Kakao",
+    "GoogleButton": "Зарегистрироваться через Google",
+    "GithubButton": "Зарегистрироваться через GitHub"
   }
 }

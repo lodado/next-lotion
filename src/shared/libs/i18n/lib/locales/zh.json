@@ -4,5 +4,14 @@
     "CANCELTEXT": "取消",
     "HEADER": "链接说明和URL输入模态框",
     "DESCRIPTION": "请输入所选文本的链接描述和网址。"
+  },
+  "LoginDialogContainer": {
+    "DialogTitle": "登录",
+    "DialogDescription": "请选择您希望的登录方式"
+  },
+  "LoginForm": {
+    "KakaoButton": "通过Kakao注册",
+    "GoogleButton": "通过Google注册",
+    "GithubButton": "通过GitHub注册"
   }
 }

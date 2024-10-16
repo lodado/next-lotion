@@ -10,13 +10,13 @@ interface LoginButtonProps {
 }
 
 const LoginButtonStyles = cva(
-  "shadow-card-02 flex gap-2 body-03-m justify-center align-middle mx-spacing-6 p-spacing-4 h-14 rounded-md",
+  "shadow-card-02 flex gap-2 body-03 w-full justify-center align-middle p-4 h-14 rounded-md",
   {
     variants: {
       value: {
-        kakao: "bg-[#FEE500] text-text-01",
-        google: `bg-[#fff] text-text-01`,
-        github: "bg-[#24292F] text-background-extension-onlywhite",
+        kakao: "bg-[#FEE500] text-color-[#000]",
+        google: `bg-[#fff] text-color-#000`,
+        github: "bg-[#24292F] text-[#fff]",
       },
     },
     defaultVariants: {},

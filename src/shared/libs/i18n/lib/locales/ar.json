@@ -4,5 +4,14 @@
     "CANCELTEXT": "إلغاء",
     "HEADER": "وصف الرابط وإدخال URL",
     "DESCRIPTION": "يرجى إدخال وصف الرابط وعنوان URL للنص المحدد."
+  },
+  "LoginDialogContainer": {
+    "DialogTitle": "تسجيل الدخول",
+    "DialogDescription": "يرجى اختيار طريقة تسجيل الدخول المفضلة لديك"
+  },
+  "LoginForm": {
+    "KakaoButton": "سجّل عبر Kakao",
+    "GoogleButton": "سجّل عبر Google",
+    "GithubButton": "سجّل عبر GitHub"
   }
 }

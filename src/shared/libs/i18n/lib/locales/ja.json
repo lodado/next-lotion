@@ -4,5 +4,14 @@
     "CANCELTEXT": "キャンセル",
     "HEADER": "リンク説明とURL入力モーダル",
     "DESCRIPTION": "選択したテキストに挿入するリンクの説明とURLを入力してください。"
+  },
+  "LoginDialogContainer": {
+    "DialogTitle": "ログイン",
+    "DialogDescription": "希望のログイン方法を選択してください"
+  },
+  "LoginForm": {
+    "KakaoButton": "カカオで登録",
+    "GoogleButton": "Googleで登録",
+    "GithubButton": "GitHubで登録"
   }
 }

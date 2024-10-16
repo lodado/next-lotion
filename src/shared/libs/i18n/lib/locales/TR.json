@@ -4,5 +4,14 @@
     "CANCELTEXT": "İptal etmek",
     "HEADER": "Bağlantı Açıklaması ve URL Girişi Modalı",
     "DESCRIPTION": "Lütfen seçilen metin için bağlantı açıklaması ve URL girin."
+  },
+  "LoginDialogContainer": {
+    "DialogTitle": "Giriş Yap",
+    "DialogDescription": "Lütfen tercih ettiğiniz giriş yöntemini seçin"
+  },
+  "LoginForm": {
+    "KakaoButton": "Kakao ile kayıt ol",
+    "GoogleButton": "Google ile kayıt ol",
+    "GithubButton": "GitHub ile kayıt ol"
   }
 }

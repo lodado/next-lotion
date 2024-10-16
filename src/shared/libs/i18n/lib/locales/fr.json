@@ -4,5 +4,14 @@
     "CANCELTEXT": "Annuler",
     "HEADER": "Description du lien et modal de saisie d'URL",
     "DESCRIPTION": "Veuillez entrer la description du lien et l'URL pour le texte sélectionné."
+  },
+  "LoginDialogContainer": {
+    "DialogTitle": "Connexion",
+    "DialogDescription": "Veuillez sélectionner votre méthode de connexion préférée"
+  },
+  "LoginForm": {
+    "KakaoButton": "Inscrivez-vous avec Kakao",
+    "GoogleButton": "Inscrivez-vous avec Google",
+    "GithubButton": "Inscrivez-vous avec GitHub"
   }
 }

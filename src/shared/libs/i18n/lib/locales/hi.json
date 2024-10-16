@@ -4,5 +4,14 @@
     "CANCELTEXT": "रद्द करें",
     "HEADER": "लिंक विवरण और URL इनपुट मोडल",
     "DESCRIPTION": "कृपया चयनित टेक्स्ट के लिए लिंक विवरण और URL दर्ज करें।"
+  },
+  "LoginDialogContainer": {
+    "DialogTitle": "लॉग इन करें",
+    "DialogDescription": "कृपया अपनी पसंदीदा लॉगिन विधि चुनें"
+  },
+  "LoginForm": {
+    "KakaoButton": "काकाओ से साइन अप करें",
+    "GoogleButton": "Google से साइन अप करें",
+    "GithubButton": "GitHub से साइन अप करें"
   }
 }

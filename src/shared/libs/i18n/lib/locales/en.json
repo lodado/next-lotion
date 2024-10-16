@@ -4,5 +4,14 @@
     "CANCELTEXT": "Cancel",
     "HEADER": "Link Description and URL Input Modal",
     "DESCRIPTION": "Please enter the link description and URL for the selected text."
+  },
+  "LoginDialogContainer": {
+    "DialogTitle": "Login",
+    "DialogDescription": "Please select your preferred login method"
+  },
+  "LoginForm": {
+    "KakaoButton": "Sign up with Kakao",
+    "GoogleButton": "Sign up with Google",
+    "GithubButton": "Sign up with GitHub"
   }
 }

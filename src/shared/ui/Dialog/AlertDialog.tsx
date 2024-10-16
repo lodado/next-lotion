@@ -50,7 +50,7 @@ const SubmitForm = ({
   );
 };
 
-const DialogHeader = ({ children, className }: { children?: ReactNode; className: string }) => {
+const DialogHeader = ({ children, className }: { children?: ReactNode; className?: string }) => {
   return (
     <Title className={cn("flex flex-row justify-between w-full mb-3 text-text-01 heading-04 ", className)}>
       {children}
@@ -82,10 +82,15 @@ export const AlertDescription = ({ className, children }: PropsWithChildren & { 
   return <Description className={`${className}`}>{children}</Description>;
 };
 
-export const AlertDialog = ({ Trigger, isVisible, onChangeVisible, children }: AlertDialogProps) => {
+export const AlertDialog = ({ Trigger, isVisible, onChangeVisible, children, className }: AlertDialogProps) => {
   return (
     <DialogTemplate isVisible={isVisible} onChangeVisible={onChangeVisible} Trigger={Trigger}>
-      <div className="text-text-default flex-col border-solid rounded-lg bg-background border-1 border-color-border-brand w-80 shadow-card-01">
+      <div
+        className={cn(
+          `text-text-default flex-col border-solid rounded-lg bg-background border-1 border-color-border-brand w-80 shadow-card-01`,
+          className
+        )}
+      >
         {children}
       </div>
     </DialogTemplate>

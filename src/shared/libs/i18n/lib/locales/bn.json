@@ -4,5 +4,14 @@
     "CANCELTEXT": "বাতিল করুন",
     "HEADER": "লিঙ্ক বর্ণনা এবং ইউআরএল ইনপুট মোডাল",
     "DESCRIPTION": "অনুগ্রহ করে নির্বাচিত পাঠ্যের জন্য লিঙ্কের বর্ণনা এবং URL প্রবেশ করান।"
+  },
+  "LoginDialogContainer": {
+    "DialogTitle": "লগ ইন",
+    "DialogDescription": "আপনার পছন্দের লগইন পদ্ধতি নির্বাচন করুন"
+  },
+  "LoginForm": {
+    "KakaoButton": "কাকাও দিয়ে সাইন আপ করুন",
+    "GoogleButton": "গুগল দিয়ে সাইন আপ করুন",
+    "GithubButton": "গিটহাব দিয়ে সাইন আপ করুন"
   }
 }

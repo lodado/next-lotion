@@ -1,4 +1,4 @@
 import EditorRoot from "./Editor";
 
-export { EditorRoot as Editor };
+export { EditorRoot };
 export * from "./EditorProvider";

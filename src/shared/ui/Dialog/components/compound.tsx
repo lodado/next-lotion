@@ -166,6 +166,8 @@ export interface DialogProps {
    * @param newVisibleStatus - The new visibility state (true for visible, false for hidden) that should be applied to the dialog.
    */
   onChangeVisible?: (newVisibleStatus: boolean) => void;
+
+  className?: string;
 }
 
 export const Dialog = ({ isVisible = undefined, onChangeVisible, children }: DialogProps) => {

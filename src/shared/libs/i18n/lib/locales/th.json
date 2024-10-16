@@ -4,5 +4,14 @@
     "CANCELTEXT": "ยกเลิก",
     "HEADER": "คำอธิบายลิงก์และการป้อน URL Modal",
     "DESCRIPTION": "กรุณาใส่คำอธิบายลิงก์และ URL สำหรับข้อความที่เลือก"
+  },
+  "LoginDialogContainer": {
+    "DialogTitle": "เข้าสู่ระบบ",
+    "DialogDescription": "กรุณาเลือกวิธีเข้าสู่ระบบที่คุณต้องการ"
+  },
+  "LoginForm": {
+    "KakaoButton": "สมัครด้วย Kakao",
+    "GoogleButton": "สมัครด้วย Google",
+    "GithubButton": "สมัครด้วย GitHub"
   }
 }

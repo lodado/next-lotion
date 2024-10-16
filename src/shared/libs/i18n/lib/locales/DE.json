@@ -4,5 +4,14 @@
     "CANCELTEXT": "Abbrechen",
     "HEADER": "Link-Beschreibung und URL-Eingabemodal",
     "DESCRIPTION": "Bitte geben Sie die Linkbeschreibung und die URL für den ausgewählten Text ein."
+  },
+  "LoginDialogContainer": {
+    "DialogTitle": "Anmelden",
+    "DialogDescription": "Bitte wählen Sie Ihre bevorzugte Anmeldemethode"
+  },
+  "LoginForm": {
+    "KakaoButton": "Mit Kakao registrieren",
+    "GoogleButton": "Mit Google registrieren",
+    "GithubButton": "Mit GitHub registrieren"
   }
 }

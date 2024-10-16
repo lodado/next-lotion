@@ -4,5 +4,14 @@
     "CANCELTEXT": "Hủy bỏ",
     "HEADER": "Mô tả liên kết và Nhập URL Modal",
     "DESCRIPTION": "Vui lòng nhập mô tả liên kết và URL cho văn bản đã chọn."
+  },
+  "LoginDialogContainer": {
+    "DialogTitle": "Đăng nhập",
+    "DialogDescription": "Vui lòng chọn phương thức đăng nhập bạn muốn"
+  },
+  "LoginForm": {
+    "KakaoButton": "Đăng ký với Kakao",
+    "GoogleButton": "Đăng ký với Google",
+    "GithubButton": "Đăng ký với GitHub"
   }
 }

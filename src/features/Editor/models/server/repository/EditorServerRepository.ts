@@ -1,4 +1,3 @@
-import { Editor } from "@/features";
 // app/repositories/ProseMirrorRepository.ts
 import { ObjectId } from "mongodb";
 import { EditorRepositoryImpl } from "../../core/repository";
