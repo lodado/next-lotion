@@ -1,7 +1,7 @@
-import { ROOT_URL } from "./../../../shared/api/constant";
+import { NEXT_FOLDER_LIST } from "@/app/[locale]/folderList";
 import { LANGUAGE_LIST } from "@/shared";
 import { NextRequest, NextResponse } from "next/server";
-  
+
 const HEADER_LOCALE_NAME = "X-NEXT-INTL-LOCALE";
 
 export const extractLanguageFromUrl = (url: string): string => {
@@ -45,7 +45,7 @@ export function applySubDomain(request: NextRequest, response: NextResponse) {
     });
   }
 
-  if (["", "login"].includes(extractLanguageFromUrl(path))) return response;
+  if (NEXT_FOLDER_LIST.includes(extractLanguageFromUrl(path))) return response;
 
   return NextResponse.rewrite(new URL(request.nextUrl.origin), {
     request: { headers },
