@@ -23,7 +23,10 @@ export const authConfig = {
     maxAge: 5 * 24 * 60 * 60, // cookie 수명 - 5일
   },
 
-  jwt: {},
+  jwt: {
+    encryption: true,
+    secret: process.env.AUTH_SECRET, // 환경 변수나 다른 방법으로 안전하게 키 관리
+  },
 
   providers: [
     GithubProvider({
