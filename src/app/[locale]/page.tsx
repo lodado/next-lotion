@@ -1,11 +1,9 @@
-"use client";
-
 const Page = ({ params }: { params: { subDomain: string } }) => {
-  const domain = decodeURIComponent(params.subDomain);
+  console.log(params);
 
   return (
     <div>
-      <div>{domain} 121 i18n Test </div>
+      <div>121 i18n Test </div>
     </div>
   );
 };

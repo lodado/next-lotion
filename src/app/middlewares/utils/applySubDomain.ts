@@ -1,3 +1,4 @@
+import { ROOT_URL } from "./../../../shared/api/constant";
 import { LANGUAGE_LIST } from "@/shared";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -47,7 +48,10 @@ export function applyBasePath(pathname: string, basePath: string) {
  * 수정함
  * 2024-10-04
  */
-export function applySubDomain(request: NextRequest, url: string, locale: string = "en") {
+export function applySubDomain(request: NextRequest, response: NextResponse) {
+  const url = response.url;
+  const locale = response.headers.get("x-middleware-request-x-next-intl-locale")!;
+
   const hostname = request.headers.get("host")!;
 
   const headers = new Headers(request.headers);
@@ -59,17 +63,17 @@ export function applySubDomain(request: NextRequest, url: string, locale: string
   const path = `${requestUrl.pathname}${searchParams.length > 0 ? `?${searchParams}` : ""}`;
   const subDomain = hostname.split(".")[0];
 
-  let parsedURL = `${locale}${extractLanguageFromUrl(path)}`;
+  let parsedURL = `${extractLanguageFromUrl(path)}`;
 
   if (subDomain !== hostname) {
-    parsedURL = `${subDomain}/` + parsedURL;
+    parsedURL = `${locale ?? "en"}/${subDomain}` + parsedURL;
 
-    return NextResponse.rewrite(new URL(applyBasePath(`/${parsedURL}`, request.nextUrl.basePath), request.url), {
+    console.log(new URL(request.nextUrl.origin + `/${parsedURL}`));
+
+    return NextResponse.rewrite(new URL(request.nextUrl.origin + `/${parsedURL}`), {
       request: { headers },
     });
   }
 
-  const urlObj = new URL(url, request.url);
-
-  return NextResponse.rewrite(urlObj, { request: { headers } });
+  return response;
 }

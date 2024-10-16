@@ -13,7 +13,9 @@ export const i18nMiddleware = async (request: NextRequest, path: string, default
   const handleI18nRouting = await createIntlMiddleware(i18nOption as any);
   const res = handleI18nRouting(request);
 
-  const response = applySubDomain(request, res.url, res.headers.get("x-middleware-request-x-next-intl-locale")!);
+  const response = applySubDomain(request, res);
+
+  return response;
 
   return cspMiddleware(request, response);
 };
