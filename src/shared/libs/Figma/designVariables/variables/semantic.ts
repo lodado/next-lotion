@@ -3,14 +3,14 @@ const CUSTOM = {
     colors: {
       "background-inverse": "var(--Background-Inverse);",
       background: "var(--Background);",
-      "text-default": "var(--Color-Background-Input-Hovered)",
+      "text-default": "var(--Color-Text-Default)",
     },
   },
   Dark: {
     colors: {
       "background-inverse": "var(--Background-Inverse);",
       background: "var(--Background);",
-      "text-default": "var(--Color-Background-Input-Hovered)",
+      "text-default": "var(--Color-Text-Default)",
     },
   },
 };

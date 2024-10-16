@@ -7,11 +7,11 @@ export const rawButtonVariants = cva(`rounded-[4px] inline-flex justify-center i
       border-2 border-transparent focus:border-solid focus-visible:border-color-background-input-default focus-visible:outline focus:outline-1 focus-visible:outline-color-border-bold
       disabled:opacity-20`,
 
-      secondary: `bg-color-background-accent-gray-subtlest-default text-text-default hover:bg-color-background-accent-gray-subtlest-hovered active:bg-color-background-accent-gray-subtlest-pressed
+      secondary: `bg-color-background-accent-gray-subtlest-default text-color-text-default hover:bg-color-background-accent-gray-subtlest-hovered active:bg-color-background-accent-gray-subtlest-pressed
       border-2 border-transparent focus:border-solid focus-visible:border-color-background-input-default focus-visible:outline focus:outline-1 focus-visible:outline-color-border-bold
       disabled:opacity-20`,
 
-      text: `bg-transparent text-text-default hover:bg-color-background-input-hovered active:bg-color-background-input-pressed
+      text: `bg-transparent text-color-text-default hover:bg-color-background-input-hovered active:bg-color-background-input-pressed
       border-2 border-transparent focus:border-solid focus-visible:border-color-background-input-default focus-visible:outline focus:outline-1 focus-visible:outline-color-border-bold
       disabled:opacity-20`,
 
@@ -19,8 +19,8 @@ export const rawButtonVariants = cva(`rounded-[4px] inline-flex justify-center i
     },
 
     size: {
-      medium: "gap-1 body-02",
-      large: "gap-2 body-01",
+      medium: "gap-1 body-01",
+      large: "gap-2 heading-03",
       small: "gap-1 body-03",
       custom: "",
     },
