@@ -1,4 +1,4 @@
-import { AuthButton, Editor, LoginDialog } from "@/features";
+import { AuthButton } from "@/features";
 
 const Page = () => {
   return (

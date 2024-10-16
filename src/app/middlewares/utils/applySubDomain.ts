@@ -1,7 +1,7 @@
 import { ROOT_URL } from "./../../../shared/api/constant";
 import { LANGUAGE_LIST } from "@/shared";
 import { NextRequest, NextResponse } from "next/server";
-
+  
 const HEADER_LOCALE_NAME = "X-NEXT-INTL-LOCALE";
 
 export const extractLanguageFromUrl = (url: string): string => {
@@ -13,34 +13,6 @@ export const extractLanguageFromUrl = (url: string): string => {
   // 필터링된 결과가 있을 경우 반환, 없으면 null 반환
   return filteredSegments.join("/");
 };
-
-function hasTrailingSlash() {
-  try {
-    // Provided via `env` setting in `next.config.js` via the plugin
-    return process.env._next_intl_trailing_slash === "true";
-  } catch (e) {
-    return false;
-  }
-}
-
-export function normalizeTrailingSlash(pathname: string) {
-  const trailingSlash = hasTrailingSlash();
-
-  if (pathname !== "/") {
-    const pathnameEndsWithSlash = pathname.endsWith("/");
-    if (trailingSlash && !pathnameEndsWithSlash) {
-      pathname += "/";
-    } else if (!trailingSlash && pathnameEndsWithSlash) {
-      pathname = pathname.slice(0, -1);
-    }
-  }
-
-  return pathname;
-}
-
-export function applyBasePath(pathname: string, basePath: string) {
-  return normalizeTrailingSlash(basePath + pathname);
-}
 
 /**
  * next-intl v3.20.0에서 발췌 및 수정
@@ -68,12 +40,14 @@ export function applySubDomain(request: NextRequest, response: NextResponse) {
   if (subDomain !== hostname) {
     parsedURL = `${locale ?? "en"}/${subDomain}` + parsedURL;
 
-    console.log(new URL(request.nextUrl.origin + `/${parsedURL}`));
-
     return NextResponse.rewrite(new URL(request.nextUrl.origin + `/${parsedURL}`), {
       request: { headers },
     });
   }
 
-  return response;
+  if (["", "login"].includes(extractLanguageFromUrl(path))) return response;
+
+  return NextResponse.rewrite(new URL(request.nextUrl.origin), {
+    request: { headers },
+  });
 }

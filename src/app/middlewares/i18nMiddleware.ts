@@ -15,7 +15,5 @@ export const i18nMiddleware = async (request: NextRequest, path: string, default
 
   const response = applySubDomain(request, res);
 
-  return response;
-
   return cspMiddleware(request, response);
 };
