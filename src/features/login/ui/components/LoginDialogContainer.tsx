@@ -15,14 +15,14 @@ const LoginDialogContainer = () => {
   return (
     <AlertDialog
       isVisible={isOpened}
-      className="rounded-2xl w-[30rem] bg-[#fff] overflow-hidden"
+      className="rounded-2xl w-[30rem] bg-background overflow-hidden"
       onChangeVisible={(newVisibleStatus: boolean) => {
         const action = newVisibleStatus ? LOGIN_DIALOG_OPEN_ACTION : LOGIN_DIALOG_CLOSE_ACTION;
         dispatch(action());
       }}
     >
-      <div className="flex relative h-[12.5rem] bg-[#00C7E6] justify-center items-center mb-3">
-        <AlertDialog.Close className="absolute w-[1.5rem] h-[1.5rem] flex justify-center items-center [& > svg]:w-full right-[10px] top-[10px] bg-background rounded-full" />
+      <div className="flex relative h-[12.5rem] bg-color-chart-teal-bold-default justify-center items-center mb-3">
+        <AlertDialog.Close className="absolute w-[1.5rem] h-[1.5rem] flex justify-center items-center right-[10px] top-[10px] bg-background rounded-full" />
       </div>
 
       <AlertDialog.Header className="p-2 px-6 h-[3rem]">

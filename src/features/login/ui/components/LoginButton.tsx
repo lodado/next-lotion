@@ -10,7 +10,7 @@ interface LoginButtonProps {
 }
 
 const LoginButtonStyles = cva(
-  "shadow-card-02 flex gap-2 body-03 w-full justify-center align-middle p-4 h-14 rounded-md",
+  "shadow-button flex gap-2 body-03 w-full justify-center align-middle p-4 h-14 rounded-md",
   {
     variants: {
       value: {
@@ -68,7 +68,7 @@ const LoginButton = ({ value, children }: LoginButtonProps) => {
         </Button>
       </Tooltip.Trigger>
 
-      <Tooltip.Content side="bottom" align="center" className="z-100 text-text-01 detail-02-r">
+      <Tooltip.Content side="bottom" align="center" className="z-100 text-color-text-default body-01">
         {lastLoginInfo === value ? t("TOOLTIP-LASTLOGINTEXT") : t("TOOLTIP-TEXT")}
       </Tooltip.Content>
     </Tooltip>

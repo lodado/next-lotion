@@ -6,3 +6,4 @@ export * from "./Dropdown";
 export * from "./Input";
 export * from "./Form";
 export * from "./QueryContainer";
+export * from "./Select";

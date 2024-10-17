@@ -87,7 +87,7 @@ export const AlertDialog = ({ Trigger, isVisible, onChangeVisible, children, cla
     <DialogTemplate isVisible={isVisible} onChangeVisible={onChangeVisible} Trigger={Trigger}>
       <div
         className={cn(
-          `text-text-default flex-col border-solid rounded-lg bg-background border-1 border-color-border-brand w-80 shadow-card-01`,
+          `text-text-default flex-col border-solid rounded-lg bg-background border-1 border-color-border-brand w-80 shadow-dropdown`,
           className
         )}
       >

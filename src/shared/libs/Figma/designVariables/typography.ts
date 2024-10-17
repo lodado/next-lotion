@@ -2,10 +2,10 @@ import convertLeafKeysToCamelCase from './utils/convertLeafKeysToCamelCase'
 
 const RAW_TYPOGRAPHY = {
   // text style
-  "shadow-card-01": {
-    "box-shadow": "0px 2px 8px rgba(0, 0, 0, 0.1), 0px 8px 20px rgba(0, 0, 0, 0.1)",
+  "shadow-dropdown": {
+    "box-shadow": "var(--elevation_shadow_overlay)",
   },
-  "shadow-card-02": {
+  "shadow-button": {
     "box-shadow": "2px 2px 10px rgba(0, 0, 0, 0), 2px 2px 20px rgba(0, 0, 0, 0.1)",
   },
   "shadow-tab-02": {
@@ -15,7 +15,7 @@ const RAW_TYPOGRAPHY = {
     "box-shadow": "0px 0px 1px rgba(0, 0, 0, 0.3)",
   },
   "shadow-tooltip": {
-    "box-shadow": "2px 6px 12px rgba(0, 0, 0, 0.1), 0px 0px 4px rgba(0, 0, 0, 0.1)",
+    "box-shadow": "var(----elevation_shadow_raised)",
   },
   "shadow-float": {
     "box-shadow": "4px 8px 28px rgba(0, 0, 0, 0.1), 0px 4px 12px rgba(0, 0, 0, 0.2)",

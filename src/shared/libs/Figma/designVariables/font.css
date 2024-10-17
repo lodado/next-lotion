@@ -168,3 +168,29 @@ body {
   line-height: 16px;
 }
 
+
+:root, :root[data-theme][data-theme='light'] {
+
+  /* Light/elevation_shadow_raised */
+  --elevation_shadow_raised : 0px 0px 1px 0px rgba(9, 30, 66, 0.31), 0px 1px 1px 0px rgba(9, 30, 66, 0.25);
+
+  /* Light/elevation_shadow_overflow */
+  --elevation_shadow_overflow:  0px 0px 1px 0px rgba(9, 30, 66, 0.12), 0px 0px 8px 0px rgba(9, 30, 66, 0.16);
+
+  /* Light/elevation_shadow_overlay */
+  --elevation_shadow_overlay: 0px 0px 1px 0px rgba(9, 30, 66, 0.31), 0px 8px 12px 0px rgba(9, 30, 66, 0.15);
+}
+
+
+
+:root, :root[data-theme][data-theme='dark'] {
+  /* Dark/elevation_shadow_raised */
+  --elevation_shadow_raised: 0px 0px 1px 0px rgba(3, 4, 4, 0.50), 0px 1px 1px 0px rgba(3, 4, 4, 0.50), 0px 0px 0px 1px rgba(0, 0, 0, 0.00);
+
+  /* Dark/elevation_shadow_overflow */
+  --elevation_shadow_overflow: 0px 0px 1px 0px rgba(3, 4, 4, 0.50), 0px 0px 12px 0px rgba(3, 4, 4, 0.56);
+
+  /* Dark/elevation_shadow_overlay */
+  --elevation_shadow_overlay: 0px 0px 1px 0px rgba(3, 4, 4, 0.50), 0px 8px 12px 0px rgba(3, 4, 4, 0.36), 0px 0px 0px 1px rgba(188, 214, 240, 0.12);
+}
+
