@@ -15,6 +15,10 @@ export const rawButtonVariants = cva(`rounded-[4px] inline-flex justify-center i
       border-2 border-transparent focus:border-solid focus-visible:border-color-background-input-default focus-visible:outline focus:outline-1 focus-visible:outline-color-border-bold
       disabled:opacity-20`,
 
+      outline: `bg-transparent text-color-text-default hover:bg-color-background-input-hovered active:bg-color-background-input-pressed
+      border-2 border-color-border-input focus:border-solid focus-visible:border-color-background-input-default focus-visible:outline focus:outline-1 focus-visible:outline-color-border-bold
+      disabled:opacity-20`,
+
       custom: "",
     },
 

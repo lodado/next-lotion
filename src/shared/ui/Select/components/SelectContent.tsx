@@ -10,6 +10,7 @@ import "../index.scss";
 const SelectContent = ({ children, className }: PropsWithChildren & { className?: string }) => (
   <Portal>
     <Content
+      dir="inherit"
       position="popper"
       className="SelectContent overflow-hidden w-max z-dropdown bg-background border border-solid border-color-border-input rounded-lg shadow-dropdown mt-2"
     >

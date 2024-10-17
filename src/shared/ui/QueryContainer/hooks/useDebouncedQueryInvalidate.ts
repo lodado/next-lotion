@@ -1,4 +1,4 @@
-import { useDebounce } from "@/shared";
+import { useDebounce } from "@/shared/hooks";
 import { useQueryClient } from "@tanstack/react-query";
 
 const useDebouncedQueryInvalidate = ({ queryKey }: { queryKey: string }) => {
@@ -9,7 +9,7 @@ const useDebouncedQueryInvalidate = ({ queryKey }: { queryKey: string }) => {
       queryClient.invalidateQueries({ queryKey: [queryKey] });
     },
     500,
-    [queryClient, queryKey]
+    [queryKey, queryClient]
   );
 
   return { debouncedQueryInvalidate };

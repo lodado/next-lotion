@@ -14,7 +14,7 @@ export default function QueryContainer<RESPONSE, VARIABLE extends Record<string,
   errorComponent = <></>,
 }: {
   children: JSX.Element;
-  queryKey: string;
+  queryKey: string | string[];
   queryFn: (variables: VARIABLE) => Promise<RESPONSE>;
   queryOptions?: Omit<UseQueryOptions<RESPONSE, unknown, RESPONSE, any>, "queryKey" | "queryFn">;
   variables?: VARIABLE;
@@ -31,10 +31,10 @@ export default function QueryContainer<RESPONSE, VARIABLE extends Record<string,
   const response = query?.isError ? undefined : query?.data;
 
   return (
-    <>
+    <div style={{ position: "relative" }}>
       {cloneWithPropsIfAbsent(children, { response, queryKey: parsedQueryKey })}
       {query.status === "pending" && cloneWithPropsIfAbsent(loadingComponent, { queryKey: parsedQueryKey })}
       {query.status === "error" && cloneWithPropsIfAbsent(errorComponent, { queryKey: parsedQueryKey })}
-    </>
+    </div>
   );
 }

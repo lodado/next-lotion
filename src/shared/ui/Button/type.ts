@@ -20,7 +20,7 @@ export interface RawButtonProps extends ButtonElement, VariantProps<typeof rawBu
   /** Defines the button's style variant
    * @default primary
    */
-  variant: "primary" | "secondary" | "custom" | "text";
+  variant: "primary" | "secondary" | "custom" | "text" | "outline";
 
   /** Determines the size of the button, with options including 'medium', 'large', 'small' or 'custom'.
    * @default 'medium'
