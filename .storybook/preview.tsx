@@ -8,6 +8,8 @@ import ClientProvider from "../src/app/provider/ClientProvider";
 import { useDarkMode } from "storybook-dark-mode";
 import nextIntl from "./next-intl";
 
+import ThemeScript from "../src/shared/libs/CustomTheme/ui/ThemeScript";
+
 const preview: Preview = {
   initialGlobals: {
     locale: "en",
@@ -18,12 +20,7 @@ const preview: Preview = {
     },
   },
 
-  globalTypes: {
-    adsTheme: {
-      description: "Atlassian Design System theming options",
-      defaultValue: "light",
-    },
-  },
+  globalTypes: {},
 
   parameters: {
     nextIntl,
@@ -36,7 +33,15 @@ const preview: Preview = {
     },
   },
 };
- 
+
+const session = {
+  user: {
+    id: "test",
+    name: "test",
+    email: "test",
+    image: "test",
+  },
+};
 
 export const decorators = [
   (Story: any) => {
@@ -51,17 +56,9 @@ export const decorators = [
 
   (Story) => {
     return (
-      <ClientProvider
-        session={{
-          user: {
-            id: "test",
-            name: "test",
-            email: "test",
-            image: "test",
-          },
-        }}
-      >
+      <ClientProvider session={session}>
         <Story />
+        <ThemeScript nonce="1" />
       </ClientProvider>
     );
   },

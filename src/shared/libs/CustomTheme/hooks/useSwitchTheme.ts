@@ -12,7 +12,7 @@ const useSwitchTheme = () => {
     global.window.__onThemeChange = setTheme;
   }, []);
 
-  const updateTheme = (newTheme: "dark" | "light") => {
+  const updateTheme = (newTheme: "dark" | "light" | "system") => {
     if (isMounted) {
       global.window?.__setPreferredTheme(newTheme);
     }

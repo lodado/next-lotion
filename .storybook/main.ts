@@ -17,7 +17,6 @@ const config: StorybookConfig = {
   },
 
   webpackFinal: async (config) => {
-    if (config.resolve?.fallback) config.resolve.fallback = { ...config.resolve.fallback, fs: false };
     return config;
   },
 };

@@ -1,6 +1,6 @@
 "use client";
 
-type Theme = "light" | "dark";
+type Theme = "light" | "dark" | "system";
 
 declare global {
   interface Window {
@@ -13,23 +13,34 @@ declare global {
 const code = function code() {
   window.__onThemeChange = function () {};
 
-  function setTheme(newTheme: Theme) {
-    window.__theme = newTheme;
-    preferredTheme = newTheme;
-    document.documentElement.dataset.theme = newTheme;
-    document.documentElement.setAttribute("color-scheme", newTheme);
+  function applyTheme(theme: Theme) {
+    let actualTheme = theme;
+    if (theme === "system") {
+      actualTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
 
-    window.__onThemeChange(newTheme);
+    window.__theme = theme;
+    document.documentElement.dataset.theme = actualTheme;
+    document.documentElement.setAttribute("color-scheme", actualTheme);
+
+    window.__onThemeChange(theme);
   }
 
-  let preferredTheme;
+  function isValidTheme(theme: any): theme is Theme {
+    return theme === "light" || theme === "dark" || theme === "system";
+  }
+
+  let preferredTheme: Theme | null = null;
 
   try {
-    preferredTheme = localStorage.getItem("theme") as Theme;
+    const storedTheme = localStorage.getItem("theme");
+    if (isValidTheme(storedTheme)) {
+      preferredTheme = storedTheme;
+    }
   } catch (err) {}
 
   window.__setPreferredTheme = function (newTheme: Theme) {
-    setTheme(newTheme);
+    applyTheme(newTheme);
     try {
       localStorage.setItem("theme", newTheme);
     } catch (err) {}
@@ -37,11 +48,14 @@ const code = function code() {
 
   let darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
-  darkQuery.addEventListener("change", function (e) {
-    window.__setPreferredTheme(e.matches ? "dark" : "light");
+  darkQuery.addEventListener("change", function () {
+    if (window.__theme === "system") {
+      applyTheme("system");
+    }
   });
 
-  setTheme(preferredTheme || (darkQuery.matches ? "dark" : "light"));
+  // 사용자 설정이 없으면 기본적으로 "system" 모드를 적용
+  applyTheme(preferredTheme || "system");
 };
 
 /**
