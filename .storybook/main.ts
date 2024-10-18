@@ -19,5 +19,9 @@ const config: StorybookConfig = {
   webpackFinal: async (config) => {
     return config;
   },
+
+  features: {
+    experimentalRSC: true,
+  },
 };
 export default config;

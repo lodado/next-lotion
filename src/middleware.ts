@@ -24,5 +24,4 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
   matcher: ["/((?!_next/static|_next/image|.*\\.(?:png|jpg|jpeg|gif|webp|svg|js|json)$).*)"],
-  unstable_allowDynamic: ["@mui/icons-material/esm/Check.js", "@mui/icons-material/esm/KeyboardArrowDown.js"],
 };

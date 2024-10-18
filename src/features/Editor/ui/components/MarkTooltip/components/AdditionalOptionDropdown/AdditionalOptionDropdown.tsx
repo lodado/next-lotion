@@ -2,10 +2,10 @@ import React from "react";
 
 import { ICON_MARK_BUTTON_SIZE } from "@/features/Editor/constants";
 import { cn } from "@/shared";
-import Divider from "../Divider";
-import CommandTooltipContent from "../CommandTooltip/CommandTooltipContent";
+import { Ellipsis } from "lucide-react";
 
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import CommandTooltipContent from "../CommandTooltip/CommandTooltipContent";
+ 
 import { Button, Tooltip } from "@/shared/ui";
 
 const AdditionalOptionDropdown = () => {
@@ -20,7 +20,7 @@ const AdditionalOptionDropdown = () => {
             size="small"
             aria-label={"add comment"}
           >
-            <MoreHorizIcon style={{ width: `${ICON_MARK_BUTTON_SIZE}px`, height: `${ICON_MARK_BUTTON_SIZE}px` }} />
+            <Ellipsis style={{ width: `${ICON_MARK_BUTTON_SIZE}px`, height: `${ICON_MARK_BUTTON_SIZE}px` }} />
           </Button>
         </Tooltip.Trigger>
 

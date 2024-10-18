@@ -31,7 +31,7 @@ const dragButtonSlice = createSlice({
     DRAG_BUTTON_START(state, action: PayloadAction<{ x: number; y: number; targetPosition: number }>) {
       if (state.dragFlag) return;
       const { x, y, targetPosition } = action.payload;
-      state.position = { x: x, y: y - 10 };
+      state.position = { x: x + 5, y: y - 10 };
 
       state.targetPosition = targetPosition;
       state.isOpen = true;

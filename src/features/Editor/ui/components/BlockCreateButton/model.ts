@@ -23,7 +23,7 @@ const blockCreateButtonSlice = createSlice({
 
     SHOW_BLOCK_CREATE_BUTTON(state, action: PayloadAction<Position>) {
       const { y } = action.payload;
-      state.position = { x: 0, y: y - 10 };
+      state.position = { x: 5, y: y - 10 };
       state.isOpen = true;
     },
     DISAPPEAR_BLOCK_CREATE_BUTTON(state) {

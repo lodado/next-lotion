@@ -5,13 +5,7 @@ import { cn } from "@/shared";
 import { Button, IconButton, ScreenReaderOnly, Tooltip } from "@/shared/ui";
 
 
-import FormatBoldIcon from "@mui/icons-material/FormatBold";
-import FormatItalicIcon from "@mui/icons-material/FormatItalic";
-import FormatUnderlinedIcon from "@mui/icons-material/FormatUnderlined";
-import FormatStrikethroughIcon from "@mui/icons-material/FormatStrikethrough";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import LinkIcon from "@mui/icons-material/Link";
-import CodeIcon from "@mui/icons-material/Code";
+import { Bold, Italic, Underline, Strikethrough, Code, Link, ChevronDown } from "lucide-react";
 
 import { ICON_MARK_BUTTON_SIZE } from "@/features/Editor/constants";
 
@@ -25,52 +19,52 @@ const buttonData = [
   {
     label: "Bold",
     command: "Bold" as const,
-    Icon: FormatBoldIcon,
+    Icon: Bold,
     width: ICON_MARK_BUTTON_SIZE,
     height: ICON_MARK_BUTTON_SIZE,
     showCondition: true, // 항상 렌더링
-
     commandDescription: "⌘-B",
+    strokeWidth: 3.1,
   },
   {
     label: "Italic",
     command: "Italic" as const,
-    Icon: FormatItalicIcon,
+    Icon: Italic,
     width: ICON_MARK_BUTTON_SIZE,
     height: ICON_MARK_BUTTON_SIZE,
     showCondition: true, // 항상 렌더링
-
     commandDescription: "⌘-I",
+    strokeWidth: 2.2,
   },
   {
     label: "Underline",
     command: "Underline" as const,
-    Icon: FormatUnderlinedIcon,
+    Icon: Underline,
     width: ICON_MARK_BUTTON_SIZE,
     height: ICON_MARK_BUTTON_SIZE,
     showCondition: true, // 항상 렌더링
-
     commandDescription: "⌘-U",
+    strokeWidth: 2.2,
   },
   {
     label: "Strikethrough",
     command: "Strike" as const,
-    Icon: FormatStrikethroughIcon,
+    Icon: Strikethrough,
     width: ICON_MARK_BUTTON_SIZE,
     height: ICON_MARK_BUTTON_SIZE,
     showCondition: true, // 항상 렌더링
-
     commandDescription: "⌘-D",
+    strokeWidth: 2.2,
   },
   {
     label: "Code block",
     command: "InlineCodeSnippet" as const,
-    Icon: CodeIcon,
+    Icon: Code,
     width: ICON_MARK_BUTTON_SIZE,
     height: ICON_MARK_BUTTON_SIZE,
     showCondition: true, // 항상 렌더링
-
     commandDescription: "⌘-`",
+    strokeWidth: 2.2,
   },
 ] as const;
 
@@ -79,9 +73,9 @@ const MarkContainer = () => {
   const editorDispatch = useEditorDispatch();
 
   return (
-    <div className="flex items-center justify-center gap-x-1">
+    <div className="flex items-center justify-center gap-x-1 text-background-inverse">
       {buttonData.map(
-        ({ label, command, Icon, width, height, showCondition, commandDescription }, index) =>
+        ({ label, command, Icon, width, height, showCondition, commandDescription, strokeWidth }, index) =>
           showCondition && (
             <Tooltip key={label || index}>
               <Tooltip.Trigger>
@@ -92,12 +86,7 @@ const MarkContainer = () => {
                   size="small"
                   aria-label={label}
                 >
-                  <Icon
-                    style={{
-                      width: `${width}px`,
-                      height: `${height}px`,
-                    }}
-                  />
+                  <Icon strokeWidth={strokeWidth} style={{ width: `${width}px`, height: `${height}px` }} />
                 </IconButton>
               </Tooltip.Trigger>
 
@@ -118,20 +107,21 @@ const MarkContainer = () => {
                 size="custom"
                 type="button"
                 variant="text"
-                className="flex justify-center items-center p-1 disabled:opacity-1"
+                className="flex justify-center items-center p-1  disabled:opacity-1"
                 aria-label="Insert link"
                 onClick={() => {
                   editorDispatch(EDITOR_LINK_DIALOG_OPEN());
                 }}
               >
-                <svg
-                  className="relative"
+                <Link
+                  strokeWidth={2.6}
+                  className="text-background-inverse"
                   style={{ width: `${ICON_MARK_BUTTON_SIZE}px`, height: `${ICON_MARK_BUTTON_SIZE}px` }}
-                >
-                  <LinkIcon />
-                </svg>
+                />
 
-                <ExpandMoreIcon
+                <ChevronDown
+                  className="text-background-inverse"
+                  strokeWidth={2.6}
                   style={{ width: `${ICON_MARK_BUTTON_SIZE / 2}px`, height: `${ICON_MARK_BUTTON_SIZE / 2}px` }}
                 />
               </Button>
@@ -159,7 +149,8 @@ const MarkContainer = () => {
               role="presentation none"
             />
 
-            <ExpandMoreIcon
+            <ChevronDown
+              className="text-background-inverse"
               style={{ width: `${ICON_MARK_BUTTON_SIZE / 2}px`, height: `${ICON_MARK_BUTTON_SIZE / 2}px` }}
             />
 

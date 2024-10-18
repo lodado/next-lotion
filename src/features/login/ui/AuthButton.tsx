@@ -2,7 +2,7 @@
 
 import { AUTH_LOGOUT_ACTION, AuthClientRepository } from "@/entities";
 import { LogoutUseCase } from "@/entities/Auth/core";
-import { LOGIN_DIALOG_OPEN_ACTION } from "@/features";
+import { LOGIN_DIALOG_OPEN_ACTION } from "@/features/login";
 import { useDispatch, useErrorBoundary, useSelector } from "@/shared/hooks";
  
 import React from "react";

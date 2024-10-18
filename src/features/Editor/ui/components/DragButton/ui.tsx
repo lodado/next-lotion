@@ -13,8 +13,8 @@ import { useNodeDnDPlaceHolder } from "./hook";
 import { DRAG_BUTTON_SET_DRAG_FLAG } from "./model";
  
 import { useEditorDispatch, useEditorSelector } from "@/features/Editor/hooks";
+import { GripVertical } from "lucide-react";
 
-import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
 import { ICON_BUTTON_SIZE } from "@/features/Editor/constants";
 import { isRTL } from "@/features/Editor/utils";
 import { ScreenReaderOnly } from "@/shared/ui";
@@ -174,7 +174,7 @@ export const DragButton = () => {
         className="bg-transparent  text-cancel-default"
         style={{
           position: "absolute",
-          inlineSize: `${ICON_BUTTON_SIZE}px`, // width -> inline-size
+          inlineSize: `22px`, // width -> inline-size
           blockSize: `${ICON_BUTTON_SIZE}px`, // height -> block-size
           insetBlockStart: position.y,
           insetInlineStart: position.x,
@@ -183,11 +183,7 @@ export const DragButton = () => {
         onMouseDown={handleMouseDown}
       >
         <div role="none presentation" aria-hidden={false} />
-        <DragIndicatorIcon
-          style={{ fill: "var(--Color-Background-Accent-Gray-Subtlest-Pressed)" }}
-          width="20px"
-          height="20px"
-        />
+        <GripVertical className="text-color-background-accent-gray-subtlest-pressed" size={22} />
         <ScreenReaderOnly>Drag button</ScreenReaderOnly>
       </button>
 

@@ -1,12 +1,12 @@
 "use client";
 
-import AddRoundedIcon from "@mui/icons-material/AddRounded";
+import { Plus } from "lucide-react";
 import { Root } from "@radix-ui/react-portal";
 
 import React from "react";
 
 import { BlockCreateContent } from "./components/BlockCreateContent";
-  
+
 import { useEditorSelector } from "@/features/Editor/hooks";
 import { ICON_BUTTON_SIZE } from "@/features/Editor/constants";
 import { Dropdown, ScreenReaderOnly } from "@/shared/ui";
@@ -26,14 +26,15 @@ export const BlockCreateButton = () => {
           style={{
             position: "absolute",
 
-            inlineSize: `${ICON_BUTTON_SIZE}px`, // width -> inline-size
+            inlineSize: `22px`, // width -> inline-size
             blockSize: `${ICON_BUTTON_SIZE}px`, // height -> block-size
             insetBlockStart: position.y, // top -> inset-block-start
             insetInlineStart: position.x, // left -> inset-inline-start
           }}
         >
-          <AddRoundedIcon
-            style={{ fill: "var(--Color-Background-Accent-Gray-Subtlest-Pressed)" }}
+          <Plus
+            className="text-color-background-accent-gray-subtlest-pressed"
+            size={22}
             role="none presentation"
             aria-hidden={false}
           />

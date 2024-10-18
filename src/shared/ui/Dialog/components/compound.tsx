@@ -1,18 +1,9 @@
 "use client";
 
 import "../index.scss";
-import CloseIcon from "@mui/icons-material/Close";
+import { X } from "lucide-react";
 
-import React, {
-  CSSProperties,
-  Dispatch,
-  FormEvent,
-  ReactComponentElement,
-  ReactElement,
-  ReactNode,
-  useEffect,
-  useState,
-} from "react";
+import React, { CSSProperties, FormEvent, ReactNode, useEffect, useState } from "react";
 
 import { Close, Content, Overlay, Portal, Root, Trigger } from "./radix";
 import { contextBuildHelper, noop } from "@/shared";
@@ -26,7 +17,7 @@ const DialogClose = ({ className }: { className: string }) => {
   return (
     <Close asChild>
       <button className={`IconButton ${className}`} type="button" aria-label="Close">
-        <CloseIcon />
+        <X />
       </button>
     </Close>
   );

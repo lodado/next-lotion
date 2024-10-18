@@ -53,8 +53,11 @@ const request = async <T>({
     body,
     headers: requestHeaders,
     ...(!isServerSide() && isSignalRequired ? { signal: controller.signal } : {}),
+
+    /** ISA 때 이상하게 동작함 */
+    cache: "no-cache",
     ...options,
-  })
+  });
 
   if (!response.ok) throw new Error(`Failed to fetch ${response.url} ${response.status} ${response.statusText}`)
 

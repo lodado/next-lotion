@@ -15,7 +15,7 @@ const RAW_TYPOGRAPHY = {
     "box-shadow": "0px 0px 1px rgba(0, 0, 0, 0.3)",
   },
   "shadow-tooltip": {
-    "box-shadow": "var(----elevation_shadow_raised)",
+    "box-shadow": "var(--elevation_shadow_overlay)",
   },
   "shadow-float": {
     "box-shadow": "4px 8px 28px rgba(0, 0, 0, 0.1), 0px 4px 12px rgba(0, 0, 0, 0.2)",

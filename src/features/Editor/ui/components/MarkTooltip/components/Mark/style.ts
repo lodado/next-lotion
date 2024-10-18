@@ -6,8 +6,8 @@ export const MarkSelection = cva("", {
   variants: {
     markState: {
       [MARK_ALL_PRESENT]: "text-color-background-accent-blue-bolder-default", // MARK_ALL_PRESENT일 때
-      [MARK_PARTIALLY_PRESENT]: "text-color-background-accent-lime-bolder-default", // MARK_PARTIALLY_PRESENT일 때
-      [MARK_NONE_PRESENT]: "text-color-text-default", // MARK_NONE_PRESENT일 때
+      [MARK_PARTIALLY_PRESENT]: "text-background-inverse", // MARK_PARTIALLY_PRESENT일 때
+      [MARK_NONE_PRESENT]: "text-background-inverse", // MARK_NONE_PRESENT일 때
     },
   },
   defaultVariants: {

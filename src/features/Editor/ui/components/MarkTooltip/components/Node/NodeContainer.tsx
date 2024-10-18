@@ -1,25 +1,21 @@
 "use client";
 
 import React from "react";
- 
-
-import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
-import ImageIcon from "@mui/icons-material/Image";
 
 import { ICON_MARK_BUTTON_SIZE } from "@/features/Editor/constants";
 import useNodeCommand from "./useNode";
 import { IconButton } from "@/shared/ui";
 
-export const NodeContainer = () => {
-  const { isSelectionWithinNode } = useNodeCommand();
+import { List, Image } from "lucide-react";
 
+export const NodeContainer = () => {
   return (
     <div className="flex items-center gap-x-2 p-2">
       <IconButton variant="custom" size="small" aria-label="Bulleted list">
-        <FormatListBulletedIcon style={{ width: `${ICON_MARK_BUTTON_SIZE}px`, height: `${ICON_MARK_BUTTON_SIZE}px` }} />
+        <List className="text-background-inverse" size={ICON_MARK_BUTTON_SIZE} />
       </IconButton>
       <IconButton variant="custom" size="small" aria-label="Insert image">
-        <ImageIcon style={{ width: `${ICON_MARK_BUTTON_SIZE}px`, height: `${ICON_MARK_BUTTON_SIZE}px` }} />
+        <Image className="text-background-inverse" size={ICON_MARK_BUTTON_SIZE} />
       </IconButton>
     </div>
   );

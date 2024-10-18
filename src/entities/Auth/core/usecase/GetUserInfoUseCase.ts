@@ -12,4 +12,14 @@ export class GetUserInfoUseCase {
       throw mapRepositoryErrorToUseCaseError(error);
     }
   }
+
+  async isUserLogin(): Promise<boolean> {
+    try {
+      const userInfo = await this.execute();
+
+      return !!userInfo?.id;
+    } catch (error) {
+      throw mapRepositoryErrorToUseCaseError(error);
+    }
+  }
 }

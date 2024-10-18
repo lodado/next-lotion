@@ -3,8 +3,7 @@
 import { cn } from "@/shared/utils";
 import { Content, Portal, ScrollDownButton, ScrollUpButton, Viewport } from "./radix";
 
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import { ChevronUp, ChevronDown } from "lucide-react";
 import { PropsWithChildren } from "react";
 
 import "../index.scss";
@@ -17,11 +16,11 @@ const SelectContent = ({ children, className }: PropsWithChildren & { className?
       className="SelectContent overflow-hidden w-max z-dropdown bg-background border border-solid border-color-border-input rounded-lg shadow-dropdown mt-2"
     >
       <ScrollUpButton className="flex items-center justify-center h-6 bg-background-default text-color-text-default cursor-default">
-        <KeyboardArrowUpIcon />
+        <ChevronUp />
       </ScrollUpButton>
       <Viewport className={cn("p-2", className)}>{children}</Viewport>
       <ScrollDownButton className="flex items-center justify-center h-6 bg-background-default text-color-text-default cursor-default">
-        <KeyboardArrowDownIcon />
+        <ChevronDown />
       </ScrollDownButton>
     </Content>
   </Portal>

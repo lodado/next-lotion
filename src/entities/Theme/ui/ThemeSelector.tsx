@@ -2,7 +2,9 @@
 
 import { useSwitchTheme } from "@/shared";
 import React from "react";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+ 
+import { ChevronDown } from "lucide-react";
+
 import { Select } from "@/shared/ui";
 
 const ThemeSelector = () => {
@@ -10,10 +12,10 @@ const ThemeSelector = () => {
 
   return (
     <Select value={theme} defaultValue={theme} onValueChange={updateTheme}>
-      <Select.Trigger className="min-w-[10rem]">
+      <Select.Trigger className="flex min-w-[7rem] justify-between">
         <Select.Value placeholder="system" />
         <Select.Icon className="SelectIcon">
-          <ExpandMoreIcon />
+          <ChevronDown />
         </Select.Icon>
       </Select.Trigger>
       <Select.Content className="min-w-[10rem]">

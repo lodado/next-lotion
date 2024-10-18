@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import CheckIcon from "@mui/icons-material/Check";
+import { Check } from "lucide-react";
+
 import { cn } from "@/shared/utils";
 import { Item, ItemIndicator, ItemText } from "./radix";
 
@@ -24,7 +25,7 @@ const SelectItem = React.forwardRef(({ children, className, ...props }: SelectIt
   >
     <ItemText>{children}</ItemText>
     <ItemIndicator className="absolute left-0 w-6 inline-flex items-center justify-center text-color-icon-accent-green">
-      <CheckIcon />
+      <Check />
     </ItemIndicator>
   </Item>
 ));

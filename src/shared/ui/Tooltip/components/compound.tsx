@@ -3,6 +3,8 @@ import React, { HTMLAttributes, ReactNode, ComponentProps } from "react";
 import { PopperContentProps } from "@radix-ui/react-popper";
 import { Arrow, Content, Portal, Provider, Root, Trigger } from "./radix";
 
+import { cn } from "@/shared";
+
 // Define styles using class-variance-authority (cva)
 const tooltipContentStyles = cva(
   "flex z-tooltip rounded gap-spacing-3 p-2 flex-start body-03 pt-spacing-1 pb-spacing-1 pl-spacing-3 pr-spacing-3 detail-02-r shadow-tooltip",
@@ -10,7 +12,7 @@ const tooltipContentStyles = cva(
     variants: {
       variant: {
         primary: "bg-color-background-input-default text-color-text-default",
-        secondary: "bg-background-inverse text-background ",
+        secondary: "bg-color-background-brand-boldest-default  text-background ",
       },
     },
     defaultVariants: {
@@ -31,10 +33,17 @@ export const TooltipTrigger = ({ children }: { children: ReactNode }) => {
   return <Trigger asChild>{children}</Trigger>;
 };
 
-export const TooltipContent = ({ className, children, side, align, variant = "primary", ...rest }: TooltipContentProps) => {
+export const TooltipContent = ({
+  className,
+  children,
+  side,
+  align,
+  variant = "primary",
+  ...rest
+}: TooltipContentProps) => {
   return (
     <Portal>
-      <Content className={tooltipContentStyles({ variant, className })} side={side} align={align} {...rest}>
+      <Content className={cn(tooltipContentStyles({ variant }), className)} side={side} align={align} {...rest}>
         {children}
       </Content>
     </Portal>

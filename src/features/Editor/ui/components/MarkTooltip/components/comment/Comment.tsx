@@ -1,5 +1,6 @@
 import React from "react";
-import InsertCommentIcon from "@mui/icons-material/InsertComment";
+import { MessageSquareText } from "lucide-react";
+
 import { ICON_MARK_BUTTON_SIZE } from "@/features/Editor/constants";
 import { cn } from "@/shared";
 import Divider from "../Divider";
@@ -18,7 +19,7 @@ const Comment = () => {
             size="small"
             aria-label={"add comment"}
           >
-            <InsertCommentIcon style={{ width: `${ICON_MARK_BUTTON_SIZE}px`, height: `${ICON_MARK_BUTTON_SIZE}px` }} />
+            <MessageSquareText style={{ width: `${ICON_MARK_BUTTON_SIZE}px`, height: `${ICON_MARK_BUTTON_SIZE}px` }} />
             &nbsp;(0)
           </Button>
         </Tooltip.Trigger>
