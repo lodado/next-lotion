@@ -1,13 +1,14 @@
 "use client";
 
 import React from "react";
-import { IconButton } from "@/shared";
+ 
 
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import ImageIcon from "@mui/icons-material/Image";
 
 import { ICON_MARK_BUTTON_SIZE } from "@/features/Editor/constants";
 import useNodeCommand from "./useNode";
+import { IconButton } from "@/shared/ui";
 
 export const NodeContainer = () => {
   const { isSelectionWithinNode } = useNodeCommand();

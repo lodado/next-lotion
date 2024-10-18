@@ -1,5 +1,6 @@
 import { NEXT_FOLDER_LIST } from "@/app/[locale]/folderList";
-import { LANGUAGE_LIST } from "@/shared";
+import { LANGUAGE_LIST } from "@/shared/libs/i18n/lib/option";
+ 
 import { NextRequest, NextResponse } from "next/server";
 
 const HEADER_LOCALE_NAME = "X-NEXT-INTL-LOCALE";

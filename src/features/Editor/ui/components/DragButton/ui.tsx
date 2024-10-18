@@ -11,13 +11,13 @@ import { blockDnDHoverPluginDispatcher } from "../../../models/editor/plugins/hi
 import { useEditorContext } from "../../EditorProvider";
 import { useNodeDnDPlaceHolder } from "./hook";
 import { DRAG_BUTTON_SET_DRAG_FLAG } from "./model";
-
-import { ScreenReaderOnly } from "@/shared";
+ 
 import { useEditorDispatch, useEditorSelector } from "@/features/Editor/hooks";
 
 import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
 import { ICON_BUTTON_SIZE } from "@/features/Editor/constants";
 import { isRTL } from "@/features/Editor/utils";
+import { ScreenReaderOnly } from "@/shared/ui";
 
 export const DragButton = () => {
   const { view, editorState } = useEditorContext();

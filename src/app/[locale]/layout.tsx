@@ -9,9 +9,14 @@ import Head from "next/head";
 import { GlobalDialogContainer } from "@/widgets";
 import ScreenVhScript from "./ScreenVhScript";
 
-import { Inter } from "@next/font/google";
+import { Inter } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  display: "block",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
 
 /** TODO - GA 설치 */
 // import { GA } from "@/shared/lib/GA";

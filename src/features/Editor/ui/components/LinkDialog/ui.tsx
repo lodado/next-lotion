@@ -6,8 +6,8 @@ import { useTranslations } from 'next-intl';
 import { useEditorDispatch, useEditorSelector, useMarkCommand } from "@/features/Editor/hooks";
 import { AlertDialog } from "@/shared/ui/Dialog";
 import { EDITOR_LINK_DIALOG_CLOSE } from "./model";
-import { ScreenReaderOnly } from "@/shared";
-
+import { ScreenReaderOnly } from "@/shared/ui";
+ 
 const EditorLinkDialog = () => {
   const t = useTranslations("EDITORLINKDIALOG");
   const isOpen = useEditorSelector((state) => state.linkDialog.isOpen);

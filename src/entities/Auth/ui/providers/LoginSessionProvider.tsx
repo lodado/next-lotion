@@ -5,7 +5,7 @@ import React, { ReactNode, useEffect, useState } from "react";
 import { NextAuthSessionResponse } from "../../server/type";
 import { LogoutUseCase } from "../../core";
 import { AUTH_LOGOUT_ACTION, AuthClientRepository } from "../../client";
-import { useDispatch, useSelector } from "@/shared";
+import { useDispatch, useSelector } from "@/shared/hooks";
 
 const LoginSessionProvider = ({ children, session }: { children: ReactNode; session?: NextAuthSessionResponse }) => {
   const [sessionRefetchInterval, setSessionRefetchInterval] = useState(10000);

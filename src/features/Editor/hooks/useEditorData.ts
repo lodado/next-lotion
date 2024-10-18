@@ -6,7 +6,8 @@ import { EditorIndexedDBRepository } from "../models/client/repository/EditorInd
 import React, { useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { GetEditorNodeUseCase } from "../models/core/usecase/GetEditorNodeUseCase";
 import { AuthClientRepository } from "@/entities";
-import { useSelector } from "@/shared";
+import { useSelector } from "@/shared/hooks";
+ 
 
 /**
  * // TODO

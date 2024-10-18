@@ -1,3 +1,5 @@
+"use client";
+
 import { cn } from "@/shared/utils";
 import { Content, Portal, ScrollDownButton, ScrollUpButton, Viewport } from "./radix";
 

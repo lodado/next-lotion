@@ -26,7 +26,7 @@ const DialogClose = ({ className }: { className: string }) => {
   return (
     <Close asChild>
       <button className={`IconButton ${className}`} type="button" aria-label="Close">
-        <CloseIcon width="20px" height="20px" />
+        <CloseIcon />
       </button>
     </Close>
   );

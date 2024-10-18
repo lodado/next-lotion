@@ -1,4 +1,4 @@
-import { Tooltip } from "@/shared";
+import { Tooltip } from "@/shared/ui";
 import React, { PropsWithChildren } from "react";
 
 const CommandTooltipContent = ({ children }: PropsWithChildren) => {

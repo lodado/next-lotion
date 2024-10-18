@@ -9,7 +9,7 @@ import { DialogTemplate, DialogTemplateProps } from "./DialogTemplate";
 import { cn } from "@/shared";
 
 interface DialogSubmitFormProps extends Omit<SubmitFormProps, "children"> {
-  children: ReactNode;
+  children?: ReactNode;
   submitText: string;
   cancelText: string;
 }

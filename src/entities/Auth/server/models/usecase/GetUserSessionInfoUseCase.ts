@@ -1,7 +1,6 @@
-import { mapRepositoryErrorToUseCaseError } from "@/shared";
-import { UserEntity } from "../../../core";
 import { AuthServerRepository } from "../index.server";
 import { NextAuthSessionResponse } from "../../type";
+import { mapRepositoryErrorToUseCaseError } from "@/shared/constants/error/error";
 
 export class GetUserSessionInfoUseCase {
   constructor(private AuthRepository: AuthServerRepository) {}

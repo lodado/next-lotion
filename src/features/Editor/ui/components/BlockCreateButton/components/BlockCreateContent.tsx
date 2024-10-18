@@ -1,6 +1,6 @@
-import { Dropdown, Input } from "@/shared";
+import { Dropdown, Input } from "@/shared/ui";
 import React, { PropsWithChildren } from "react";
- 
+
 const BlockCreateItem = ({ children }: PropsWithChildren) => {
   return (
     <Dropdown.Item className="flex items-center justify-between body-01-r">

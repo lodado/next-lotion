@@ -1,8 +1,7 @@
 "use client";
 
 import { createReducer } from "@reduxjs/toolkit";
-
-import { useSelector } from "@/shared";
+ 
 import { LOGIN_DIALOG_CLOSE_ACTION, LOGIN_DIALOG_OPEN_ACTION } from "./action";
 
 // Define a type for the slice state

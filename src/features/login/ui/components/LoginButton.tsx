@@ -2,7 +2,9 @@ import { cva } from "class-variance-authority";
 import React, { FC, ReactNode, useEffect, useLayoutEffect, useState } from "react";
 
 import { LOGIN_METHOD } from "../../api/action/variable";
-import { Button, LocalStorageStrategy, StorageController, Tooltip, useI18n, useIsClient } from "@/shared";
+import { LocalStorageStrategy, StorageController, useI18n } from "@/shared";
+import { Button, Tooltip } from "@/shared/ui";
+import { useIsClient } from "@/shared/hooks";
 
 interface LoginButtonProps {
   value: "google" | "kakao" | "github";

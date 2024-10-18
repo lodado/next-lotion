@@ -5,8 +5,8 @@ import createIntlMiddleware from "next-intl/middleware";
 
 import { applySubDomain } from "./utils/applySubDomain";
 import { cspMiddleware } from "./cspMiddleware";
-import { i18nOption, LANGUAGE_LIST } from "@/shared";
-
+import { i18nOption } from "@/shared/libs/i18n/lib/option";
+ 
 export const runtime = "nodejs";
 
 export const i18nMiddleware = async (request: NextRequest, path: string, defaultLocale: string) => {

@@ -1,11 +1,12 @@
 import React from "react";
 
 import { ICON_MARK_BUTTON_SIZE } from "@/features/Editor/constants";
-import { Button, cn, Tooltip } from "@/shared";
+import { cn } from "@/shared";
 import Divider from "../Divider";
 import CommandTooltipContent from "../CommandTooltip/CommandTooltipContent";
 
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import { Button, Tooltip } from "@/shared/ui";
 
 const AdditionalOptionDropdown = () => {
   return (

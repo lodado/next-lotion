@@ -2,10 +2,11 @@
 
 import React from "react";
 import { LOGIN_DIALOG_CLOSE_ACTION, LOGIN_DIALOG_OPEN_ACTION } from "../../models";
-import { ScreenReaderOnly, useDispatch, useSelector } from "@/shared";
+ 
 import { AlertDialog } from "@/shared/ui/Dialog";
 import LoginForm from "./LoginForm";
 import { useTranslations } from "next-intl";
+import { useDispatch, useSelector } from "@/shared/hooks";
 
 const LoginDialogContainer = () => {
   const isOpened = useSelector((state) => state.loginDialog.isOpened);
@@ -22,7 +23,7 @@ const LoginDialogContainer = () => {
       }}
     >
       <div className="flex relative h-[12.5rem] bg-color-chart-teal-bold-default justify-center items-center mb-3">
-        <AlertDialog.Close className="absolute w-[1.5rem] h-[1.5rem] flex justify-center items-center right-[10px] top-[10px] bg-background rounded-full" />
+        <AlertDialog.Close className="absolute w-[1.5rem] h-[1.5rem] flex justify-center items-center right-[10px] top-[10px] bg-background [&>svg]:scale-[70%] rounded-full" />
       </div>
 
       <AlertDialog.Header className="p-2 px-6 h-[3rem]">

@@ -4,9 +4,9 @@ import React from "react";
 import { useFormState, useFormStatus } from "react-dom";
 
 import LoginButton from "./LoginButton";
-import { ICON_GITHUB, ICON_GOOGLE, ICON_KAKAO, useI18n } from "@/shared";
 import { authenticateAction } from "../../api";
 import { useTranslations } from "next-intl";
+import { ICON_GITHUB, ICON_GOOGLE, ICON_KAKAO } from "@/shared/ui";
 
 const LoginForm = () => {
   const t = useTranslations("LoginForm");

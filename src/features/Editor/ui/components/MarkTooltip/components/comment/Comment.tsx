@@ -1,9 +1,10 @@
 import React from "react";
 import InsertCommentIcon from "@mui/icons-material/InsertComment";
 import { ICON_MARK_BUTTON_SIZE } from "@/features/Editor/constants";
-import { Button, cn, IconButton, Tooltip } from "@/shared";
+import { cn } from "@/shared";
 import Divider from "../Divider";
 import CommandTooltipContent from "../CommandTooltip/CommandTooltipContent";
+import { Button, Tooltip } from "@/shared/ui";
 
 const Comment = () => {
   return (

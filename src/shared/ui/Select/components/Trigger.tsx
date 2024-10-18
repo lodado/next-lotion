@@ -1,3 +1,5 @@
+"use client";
+
 import { ComponentProps } from "react";
 import { Trigger } from "./radix";
 import { cn } from "@/shared/utils";

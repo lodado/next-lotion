@@ -8,7 +8,7 @@ export async function fetchDocument(id: string) {
     const editorRepository = new EditorServerRepository(id);
     const authRepository = new AuthServerRepository();
 
-    const document = await new GetEditorNodeUseCase(editorRepository, authRepository).execute({ id });
+    const document = await new GetEditorNodeUseCase(editorRepository, authRepository).execute();
     return document;
   } catch (error) {
     console.error(error);

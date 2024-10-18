@@ -1,7 +1,9 @@
 "use client";
 
 import React from "react";
-import { Button, cn, IconButton, ScreenReaderOnly, Tooltip } from "@/shared";
+import { cn } from "@/shared";
+import { Button, IconButton, ScreenReaderOnly, Tooltip } from "@/shared/ui";
+
 
 import FormatBoldIcon from "@mui/icons-material/FormatBold";
 import FormatItalicIcon from "@mui/icons-material/FormatItalic";

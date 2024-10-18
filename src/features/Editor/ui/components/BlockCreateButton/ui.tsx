@@ -6,10 +6,10 @@ import { Root } from "@radix-ui/react-portal";
 import React from "react";
 
 import { BlockCreateContent } from "./components/BlockCreateContent";
- 
-import { Dropdown, ScreenReaderOnly } from "@/shared";
+  
 import { useEditorSelector } from "@/features/Editor/hooks";
 import { ICON_BUTTON_SIZE } from "@/features/Editor/constants";
+import { Dropdown, ScreenReaderOnly } from "@/shared/ui";
 
 export const BlockCreateButton = () => {
   const isOpen = useEditorSelector((state) => state.blockCreateButton.isOpen);

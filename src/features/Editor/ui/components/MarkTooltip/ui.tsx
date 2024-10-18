@@ -3,7 +3,7 @@
 import React from "react";
 
 import { useEditorDispatch, useEditorSelector } from "@/features/Editor/hooks";
-import { Tooltip } from "@/shared";
+ 
 
 import "./index.scss";
 
@@ -11,6 +11,7 @@ import { Comment } from "./components";
 import Divider from "./components/Divider";
 import { MarkContainer, NodeContainer } from "./components";
 import AdditionalOptionDropdown from "./components/AdditionalOptionDropdown/AdditionalOptionDropdown";
+import { Tooltip } from "@/shared/ui";
 
 export const EditorMarkTooltip = () => {
   const isOpen = useEditorSelector((state) => state.markToolTip.isOpen);

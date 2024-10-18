@@ -1,18 +1,17 @@
 "use client";
 
-import { Select, useSwitchTheme } from "@/shared";
+import { useSwitchTheme } from "@/shared";
 import React from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { Select } from "@/shared/ui";
 
 const ThemeSelector = () => {
   const { isMounted, theme, updateTheme, toggleTheme } = useSwitchTheme();
 
-  console.log(theme);
-
   return (
-    <Select value={theme} onValueChange={updateTheme}>
+    <Select value={theme} defaultValue={theme} onValueChange={updateTheme}>
       <Select.Trigger className="min-w-[10rem]">
-        <Select.Value />
+        <Select.Value placeholder="system" />
         <Select.Icon className="SelectIcon">
           <ExpandMoreIcon />
         </Select.Icon>
