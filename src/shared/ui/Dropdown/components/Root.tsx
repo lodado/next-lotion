@@ -18,11 +18,11 @@ const Root = ({ children, isVisible, setVisible }: DropdownRootProps) => {
 
   return (
     <DropdownProvider isVisible={openStatus} setVisible={setOpenStatus}>
-      <RadixRoot open={openStatus} onOpenChange={setOpenStatus}>
+      <RadixRoot dir={"inherit" as any} open={openStatus} onOpenChange={setOpenStatus}>
         {children}
       </RadixRoot>
     </DropdownProvider>
-  )
+  );
 }
 
 export default Root

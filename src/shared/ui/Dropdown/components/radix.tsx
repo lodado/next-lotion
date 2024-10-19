@@ -1,1 +1,14 @@
-export { Content, Item,Root, Trigger } from '@radix-ui/react-dropdown-menu'
+"use client";
+
+export {
+  Root,
+  Trigger,
+  Content,
+  Item,
+  ItemIndicator,
+  Group,
+  Label,
+  Separator,
+  Portal,
+  Arrow,
+} from "@radix-ui/react-dropdown-menu";

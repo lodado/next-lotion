@@ -22,15 +22,14 @@ export const BlockCreateButton = () => {
       <Dropdown>
         <Dropdown.Trigger
           type="button"
-          className="bg-transparent text-cancel-default"
+          className="bg-transparent gap-0 p-0 m-0"
           style={{
             position: "absolute",
 
-            inlineSize: `22px`, // width -> inline-size
-            blockSize: `${ICON_BUTTON_SIZE}px`, // height -> block-size
             insetBlockStart: position.y, // top -> inset-block-start
             insetInlineStart: position.x, // left -> inset-inline-start
           }}
+          variant={"custom"}
         >
           <Plus
             className="text-color-background-accent-gray-subtlest-pressed"

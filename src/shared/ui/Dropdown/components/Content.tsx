@@ -1,20 +1,21 @@
+"use client";
+
 import { cn } from "@/shared/utils";
-import { Content as RadixContent, Portal } from "@radix-ui/react-dropdown-menu";
-import React, { ComponentProps } from "react";
+import { Content, Portal, Arrow } from "./radix";
 
-export interface ContentProps extends ComponentProps<typeof RadixContent> {}
+import { PropsWithChildren } from "react";
 
-const Content = ({ children, className, ...rest }: ContentProps) => {
-  return (
-    <Portal>
-      <RadixContent
-        className={cn("min-w-[17rem] p-2 flex flex-col rounded-lg shadow-dropdown gap-2 bg-background", className)}
-        {...rest}
-      >
-        {children}
-      </RadixContent>
-    </Portal>
-  );
-};
+const DropdownContent = ({ children, className }: PropsWithChildren & { className?: string }) => (
+  <Portal>
+    <Content
+      className={cn(
+        "p-2 flex flex-col text-color-text-default relative overflow-hidden w-max z-dropdown bg-background border border-solid border-color-border-input rounded-lg shadow-dropdown mt-2",
+        className
+      )}
+    >
+      {children}
+    </Content>
+  </Portal>
+);
 
-export default Content;
+export default DropdownContent;
