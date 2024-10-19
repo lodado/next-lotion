@@ -4,7 +4,7 @@ import React from "react";
 import { Check } from "lucide-react";
 
 import { cn } from "@/shared/utils";
-import { Item, ItemIndicator } from "./radix";
+import { Item } from "./radix";
 
 interface SelectItemProps extends React.ComponentPropsWithoutRef<typeof Item> {
   children: React.ReactNode;
@@ -25,9 +25,6 @@ const DropdownItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
       ref={forwardedRef}
     >
       {children}
-      <ItemIndicator className="absolute left-0 w-6 inline-flex items-center justify-center text-color-icon-accent-green">
-        <Check />
-      </ItemIndicator>
     </Item>
   )
 );

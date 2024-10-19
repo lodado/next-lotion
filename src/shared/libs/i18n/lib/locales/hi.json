@@ -13,5 +13,11 @@
     "KakaoButton": "काकाओ से साइन अप करें",
     "GoogleButton": "Google से साइन अप करें",
     "GithubButton": "GitHub से साइन अप करें"
+  },
+  "loginButton": {
+    "login": "लॉग इन करें"
+  },
+  "LogoutButton": {
+    "logout": "लॉग आउट"
   }
 }

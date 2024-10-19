@@ -13,5 +13,11 @@
     "KakaoButton": "Sign up with Kakao",
     "GoogleButton": "Sign up with Google",
     "GithubButton": "Sign up with GitHub"
+  },
+  "loginButton": {
+    "login": "Login"
+  },
+  "LogoutButton": {
+    "logout": "Logout"
   }
 }

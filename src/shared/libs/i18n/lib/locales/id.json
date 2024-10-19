@@ -13,5 +13,11 @@
     "KakaoButton": "Daftar dengan Kakao",
     "GoogleButton": "Daftar dengan Google",
     "GithubButton": "Daftar dengan GitHub"
+  },
+  "loginButton": {
+    "login": "Masuk"
+  },
+  "LogoutButton": {
+    "logout": "Keluar"
   }
 }

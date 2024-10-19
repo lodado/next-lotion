@@ -13,5 +13,11 @@
     "KakaoButton": "কাকাও দিয়ে সাইন আপ করুন",
     "GoogleButton": "গুগল দিয়ে সাইন আপ করুন",
     "GithubButton": "গিটহাব দিয়ে সাইন আপ করুন"
+  },
+  "loginButton": {
+    "login": "লগইন করুন"
+  },
+  "LogoutButton": {
+    "logout": "প্রস্থান করুন"
   }
 }

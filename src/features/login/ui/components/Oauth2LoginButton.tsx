@@ -1,3 +1,5 @@
+"use client";
+
 import { cva } from "class-variance-authority";
 import React, { FC, ReactNode, useEffect, useLayoutEffect, useState } from "react";
 
@@ -29,7 +31,7 @@ const userInfo = new StorageController<Record<string, LoginButtonProps["value"]>
   new LocalStorageStrategy("/login/userinfo")
 );
 
-const LoginButton = ({ value, children }: LoginButtonProps) => {
+const Oauth2LoginButton = ({ value, children }: LoginButtonProps) => {
   const isClient = useIsClient();
   const [{ value: lastLoginInfo }] = useState(userInfo.read() ?? { value: undefined });
   const t = useI18n("LOGIN");
@@ -77,4 +79,4 @@ const LoginButton = ({ value, children }: LoginButtonProps) => {
   );
 };
 
-export default LoginButton;
+export default Oauth2LoginButton;

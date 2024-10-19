@@ -3,7 +3,7 @@
 import React from "react";
 import { useFormState } from "react-dom";
 
-import LoginButton from "./LoginButton";
+import Oauth2LoginButton from "./Oauth2LoginButton";
 import { authenticateAction } from "../../api";
 import { useTranslations } from "next-intl";
 import { ICON_GITHUB, ICON_GOOGLE, ICON_KAKAO } from "@/shared/ui";
@@ -15,17 +15,17 @@ const LoginForm = () => {
   return (
     <div className="flex flex-col items-start gap-3 relative self-stretch w-full h-[220px] flex-[0_0_auto]">
       <form action={dispatch} className="flex flex-col w-full gap-1 space-y-3">
-        <LoginButton value="kakao">
+        <Oauth2LoginButton value="kakao">
           <ICON_KAKAO /> {t("KakaoButton")}
-        </LoginButton>
+        </Oauth2LoginButton>
 
-        <LoginButton value="google">
+        <Oauth2LoginButton value="google">
           <ICON_GOOGLE /> {t("GoogleButton")}
-        </LoginButton>
+        </Oauth2LoginButton>
 
-        <LoginButton value="github">
+        <Oauth2LoginButton value="github">
           <ICON_GITHUB /> {t("GithubButton")}
-        </LoginButton>
+        </Oauth2LoginButton>
       </form>
     </div>
   );

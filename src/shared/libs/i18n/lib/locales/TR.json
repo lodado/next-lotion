@@ -13,5 +13,11 @@
     "KakaoButton": "Kakao ile kayıt ol",
     "GoogleButton": "Google ile kayıt ol",
     "GithubButton": "GitHub ile kayıt ol"
+  },
+  "loginButton": {
+    "login": "Giriş yap"
+  },
+  "LogoutButton": {
+    "logout": "Çıkış Yap"
   }
 }

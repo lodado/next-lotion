@@ -13,5 +13,11 @@
     "KakaoButton": "Mit Kakao registrieren",
     "GoogleButton": "Mit Google registrieren",
     "GithubButton": "Mit GitHub registrieren"
+  },
+  "loginButton": {
+    "login": "Anmelden"
+  },
+  "LogoutButton": {
+    "logout": "Abmelden"
   }
 }

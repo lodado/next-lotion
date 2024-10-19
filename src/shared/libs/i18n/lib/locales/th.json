@@ -13,5 +13,11 @@
     "KakaoButton": "สมัครด้วย Kakao",
     "GoogleButton": "สมัครด้วย Google",
     "GithubButton": "สมัครด้วย GitHub"
+  },
+  "loginButton": {
+    "login": "เข้าสู่ระบบ"
+  },
+  "LogoutButton": {
+    "logout": "ออกจากระบบ"
   }
 }

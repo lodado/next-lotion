@@ -13,5 +13,11 @@
     "KakaoButton": "カカオで登録",
     "GoogleButton": "Googleで登録",
     "GithubButton": "GitHubで登録"
+  },
+  "loginButton": {
+    "login": "ログイン"
+  },
+  "LogoutButton": {
+    "logout": "ログアウト"
   }
 }

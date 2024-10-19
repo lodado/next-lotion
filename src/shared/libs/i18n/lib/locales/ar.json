@@ -13,5 +13,11 @@
     "KakaoButton": "سجّل عبر Kakao",
     "GoogleButton": "سجّل عبر Google",
     "GithubButton": "سجّل عبر GitHub"
+  },
+  "loginButton": {
+    "login": "تسجيل الدخول"
+  },
+  "LogoutButton": {
+    "logout": "تسجيل الخروج"
   }
 }

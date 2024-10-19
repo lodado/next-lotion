@@ -13,5 +13,11 @@
     "KakaoButton": "通过Kakao注册",
     "GoogleButton": "通过Google注册",
     "GithubButton": "通过GitHub注册"
+  },
+  "loginButton": {
+    "login": "登录"
+  },
+  "LogoutButton": {
+    "logout": "注销"
   }
 }

@@ -19,7 +19,7 @@ export default meta;
 type Story = StoryObj<typeof Navigation>;
 
 // 사이드바가 닫힌 상태의 스토리
-export const LoginNav = () => {
+export const LoginUserNav = () => {
   return (
     <Suspense>
       <Navigation
@@ -33,6 +33,29 @@ export const LoginNav = () => {
             }
             getUserInfo(): Promise<UserEntity | undefined> {
               return Promise.resolve(new UserEntity({ id: "test", name: "test", email: "test", image: "test" }));
+            }
+          })(),
+        }}
+      />
+    </Suspense>
+  );
+};
+
+// 사이드바가 닫힌 상태의 스토리
+export const NotLoginUserNav = () => {
+  return (
+    <Suspense>
+      <Navigation
+        {...{
+          authRepository: new (class Mock implements AuthRepositoryImpl {
+            login(): Promise<void> {
+              throw new Error("Method not implemented.");
+            }
+            logout(): Promise<void> {
+              throw new Error("Method not implemented.");
+            }
+            getUserInfo(): Promise<UserEntity | undefined> {
+              return Promise.resolve(undefined);
             }
           })(),
         }}

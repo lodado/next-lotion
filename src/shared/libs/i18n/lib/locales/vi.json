@@ -13,5 +13,11 @@
     "KakaoButton": "Đăng ký với Kakao",
     "GoogleButton": "Đăng ký với Google",
     "GithubButton": "Đăng ký với GitHub"
+  },
+  "loginButton": {
+    "login": "Đăng nhập"
+  },
+  "LogoutButton": {
+    "logout": "Đăng xuất"
   }
 }

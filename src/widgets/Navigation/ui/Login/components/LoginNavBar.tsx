@@ -1,13 +1,19 @@
 import React, { useState } from "react";
-import { Button, ScreenReaderOnly } from "@/shared/ui";
+ 
 import Link from "next/link";
 import { MobileMenuDropdown, MobileMenuToggleButton } from "./MobileMenuToggle";
 
-import ProfileSelector from "./ProfileSelector";
+import ProfileDropdown from "./ProfileSelector";
+import { AuthRepositoryImpl, GetUserInfoUseCase } from "@/entities/Auth/core";
+import { LoginButton } from "@/features";
+import { Bell } from "lucide-react";
+import { IconButton } from "@/shared/ui";
 
 const navLinks = [{ href: "/about", label: "알람" }];
 
-const LoginNavBar: React.FC = () => {
+const LoginNavBar = async ({ authRepository }: { authRepository: AuthRepositoryImpl }) => {
+  const isLogin = await new GetUserInfoUseCase(authRepository).isUserLogin();
+
   return (
     <nav className="sticky w-screen top-0 bg-background text-color-text-default shadow-md z-50">
       <div className=" mx-auto px-4 sm:px-6 lg:px-8">
@@ -21,17 +27,30 @@ const LoginNavBar: React.FC = () => {
           {/* 데스크톱 메뉴 */}
           <div className="hidden md:block">
             <div className="flex items-baseline space-x-4">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {isLogin ? (
+                <>
+                  <IconButton variant="text">
+                    <Bell />
+                  </IconButton>
 
-              <ProfileSelector />
+                  <ProfileDropdown />
+                </>
+              ) : (
+                <>
+                  <LoginButton />
+                </>
+              )}
+              {/*
+                  {navLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+              */}
             </div>
           </div>
           {/* 모바일 메뉴 버튼 */}

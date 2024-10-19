@@ -10,9 +10,11 @@ import { NavigationProvider } from "./Login/NavContext";
  *
  */
 const Navigation = async ({ authRepository }: { authRepository: AuthRepositoryImpl }) => {
-  const isLogin = await new GetUserInfoUseCase(authRepository).isUserLogin();
-
-  return <NavigationProvider>{isLogin ? <LoginNavBar /> : <></>}</NavigationProvider>;
+  return (
+    <NavigationProvider>
+      <LoginNavBar authRepository={authRepository} />
+    </NavigationProvider>
+  );
 };
 
 export default Navigation;
