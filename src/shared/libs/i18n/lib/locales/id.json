@@ -20,14 +20,10 @@
   "LogoutButton": {
     "logout": "Keluar"
   },
-  "ProfileDropdown.profil": {
-    "ProfileDropdown.profile": "الملف الشخصي"
-  },
-  "ProfileDropdown.my_blo": {
-    "ProfileDropdown.my_blog": "مدونتي"
-  },
-  "ProfileDropdown.setting": {
-    "ProfileDropdown.settings": "الإعدادات"
+  "ProfileDropdown": {
+    "profile": "Profil",
+    "my_blog": "Blog Saya",
+    "settings": "Pengaturan"
   },
   "PROFILETHEMESELECTOR": {
     "LABEL-THEME": "Tema",

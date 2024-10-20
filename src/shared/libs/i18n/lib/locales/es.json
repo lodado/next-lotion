@@ -20,14 +20,10 @@
   "LogoutButton": {
     "logout": "Cerrar sesión"
   },
-  "ProfileDropdown.profil": {
-    "ProfileDropdown.profile": "Perfil"
-  },
-  "ProfileDropdown.my_blo": {
-    "ProfileDropdown.my_blog": "Meu Blog"
-  },
-  "ProfileDropdown.setting": {
-    "ProfileDropdown.settings": "Configurações"
+  "ProfileDropdown": {
+    "profile": "Perfil",
+    "my_blog": "Mi Blog",
+    "settings": "Configuración"
   },
   "PROFILETHEMESELECTOR": {
     "LABEL-THEME": "Tema",

@@ -20,14 +20,10 @@
   "LogoutButton": {
     "logout": "Đăng xuất"
   },
-  "ProfileDropdown.profil": {
-    "ProfileDropdown.profile": "Profiel"
-  },
-  "ProfileDropdown.my_blo": {
-    "ProfileDropdown.my_blog": "Mijn Blog"
-  },
-  "ProfileDropdown.setting": {
-    "ProfileDropdown.settings": "Instellingen"
+  "ProfileDropdown": {
+    "profile": "Hồ sơ",
+    "my_blog": "Blog của tôi",
+    "settings": "Cài đặt"
   },
   "PROFILETHEMESELECTOR": {
     "LABEL-THEME": "Chủ đề",

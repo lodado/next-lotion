@@ -20,14 +20,10 @@
   "LogoutButton": {
     "logout": "প্রস্থান করুন"
   },
-  "ProfileDropdown.profil": {
-    "ProfileDropdown.profile": "个人资料"
-  },
-  "ProfileDropdown.my_blo": {
-    "ProfileDropdown.my_blog": "我的博客"
-  },
-  "ProfileDropdown.setting": {
-    "ProfileDropdown.settings": "设置"
+  "ProfileDropdown": {
+    "profile": "প্রোফাইল",
+    "my_blog": "আমার ব্লগ",
+    "settings": "সেটিংস"
   },
   "PROFILETHEMESELECTOR": {
     "LABEL-THEME": "থিম",

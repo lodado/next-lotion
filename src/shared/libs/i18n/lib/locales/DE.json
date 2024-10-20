@@ -20,14 +20,10 @@
   "LogoutButton": {
     "logout": "Abmelden"
   },
-  "ProfileDropdown.profil": {
-    "ProfileDropdown.profile": "Profiili"
-  },
-  "ProfileDropdown.my_blo": {
-    "ProfileDropdown.my_blog": "Blogini"
-  },
-  "ProfileDropdown.setting": {
-    "ProfileDropdown.settings": "Asetukset"
+  "ProfileDropdown": {
+    "profile": "Profil",
+    "my_blog": "Mein Blog",
+    "settings": "Einstellungen"
   },
   "PROFILETHEMESELECTOR": {
     "LABEL-THEME": "Thema",

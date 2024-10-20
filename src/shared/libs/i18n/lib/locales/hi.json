@@ -20,14 +20,10 @@
   "LogoutButton": {
     "logout": "लॉग आउट"
   },
-  "ProfileDropdown.profil": {
-    "ProfileDropdown.profile": "Profil"
-  },
-  "ProfileDropdown.my_blo": {
-    "ProfileDropdown.my_blog": "Mein Blog"
-  },
-  "ProfileDropdown.setting": {
-    "ProfileDropdown.settings": "Einstellungen"
+  "ProfileDropdown": {
+    "profile": "प्रोफ़ाइल",
+    "my_blog": "मेरा ब्लॉग",
+    "settings": "सेटिंग्स"
   },
   "PROFILETHEMESELECTOR": {
     "LABEL-THEME": "थीम",

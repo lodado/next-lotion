@@ -20,14 +20,10 @@
   "LogoutButton": {
     "logout": "Disconnetti"
   },
-  "ProfileDropdown.profil": {
-    "ProfileDropdown.profile": "Profil"
-  },
-  "ProfileDropdown.my_blo": {
-    "ProfileDropdown.my_blog": "Blogum"
-  },
-  "ProfileDropdown.setting": {
-    "ProfileDropdown.settings": "Ayarlar"
+  "ProfileDropdown": {
+    "profile": "Profilo",
+    "my_blog": "Il Mio Blog",
+    "settings": "Impostazioni"
   },
   "PROFILETHEMESELECTOR": {
     "LABEL-THEME": "Tema",

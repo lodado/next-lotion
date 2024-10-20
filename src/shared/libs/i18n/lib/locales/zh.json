@@ -20,14 +20,10 @@
   "LogoutButton": {
     "logout": "注销"
   },
-  "ProfileDropdown.profil": {
-    "ProfileDropdown.profile": "Perfil"
-  },
-  "ProfileDropdown.my_blo": {
-    "ProfileDropdown.my_blog": "Mi Blog"
-  },
-  "ProfileDropdown.setting": {
-    "ProfileDropdown.settings": "Configuración"
+  "ProfileDropdown": {
+    "profile": "个人资料",
+    "my_blog": "我的博客",
+    "settings": "设置"
   },
   "PROFILETHEMESELECTOR": {
     "LABEL-THEME": "主题",

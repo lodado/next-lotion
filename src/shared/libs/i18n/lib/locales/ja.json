@@ -20,14 +20,10 @@
   "LogoutButton": {
     "logout": "ログアウト"
   },
-  "ProfileDropdown.profil": {
-    "ProfileDropdown.profile": "Profil"
-  },
-  "ProfileDropdown.my_blo": {
-    "ProfileDropdown.my_blog": "Mon Blog"
-  },
-  "ProfileDropdown.setting": {
-    "ProfileDropdown.settings": "Paramètres"
+  "ProfileDropdown": {
+    "profile": "プロフィール",
+    "my_blog": "私のブログ",
+    "settings": "設定"
   },
   "PROFILETHEMESELECTOR": {
     "LABEL-THEME": "テーマ",

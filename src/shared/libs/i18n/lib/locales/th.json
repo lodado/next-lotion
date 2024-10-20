@@ -20,14 +20,10 @@
   "LogoutButton": {
     "logout": "ออกจากระบบ"
   },
-  "ProfileDropdown.profil": {
-    "ProfileDropdown.profile": "Profil"
-  },
-  "ProfileDropdown.my_blo": {
-    "ProfileDropdown.my_blog": "Min Blogg"
-  },
-  "ProfileDropdown.setting": {
-    "ProfileDropdown.settings": "Inställningar"
+  "ProfileDropdown": {
+    "profile": "โปรไฟล์",
+    "my_blog": "บล็อกของฉัน",
+    "settings": "การตั้งค่า"
   },
   "PROFILETHEMESELECTOR": {
     "LABEL-THEME": "ธีม",

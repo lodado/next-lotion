@@ -20,14 +20,10 @@
   "LogoutButton": {
     "logout": "로그아웃"
   },
-  "ProfileDropdown.profil": {
-    "ProfileDropdown.profile": "프로필"
-  },
-  "ProfileDropdown.my_blo": {
-    "ProfileDropdown.my_blog": "내 블로그"
-  },
-  "ProfileDropdown.setting": {
-    "ProfileDropdown.settings": "설정"
+  "ProfileDropdown": {
+    "profile": "프로필",
+    "my_blog": "내 블로그",
+    "settings": "설정"
   },
   "PROFILETHEMESELECTOR": {
     "LABEL-THEME": "테마",

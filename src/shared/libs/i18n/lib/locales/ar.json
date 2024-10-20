@@ -20,14 +20,10 @@
   "LogoutButton": {
     "logout": "تسجيل الخروج"
   },
-  "ProfileDropdown.profil": {
-    "ProfileDropdown.profile": "Профиль"
-  },
-  "ProfileDropdown.my_blo": {
-    "ProfileDropdown.my_blog": "Мой блог"
-  },
-  "ProfileDropdown.setting": {
-    "ProfileDropdown.settings": "Настройки"
+  "ProfileDropdown": {
+    "profile": "الملف الشخصي",
+    "my_blog": "مدونتي",
+    "settings": "الإعدادات"
   },
   "PROFILETHEMESELECTOR": {
     "LABEL-THEME": "السمة",
