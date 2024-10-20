@@ -19,7 +19,7 @@ const ProfileDropdown = () => {
     <Dropdown>
       <Dropdown.Trigger
         variant="custom"
-        className="cursor-pointer flex w-[36px] h-[36px] justify-center items-center px-0 marker: m-2"
+        className="cursor-pointer flex w-[36px] h-[36px] justify-center items-center px-0 m-2"
       >
         <UserProfile src={user.image ?? ""} width={36} height={36} alt="user profile" />
       </Dropdown.Trigger>
@@ -34,11 +34,11 @@ const ProfileDropdown = () => {
           </div>
         </div>
 
-        <Dropdown.Separator className="my-2" />
+        <Dropdown.Separator className="my-0.5" />
 
         <ProfileThemeSelector />
 
-        <Dropdown.Separator className="my-2" />
+        <Dropdown.Separator className="my-0.5" />
 
         <div className="flex flex-col py-2 gap-y-2">
           <Link href="/blog">

@@ -8,7 +8,7 @@ import { AuthRepositoryImpl, GetUserInfoUseCase } from "@/entities/Auth/core";
 import { LoginButton } from "@/features";
 import { Bell } from "lucide-react";
 import { IconButton } from "@/shared/ui";
-import { Logo } from "../../Logo";
+import { Logo } from "./Logo";
 
 const navLinks = [{ href: "/about", label: "알람" }];
 
