@@ -19,5 +19,20 @@
   },
   "LogoutButton": {
     "logout": "लॉग आउट"
+  },
+  "ProfileDropdown.profil": {
+    "ProfileDropdown.profile": "Profil"
+  },
+  "ProfileDropdown.my_blo": {
+    "ProfileDropdown.my_blog": "Mein Blog"
+  },
+  "ProfileDropdown.setting": {
+    "ProfileDropdown.settings": "Einstellungen"
+  },
+  "PROFILETHEMESELECTOR": {
+    "LABEL-THEME": "थीम",
+    "ITEM-SYSTEM": "सिस्टम",
+    "ITEM-DARK": "डार्क",
+    "ITEM-LIGHT": "लाइट"
   }
 }

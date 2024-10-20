@@ -19,5 +19,20 @@
   },
   "LogoutButton": {
     "logout": "Đăng xuất"
+  },
+  "ProfileDropdown.profil": {
+    "ProfileDropdown.profile": "Profiel"
+  },
+  "ProfileDropdown.my_blo": {
+    "ProfileDropdown.my_blog": "Mijn Blog"
+  },
+  "ProfileDropdown.setting": {
+    "ProfileDropdown.settings": "Instellingen"
+  },
+  "PROFILETHEMESELECTOR": {
+    "LABEL-THEME": "Chủ đề",
+    "ITEM-SYSTEM": "hệ thống",
+    "ITEM-DARK": "tối",
+    "ITEM-LIGHT": "sáng"
   }
 }

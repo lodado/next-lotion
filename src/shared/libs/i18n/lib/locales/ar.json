@@ -19,5 +19,20 @@
   },
   "LogoutButton": {
     "logout": "تسجيل الخروج"
+  },
+  "ProfileDropdown.profil": {
+    "ProfileDropdown.profile": "Профиль"
+  },
+  "ProfileDropdown.my_blo": {
+    "ProfileDropdown.my_blog": "Мой блог"
+  },
+  "ProfileDropdown.setting": {
+    "ProfileDropdown.settings": "Настройки"
+  },
+  "PROFILETHEMESELECTOR": {
+    "LABEL-THEME": "السمة",
+    "ITEM-SYSTEM": "النظام",
+    "ITEM-DARK": "داكن",
+    "ITEM-LIGHT": "فاتح"
   }
 }

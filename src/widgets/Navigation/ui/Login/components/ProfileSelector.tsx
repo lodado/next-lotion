@@ -7,13 +7,19 @@ import { LogoutButton } from "@/features";
 import { useSelector } from "@/shared/hooks";
 import { User, Settings } from "lucide-react";
 
+import ProfileThemeSelector from "./ProfileThemeSelector";
+import { useTranslations } from "next-intl";
+
 const ProfileDropdown = () => {
+  const t = useTranslations("ProfileDropdown");
   const user = useSelector((state) => state.auth.user);
 
   return (
     <Dropdown>
-      <Dropdown.Trigger variant="text" className="flex min-w-[5rem] justify-center items-center p-0 m-0">
-        프로필
+      <Dropdown.Trigger onClick={( )=> {
+        console.log('click')
+      }} variant="text" className="flex min-w-[5rem] justify-center items-center p-0 m-0">
+        {t("profile")}
       </Dropdown.Trigger>
       <Dropdown.Content className="w-64 py-3 mr-5">
         <div className="p-2 bg-background">
@@ -30,16 +36,20 @@ const ProfileDropdown = () => {
 
         <Dropdown.Separator className="my-2" />
 
+        <ProfileThemeSelector />
+
+        <Dropdown.Separator className="my-2" />
+
         <div className="flex flex-col py-2 gap-y-2">
           <Link href="/blog">
             <Dropdown.Item className="flex items-center justify-start w-full px-4 py-2 gap-2">
               <User className="" size={22} />
-              <span className="heading-03">내 블로그</span>
+              <span className="heading-03">{t("my_blog")}</span>
             </Dropdown.Item>
           </Link>
           <Dropdown.Item className="flex items-center justify-start px-4 py-2 gap-2">
             <Settings className="" size={22} />
-            <span className="heading-03">설정</span>
+            <span className="heading-03">{t("settings")}</span>
           </Dropdown.Item>
         </div>
 

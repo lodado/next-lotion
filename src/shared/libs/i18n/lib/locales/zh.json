@@ -19,5 +19,20 @@
   },
   "LogoutButton": {
     "logout": "注销"
+  },
+  "ProfileDropdown.profil": {
+    "ProfileDropdown.profile": "Perfil"
+  },
+  "ProfileDropdown.my_blo": {
+    "ProfileDropdown.my_blog": "Mi Blog"
+  },
+  "ProfileDropdown.setting": {
+    "ProfileDropdown.settings": "Configuración"
+  },
+  "PROFILETHEMESELECTOR": {
+    "LABEL-THEME": "主题",
+    "ITEM-SYSTEM": "系统",
+    "ITEM-DARK": "暗黑",
+    "ITEM-LIGHT": "明亮"
   }
 }

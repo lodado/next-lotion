@@ -19,5 +19,20 @@
   },
   "LogoutButton": {
     "logout": "ログアウト"
+  },
+  "ProfileDropdown.profil": {
+    "ProfileDropdown.profile": "Profil"
+  },
+  "ProfileDropdown.my_blo": {
+    "ProfileDropdown.my_blog": "Mon Blog"
+  },
+  "ProfileDropdown.setting": {
+    "ProfileDropdown.settings": "Paramètres"
+  },
+  "PROFILETHEMESELECTOR": {
+    "LABEL-THEME": "テーマ",
+    "ITEM-SYSTEM": "システム",
+    "ITEM-DARK": "ダーク",
+    "ITEM-LIGHT": "ライト"
   }
 }

@@ -19,5 +19,20 @@
   },
   "LogoutButton": {
     "logout": "Cerrar sesión"
+  },
+  "ProfileDropdown.profil": {
+    "ProfileDropdown.profile": "Perfil"
+  },
+  "ProfileDropdown.my_blo": {
+    "ProfileDropdown.my_blog": "Meu Blog"
+  },
+  "ProfileDropdown.setting": {
+    "ProfileDropdown.settings": "Configurações"
+  },
+  "PROFILETHEMESELECTOR": {
+    "LABEL-THEME": "Tema",
+    "ITEM-SYSTEM": "sistema",
+    "ITEM-DARK": "oscuro",
+    "ITEM-LIGHT": "claro"
   }
 }

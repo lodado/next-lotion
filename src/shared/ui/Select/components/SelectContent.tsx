@@ -4,16 +4,30 @@ import { cn } from "@/shared/utils";
 import { Content, Portal, ScrollDownButton, ScrollUpButton, Viewport } from "./radix";
 
 import { ChevronUp, ChevronDown } from "lucide-react";
-import { PropsWithChildren } from "react";
+import { ComponentProps, PropsWithChildren } from "react";
 
 import "../index.scss";
 
-const SelectContent = ({ children, className }: PropsWithChildren & { className?: string }) => (
+function preventEventPropagation(event) {
+  event.stopPropagation();
+}
+
+const SelectContent = ({
+  children,
+  className,
+  contentClassName,
+  ...rest
+}: PropsWithChildren & ComponentProps<typeof Content> & { contentClassName?: string; className?: string }) => (
   <Portal>
     <Content
       dir="inherit"
       position="popper"
-      className="SelectContent overflow-hidden w-max z-dropdown bg-background border border-solid border-color-border-input rounded-lg shadow-dropdown mt-2"
+      onCloseAutoFocus={preventEventPropagation}
+      className={cn(
+        `SelectContent overflow-hidden w-max z-dropdown bg-background border border-solid border-color-border-input rounded-lg shadow-dropdown mt-2`,
+        contentClassName
+      )}
+      {...rest}
     >
       <ScrollUpButton className="flex items-center justify-center h-6 bg-background-default text-color-text-default cursor-default">
         <ChevronUp />

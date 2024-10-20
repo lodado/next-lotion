@@ -19,5 +19,20 @@
   },
   "LogoutButton": {
     "logout": "Выйти"
+  },
+  "ProfileDropdown.profil": {
+    "ProfileDropdown.profile": "Profil"
+  },
+  "ProfileDropdown.my_blo": {
+    "ProfileDropdown.my_blog": "Min Blog"
+  },
+  "ProfileDropdown.setting": {
+    "ProfileDropdown.settings": "Indstillinger"
+  },
+  "PROFILETHEMESELECTOR": {
+    "LABEL-THEME": "Тема",
+    "ITEM-SYSTEM": "система",
+    "ITEM-DARK": "темный",
+    "ITEM-LIGHT": "светлый"
   }
 }

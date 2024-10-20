@@ -1,9 +1,10 @@
 import React, { ComponentProps, PropsWithChildren } from 'react'
 
-import { Content, Item, Root, Trigger } from './components'
-import { DropdownRootProps } from './components/Root'
+import { Content, Item, Root, Sub } from "./components";
+import { DropdownRootProps } from "./components/Root";
 import DropdownSeparator from "./components/Separator";
 import DropdownLabel from "./components/Label";
+import DropdownTrigger, { DropdownSubTrigger } from "./components/Trigger";
 
 export interface DropdownProps extends PropsWithChildren, DropdownRootProps {}
 
@@ -12,13 +13,15 @@ const Dropdown = ({ children, isVisible, setVisible }: DropdownProps) => {
     <Root isVisible={isVisible} setVisible={setVisible}>
       {children}
     </Root>
-  )
-}
+  );
+};
 
-Dropdown.Trigger = Trigger
-Dropdown.Content = Content
-Dropdown.Item = Item
+Dropdown.Trigger = DropdownTrigger;
+Dropdown.Content = Content;
+Dropdown.Item = Item;
 Dropdown.Separator = DropdownSeparator;
 Dropdown.Label = DropdownLabel;
+Dropdown.SubTrigger = DropdownSubTrigger;
+Dropdown.Sub = Sub;
 
 export default Dropdown

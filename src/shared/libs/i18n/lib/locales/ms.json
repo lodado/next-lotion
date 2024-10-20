@@ -19,5 +19,20 @@
   },
   "LogoutButton": {
     "logout": "Log keluar"
+  },
+  "ProfileDropdown.profil": {
+    "ProfileDropdown.profile": "Profil"
+  },
+  "ProfileDropdown.my_blo": {
+    "ProfileDropdown.my_blog": "Min Blogg"
+  },
+  "ProfileDropdown.setting": {
+    "ProfileDropdown.settings": "Innstillinger"
+  },
+  "PROFILETHEMESELECTOR": {
+    "LABEL-THEME": "Tema",
+    "ITEM-SYSTEM": "sistem",
+    "ITEM-DARK": "gelap",
+    "ITEM-LIGHT": "terang"
   }
 }

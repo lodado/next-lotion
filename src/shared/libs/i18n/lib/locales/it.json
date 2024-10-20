@@ -19,5 +19,20 @@
   },
   "LogoutButton": {
     "logout": "Disconnetti"
+  },
+  "ProfileDropdown.profil": {
+    "ProfileDropdown.profile": "Profil"
+  },
+  "ProfileDropdown.my_blo": {
+    "ProfileDropdown.my_blog": "Blogum"
+  },
+  "ProfileDropdown.setting": {
+    "ProfileDropdown.settings": "Ayarlar"
+  },
+  "PROFILETHEMESELECTOR": {
+    "LABEL-THEME": "Tema",
+    "ITEM-SYSTEM": "sistema",
+    "ITEM-DARK": "scuro",
+    "ITEM-LIGHT": "chiaro"
   }
 }

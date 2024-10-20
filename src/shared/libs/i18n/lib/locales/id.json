@@ -19,5 +19,20 @@
   },
   "LogoutButton": {
     "logout": "Keluar"
+  },
+  "ProfileDropdown.profil": {
+    "ProfileDropdown.profile": "الملف الشخصي"
+  },
+  "ProfileDropdown.my_blo": {
+    "ProfileDropdown.my_blog": "مدونتي"
+  },
+  "ProfileDropdown.setting": {
+    "ProfileDropdown.settings": "الإعدادات"
+  },
+  "PROFILETHEMESELECTOR": {
+    "LABEL-THEME": "Tema",
+    "ITEM-SYSTEM": "sistem",
+    "ITEM-DARK": "gelap",
+    "ITEM-LIGHT": "terang"
   }
 }

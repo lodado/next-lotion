@@ -29,6 +29,17 @@ export const DropdownExample: Story = {
             <Dropdown.Item>Item 1</Dropdown.Item>
             <Dropdown.Item>Item 2</Dropdown.Item>
             <Dropdown.Item>Item 3</Dropdown.Item>
+
+            <Dropdown.Sub>
+              <Dropdown.SubTrigger asChild>
+                <Dropdown.Item>Item 4</Dropdown.Item>
+              </Dropdown.SubTrigger>
+              <Dropdown.Content isSub>
+                <Dropdown.Item>Item 1</Dropdown.Item>
+                <Dropdown.Item>Item 2</Dropdown.Item>
+                <Dropdown.Item>Item 3</Dropdown.Item>
+              </Dropdown.Content>
+            </Dropdown.Sub>
           </Dropdown.Content>
         </Dropdown>
       </>

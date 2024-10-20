@@ -19,5 +19,20 @@
   },
   "LogoutButton": {
     "logout": "ออกจากระบบ"
+  },
+  "ProfileDropdown.profil": {
+    "ProfileDropdown.profile": "Profil"
+  },
+  "ProfileDropdown.my_blo": {
+    "ProfileDropdown.my_blog": "Min Blogg"
+  },
+  "ProfileDropdown.setting": {
+    "ProfileDropdown.settings": "Inställningar"
+  },
+  "PROFILETHEMESELECTOR": {
+    "LABEL-THEME": "ธีม",
+    "ITEM-SYSTEM": "ระบบ",
+    "ITEM-DARK": "มืด",
+    "ITEM-LIGHT": "สว่าง"
   }
 }

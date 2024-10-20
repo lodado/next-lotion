@@ -19,5 +19,20 @@
   },
   "LogoutButton": {
     "logout": "Sair"
+  },
+  "ProfileDropdown.profil": {
+    "ProfileDropdown.profile": "プロフィール"
+  },
+  "ProfileDropdown.my_blo": {
+    "ProfileDropdown.my_blog": "私のブログ"
+  },
+  "ProfileDropdown.setting": {
+    "ProfileDropdown.settings": "設定"
+  },
+  "PROFILETHEMESELECTOR": {
+    "LABEL-THEME": "Tema",
+    "ITEM-SYSTEM": "sistema",
+    "ITEM-DARK": "escuro",
+    "ITEM-LIGHT": "claro"
   }
 }

@@ -19,5 +19,20 @@
   },
   "LogoutButton": {
     "logout": "প্রস্থান করুন"
+  },
+  "ProfileDropdown.profil": {
+    "ProfileDropdown.profile": "个人资料"
+  },
+  "ProfileDropdown.my_blo": {
+    "ProfileDropdown.my_blog": "我的博客"
+  },
+  "ProfileDropdown.setting": {
+    "ProfileDropdown.settings": "设置"
+  },
+  "PROFILETHEMESELECTOR": {
+    "LABEL-THEME": "থিম",
+    "ITEM-SYSTEM": "সিস্টেম",
+    "ITEM-DARK": "ডার্ক",
+    "ITEM-LIGHT": "লাইট"
   }
 }

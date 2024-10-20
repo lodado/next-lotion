@@ -19,5 +19,20 @@
   },
   "LogoutButton": {
     "logout": "Abmelden"
+  },
+  "ProfileDropdown.profil": {
+    "ProfileDropdown.profile": "Profiili"
+  },
+  "ProfileDropdown.my_blo": {
+    "ProfileDropdown.my_blog": "Blogini"
+  },
+  "ProfileDropdown.setting": {
+    "ProfileDropdown.settings": "Asetukset"
+  },
+  "PROFILETHEMESELECTOR": {
+    "LABEL-THEME": "Thema",
+    "ITEM-SYSTEM": "System",
+    "ITEM-DARK": "dunkel",
+    "ITEM-LIGHT": "hell"
   }
 }

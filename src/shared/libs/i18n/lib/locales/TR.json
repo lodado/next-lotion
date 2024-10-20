@@ -19,5 +19,20 @@
   },
   "LogoutButton": {
     "logout": "Çıkış Yap"
+  },
+  "ProfileDropdown.profil": {
+    "ProfileDropdown.profile": "Profil"
+  },
+  "ProfileDropdown.my_blo": {
+    "ProfileDropdown.my_blog": "Mój Blog"
+  },
+  "ProfileDropdown.setting": {
+    "ProfileDropdown.settings": "Ustawienia"
+  },
+  "PROFILETHEMESELECTOR": {
+    "LABEL-THEME": "Tema",
+    "ITEM-SYSTEM": "sistem",
+    "ITEM-DARK": "karanlık",
+    "ITEM-LIGHT": "aydınlık"
   }
 }

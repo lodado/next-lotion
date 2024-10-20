@@ -12,13 +12,13 @@ const ThemeSelector = () => {
 
   return (
     <Select value={theme} defaultValue={theme} onValueChange={updateTheme}>
-      <Select.Trigger className="flex min-w-[7rem] justify-between">
+      <Select.Trigger className="flex justify-between">
         <Select.Value placeholder="system" />
         <Select.Icon className="SelectIcon">
           <ChevronDown />
         </Select.Icon>
       </Select.Trigger>
-      <Select.Content className="min-w-[10rem]">
+      <Select.Content side="left" align="end" className="min-w-[10rem]">
         <Select.Group>
           <Select.Label>Select Theme</Select.Label>
           <Select.Item value="system">system</Select.Item>
