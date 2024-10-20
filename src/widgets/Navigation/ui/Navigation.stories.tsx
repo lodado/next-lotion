@@ -32,7 +32,9 @@ export const LoginUserNav = () => {
               throw new Error("Method not implemented.");
             }
             getUserInfo(): Promise<UserEntity | undefined> {
-              return Promise.resolve(new UserEntity({ id: "test", name: "test", email: "test", image: "test" }));
+              return Promise.resolve(
+                new UserEntity({ id: "test", name: "test", email: "test", image: "https://picsum.photos/200" })
+              );
             }
           })(),
         }}

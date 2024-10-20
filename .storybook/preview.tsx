@@ -39,7 +39,7 @@ const session = {
     id: "test",
     name: "test",
     email: "test",
-    image: "test",
+    image: "https://picsum.photos/200",
   },
 };
 

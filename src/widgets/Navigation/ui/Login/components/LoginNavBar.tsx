@@ -25,8 +25,8 @@ const LoginNavBar = async ({ authRepository }: { authRepository: AuthRepositoryI
             </span>
           </div>
           {/* 데스크톱 메뉴 */}
-          <div className="hidden md:block">
-            <div className="flex items-baseline space-x-4">
+          <div className="block">
+            <div className="flex items-center space-x-4">
               {isLogin ? (
                 <>
                   <IconButton variant="text">
@@ -53,12 +53,12 @@ const LoginNavBar = async ({ authRepository }: { authRepository: AuthRepositoryI
               */}
             </div>
           </div>
-          {/* 모바일 메뉴 버튼 */}
-          <MobileMenuToggleButton />
+          {/* 모바일 메뉴 버튼, 반응형 지원시 고려해볼것 */}
+          {/* <MobileMenuToggleButton /> */}
         </div>
       </div>
-      {/* 모바일 메뉴 */}
-      <MobileMenuDropdown navLinks={navLinks} />
+      {/* 모바일 메뉴, 반응형 지원시 고려해볼것 */}
+      {/* <MobileMenuDropdown navLinks={navLinks} /> */}
     </nav>
   );
 };

@@ -9,6 +9,7 @@ import { User, Settings } from "lucide-react";
 
 import ProfileThemeSelector from "./ProfileThemeSelector";
 import { useTranslations } from "next-intl";
+import { UserProfile } from "@/features/Settings";
 
 const ProfileDropdown = () => {
   const t = useTranslations("ProfileDropdown");
@@ -16,17 +17,16 @@ const ProfileDropdown = () => {
 
   return (
     <Dropdown>
-      <Dropdown.Trigger onClick={( )=> {
-        console.log('click')
-      }} variant="text" className="flex min-w-[5rem] justify-center items-center p-0 m-0">
-        {t("profile")}
+      <Dropdown.Trigger
+        variant="custom"
+        className="cursor-pointer flex w-[36px] h-[36px] justify-center items-center p-0 m-2"
+      >
+        <UserProfile src={user.image ?? ""} width={36} height={36} alt="user profile" />
       </Dropdown.Trigger>
       <Dropdown.Content className="w-64 py-3 mr-5">
         <div className="p-2 bg-background">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 border border-solid border-color-icon-disabled bg-background rounded-full flex items-center justify-center">
-              <User className="w-6 h-6 text-color-text-disabled" />
-            </div>
+            <UserProfile src={user.image ?? ""} width={48} height={48} alt="user profile" />
             <div>
               <p className="heading-03 text-color-text-default">{user?.name ?? ""}</p>
               <p className="body-02 text-color-text-default opacity-70">{user?.email ?? ""}</p>

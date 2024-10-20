@@ -7,3 +7,4 @@ export * from "./Input";
 export * from "./Form";
 export * from "./QueryContainer";
 export * from "./Select";
+export * from './Image'
