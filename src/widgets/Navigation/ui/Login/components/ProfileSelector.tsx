@@ -38,7 +38,7 @@ const ProfileDropdown = () => {
 
         <ProfileThemeSelector />
 
-        <Dropdown.Separator className="my-0.5" />
+        <Dropdown.Separator className="my-2" />
 
         <div className="flex flex-col py-2 gap-y-2">
           <Link href="/blog">

@@ -17,7 +17,7 @@ const ProfileThemeDropdown = () => {
     <Dropdown>
       <Dropdown.Trigger
         variant="custom"
-        className="h-[2rem] body-02 outline-0 flex flex-col px-0 py-2 gap-y-2 mb-3 w-full border-0 text-inherit"
+        className="h-[2rem] body-02 outline-0 flex flex-col px-0 py-2 gap-y-2 mb-2 w-full border-0 text-inherit"
       >
         <Dropdown.Item className="h-[2rem] flex items-center justify-between w-full px-2 py-2 gap-2">
           <span className="body-02 flex flex-row items-center 10 gap-2">
