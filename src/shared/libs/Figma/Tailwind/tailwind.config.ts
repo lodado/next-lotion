@@ -105,6 +105,9 @@ export default {
     plugin(function ({ addComponents }: any) {
       addComponents({ ...TYPOGRAPHY });
     }),
+    function ({ addVariant }: any) {
+      addVariant("data-[state=open]", '&[data-state="open"]');
+    },
     ...tailwindLogicalPropertiesPlugins,
   ],
 };

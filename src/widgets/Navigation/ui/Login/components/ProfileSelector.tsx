@@ -19,16 +19,16 @@ const ProfileDropdown = () => {
     <Dropdown>
       <Dropdown.Trigger
         variant="custom"
-        className="cursor-pointer flex w-[36px] h-[36px] justify-center items-center p-0 m-2"
+        className="cursor-pointer flex w-[36px] h-[36px] justify-center items-center px-0 marker: m-2"
       >
         <UserProfile src={user.image ?? ""} width={36} height={36} alt="user profile" />
       </Dropdown.Trigger>
-      <Dropdown.Content className="w-64 py-3 mr-5">
+      <Dropdown.Content align="end" className="w-64 py-3 ">
         <div className="p-2 bg-background">
           <div className="flex items-center gap-3">
             <UserProfile src={user.image ?? ""} width={48} height={48} alt="user profile" />
             <div>
-              <p className="heading-03 text-color-text-default">{user?.name ?? ""}</p>
+              <p className="heading-02 text-color-text-default">{user?.name ?? ""}</p>
               <p className="body-02 text-color-text-default opacity-70">{user?.email ?? ""}</p>
             </div>
           </div>
@@ -42,21 +42,21 @@ const ProfileDropdown = () => {
 
         <div className="flex flex-col py-2 gap-y-2">
           <Link href="/blog">
-            <Dropdown.Item className="flex items-center justify-start w-full px-4 py-2 gap-2">
+            <Dropdown.Item className="flex items-center justify-start w-full px-4 gap-2">
               <User className="" size={22} />
-              <span className="heading-03">{t("my_blog")}</span>
+              <span className="body-02">{t("my_blog")}</span>
             </Dropdown.Item>
           </Link>
-          <Dropdown.Item className="flex items-center justify-start px-4 py-2 gap-2">
+          <Dropdown.Item className="flex items-center justify-start px-4  gap-2">
             <Settings className="" size={22} />
-            <span className="heading-03">{t("settings")}</span>
+            <span className="body-02">{t("settings")}</span>
           </Dropdown.Item>
         </div>
 
         <Dropdown.Separator className="my-2" />
 
         <Dropdown.Item
-          className="p-2 text-color-text-danger 
+          className="px-2 py-5 text-color-text-danger 
         data-[highlighted]:text-color-text-danger data-[highlighted]:font-bold "
         >
           <LogoutButton />
