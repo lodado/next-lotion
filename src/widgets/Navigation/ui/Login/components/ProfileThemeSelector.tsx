@@ -25,8 +25,8 @@ const ProfileThemeDropdown = () => {
             {t("LABEL-THEME")}
           </span>
 
-          <span className="body-02 flex flex-row items-center gap-1">
-            {t(`ITEM-${theme.toUpperCase()}`)} <ChevronRight strokeWidth={1.8} size={19} />
+          <span className="body-03 flex flex-row items-center gap-1">
+            {t(`ITEM-${theme.toUpperCase()}`)} <ChevronRight className="mt-[0.1rem]" strokeWidth={1.8} size={19} />
           </span>
         </Dropdown.Item>
       </Dropdown.Trigger>

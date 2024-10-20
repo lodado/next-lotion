@@ -1,12 +1,12 @@
 // Navigation.stories.tsx
-import type { Meta, StoryObj } from "@storybook/react";
+import type { StoryObj } from "@storybook/react";
 import Navigation from "./Navigation";
 import { AuthRepositoryImpl, UserEntity } from "@/entities/Auth/core";
 import { Suspense } from "react";
 
-const meta: Meta<typeof Navigation> = {
+const meta = {
   title: "Widgets/Navigation",
-  component: Navigation,
+
   tags: ["autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -22,23 +22,26 @@ type Story = StoryObj<typeof Navigation>;
 export const LoginUserNav = () => {
   return (
     <Suspense>
-      <Navigation
-        {...{
-          authRepository: new (class Mock implements AuthRepositoryImpl {
-            login(): Promise<void> {
-              throw new Error("Method not implemented.");
-            }
-            logout(): Promise<void> {
-              throw new Error("Method not implemented.");
-            }
-            getUserInfo(): Promise<UserEntity | undefined> {
-              return Promise.resolve(
-                new UserEntity({ id: "test", name: "test", email: "test", image: "https://picsum.photos/200" })
-              );
-            }
-          })(),
-        }}
-      />
+      <Navigation.Root>
+        <Navigation.Header />
+        <Navigation.Footer
+          {...{
+            authRepository: new (class Mock implements AuthRepositoryImpl {
+              login(): Promise<void> {
+                throw new Error("Method not implemented.");
+              }
+              logout(): Promise<void> {
+                throw new Error("Method not implemented.");
+              }
+              getUserInfo(): Promise<UserEntity | undefined> {
+                return Promise.resolve(
+                  new UserEntity({ id: "test", name: "test", email: "test", image: "https://picsum.photos/200" })
+                );
+              }
+            })(),
+          }}
+        />
+      </Navigation.Root>
     </Suspense>
   );
 };
@@ -47,21 +50,24 @@ export const LoginUserNav = () => {
 export const NotLoginUserNav = () => {
   return (
     <Suspense>
-      <Navigation
-        {...{
-          authRepository: new (class Mock implements AuthRepositoryImpl {
-            login(): Promise<void> {
-              throw new Error("Method not implemented.");
-            }
-            logout(): Promise<void> {
-              throw new Error("Method not implemented.");
-            }
-            getUserInfo(): Promise<UserEntity | undefined> {
-              return Promise.resolve(undefined);
-            }
-          })(),
-        }}
-      />
+      <Navigation.Root>
+        <Navigation.Header />
+        <Navigation.Footer
+          {...{
+            authRepository: new (class Mock implements AuthRepositoryImpl {
+              login(): Promise<void> {
+                throw new Error("Method not implemented.");
+              }
+              logout(): Promise<void> {
+                throw new Error("Method not implemented.");
+              }
+              getUserInfo(): Promise<UserEntity | undefined> {
+                return Promise.resolve(undefined);
+              }
+            })(),
+          }}
+        />
+      </Navigation.Root>
     </Suspense>
   );
 };
