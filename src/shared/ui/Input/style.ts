@@ -1,24 +1,28 @@
 import { cva } from 'class-variance-authority'
 
 export const InputStyleVariants = cva(
-  `flex px-3 items-center gap-3 rounded border border-solid body-01-r text-text-01 border-border-01 bg-tertiary-default placeholder-text-placeholder`,
+  `flex px-3 items-center gap-3 rounded border border-solid body-01
+  bg-background border-color-border-input hover:bg-color-background-input-hovered active:bg-color-background-input-pressed focus-within:outline 
+        focus-within:outline-2 focus-within:outline-color-text-brand disabled:bg-color-text-disabled
+        disabled:opacity-50 disabled:cursor-not-allowed
+  
+  `,
   {
     variants: {
       variant: {
-        default: `hover:bg-tertiary-hover active:bg-tertiary-press focus-within:outline 
-        focus-within:outline-2 focus-within:outline-border-primary-01 disabled:bg-text-disabled 
-        read-only:bg-text-readonly 
+        default: `read-only:bg-color-text-brand
       `,
-        invalid: `border-border-error-01 focus-within:outline-2 focus-within:outline-border-error-01`,
+        invalid: `border-color-text-danger focus-within:outline-2 focus-within:outline-color-text-danger`,
       },
 
       size: {
-        medium: 'h-6',
+        textArea: "h-20",
+        medium: " w-full h-[2rem]",
       },
     },
     defaultVariants: {
-      variant: 'default',
-      size: 'medium',
+      variant: "default",
+      size: "medium",
     },
-  },
-)
+  }
+);

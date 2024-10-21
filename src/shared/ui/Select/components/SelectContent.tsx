@@ -8,10 +8,7 @@ import { ComponentProps, PropsWithChildren } from "react";
 
 import "../index.scss";
 
-function preventEventPropagation(event) {
-  event.stopPropagation();
-}
-
+ 
 const SelectContent = ({
   children,
   className,
@@ -22,7 +19,6 @@ const SelectContent = ({
     <Content
       dir="inherit"
       position="popper"
-      onCloseAutoFocus={preventEventPropagation}
       className={cn(
         `SelectContent overflow-hidden w-max z-dropdown bg-background border border-solid border-color-border-input rounded-lg shadow-dropdown mt-2`,
         contentClassName

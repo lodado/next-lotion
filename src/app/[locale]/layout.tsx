@@ -72,7 +72,7 @@ const RootLayout: React.FunctionComponent<LocaleProps> = ({ children, params: { 
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <body className={inter.className} style={{ display: "flex", flexDirection: "column" }}>
+      <body className={inter.className}>
         <ThemeScript nonce={nonce} />
         <ScreenVhScript nonce={nonce} />
         <RootProvider>

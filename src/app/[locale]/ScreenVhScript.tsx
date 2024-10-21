@@ -1,20 +1,14 @@
-'use client'
+import Script from "next/script";
 
-import Script from 'next/script'
+function code() {
+  var vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty("--vh", vh + "px");
 
-const ScreenVhScript = ({ nonce }: { nonce: string }) => {
-  return (
-    <Script id="script-for-iphone-cross-browsing" type="text/javascript" nonce={nonce} strategy="beforeInteractive">
-      {`
-              function setScreenSize() {
-                var vh = window.innerHeight * 0.01;
-                document.documentElement.style.setProperty('--vh',vh+"px");
-              }
-              window.addEventListener('resize', setScreenSize);
-              setScreenSize();
-            `}
-    </Script>
-  )
+  window.addEventListener("resize", code);
 }
 
-export default ScreenVhScript
+const ScreenVhScript = ({ nonce }: { nonce: string }) => {
+  return <script type="text/javascript" nonce={nonce} dangerouslySetInnerHTML={{ __html: `(${code})();` }} />;
+};
+
+export default ScreenVhScript;

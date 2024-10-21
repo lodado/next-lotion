@@ -10,13 +10,15 @@ import { AuthRepositoryImpl, GetUserInfoUseCase } from "@/entities/Auth/core";
 
 const LoginNavBarRoot = async ({ children }: PropsWithChildren) => {
   return (
-    <NavigationProvider>
-      <nav className="sticky w-screen top-0 bg-background text-color-text-default shadow-md z-50">
-        <div className="mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 px-5">{children}</div>
-        </div>
-      </nav>
-    </NavigationProvider>
+    <>
+      <NavigationProvider>
+        <nav className="page-nav w-screen top-0 bg-background text-color-text-default shadow-md z-50">
+          <div className="mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between h-[64px] px-5">{children}</div>
+          </div>
+        </nav>
+      </NavigationProvider>
+    </>
   );
 };
 

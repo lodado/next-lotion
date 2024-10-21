@@ -1,4 +1,5 @@
-import { SUPABASE_KEY, SUPABASE_URL } from "@/shared/index.server";
+import { USER_ID_SPLITTER } from "@/shared";
+import { SUPABASE_KEY, SUPABASE_URL, supabaseInstance } from "@/shared/index.server";
 import Database from "@/shared/libs/supabase/type";
 import { SupabaseAdapter } from "@auth/supabase-adapter";
 
@@ -49,7 +50,7 @@ const supabaseAdapterWrapper = () => {
   };
 
   const preprocessedUserData = ({ user, account }: any) => {
-    const providerId = `prov@@#!#@${account?.provider}`;
+    const providerId = `${USER_ID_SPLITTER}${account?.provider}`;
 
     return { ...user, id: user.id + providerId };
   };
@@ -75,6 +76,8 @@ const supabaseAdapterWrapper = () => {
       });
 
       await supaAdapter.linkAccount(newAccount);
+
+      supabaseInstance;
 
       return true;
     };

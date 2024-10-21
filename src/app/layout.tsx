@@ -9,12 +9,14 @@ const webUrl = process.env.NEXT_PUBLIC_CLIENT_URL;
 export const metadata = {
   metadataBase: new URL(webUrl!),
   alternates: {
-    canonical: "/",
+    canonical: "/en",
     languages: {
-      ...i18nOption.locales.reduce((total: any, ele) => {
-        total[ele] = `/${ele}`;
-        return total;
-      }, {}),
+      ...i18nOption.locales
+        .filter((ele) => ele !== "en")
+        .reduce((total: any, ele) => {
+          total[ele] = `/${ele}`;
+          return total;
+        }, {}),
     },
   },
 };

@@ -1,3 +1,4 @@
+import { USER_ID_SPLITTER } from "@/shared";
 import { UserEntity, AuthRepositoryImpl } from "../../../core";
 import { auth, signIn, signOut } from "../../libs/auth";
 import { NextAuthSessionResponse } from "../../type";
@@ -10,7 +11,7 @@ export default class AuthServerRepository implements AuthRepositoryImpl {
 
     if (session?.user) {
       session.user = {
-        id: session.user.id,
+        id: session.user.id.split(USER_ID_SPLITTER)[0],
         name: session.user.name,
         email: session.user.email,
         picture: session.user.picture,

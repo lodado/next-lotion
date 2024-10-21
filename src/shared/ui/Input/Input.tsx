@@ -4,6 +4,7 @@ import React, { forwardRef, HTMLAttributes, InputHTMLAttributes, useEffect, useR
 
 import { InputStyleVariants } from "./style";
 import { cn } from "@/shared/utils";
+import { useForkRef } from "@/shared/hooks";
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   /** Additional CSS class name */
@@ -28,10 +29,12 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props: InputProps, ref) 
   const dataInvalid = props["data-invalid"];
   const variant = dataInvalid ? "invalid" : "default";
 
-  const testRef = useRef<HTMLInputElement>(null);
+  const defaultRef = useRef<HTMLInputElement>(null);
+  const inputRef = useForkRef(ref, defaultRef);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    // window.scrollTo({ top: 0, behavior: "smooth" });
+    defaultRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
   };
 
   useEffect(() => {
@@ -39,7 +42,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props: InputProps, ref) 
       scrollToTop();
     };
 
-    const inputElement = testRef.current;
+    const inputElement = defaultRef.current;
     inputElement?.addEventListener("blur", handleBlur);
 
     // Cleanup event listeners on component unmount
@@ -48,7 +51,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props: InputProps, ref) 
     };
   }, []);
 
-  return <input ref={testRef} className={cn(InputStyleVariants({ variant, size: "medium" }), className)} {...rest} />;
+  return <input ref={inputRef} className={cn(InputStyleVariants({ variant, size: "medium" }), className)} {...rest} />;
 });
 
 export default Input;

@@ -1,4 +1,5 @@
 import Input, { InputProps } from './Input'
+import TextArea, { TextAreaProps } from "./TextArea";
 
-export { Input }
-export type { InputProps }
+export { Input, TextArea };
+export type { InputProps, TextAreaProps };
