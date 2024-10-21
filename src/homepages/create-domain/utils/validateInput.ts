@@ -1,3 +1,11 @@
+export const strictValidateInput = (value: string) => {
+  const regex = /^[^\s~!@#$%^&*()+=<>?:"{}|\\[\]\\;'/]*$/;
+  if (!regex.test(value)) {
+    return true;
+  }
+  return false;
+};
+
 export const validateInput = (value: string, allowComma = false) => {
   // 금지할 문자에서 \s를 제거하고, 스페이스를 제외한 다른 공백 문자를 명시적으로 제외합니다.
   const disallowedWhitespace = "\t\r\n\f\v";

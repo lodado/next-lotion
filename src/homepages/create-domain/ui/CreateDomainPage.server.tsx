@@ -6,7 +6,7 @@ import BlogDescriptionField from "./BlogDescriptionField";
 import OgImageUploadField from "./OGImageUploadField";
 import { createBlogAction } from "../api/action";
 import { useSelector } from "@/shared/hooks";
-import { validateInput } from "../utils";
+import { strictValidateInput, validateInput } from "../utils";
 
 export default function CreateDomainPage() {
   const user = useSelector((state) => state.auth.user);
@@ -27,7 +27,9 @@ export default function CreateDomainPage() {
       >
         <section className="space-y-4">
           <Form.Field name="subdomain" className="w-full space-y-3">
-            <Form.Label htmlFor="subdomain">서브도메인 이름</Form.Label>
+            <Form.Label htmlFor="subdomain">
+              서브도메인 이름 <Form.Required />
+            </Form.Label>
             <Form.Control asChild>
               <Input
                 id="subdomain"
@@ -38,7 +40,9 @@ export default function CreateDomainPage() {
               />
             </Form.Control>
 
-            <Form.Message match={(value, formData) => validateInput(value)}>특수문자는 허용되지 않습니다.</Form.Message>
+            <Form.Message match={(value, formData) => strictValidateInput(value)}>
+              특수문자는 허용되지 않습니다.
+            </Form.Message>
             <Form.Message className="FormMessage" match="valueMissing">
               서브도메인 이름을 입력하세요.
             </Form.Message>
