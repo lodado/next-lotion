@@ -30,5 +30,31 @@
     "ITEM-SYSTEM": "sistema",
     "ITEM-DARK": "escuro",
     "ITEM-LIGHT": "claro"
+  },
+  "LANG": {
+    "ko": "Coreano",
+    "en": "Inglês",
+    "ja": "Japonês",
+    "zh": "Chinês",
+    "hi": "Hindi",
+    "fr": "Francês",
+    "es": "Espanhol",
+    "ar": "Árabe",
+    "bn": "Bengali",
+    "pt": "Português",
+    "id": "Indonésio",
+    "it": "Italiano",
+    "vi": "Vietnamita",
+    "th": "Tailandês",
+    "ms": "Malaio",
+    "ru": "Russo",
+    "de": "Alemão",
+    "tr": "Turco"
+  },
+  "LanguageSelector": {
+    "mainLanguage": "Idioma principal",
+    "tooltipContent": "Digite o idioma principal do blog. Será usado na tag canônica.",
+    "placeholder": "Blog, Tecnologia, Vida",
+    "selectLabel": "Idioma"
   }
 }

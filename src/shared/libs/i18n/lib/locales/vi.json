@@ -30,5 +30,31 @@
     "ITEM-SYSTEM": "hệ thống",
     "ITEM-DARK": "tối",
     "ITEM-LIGHT": "sáng"
+  },
+  "LANG": {
+    "ko": "Hàn Quốc",
+    "en": "Tiếng Anh",
+    "ja": "Tiếng Nhật",
+    "zh": "Tiếng Trung",
+    "hi": "Tiếng Hindi",
+    "fr": "Tiếng Pháp",
+    "es": "Tiếng Tây Ban Nha",
+    "ar": "Tiếng Ả Rập",
+    "bn": "Tiếng Bengal",
+    "pt": "Tiếng Bồ Đào Nha",
+    "id": "Tiếng Indonesia",
+    "it": "Tiếng Ý",
+    "vi": "Tiếng Việt",
+    "th": "Tiếng Thái",
+    "ms": "Tiếng Mã Lai",
+    "ru": "Tiếng Nga",
+    "de": "Tiếng Đức",
+    "tr": "Tiếng Thổ Nhĩ Kỳ"
+  },
+  "LanguageSelector": {
+    "mainLanguage": "Ngôn ngữ chính",
+    "tooltipContent": "Nhập ngôn ngữ chính của blog. Nó sẽ được sử dụng trong thẻ chuẩn.",
+    "placeholder": "Blog, Công nghệ, Cuộc sống",
+    "selectLabel": "Ngôn ngữ"
   }
 }

@@ -30,5 +30,31 @@
     "ITEM-SYSTEM": "System",
     "ITEM-DARK": "dunkel",
     "ITEM-LIGHT": "hell"
+  },
+  "LANG": {
+    "ko": "Koreanisch",
+    "en": "Englisch",
+    "ja": "Japanisch",
+    "zh": "Chinesisch",
+    "hi": "Hindi",
+    "fr": "Französisch",
+    "es": "Spanisch",
+    "ar": "Arabisch",
+    "bn": "Bengalisch",
+    "pt": "Portugiesisch",
+    "id": "Indonesisch",
+    "it": "Italienisch",
+    "vi": "Vietnamesisch",
+    "th": "Thailändisch",
+    "ms": "Malaiisch",
+    "ru": "Russisch",
+    "de": "Deutsch",
+    "tr": "Türkisch"
+  },
+  "LanguageSelector": {
+    "mainLanguage": "Hauptsprache",
+    "tooltipContent": "Geben Sie die Hauptsprache des Blogs ein. Sie wird im kanonischen Tag verwendet.",
+    "placeholder": "Blog, Technologie, Leben",
+    "selectLabel": "Sprache"
   }
 }

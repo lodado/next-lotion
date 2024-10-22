@@ -1,5 +1,5 @@
 import { Slot } from "@radix-ui/react-slot";
-import React, { PropsWithChildren, ReactNode, use, useEffect } from "react";
+import React, { PropsWithChildren, ReactNode, SyntheticEvent, use, useEffect } from "react";
 
 import { Button } from "../Button";
 
@@ -25,16 +25,26 @@ const SubmitForm = ({
 }: DialogSubmitFormProps) => {
   const { onChangeVisibleStatus } = useDialogContext();
 
+  const handleDialogSubmit = async (event: SyntheticEvent) => {
+    try {
+      await onSubmit(event);
+    } catch (error) {
+      onError?.(error);
+    } finally {
+      onChangeVisibleStatus(false);
+    }
+  };
+
   return (
     <Dialog.SubmitForm
-      className={cn("flex flex-col w-full", className)}
+      className={cn("flex flex-col w-full px-4 gap-1 pb-2", className)}
       onClose={onClose}
       onSubmit={onSubmit}
       onError={onError}
     >
       {children}
 
-      <Button className="w-full mb-2" type="submit" size="medium" variant="primary">
+      <Button className="w-full mb-2" type="submit" size="medium" variant="primary" onClick={handleDialogSubmit}>
         {submitText}
       </Button>
       <Button
@@ -52,14 +62,14 @@ const SubmitForm = ({
 
 const DialogHeader = ({ children, className }: { children?: ReactNode; className?: string }) => {
   return (
-    <Title className={cn("flex flex-row justify-between w-full mb-3 text-text-01 heading-04 ", className)}>
+    <Title className={cn("flex flex-row justify-between w-full mb-3 heading-02 pt-6 px-4", className)}>
       {children}
     </Title>
   );
 };
 
 const DialogBody = ({ className, children }: { className?: string; children: ReactNode }) => {
-  return <div className={cn("flex w-full py-2 grow body-02-r", className)}>{children}</div>;
+  return <div className={cn("flex w-full py-4 grow body-01 px-4 pb-8", className)}>{children}</div>;
 };
 
 /**

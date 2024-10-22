@@ -30,5 +30,31 @@
     "ITEM-SYSTEM": "sistem",
     "ITEM-DARK": "karanlık",
     "ITEM-LIGHT": "aydınlık"
+  },
+  "LANG": {
+    "ko": "Korece",
+    "en": "İngilizce",
+    "ja": "Japonca",
+    "zh": "Çince",
+    "hi": "Hintçe",
+    "fr": "Fransızca",
+    "es": "İspanyolca",
+    "ar": "Arapça",
+    "bn": "Bengalce",
+    "pt": "Portekizce",
+    "id": "Endonezce",
+    "it": "İtalyanca",
+    "vi": "Vietnamca",
+    "th": "Tayca",
+    "ms": "Malayca",
+    "ru": "Rusça",
+    "de": "Almanca",
+    "tr": "Türkçe"
+  },
+  "LanguageSelector": {
+    "mainLanguage": "Ana Dil",
+    "tooltipContent": "Blog'un ana dilini girin. Kanonik etiket için kullanılacaktır.",
+    "placeholder": "Blog, Teknoloji, Yaşam",
+    "selectLabel": "Dil"
   }
 }

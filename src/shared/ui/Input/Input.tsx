@@ -7,6 +7,8 @@ import { cn } from "@/shared/utils";
 import { useForkRef } from "@/shared/hooks";
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  wrapperClassName?: string;
+
   /** Additional CSS class name */
   className?: string;
 
@@ -24,7 +26,7 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>((props: InputProps, ref) => {
-  const { className, ...rest } = props;
+  const { className, wrapperClassName, children, ...rest } = props;
 
   const dataInvalid = props["data-invalid"];
   const variant = dataInvalid ? "invalid" : "default";
@@ -51,7 +53,12 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props: InputProps, ref) 
     };
   }, []);
 
-  return <input ref={inputRef} className={cn(InputStyleVariants({ variant, size: "medium" }), className)} {...rest} />;
+  return (
+    <div className={cn("", wrapperClassName)}>
+      <input ref={inputRef} className={cn(InputStyleVariants({ variant, size: "medium" }), className)} {...rest} />
+      {children}
+    </div>
+  );
 });
 
 export default Input;

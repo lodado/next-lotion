@@ -3,7 +3,7 @@
 import "../index.scss";
 import { X } from "lucide-react";
 
-import React, { CSSProperties, FormEvent, ReactNode, useEffect, useState } from "react";
+import React, { CSSProperties, FormEvent, ReactNode, SyntheticEvent, useEffect, useState } from "react";
 
 import { Close, Content, Overlay, Portal, Root, Trigger } from "./radix";
 import { contextBuildHelper, noop } from "@/shared";
@@ -73,7 +73,7 @@ export interface SubmitFormProps {
    *
    * @param event - The form event triggered upon form submission.
    */
-  onSubmit: (event: FormEvent<HTMLFormElement>) => Promise<void>;
+  onSubmit: (event: SyntheticEvent) => Promise<void>;
 
   onClose?: () => void;
 
@@ -95,16 +95,6 @@ export interface SubmitFormProps {
 const SubmitForm = ({ className, children, onSubmit, onClose = noop, onError = noop }: SubmitFormProps) => {
   const { isDialogVisible, onChangeVisibleStatus } = useDialogContext();
 
-  const handleDialogSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    try {
-      await onSubmit(event);
-    } catch (error) {
-      onError(error);
-    } finally {
-      onChangeVisibleStatus(false);
-    }
-  };
-
   useEffect(() => {
     return () => {
       if (!isDialogVisible) {
@@ -113,17 +103,7 @@ const SubmitForm = ({ className, children, onSubmit, onClose = noop, onError = n
     };
   }, [isDialogVisible]);
 
-  return (
-    <form
-      className={className}
-      onSubmit={(event) => {
-        event.preventDefault();
-        handleDialogSubmit(event);
-      }}
-    >
-      {children}
-    </form>
-  );
+  return <div className={className}>{children}</div>;
 };
 
 /**

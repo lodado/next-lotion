@@ -1,8 +1,9 @@
 "use client";
 
-import { Form, TextArea } from "@/shared/ui";
+import { Form, IconButton, TextArea, Tooltip } from "@/shared/ui";
 import React, { useState, useEffect } from "react";
 import { validateInput } from "../utils/validateInput";
+import { Info } from "lucide-react";
 
 const translateToEnglish = async (text: string): Promise<string> => {
   const response = await fetch("https://libretranslate.de/translate", {
@@ -22,7 +23,24 @@ export default function BlogDescriptionField() {
   return (
     <>
       <Form.Field name="blogDescription" className="flex items-start w-full flex-col space-y-2">
-        <Form.Label htmlFor="blogDescription">블로그 설명 (OG 설명으로도 사용됨)</Form.Label>
+        <Form.Label htmlFor="blogDescription" className="flex flex-row items-center">
+          블로그 설명
+          <Tooltip>
+            <Tooltip.Trigger>
+              <IconButton
+                size="small"
+                className="disabled:text-color-text-default disabled:opacity-80 ml-1"
+                variant="text"
+                disabled
+              >
+                <Info />
+              </IconButton>
+            </Tooltip.Trigger>
+            <Tooltip.Content align="center" side="top" variant="editor" className="-mt-[2.5rem]">
+              블로그를 잘 설명할 수 있는 주제로 설정하세요. 검색에 도움이 됩니다.
+            </Tooltip.Content>
+          </Tooltip>
+        </Form.Label>
         <Form.Control asChild>
           <TextArea
             id="blogDescription"
@@ -39,6 +57,10 @@ export default function BlogDescriptionField() {
 
         <Form.Message className="FormMessage" match="valueMissing">
           블로그 제목을 입력하세요.
+        </Form.Message>
+
+        <Form.Message className="FormMessage" match={(value) => !(value.length <= 100)}>
+          100자 이하로 입력하세요.
         </Form.Message>
       </Form.Field>
     </>

@@ -30,5 +30,31 @@
     "ITEM-SYSTEM": "système",
     "ITEM-DARK": "sombre",
     "ITEM-LIGHT": "clair"
+  },
+  "LANG": {
+    "ko": "Coréen",
+    "en": "Anglais",
+    "ja": "Japonais",
+    "zh": "Chinois",
+    "hi": "Hindi",
+    "fr": "Français",
+    "es": "Espagnol",
+    "ar": "Arabe",
+    "bn": "Bengali",
+    "pt": "Portugais",
+    "id": "Indonésien",
+    "it": "Italien",
+    "vi": "Vietnamien",
+    "th": "Thaï",
+    "ms": "Malais",
+    "ru": "Russe",
+    "de": "Allemand",
+    "tr": "Turc"
+  },
+  "LanguageSelector": {
+    "mainLanguage": "Langue principale",
+    "tooltipContent": "Entrez la langue principale du blog. Elle sera utilisée dans la balise canonique.",
+    "placeholder": "Blog, Technologie, Vie",
+    "selectLabel": "Langue"
   }
 }

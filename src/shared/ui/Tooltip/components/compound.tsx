@@ -13,6 +13,7 @@ const tooltipContentStyles = cva(
       variant: {
         primary: "bg-color-background-input-default text-color-text-default",
         secondary: "bg-color-background-brand-boldest-default  text-background ",
+        editor: "bg-[var(--Background-Editor-Tooltip)] text-[var(--Background-Editor-Tooltip-Text)]",
       },
     },
     defaultVariants: {
@@ -26,7 +27,7 @@ interface TooltipContentProps extends ComponentProps<typeof Content>, VariantPro
   side?: PopperContentProps["side"];
   align?: PopperContentProps["align"];
 
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "editor";
 }
 
 export const TooltipTrigger = ({ children }: { children: ReactNode }) => {

@@ -30,5 +30,31 @@
     "ITEM-SYSTEM": "sistem",
     "ITEM-DARK": "gelap",
     "ITEM-LIGHT": "terang"
+  },
+  "LANG": {
+    "ko": "Bahasa Korea",
+    "en": "Bahasa Inggeris",
+    "ja": "Bahasa Jepun",
+    "zh": "Bahasa Cina",
+    "hi": "Bahasa Hindi",
+    "fr": "Bahasa Perancis",
+    "es": "Bahasa Sepanyol",
+    "ar": "Bahasa Arab",
+    "bn": "Bahasa Bengali",
+    "pt": "Bahasa Portugis",
+    "id": "Bahasa Indonesia",
+    "it": "Bahasa Itali",
+    "vi": "Bahasa Vietnam",
+    "th": "Bahasa Thai",
+    "ms": "Bahasa Melayu",
+    "ru": "Bahasa Rusia",
+    "de": "Bahasa Jerman",
+    "tr": "Bahasa Turki"
+  },
+  "LanguageSelector": {
+    "mainLanguage": "Bahasa Utama",
+    "tooltipContent": "Masukkan bahasa utama blog. Ia akan digunakan dalam tag kanonik.",
+    "placeholder": "Blog, Teknologi, Kehidupan",
+    "selectLabel": "Bahasa"
   }
 }

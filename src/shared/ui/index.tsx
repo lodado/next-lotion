@@ -8,3 +8,4 @@ export * from "./Form";
 export * from "./QueryContainer";
 export * from "./Select";
 export * from './Image'
+export * from "./animation";

@@ -20,7 +20,8 @@ Form.displayName = 'Form'
 export type FieldProps = ComponentProps<typeof Field>
 
 const RawField: React.FC<FieldProps> = (props) => {
-  return <Field {...props} />
+  const { className, ...rest } = props;
+  return <Field {...rest} className={cn("", className)} />;
 }
 
 // Label 컴포넌트 타입 정의
