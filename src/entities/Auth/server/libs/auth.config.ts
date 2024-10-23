@@ -9,16 +9,7 @@ import AuthService from "./service/AuthService";
 
 const { signIn, authorized, jwt, session } = AuthService;
 
-function getCookieHostname() {
-  const hostname = ".localhost";
-  const [subDomain] = hostname.split(".");
-
-  const cookieDomain = hostname.replace(`${subDomain}.`, "");
-
-  console.log(cookieDomain, hostname, subDomain, "sibal");
-
-  return cookieDomain;
-}
+const VERCEL_DEPLOYMENT = !!process.env.VERCEL_URL;
 
 export const authConfig = {
   debug: true,
@@ -31,11 +22,16 @@ export const authConfig = {
 
   cookies: {
     sessionToken: {
-      name: process.env.NODE_ENV == "production" ? "__Secure-authjs.session-token" : `authjs.session-token`,
+      name: `${VERCEL_DEPLOYMENT ? "__Secure-" : ""}next-auth.session-token`,
       options: {
         httpOnly: true,
+        sameSite: "lax",
+
+        path: "/",
+
+        // When working on localhost, the cookie domain must be omitted entirely (https://stackoverflow.com/a/1188145)
+        domain: VERCEL_DEPLOYMENT ? `.${process.env.NEXT_PUBLIC_CLIENT_URL}` : undefined,
         secure: process.env.NODE_ENV == "production",
-        domain: getCookieHostname(),
       },
     },
   },
