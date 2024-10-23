@@ -1,4 +1,4 @@
-export const LANGUAGE_LIST: string[] = [
+export const LANGUAGE_LIST = [
   "ko",
   "en",
   "ja",
@@ -17,7 +17,7 @@ export const LANGUAGE_LIST: string[] = [
   "ru",
   "de",
   "tr",
-];
+] as const;
 
 export const i18nOption = {
   locales: LANGUAGE_LIST,

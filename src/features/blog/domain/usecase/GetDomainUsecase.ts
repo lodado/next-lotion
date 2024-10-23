@@ -1,6 +1,6 @@
 // usecases/GetDomainUseCase.ts
 import { UseCaseError } from "@/shared";
-import { Domain, DomainRepositoryImpl } from "@/entities/domain/models/core";
+import { Domain, DomainRepositoryImpl } from "@/features/blog/domain/core";
 
 export default class GetDomainUseCase {
   private domainRepository: DomainRepositoryImpl;
@@ -9,10 +9,19 @@ export default class GetDomainUseCase {
     this.domainRepository = domainRepository;
   }
 
-  async execute(domainId: number): Promise<Domain> {
+  async execute(domainId: number): Promise<Domain | null> {
+    try {
+      const domain = await this.domainRepository.getDomainById(domainId);
+      return domain;
+    } catch (error) {
+      throw new UseCaseError({ message: "Failed to execute GetDomainUseCase", originalError: error });
+    }
+  }
+
+  async getDomainByDomainAddress(domainAddress: string): Promise<Domain | null> {
     try {
       // Fetch domain by ID
-      const domain = await this.domainRepository.getDomainById(domainId);
+      const domain = await this.domainRepository.getDomainByAddress(domainAddress);
       return domain;
     } catch (error) {
       throw new UseCaseError({ message: "Failed to execute GetDomainUseCase", originalError: error });

@@ -4,22 +4,26 @@ import { Button, Form, IconButton, Input, LoadingSpinner, Tooltip } from "@/shar
 
 import BlogDescriptionField from "./BlogDescriptionField";
 import OgImageUploadField from "./OGImageUploadField";
-import { useSelector } from "@/shared/hooks";
+import { useErrorBoundary, useSelector } from "@/shared/hooks";
 import { validateInput } from "../utils";
 import { Info } from "lucide-react";
 import LanguageSelector from "./LanguageSelector";
 import { Provider } from "react-redux";
 import { ALERT_DIALOG_SET_VISIBLE, configureAlertStore, useAlertDispatch, useAlertSelector } from "../models";
 import ConfirmAlertDialog from "./ConfirmAlertDialog";
-import { useRef, useState } from "react";
+import { useRef, useState, useTransition } from "react";
+import { set } from "zod";
+import { isDomainAddressAlreadyRegistered } from "../api/action";
 
 const RawBlogSettingPage = ({ title = "블로그 생성" }: { title?: string }) => {
   const user = useSelector((state) => state.auth.user);
   const alertDispatch = useAlertDispatch();
-  const [loading, setLoading] = useState(false);
+  const [pending, startTransition] = useTransition();
+  const { setError } = useErrorBoundary();
 
   const formRef = useRef<HTMLFormElement>(null);
 
+  /** 나중 react 19 useformstatus로 바꾸면됨 */
   const getFormData = () => {
     return new FormData(formRef.current!);
   };
@@ -38,12 +42,13 @@ const RawBlogSettingPage = ({ title = "블로그 생성" }: { title?: string }) 
           method="post"
           onSubmit={(e) => {
             e.preventDefault();
-            if (!loading) alertDispatch(ALERT_DIALOG_SET_VISIBLE(true));
+            if (!pending) alertDispatch(ALERT_DIALOG_SET_VISIBLE(true));
           }}
           className="flex flex-col gap-4 w-full h-inherit max-w-[25rem] space-y-4"
         >
           <section className="space-y-4">
             <Form.Field name="subdomain" className="w-full space-y-3">
+              <input className="hidden" type="hidden" name="userId" value={user?.id} />
               <Form.Label htmlFor="subdomain" className="relative flex flex-row items-center">
                 블로그 주소 <Form.Required />
                 <Tooltip>
@@ -71,7 +76,7 @@ const RawBlogSettingPage = ({ title = "블로그 생성" }: { title?: string }) 
                   defaultValue={""}
                   required
                 >
-                  {loading && (
+                  {pending && (
                     <LoadingSpinner className="absolute -right-[0.2rem] top-[0.4rem] text-color-text-brand" />
                   )}
                 </Input>
@@ -89,14 +94,20 @@ const RawBlogSettingPage = ({ title = "블로그 생성" }: { title?: string }) 
 
               <Form.Message
                 className="FormMessage"
-                match={async (value) => {
-                  return await new Promise((resolve) => {
-                    setLoading(true);
 
-                    setTimeout(() => {
-                      resolve(true);
-                      setLoading(false);
-                    }, 2000);
+                /** crazy? */
+                match={async (value) => {
+                  return await new Promise((resolve, reject) => {
+                    startTransition(async () => {
+                      try {
+                        const isDomainExist = await isDomainAddressAlreadyRegistered(value);
+                        resolve(!!isDomainExist);
+                      } catch (error) {
+                        setError(error);
+                      } finally {
+                        reject(true);
+                      }
+                    });
                   });
                 }}
               >
@@ -147,7 +158,7 @@ const RawBlogSettingPage = ({ title = "블로그 생성" }: { title?: string }) 
           </section>
           <footer className="mt-6">
             <Form.Submit asChild>
-              <Button type="submit" className="w-full" disabled={loading}>
+              <Button type="submit" className="w-full" disabled={pending}>
                 블로그 생성
               </Button>
             </Form.Submit>

@@ -1,7 +1,9 @@
 import { supabaseInstance } from "@/shared/index.server";
-import { Domain } from "../../core/entity";
+
 import { DomainRepositoryImpl } from "../../core/repository";
 import { RepositoryError } from "@/shared";
+import { Domain } from "../../core";
+import { isNil } from "lodash-es";
 
 export default class DomainServerRepository implements DomainRepositoryImpl {
   /**
@@ -16,16 +18,19 @@ export default class DomainServerRepository implements DomainRepositoryImpl {
         .from("domains")
         .insert([
           {
-            domain_name: domain.domainName,
-            user_id: domain.userId,
-            created_time: domain.createdTime?.toISOString(),
+            domainName: domain.domainName,
+            userId: domain.userId,
+            description: domain.description,
+            language: domain.language,
+            image: domain.image,
+            domainLocation: domain.domainLocation,
           },
         ])
         .select("domainId")
         .single();
 
       if (error) {
-        throw new RepositoryError({ message: "Failed to insert domain", originalError: error });
+        throw new RepositoryError({ message: "Failed to insert domain" });
       }
 
       return data.domainId;
@@ -43,15 +48,45 @@ export default class DomainServerRepository implements DomainRepositoryImpl {
    * @throws {RepositoryError} If there is a problem retrieving the data.
    * @returns {Promise<Domain>} The domain data.
    */
-  async getDomainById(domainId: number): Promise<Domain> {
+  async getDomainById(domainId: number): Promise<Domain | null> {
     try {
       const { data, error } = await supabaseInstance.from("domains").select("*").eq("domainId", domainId).single();
+
+      if (error && !data) {
+        return null;
+      }
 
       if (error) {
         throw new RepositoryError({ message: "Failed to retrieve domain", originalError: error });
       }
 
       return data;
+    } catch (err) {
+      throw new RepositoryError({
+        message: "Error occurred while retrieving domain",
+        originalError: err,
+      });
+    }
+  }
+
+  /**
+   * Retrieves a domain entry by its ID.
+   * @throws {RepositoryError} If there is a problem retrieving the data.
+   * @returns {Promise<Domain>} The domain data.
+   */
+  async getDomainByUserId(userId: string): Promise<Domain | null> {
+    try {
+      const { data, error } = await supabaseInstance.from("domains").select("*").eq("userId", userId);
+
+      if (error && !data) {
+        return null;
+      }
+
+      if (error) {
+        throw new RepositoryError({ message: "Failed to retrieve domain", originalError: error });
+      }
+
+      return data?.[0];
     } catch (err) {
       throw new RepositoryError({
         message: "Error occurred while retrieving domain",
@@ -98,6 +133,30 @@ export default class DomainServerRepository implements DomainRepositoryImpl {
     } catch (err) {
       throw new RepositoryError({
         message: "Error occurred while deleting domain",
+        originalError: err,
+      });
+    }
+  }
+
+  async getDomainByAddress(domainAddress: string): Promise<Domain | null> {
+    try {
+      const { data, error } = await supabaseInstance
+        .from("domains")
+        .select("*")
+        .eq("domainAddress", domainAddress)
+        .single();
+
+      if (error && !data) {
+        return null;
+      }
+
+      if (error) {
+        throw new RepositoryError({ message: "Failed to retrieve domain", originalError: error });
+      }
+
+      return data;
+    } catch (err) {
+      throw new RepositoryError({
         originalError: err,
       });
     }

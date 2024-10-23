@@ -6,28 +6,25 @@ import { GetDomainByUserIdUseCase } from "@/features/blog/domain/usecase";
 import { CreateDomainPage } from "@/homepages/create-domain/index.server.";
 
 import { redirect } from "next/navigation";
-import React from "react";
+import React, { PropsWithChildren } from "react";
 
 const webUrl = process.env.NEXT_PUBLIC_CLIENT_URL;
 
-const Page = async () => {
-  const isUserLogin = await new GetUserInfoUseCase(new AuthServerRepository()).isUserLogin();
-  if (!isUserLogin) redirect("/");
-
+const Layout = async ({ children }: PropsWithChildren) => {
+  /*
   const isAlreadyUserCreatedDomain = await new GetDomainByUserIdUseCase(
     new DomainServerRepository(),
     new AuthServerRepository()
   ).getDomainByUserId();
 
-  if (!!isAlreadyUserCreatedDomain) {
-    redirect("/");
+  if (isAlreadyUserCreatedDomain) {
+    console.log("WTF?");
   }
+  */
 
-  return (
-    <div className="w-full page-content flex justify-center">
-      <CreateDomainPage />
-    </div>
-  );
+  console.log(await new AuthServerRepository().getUserInfo());
+
+  return <div className="w-full page-content flex justify-center">{children}</div>;
 };
 
-export default Page;
+export default Layout;

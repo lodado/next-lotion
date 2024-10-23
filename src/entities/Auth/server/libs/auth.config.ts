@@ -9,6 +9,17 @@ import AuthService from "./service/AuthService";
 
 const { signIn, authorized, jwt, session } = AuthService;
 
+function getCookieHostname() {
+  const hostname = ".localhost";
+  const [subDomain] = hostname.split(".");
+
+  const cookieDomain = hostname.replace(`${subDomain}.`, "");
+
+  console.log(cookieDomain, hostname, subDomain, "sibal");
+
+  return cookieDomain;
+}
+
 export const authConfig = {
   debug: true,
   adapter: AuthPort,
@@ -17,6 +28,17 @@ export const authConfig = {
     signIn: "/login",
   },
   callbacks: { signIn, jwt, session },
+
+  cookies: {
+    sessionToken: {
+      name: process.env.NODE_ENV == "production" ? "__Secure-authjs.session-token" : `authjs.session-token`,
+      options: {
+        httpOnly: true,
+        secure: process.env.NODE_ENV == "production",
+        domain: getCookieHostname(),
+      },
+    },
+  },
 
   session: {
     strategy: "jwt",

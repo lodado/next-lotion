@@ -15,7 +15,9 @@ export interface DomainRepositoryImpl {
    * @throws {RepositoryError} If there is a problem retrieving the data.
    * @returns {Promise<Domain>} The domain data.
    */
-  getDomainById(domainId: number): Promise<Domain>;
+  getDomainById(domainId: number): Promise<Domain | null>;
+
+  getDomainByUserId(userId: string): Promise<Domain | null>;
 
   /**
    * Updates an existing domain entry.
@@ -33,4 +35,6 @@ export interface DomainRepositoryImpl {
    * @returns {Promise<void>}
    */
   deleteDomain(domainId: number): Promise<void>;
+
+  getDomainByAddress(domainAddress: string): Promise<Domain | null>;
 }
