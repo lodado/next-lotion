@@ -9,7 +9,7 @@ export const extractLanguageFromUrl = (url: string): string => {
   const pathSegments = url.split("/");
 
   // LANGUAGE_LIST에 포함되지 않은 pathSegments만 필터링하여 반환
-  const filteredSegments = pathSegments.filter((segment) => !LANGUAGE_LIST.includes(segment));
+  const filteredSegments = pathSegments.filter((segment) => !LANGUAGE_LIST.includes(segment as any));
 
   // 필터링된 결과가 있을 경우 반환, 없으면 null 반환
   return filteredSegments.join("/");
