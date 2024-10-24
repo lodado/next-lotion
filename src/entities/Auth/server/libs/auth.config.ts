@@ -10,7 +10,7 @@ import AuthService from "./service/AuthService";
 const { signIn, authorized, jwt, session } = AuthService;
 
 const VERCEL_DEPLOYMENT = !!process.env.VERCEL_URL;
-const domain = process.env.NEXT_PUBLIC_CLIENT_URL!.match(/https?:\/\/([^\/:]+)/)?.[1]!;
+const domain = process.env.NEXT_PUBLIC_DOMAIN;
 
 export const authConfig = {
   debug: true,
