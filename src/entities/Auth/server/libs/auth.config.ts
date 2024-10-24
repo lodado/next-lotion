@@ -10,6 +10,7 @@ import AuthService from "./service/AuthService";
 const { signIn, authorized, jwt, session } = AuthService;
 
 const VERCEL_DEPLOYMENT = !!process.env.VERCEL_URL;
+const domain = process.env.NEXT_PUBLIC_CLIENT_URL!.match(/https?:\/\/([^\/:]+)/)?.[1]!;
 
 export const authConfig = {
   debug: true,
@@ -30,7 +31,7 @@ export const authConfig = {
         path: "/",
 
         // When working on localhost, the cookie domain must be omitted entirely (https://stackoverflow.com/a/1188145)
-        domain: VERCEL_DEPLOYMENT ? `.${process.env.NEXT_PUBLIC_CLIENT_URL}` : undefined,
+        domain: VERCEL_DEPLOYMENT ? `.${domain}` : undefined,
         secure: process.env.NODE_ENV == "production",
       },
     },
