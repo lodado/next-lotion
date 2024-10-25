@@ -22,7 +22,7 @@ export default class AuthServerRepository implements AuthRepositoryImpl {
   };
 
   async login(): Promise<void> {
-    await signIn(this.signUpMethod, {});
+    await signIn(this.signUpMethod, { redirect: false });
   }
 
   logout(): Promise<void> {
