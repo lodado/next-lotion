@@ -25,11 +25,9 @@ export const authConfig = {
     sessionToken: {
       name: `${VERCEL_DEPLOYMENT ? "__Secure-" : ""}next-auth.session-token`,
       options: {
-        httpOnly: true,
+        httpOnly: process.env.NODE_ENV == "production",
         sameSite: "lax",
-
         path: "/",
-
         // When working on localhost, the cookie domain must be omitted entirely (https://stackoverflow.com/a/1188145)
         domain: VERCEL_DEPLOYMENT ? `.${domain}` : undefined,
         secure: process.env.NODE_ENV == "production",
@@ -39,6 +37,7 @@ export const authConfig = {
     callbackUrl: {
       name: `${VERCEL_DEPLOYMENT ? "__Secure-" : ""}next-auth.callback-url`,
       options: {
+        httpOnly: process.env.NODE_ENV == "production",
         sameSite: "lax",
         path: "/",
         domain: VERCEL_DEPLOYMENT ? `.${domain}` : undefined,
@@ -47,9 +46,9 @@ export const authConfig = {
     },
 
     csrfToken: {
-      name: `${VERCEL_DEPLOYMENT ? "__Host-" : ""}next-auth.csrf-token`,
+      name: `next-auth.csrf-token`,
       options: {
-        httpOnly: true,
+        httpOnly: process.env.NODE_ENV == "production",
         sameSite: "lax",
         path: "/",
         domain: VERCEL_DEPLOYMENT ? `.${domain}` : undefined,
@@ -60,7 +59,7 @@ export const authConfig = {
     pkceCodeVerifier: {
       name: `${VERCEL_DEPLOYMENT ? "__Secure-" : ""}next-auth.pkce.code_verifier`,
       options: {
-        httpOnly: true,
+        httpOnly: process.env.NODE_ENV == "production",
         sameSite: "lax",
         path: "/",
         domain: VERCEL_DEPLOYMENT ? `.${domain}` : undefined,
@@ -71,7 +70,7 @@ export const authConfig = {
     state: {
       name: `${VERCEL_DEPLOYMENT ? "__Secure-" : ""}next-auth.state`,
       options: {
-        httpOnly: true,
+        httpOnly: process.env.NODE_ENV == "production",
         sameSite: "lax",
         path: "/",
         domain: VERCEL_DEPLOYMENT ? `.${domain}` : undefined,
