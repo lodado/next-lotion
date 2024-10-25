@@ -3,6 +3,7 @@
 import { AuthorizedParams, JWT, JWTParams, NextAuthSessionResponse, SessionParams, SignInParams } from "../../type";
 import refreshTokenFactory from "./refresh/refreshTokenFactory";
 import { AuthPort } from "../Port/index.server";
+import { sanitizeUrl } from "@/shared/utils/sanitizeUrl";
 
 class AuthService {
   private AuthPort: typeof AuthPort;
@@ -90,6 +91,21 @@ class AuthService {
       provider: token.provider,
     };
   };
+
+  async redirect(params: {
+    url: string; // URL provided as callback URL by the client
+    baseUrl: string; // Default base URL of site (can be used as fallback)
+  }) {
+    const { url, baseUrl } = params;
+
+    // Allows relative callback URLs
+    if (url.startsWith("/")) return `${baseUrl}${url}`;
+
+    // Allows callback URLs on the same origin
+    if (new URL(url).origin === baseUrl) return url;
+
+    return sanitizeUrl(url);
+  }
 }
 
 const AuthServiceInstance = new AuthService(AuthPort);

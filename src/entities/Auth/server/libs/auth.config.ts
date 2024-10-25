@@ -7,7 +7,7 @@ import NaverProvider from "next-auth/providers/naver";
 import { AuthPort } from "./Port/index.server";
 import AuthService from "./service/AuthService";
 
-const { signIn, authorized, jwt, session } = AuthService;
+const { signIn, authorized, jwt, session, redirect } = AuthService;
 
 const VERCEL_DEPLOYMENT = !!process.env.VERCEL_URL;
 const domain = process.env.NEXT_PUBLIC_DOMAIN;
@@ -19,7 +19,7 @@ export const authConfig = {
   pages: {
     signIn: "/login",
   },
-  callbacks: { signIn, jwt, session },
+  callbacks: { signIn, jwt, session, redirect },
 
   cookies: {
     sessionToken: {

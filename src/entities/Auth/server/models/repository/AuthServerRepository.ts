@@ -22,9 +22,6 @@ export default class AuthServerRepository implements AuthRepositoryImpl {
   };
 
   async login({ href }: { href: string }): Promise<void> {
-
-    console.log("TEST HREF", href);
-
     await signIn(this.signUpMethod, { redirectTo: href });
   }
 
