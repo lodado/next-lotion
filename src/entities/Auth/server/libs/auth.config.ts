@@ -35,6 +35,49 @@ export const authConfig = {
         secure: process.env.NODE_ENV == "production",
       },
     },
+
+    callbackUrl: {
+      name: `${VERCEL_DEPLOYMENT ? "__Secure-" : ""}next-auth.callback-url`,
+      options: {
+        sameSite: "lax",
+        path: "/",
+        domain: VERCEL_DEPLOYMENT ? `.${domain}` : undefined,
+        secure: process.env.NODE_ENV == "production",
+      },
+    },
+
+    csrfToken: {
+      name: `${VERCEL_DEPLOYMENT ? "__Host-" : ""}next-auth.csrf-token`,
+      options: {
+        httpOnly: true,
+        sameSite: "lax",
+        path: "/",
+        domain: VERCEL_DEPLOYMENT ? `.${domain}` : undefined,
+        secure: process.env.NODE_ENV == "production",
+      },
+    },
+
+    pkceCodeVerifier: {
+      name: `${VERCEL_DEPLOYMENT ? "__Secure-" : ""}next-auth.pkce.code_verifier`,
+      options: {
+        httpOnly: true,
+        sameSite: "lax",
+        path: "/",
+        domain: VERCEL_DEPLOYMENT ? `.${domain}` : undefined,
+        secure: process.env.NODE_ENV == "production",
+      },
+    },
+
+    state: {
+      name: `${VERCEL_DEPLOYMENT ? "__Secure-" : ""}next-auth.state`,
+      options: {
+        httpOnly: true,
+        sameSite: "lax",
+        path: "/",
+        domain: VERCEL_DEPLOYMENT ? `.${domain}` : undefined,
+        secure: process.env.NODE_ENV == "production",
+      },
+    },
   },
 
   session: {
