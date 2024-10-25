@@ -15,6 +15,7 @@ const LoginForm = () => {
   return (
     <div className="flex flex-col items-start gap-3 relative self-stretch w-full h-[220px] flex-[0_0_auto]">
       <form action={dispatch} className="flex flex-col w-full gap-1 space-y-3">
+        <input className="hidden" hidden name="href" value={window.location.href} />
         <Oauth2LoginButton value="kakao">
           <ICON_KAKAO /> {t("KakaoButton")}
         </Oauth2LoginButton>

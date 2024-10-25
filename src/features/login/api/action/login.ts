@@ -8,8 +8,9 @@ import { Oauth2LoginUsecase } from "@/entities/Auth/core";
 // eslint-disable-next-line consistent-return
 export async function authenticateAction(prevState: any, formData: FormData) {
   const signupMethod = formData.get(LOGIN_METHOD);
+  const href = formData.get("href") as string;
   try {
-    await new Oauth2LoginUsecase(new AuthServerRepository(signupMethod as string)).execute();
+    await new Oauth2LoginUsecase(new AuthServerRepository(signupMethod as string)).execute({ href });
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {

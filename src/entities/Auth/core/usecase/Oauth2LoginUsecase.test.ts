@@ -55,7 +55,7 @@ describe("LoginUseCase", () => {
       it("should call the login method of the auth repository", async () => {
         inMemoryAuthRepository.setUser(userEntityMock);
 
-        await loginUseCase.execute();
+        await loginUseCase.execute({ href: "test" });
 
         // Check if the user has been added to the in-memory store
         const storedUser = await inMemoryAuthRepository.getUserInfo();
@@ -65,7 +65,7 @@ describe("LoginUseCase", () => {
       it("should create a new UserEntity with the provided properties", async () => {
         inMemoryAuthRepository.setUser(userEntityMock);
 
-        await loginUseCase.execute();
+        await loginUseCase.execute({ href: "test" });
 
         // Verify that the user entity properties are correct
         const storedUser = await inMemoryAuthRepository.getUserInfo();
@@ -85,7 +85,7 @@ describe("LoginUseCase", () => {
         inMemoryAuthRepository.setThrowError(true);
 
         // Expect the error to be mapped and thrown
-        await expect(loginUseCase.execute()).rejects.toThrow();
+        await expect(loginUseCase.execute({ href: "test" })).rejects.toThrow();
       });
     });
   });

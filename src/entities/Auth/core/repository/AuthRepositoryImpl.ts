@@ -2,7 +2,7 @@ import exp from "constants";
 import { UserEntity } from "../entity";
 
 interface AuthRepositoryImpl {
-  login(): Promise<void>;
+  login({ href }: { href: string }): Promise<void>;
   logout(): Promise<void>;
   getUserInfo(): Promise<UserEntity | undefined>;
 }

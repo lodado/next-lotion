@@ -5,9 +5,9 @@ import { AuthRepositoryImpl } from "../repository";
 export class Oauth2LoginUsecase {
   constructor(private AuthRepository: AuthRepositoryImpl) {}
 
-  execute: () => Promise<void> = async () => {
+  execute = async ({ href }: { href: string }) => {
     try {
-      return this.AuthRepository.login();
+      return this.AuthRepository.login({ href });
     } catch (error) {
       throw mapRepositoryErrorToUseCaseError(error);
     }

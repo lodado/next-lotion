@@ -21,8 +21,8 @@ export default class AuthServerRepository implements AuthRepositoryImpl {
     return session as NextAuthSessionResponse;
   };
 
-  async login(): Promise<void> {
-    await signIn(this.signUpMethod, { redirect: false });
+  async login({ href }: { href: string }): Promise<void> {
+    await signIn(this.signUpMethod, { redirectTo: href });
   }
 
   logout(): Promise<void> {

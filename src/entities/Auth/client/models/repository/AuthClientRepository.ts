@@ -8,7 +8,7 @@ export default class AuthClientRepository implements AuthRepositoryImpl {
     this.user = user!;
   }
 
-  // TODO: login 가능한 dialog가 띄워짐
+  // 필요 없음
   login(): Promise<void> {
     throw new Error("Method not implemented.");
   }
