@@ -24,8 +24,13 @@ export const extractLanguageFromUrl = (url: string): string => {
 export function applySubDomain(request: NextRequest, response: NextResponse) {
   const url = response.url;
   const locale = response.headers.get("x-middleware-request-x-next-intl-locale")!;
-
   const hostname = request.headers.get("host")!;
+
+  /**
+   * localhost일 경우엔 subdomain끼리 쿠키 공유가 안되서
+   * localhost(dev mode)일떄는 일반 경로대로 처리
+   */
+  if (hostname.startsWith("localhost")) return response;
 
   const headers = new Headers(request.headers);
   headers.set(HEADER_LOCALE_NAME, locale);
