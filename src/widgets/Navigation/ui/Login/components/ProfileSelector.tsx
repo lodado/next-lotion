@@ -10,6 +10,7 @@ import { User, Settings } from "lucide-react";
 import ProfileThemeSelector from "./ProfileThemeSelector";
 import { useTranslations } from "next-intl";
 import { UserProfile } from "@/features/Settings";
+import { LocaleLink } from "@/shared/ui/index.server";
 
 const ProfileDropdown = () => {
   const t = useTranslations("ProfileDropdown");
@@ -41,12 +42,12 @@ const ProfileDropdown = () => {
         <Dropdown.Separator className="my-2" />
 
         <div className="flex flex-col py-2 gap-y-2">
-          <Link href="/blog">
+          <LocaleLink href="/blog">
             <Dropdown.Item className="flex items-center justify-start w-full px-4 gap-2">
               <User className="" size={22} />
               <span className="body-02">{t("my_blog")}</span>
             </Dropdown.Item>
-          </Link>
+          </LocaleLink>
           <Dropdown.Item className="flex items-center justify-start px-4  gap-2">
             <Settings className="" size={22} />
             <span className="body-02">{t("settings")}</span>
