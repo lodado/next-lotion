@@ -46,9 +46,9 @@ export default function ReduxInitStoreProvider({
     } else {
       storeRef.current.dispatch(AUTH_LOGOUT_ACTION());
     }
-
-    storeRef.current.dispatch(SET_USER_DOMAIN(userDomain));
   }
+
+  storeRef.current.dispatch(SET_USER_DOMAIN(userDomain));
 
   return (
     <Provider store={storeRef.current} context={GlobalReduxContext}>

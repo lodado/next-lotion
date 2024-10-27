@@ -15,6 +15,8 @@ const ProfileDropdown = () => {
   const t = useTranslations("ProfileDropdown");
   const user = useSelector((state) => state.auth.user);
 
+  const domainLocation = useSelector((state) => state.userDomain.domainLocation);
+
   return (
     <Dropdown>
       <Dropdown.Trigger
@@ -41,12 +43,22 @@ const ProfileDropdown = () => {
         <Dropdown.Separator className="my-2" />
 
         <div className="flex flex-col py-2 gap-y-2">
-          <LocaleLink subDomain="test" href="">
-            <Dropdown.Item className="flex items-center justify-start w-full px-4 gap-2">
-              <User className="" size={22} />
-              <span className="body-02">{t("my_blog")}</span>
-            </Dropdown.Item>
-          </LocaleLink>
+          {domainLocation !== "" ? (
+            <LocaleLink subDomain={domainLocation} href="">
+              <Dropdown.Item className="flex items-center justify-start w-full px-4 gap-2">
+                <User className="" size={22} />
+                <span className="body-02">{t("my_blog")}</span>
+              </Dropdown.Item>
+            </LocaleLink>
+          ) : (
+            <LocaleLink subDomain="www" href="/create-blog">
+              <Dropdown.Item className="flex items-center justify-start w-full px-4 gap-2">
+                <User className="" size={22} />
+                <span className="body-02">블로그 만들기</span>
+              </Dropdown.Item>
+            </LocaleLink>
+          )}
+
           <Dropdown.Item className="flex items-center justify-start px-4  gap-2">
             <Settings className="" size={22} />
             <span className="body-02">{t("settings")}</span>

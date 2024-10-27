@@ -1,4 +1,6 @@
 /* eslint-disable turbo/no-undeclared-env-vars */
+
+/*
 import { MetadataRoute } from 'next'
 
 const BASE_PATH = process.env.NEXT_PUBLIC_CLIENT_URL
@@ -35,3 +37,4 @@ const Sitemap = async (): Promise<MetadataRoute.Sitemap> => {
 }
 
 export default Sitemap
+*/

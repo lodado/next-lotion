@@ -1,4 +1,3 @@
-import { GetUserInfoUseCase } from "@/entities/Auth/core";
 import { AuthServerRepository } from "@/entities/Auth/index.server";
 import { DomainServerRepository } from "@/features/blog/domain/models/server/repository";
 import { GetDomainByUserIdUseCase } from "@/features/blog/domain/models/core/usecase";
@@ -8,11 +7,10 @@ import { CreateDomainPage } from "@/homepages/create-domain/index.server.";
 import i18nOption, { LANGUAGE_LIST } from "@/shared/libs/i18n/lib/option";
 import { redirect } from "next/navigation";
 import React from "react";
-import { Provider } from "react-redux";
+
 import { getLinkHref } from "@/shared";
 
-const webUrl = process.env.NEXT_PUBLIC_CLIENT_URL;
-
+/** 필요없으므로 지울것
 export async function generateMetadata() {
   return {
     title: "Create Domain",
@@ -30,27 +28,30 @@ export async function generateMetadata() {
       },
     },
   };
-}
+} 
+*/
 
- const Page = async () => {
-   const UserCreatedDomain = await new GetDomainByUserIdUseCase(
-     new DomainServerRepository(),
-     new AuthServerRepository()
-   ).getDomainByUserId();
+const Page = async () => {
+  const UserCreatedDomain = await new GetDomainByUserIdUseCase(
+    new DomainServerRepository(),
+    new AuthServerRepository()
+  ).getDomainByUserId();
 
-   const isAlreadyUserCreatedDomain = !!UserCreatedDomain;
+  const isAlreadyUserCreatedDomain = !!UserCreatedDomain;
 
-   if (isAlreadyUserCreatedDomain) {
-     const subDomainLocation = UserCreatedDomain.domainLocation;
+  if (isAlreadyUserCreatedDomain) {
+    const subDomainLocation = UserCreatedDomain.domainLocation;
 
-     redirect(await getLinkHref({ subDomain: `${subDomainLocation}`, href: "/" }));
-   }
+    redirect(await getLinkHref({ subDomain: `${subDomainLocation}`, href: "/" }));
+  }
 
-   return (
-     <div className="w-full page-content flex justify-center">
-       <CreateDomainPage />
-     </div>
-   );
- };
+  return (
+    <>
+      <div className="w-full page-content flex justify-center">
+        <CreateDomainPage />
+      </div>
+    </>
+  );
+};
 
 export default Page;

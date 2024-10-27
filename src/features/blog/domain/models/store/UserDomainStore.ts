@@ -24,7 +24,16 @@ export const userDomainSlice = createSlice({
   reducers: {
     // Create or Set Domain
     SET_USER_DOMAIN: (state, action: PayloadAction<Domain>) => {
-      state = action.payload;
+    
+      state.domainId = action.payload.domainId;
+      state.domainName = action.payload.domainName;
+      state.domainLocation = action.payload.domainLocation;
+      state.userId = action.payload.userId;
+      state.description = action.payload.description;
+      state.createdTime = action.payload.createdTime;
+      state.language = action.payload.language;
+      state.image = action.payload.image;
+
     },
 
     // Update Domain
