@@ -5,9 +5,8 @@ import { useParams, usePathname, useRouter, useSearchParams } from "next/navigat
 import { useLocale } from "next-intl";
 
 export interface MetadataParams {
-  params: {
-    locale: string;
-  };
+  locale: string;
+  subDomain?: string;
 }
 
 const useUrl = <T extends Params = MetadataParams>() => {

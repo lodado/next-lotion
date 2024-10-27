@@ -9,3 +9,4 @@ export * from "./QueryContainer";
 export * from "./Select";
 export * from './Image'
 export * from "./animation";
+export * from "./Link";

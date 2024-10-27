@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { Button, ScreenReaderOnly } from "@/shared/ui";
 import Link from "next/link";
 import { useNavigationContext } from "../NavContext";
-
+ 
 type NavLink = {
   href: string;
   label: string;
