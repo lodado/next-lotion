@@ -32,25 +32,25 @@ export async function generateMetadata() {
   };
 }
 
-const Page = async () => {
-  const UserCreatedDomain = await new GetDomainByUserIdUseCase(
-    new DomainServerRepository(),
-    new AuthServerRepository()
-  ).getDomainByUserId();
+ const Page = async () => {
+   const UserCreatedDomain = await new GetDomainByUserIdUseCase(
+     new DomainServerRepository(),
+     new AuthServerRepository()
+   ).getDomainByUserId();
 
-  const isAlreadyUserCreatedDomain = !!UserCreatedDomain;
+   const isAlreadyUserCreatedDomain = !!UserCreatedDomain;
 
-  if (isAlreadyUserCreatedDomain) {
-    const subDomainLocation = UserCreatedDomain.domainLocation;
+   if (isAlreadyUserCreatedDomain) {
+     const subDomainLocation = UserCreatedDomain.domainLocation;
 
-    redirect(await getLinkHref({ subDomain: `${subDomainLocation}`, href: "/" }));
-  }
+     redirect(await getLinkHref({ subDomain: `${subDomainLocation}`, href: "/" }));
+   }
 
-  return (
-    <div className="w-full page-content flex justify-center">
-      <CreateDomainPage />
-    </div>
-  );
-};
+   return (
+     <div className="w-full page-content flex justify-center">
+       <CreateDomainPage />
+     </div>
+   );
+ };
 
 export default Page;

@@ -28,7 +28,7 @@ const Logo = () => {
           </defs>
         </svg>
 
-        <figcaption className="select-none text-color-text-discovery">
+        <figcaption className="select-none text-color-text-default">
           Unio
           <ScreenReaderOnly>
             is a blogging platform that automatically translates your posts into multiple languages, enabling you to

@@ -17,6 +17,8 @@ import { isDomainAddressAlreadyRegistered } from "../api/action";
 
 const RawBlogSettingPage = ({ title = "블로그 생성" }: { title?: string }) => {
   const user = useSelector((state) => state.auth.user);
+  const isLogin = useSelector((state) => state.auth.isLogin);
+
   const alertDispatch = useAlertDispatch();
   const [pending, startTransition] = useTransition();
   const { setError } = useErrorBoundary();
@@ -94,7 +96,6 @@ const RawBlogSettingPage = ({ title = "블로그 생성" }: { title?: string }) 
 
               <Form.Message
                 className="FormMessage"
-
                 /** crazy? */
                 match={async (value) => {
                   return await new Promise((resolve, reject) => {
@@ -158,8 +159,8 @@ const RawBlogSettingPage = ({ title = "블로그 생성" }: { title?: string }) 
           </section>
           <footer className="mt-6">
             <Form.Submit asChild>
-              <Button type="submit" className="w-full" disabled={pending}>
-                블로그 생성
+              <Button type="submit" className="w-full" disabled={pending || !isLogin}>
+                {isLogin ? "블로그 생성" : "로그인 후 블로그 생성하기 "}
               </Button>
             </Form.Submit>
           </footer>
