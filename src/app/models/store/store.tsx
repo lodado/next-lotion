@@ -7,6 +7,7 @@ import { authReducer } from "@/entities";
 import { loginDialogReducer } from "@/features";
 
 import markTooltipSlice from "@/features/Editor/ui/components/MarkTooltip/model";
+import { userDomainSlice } from "@/features/blog/domain/models";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -14,6 +15,7 @@ export const store = configureStore({
   reducer: {
     auth: authReducer,
     loginDialog: loginDialogReducer,
+    userDomain: userDomainSlice.reducer,
   },
 
   middleware: (getDefaultMiddleware) => {

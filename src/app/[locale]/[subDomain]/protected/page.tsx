@@ -1,7 +1,7 @@
 import { GetUserInfoUseCase } from "@/entities/Auth/core";
 import { AuthServerRepository } from "@/entities/Auth/index.server";
-import { DomainServerRepository } from "@/features/blog/domain/server/repository";
-import { GetDomainByUserIdUseCase } from "@/features/blog/domain/usecase";
+import { DomainServerRepository } from "@/features/blog/domain/models/server/repository";
+import { GetDomainByUserIdUseCase } from "@/features/blog/domain/models/core/usecase";
 
 import { CreateDomainPage } from "@/homepages/create-domain/index.server.";
 

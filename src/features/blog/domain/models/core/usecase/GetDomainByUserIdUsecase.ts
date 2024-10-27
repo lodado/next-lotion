@@ -1,6 +1,6 @@
 // usecases/GetDomainUseCase.ts
 import { UseCaseError } from "@/shared";
-import { Domain, DomainRepositoryImpl } from "@/features/blog/domain/core";
+import { Domain, DomainRepositoryImpl } from "@/features/blog/domain/models/core";
 import { AuthRepositoryImpl } from "@/entities/Auth/core";
 
 export default class GetDomainByUserIdUseCase {
@@ -19,7 +19,7 @@ export default class GetDomainByUserIdUseCase {
       const userId = (await this.AuthRepository.getUserInfo())?.id!;
 
       if (!userId) {
-        throw new UseCaseError({ message: "user is not login" });
+        return null;
       }
 
       const domain = await this.DomainRepository.getDomainByUserId(userId);

@@ -2,10 +2,11 @@
 
 import { GetUserInfoUseCase } from "@/entities/Auth/core";
 import { AuthServerRepository } from "@/entities/index.server";
-import { Domain } from "@/features/blog/domain/core";
-import { DomainServerRepository } from "@/features/blog/domain/server/repository";
-import { CreateDomainUseCase, GetDomainUseCase } from "@/features/blog/domain/usecase";
+import { Domain } from "@/features/blog/domain/models/core";
+import { DomainServerRepository } from "@/features/blog/domain/models/server/repository";
+import { CreateDomainUseCase, GetDomainUseCase } from "@/features/blog/domain/models/core/usecase";
 import { redirect } from "next/navigation";
+import { getLinkHref } from "@/shared/api";
 
 export async function createBlogAction(formData: FormData) {
   const domainLocation = formData.get("subdomain") as string;
@@ -21,7 +22,7 @@ export async function createBlogAction(formData: FormData) {
 
   await new CreateDomainUseCase(new DomainServerRepository(), new AuthServerRepository()).execute(domain);
 
-  redirect("/");
+  redirect(await getLinkHref({ subDomain: `${domainLocation}`, href: "/" }));
 }
 
 export async function isDomainAddressAlreadyRegistered(domainAddress: string) {

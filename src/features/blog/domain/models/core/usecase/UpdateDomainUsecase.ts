@@ -1,7 +1,7 @@
 // usecases/UpdateDomainUseCase.ts
 import { UseCaseError } from "@/shared";
 import { AuthRepositoryImpl } from "@/entities/Auth/core";
-import { Domain, DomainRepositoryImpl } from "@/features/blog/domain/core";
+import { Domain, DomainRepositoryImpl } from "@/features/blog/domain/models/core";
 
 export default class UpdateDomainUseCase {
   private domainRepository: DomainRepositoryImpl;

@@ -1,3 +1,4 @@
+import { IS_DEPLOYMENT } from "./../../../../shared/constants/constant";
 // import Credentials from "next-auth/providers/credentials";
 import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
@@ -9,8 +10,8 @@ import AuthService from "./service/AuthService";
 
 const { signIn, authorized, jwt, session, redirect } = AuthService;
 
-const VERCEL_DEPLOYMENT = !!process.env.VERCEL_URL;
 const domain = process.env.NEXT_PUBLIC_DOMAIN;
+const VERCEL_DEPLOYMENT = IS_DEPLOYMENT;
 
 export const authConfig = {
   debug: true,

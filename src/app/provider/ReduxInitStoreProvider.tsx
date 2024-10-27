@@ -5,6 +5,7 @@ import { createSelectorHook, Provider } from "react-redux";
 import { store } from "@/app";
 import { NextAuthSessionResponse } from "@/entities/Auth/server/type";
 import { AUTH_LOGIN_ACTION, AUTH_LOGOUT_ACTION } from "@/entities";
+import { Domain, SET_USER_DOMAIN } from "@/features/blog/domain/models";
 
 export const GlobalReduxContext = createContext<any>(undefined);
 
@@ -26,10 +27,12 @@ export default function ReduxInitStoreProvider({
   initStore,
   children,
   session,
+  userDomain,
 }: {
   initStore: typeof store;
   children: React.ReactNode;
   session: NextAuthSessionResponse | undefined;
+  userDomain: Domain;
 }) {
   const storeRef = useRef<typeof store | null>(null);
   if (!storeRef.current) {
@@ -43,6 +46,8 @@ export default function ReduxInitStoreProvider({
     } else {
       storeRef.current.dispatch(AUTH_LOGOUT_ACTION());
     }
+
+    storeRef.current.dispatch(SET_USER_DOMAIN(userDomain));
   }
 
   return (

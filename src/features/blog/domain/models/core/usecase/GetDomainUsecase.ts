@@ -1,6 +1,6 @@
 // usecases/GetDomainUseCase.ts
 import { UseCaseError } from "@/shared";
-import { Domain, DomainRepositoryImpl } from "@/features/blog/domain/core";
+import { Domain, DomainRepositoryImpl } from "@/features/blog/domain/models/core";
 
 export default class GetDomainUseCase {
   private domainRepository: DomainRepositoryImpl;

@@ -1,7 +1,7 @@
 // usecases/DeleteDomainUseCase.ts
 import { UseCaseError } from "@/shared";
 import { AuthRepositoryImpl } from "@/entities/Auth/core";
-import { DomainRepositoryImpl } from "@/features/blog/domain/core";
+import { DomainRepositoryImpl } from "@/features/blog/domain/models/core";
 
 export default class DeleteDomainUseCase {
   private domainRepository: DomainRepositoryImpl;
