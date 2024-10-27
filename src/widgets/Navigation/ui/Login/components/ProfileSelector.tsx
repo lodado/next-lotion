@@ -14,8 +14,7 @@ import { UserProfile } from "@/features/Settings";
 const ProfileDropdown = () => {
   const t = useTranslations("ProfileDropdown");
   const user = useSelector((state) => state.auth.user);
-
-  const domainLocation = useSelector((state) => state.userDomain.domainLocation);
+  const userDomainLocation = useSelector((state) => state.userDomain.domainLocation);
 
   return (
     <Dropdown>
@@ -43,8 +42,8 @@ const ProfileDropdown = () => {
         <Dropdown.Separator className="my-2" />
 
         <div className="flex flex-col py-2 gap-y-2">
-          {domainLocation !== "" ? (
-            <LocaleLink subDomain={domainLocation} href="">
+          {userDomainLocation !== "" ? (
+            <LocaleLink subDomain={userDomainLocation} href="">
               <Dropdown.Item className="flex items-center justify-start w-full px-4 gap-2">
                 <User className="" size={22} />
                 <span className="body-02">{t("my_blog")}</span>
