@@ -1,7 +1,7 @@
 
-import { isServerSide } from '../utils'
-import { ROOT_URL } from './constant'
- 
+import { ROOT_URL } from "../constants";
+import { isServerSide } from "../utils";
+
 import { parseServerCookie } from './utils/parseServerCookie'
 
 class MockController {
