@@ -40,7 +40,8 @@ id name
   - `id` (PK): Unique identifier for each blog post.
   - `contentId`: Content of the blog post Id (reference mongoDB)
   - `userId`: ID of the user who authored the blog post.
-  - `categoryName`: Foreign key referencing `categories.name` to indicate the category of the blog post.
+  - `categoryId`: Foreign key referencing `categories.name` to indicate the category of the blog post.
+  - `subCategoryId`: Foreign key referencing `subcategories.name` to indicate the category of the blog post.
   - `createdAt`: Timestamp indicating when the post was created.
 
 ### 4. `categoryCounts`
@@ -48,8 +49,18 @@ id name
 - Stores the count of posts within each category.
 - Fields:
   - `id` (PK): Unique identifier for each record.
-  - `categoryName`: Foreign key referencing `categories.name`.
+  - `categoryId`: Foreign key referencing `categories.name`.
   - `postCount`: Number of posts within the category.
+  - `updatedAt`: Timestamp indicating when the count was last updated.
+
+### 5. `subCategoryCounts`
+
+- Stores the count of posts within each category.
+- Fields:
+  - `id` (PK): Unique identifier for each record.
+  - `subCategoryId`: Foreign key referencing `categories.name`.
+  - `postCount`: Number of posts within the category.
+  - `userId`: ID of the user who authored the blog post.
   - `updatedAt`: Timestamp indicating when the count was last updated.
 
 ## Entity-Relationship Diagram (ERD)
@@ -59,16 +70,10 @@ id name
 │  categories   │       │ subcategories │       │   blogPosts   │       │  categoryCounts  │
 ├───────────────┤       ├───────────────┤       ├───────────────┤       ├──────────────────┤
 │ id (PK)       │◄──────│ id (PK)       │       │ id (PK)       │       │ id (PK)          │
-│ name (UNIQUE) │──────►│ categoryId    │──────►│ categoryName  │──────>│ categoryName     │
+│ name (UNIQUE) │──────►│ categoryId    │──────►│ categoryId    │──────>│ categoryId       │
 └───────────────┘       │ name          │       │ content       │       │ postCount        │
                         │ userId        │       │ authorId      │       │ updatedAt        │
                         └───────────────┘       │ createdAt     │       │                  │
                                                 │               │       └──────────────────┘
                                                 └───────────────┘
 ```
-
-## Relationship Summary
-
-- `categories` ➔ `subcategories`: `categories.id` is referenced by `subcategories.category_id`.
-- `categories` ➔ `blogPosts`: `categories.name` is referenced by `blogPosts.categoryName`.
-- `categories` ➔ `categoryCounts`: `categories.name` is referenced by `categoryCounts.categoryName`.

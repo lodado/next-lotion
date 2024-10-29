@@ -12,7 +12,7 @@ const LoginNavBarRoot = async ({ children }: PropsWithChildren) => {
   return (
     <>
       <NavigationProvider>
-        <nav className="page-nav w-screen top-0 bg-background text-color-text-default shadow-md z-50">
+        <nav className="page-nav w-screen grow-0 shrink-0 top-0 bg-background text-color-text-default shadow-md z-50">
           <div className="mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-[64px] px-5">{children}</div>
           </div>
