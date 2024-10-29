@@ -56,5 +56,10 @@
     "tooltipContent": "Digite o idioma principal do blog. Será usado na tag canônica.",
     "placeholder": "Blog, Tecnologia, Vida",
     "selectLabel": "Idioma"
+  },
+  "errorpage": {
+    "title": "Ocorreu um erro",
+    "defaultError": "Ocorreu um erro desconhecido",
+    "returnHome": "Voltar para a página inicial"
   }
 }

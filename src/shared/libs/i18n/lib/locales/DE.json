@@ -56,5 +56,10 @@
     "tooltipContent": "Geben Sie die Hauptsprache des Blogs ein. Sie wird im kanonischen Tag verwendet.",
     "placeholder": "Blog, Technologie, Leben",
     "selectLabel": "Sprache"
+  },
+  "errorpage": {
+    "title": "Fehler aufgetreten",
+    "defaultError": "Ein unbekannter Fehler ist aufgetreten.",
+    "returnHome": "Zurück zur Startseite"
   }
 }

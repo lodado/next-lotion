@@ -1,5 +1,5 @@
 import { ComponentProps } from "react";
-import LocaleLink from "../ui/Link/LocaleLink";
+import SeverLocaleLink from "../ui/Link/ServerLocaleLink.server";
 
 import { sanitizeUrl } from "@/shared/utils/sanitizeUrl";
 import { getLocale } from "next-intl/server";
@@ -7,7 +7,7 @@ import { IS_DEPLOYMENT } from "../constants";
 
 const isLocalhost = !IS_DEPLOYMENT;
 
-export const getLinkHref = async (props: ComponentProps<typeof LocaleLink>) => {
+export const getLinkHref = async (props: ComponentProps<typeof SeverLocaleLink>) => {
   const { href = "", subDomain: _subDomain, custom = false, ...rest } = props;
 
   const locale = await getLocale();

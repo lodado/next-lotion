@@ -56,5 +56,10 @@
     "tooltipContent": "Inserisci la lingua principale del blog. Verrà utilizzata nel tag canonico.",
     "placeholder": "Blog, Tecnologia, Vita",
     "selectLabel": "Lingua"
+  },
+  "errorpage": {
+    "title": "Errore Occorso",
+    "defaultError": "Si è verificato un errore sconosciuto",
+    "returnHome": "Torna alla Homepage"
   }
 }

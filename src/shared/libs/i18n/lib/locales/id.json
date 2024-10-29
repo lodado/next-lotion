@@ -56,5 +56,10 @@
     "tooltipContent": "Masukkan bahasa utama blog. Ini akan digunakan dalam tag kanonik.",
     "placeholder": "Blog, Teknologi, Kehidupan",
     "selectLabel": "Bahasa"
+  },
+  "errorpage": {
+    "title": "Kesalahan Terjadi",
+    "defaultError": "Kesalahan tidak dikenal telah terjadi",
+    "returnHome": "Kembali ke Beranda"
   }
 }

@@ -56,5 +56,10 @@
     "tooltipContent": "Ingrese el idioma principal del blog. Se utilizará en la etiqueta canónica.",
     "placeholder": "Blog, Tecnología, Vida",
     "selectLabel": "Idioma"
+  },
+  "errorpage": {
+    "title": "Error Ocurrido",
+    "defaultError": "Ha ocurrido un error desconocido.",
+    "returnHome": "Regresar a la página de inicio"
   }
 }

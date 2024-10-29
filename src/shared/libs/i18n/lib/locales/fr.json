@@ -56,5 +56,10 @@
     "tooltipContent": "Entrez la langue principale du blog. Elle sera utilisée dans la balise canonique.",
     "placeholder": "Blog, Technologie, Vie",
     "selectLabel": "Langue"
+  },
+  "errorpage": {
+    "title": "Erreur survenue",
+    "defaultError": "Une erreur inconnue est survenue.",
+    "returnHome": "Retourner à la page d'accueil"
   }
 }

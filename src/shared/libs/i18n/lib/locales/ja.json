@@ -56,5 +56,10 @@
     "tooltipContent": "ブログの主な言語を入力してください。カノニカルタグで使用されます。",
     "placeholder": "ブログ、技術、生活",
     "selectLabel": "言語"
+  },
+  "errorpage": {
+    "title": "エラーが発生しました",
+    "defaultError": "不明なエラーが発生しました",
+    "returnHome": "ホームページに戻る"
   }
 }

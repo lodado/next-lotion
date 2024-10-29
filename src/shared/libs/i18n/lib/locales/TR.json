@@ -56,5 +56,10 @@
     "tooltipContent": "Blog'un ana dilini girin. Kanonik etiket için kullanılacaktır.",
     "placeholder": "Blog, Teknoloji, Yaşam",
     "selectLabel": "Dil"
+  },
+  "errorpage": {
+    "title": "Hata Oluştu",
+    "defaultError": "Bilinmeyen bir hata oluştu",
+    "returnHome": "Ana sayfaya dön"
   }
 }

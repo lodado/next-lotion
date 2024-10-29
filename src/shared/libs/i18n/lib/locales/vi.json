@@ -56,5 +56,10 @@
     "tooltipContent": "Nhập ngôn ngữ chính của blog. Nó sẽ được sử dụng trong thẻ chuẩn.",
     "placeholder": "Blog, Công nghệ, Cuộc sống",
     "selectLabel": "Ngôn ngữ"
+  },
+  "errorpage": {
+    "title": "Đã xảy ra lỗi",
+    "defaultError": "Đã xảy ra lỗi không xác định",
+    "returnHome": "Quay lại trang chủ"
   }
 }

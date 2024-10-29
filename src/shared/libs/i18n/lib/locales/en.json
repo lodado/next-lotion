@@ -56,5 +56,10 @@
     "tooltipContent": "Enter the primary language of the blog. It will be used in the canonical tag.",
     "placeholder": "Blog, Technology, Life",
     "selectLabel": "Language"
+  },
+  "errorpage": {
+    "title": "Error Occurred",
+    "defaultError": "An unknown error has occurred.",
+    "returnHome": "Return to Homepage"
   }
 }

@@ -56,5 +56,10 @@
     "tooltipContent": "블로그의 주 언어를 입력하세요. 카노니컬 태그에 사용됩니다.",
     "placeholder": "블로그, 기술, 생활",
     "selectLabel": "언어"
+  },
+  "errorpage": {
+    "title": "오류 발생",
+    "defaultError": "알 수 없는 오류가 발생했습니다.",
+    "returnHome": "홈페이지로 돌아가기"
   }
 }

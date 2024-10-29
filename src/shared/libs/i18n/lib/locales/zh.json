@@ -56,5 +56,10 @@
     "tooltipContent": "请输入博客的主要语言。它将用于规范标签。",
     "placeholder": "博客、技术、生活",
     "selectLabel": "语言"
+  },
+  "errorpage": {
+    "title": "发生错误",
+    "defaultError": "发生了未知错误",
+    "returnHome": "返回主页"
   }
 }
