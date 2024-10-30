@@ -15,11 +15,11 @@ const ClientProvider = ({
   userDomain = domainInitialState,
 }: PropsWithChildren & {
   session: NextAuthSessionResponse | undefined;
-  userDomain: Domain | null;
+  userDomain: Domain;
 }) => {
   return (
     <ReactQueryProvider>
-      <ReduxInitStoreProvider userDomain={userDomain!} session={session} initStore={store}>
+      <ReduxInitStoreProvider userDomain={userDomain} session={session} initStore={store}>
         {children}
       </ReduxInitStoreProvider>
 

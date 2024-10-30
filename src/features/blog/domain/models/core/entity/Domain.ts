@@ -1,14 +1,14 @@
 import { LANGUAGE_LIST } from "@/shared";
 
 export default class Domain implements Domain {
-  domainId?: string;
+  domainId?: number;
   domainName: string;
   domainLocation: string;
 
   userId: string;
 
   description?: string;
-  createdTime?: Date;
+  createdTime?: Date | number;
   language: (typeof LANGUAGE_LIST)[number];
   image?: string;
 

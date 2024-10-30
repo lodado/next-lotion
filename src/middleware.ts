@@ -1,11 +1,30 @@
 /* eslint-disable turbo/no-undeclared-env-vars */
 
-import { NextRequest, NextResponse } from "next/server";
-
+  
+import { NextMiddlewareResult } from "next/dist/server/web/types";
+import { NextMiddleware, NextRequest, NextResponse } from "next/server";
 import { i18nMiddleware, withAuthApiMiddleware } from "./app/middlewares/index.server";
 import { cookies } from "next/headers";
+import { rateLimitMiddleware } from "./app/middlewares/rateLimitMiddleware";
 
 export const runtime = "nodejs";
+
+export type MiddlewareFactory = {
+  middleware: (request: NextRequest, response: NextResponse) => NextMiddlewareResult | Promise<NextMiddlewareResult>;
+
+  /**
+   * Middleware matcher configuration
+   * @see https://nextjs.org/docs/app/building-your-application/routing/middleware#matcher
+   */
+  config: {
+    matcher: string[];
+    order: number;
+  };
+};
+
+/**
+ * Stack nextjs middlewares for allow multiple middleware usage with invoking them with order
+ */
 
 export async function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
@@ -16,12 +35,20 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  const rateLimitResponse = await rateLimitMiddleware(request);
+  if (rateLimitResponse) {
+    return rateLimitResponse;
+  }
+
   if (path.startsWith("/api")) {
     return withAuthApiMiddleware(request, path, defaultLocale);
   }
 
   return i18nMiddleware(request, path, defaultLocale);
 }
+
+
+
 
 export const config = {
   matcher: ["/((?!_next/static|_next/image|.*\\.(?:png|jpg|jpeg|gif|webp|svg|js|json)$).*)"],

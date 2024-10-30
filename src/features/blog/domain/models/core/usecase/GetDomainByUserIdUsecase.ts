@@ -2,7 +2,7 @@
 import { UseCaseError } from "@/shared";
 import { Domain, DomainRepositoryImpl } from "@/features/blog/domain/models/core";
 import { AuthRepositoryImpl } from "@/entities/Auth/core";
-
+ 
 export default class GetDomainByUserIdUseCase {
   private DomainRepository: DomainRepositoryImpl;
   private AuthRepository: AuthRepositoryImpl;

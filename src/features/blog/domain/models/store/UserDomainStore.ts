@@ -7,7 +7,7 @@ export type DomainState = Domain;
 
 // 빈 초기 값 정의
 export const domainInitialState: DomainState = {
-  domainId: "",
+  domainId: undefined,
   domainName: "",
   domainLocation: "",
   userId: "",

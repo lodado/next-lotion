@@ -30,7 +30,6 @@ export async function generateMetadata() {
   };
 } 
 */
-
 const Page = async () => {
   const UserCreatedDomain = await new GetDomainByUserIdUseCase(
     new DomainServerRepository(),

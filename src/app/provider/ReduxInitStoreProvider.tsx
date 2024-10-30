@@ -1,6 +1,6 @@
 "use client";
 import { createContext, useRef } from "react";
-import { createSelectorHook, Provider } from "react-redux";
+import { Provider } from "react-redux";
 
 import { store } from "@/app";
 import { NextAuthSessionResponse } from "@/entities/Auth/server/type";
@@ -46,9 +46,10 @@ export default function ReduxInitStoreProvider({
     } else {
       storeRef.current.dispatch(AUTH_LOGOUT_ACTION());
     }
+
+    storeRef.current.dispatch(SET_USER_DOMAIN(userDomain));
   }
 
-  storeRef.current.dispatch(SET_USER_DOMAIN(userDomain));
 
   return (
     <Provider store={storeRef.current} context={GlobalReduxContext}>
