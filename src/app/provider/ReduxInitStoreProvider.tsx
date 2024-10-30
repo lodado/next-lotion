@@ -47,12 +47,9 @@ export default function ReduxInitStoreProvider({
       storeRef.current.dispatch(AUTH_LOGOUT_ACTION());
     }
 
-
-    console.log("uerDomain", userDomain);
     if (userDomain) {
       storeRef.current.dispatch(SET_USER_DOMAIN(userDomain));
     }
-   
   }
 
 

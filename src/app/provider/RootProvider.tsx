@@ -18,7 +18,7 @@ const RootProvider = async ({ children }: PropsWithChildren) => {
       userDomain={
         userDomain ?? {
           userId: "",
-          domainId: undefined,
+          domainId: -1, // null
           domainName: "",
           domainLocation: "",
           createdTime: Date.now(),
