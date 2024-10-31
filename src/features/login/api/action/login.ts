@@ -6,7 +6,7 @@ import { AuthError } from "next-auth";
 import { Oauth2LoginUsecase } from "@/entities/Auth/core";
 
 // eslint-disable-next-line consistent-return
-export async function authenticateAction(prevState: any, formData: FormData) {
+export async function authenticateAction(formData: FormData) {
   const signupMethod = formData.get(LOGIN_METHOD);
   const href = formData.get("href") as string;
   try {

@@ -1,4 +1,4 @@
-import { configureStore, createStore } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import logger from "redux-logger";
 import createSagaMiddleware from "redux-saga";
 
@@ -6,8 +6,8 @@ import rootSaga from "./PublisherSubscriber/rootSaga";
 import { authReducer } from "@/entities";
 import { loginDialogReducer } from "@/features";
 
-import markTooltipSlice from "@/features/Editor/ui/components/MarkTooltip/model";
 import { userDomainSlice } from "@/features/blog/domain/models";
+import { pageLoadingSlice } from "@/shared/models";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -16,6 +16,7 @@ export const store = configureStore({
     auth: authReducer,
     loginDialog: loginDialogReducer,
     userDomain: userDomainSlice.reducer,
+    pageLoading: pageLoadingSlice.reducer,
   },
 
   middleware: (getDefaultMiddleware) => {
@@ -30,5 +31,3 @@ export const store = configureStore({
 });
 
 sagaMiddleware.run(rootSaga);
-
-

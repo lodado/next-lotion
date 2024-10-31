@@ -9,6 +9,7 @@ export function generateStaticParams() {
 }
 
 /** // TODO
+ * PPR좀 구현해줘!!!!!!!!!!!!!!!
  *  layout GNB에 넣을꺼임
  */
 const LoginDialog = async () => {
