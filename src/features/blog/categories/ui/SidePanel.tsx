@@ -9,7 +9,7 @@ import CategoryList from "./components/CategoryList";
 
 const SidePanel = ({ categories, blogPosts }: { categories: Category[]; blogPosts: BlogPost[] }) => {
   return (
-    <div className="w-64 bg-background border-r ">
+    <div className="w-32 bg-background border-r ">
       <ScrollArea className="h-full">
         <nav className="p-2">
           <h2 className="font-semibold text-lg mb-2">Blog Categories</h2>
