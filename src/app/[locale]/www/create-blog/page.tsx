@@ -1,4 +1,4 @@
-import { AuthServerRepository } from "@/entities/Auth/index.server";
+import { SERVER_DI_REPOSITORY } from "@/DI/index.server";
 import { DomainServerRepository } from "@/features/blog/domain/models/server/repository";
 import { GetDomainByUserIdUseCase } from "@/features/blog/domain/models/core/usecase";
 
@@ -33,7 +33,7 @@ export async function generateMetadata() {
 const Page = async () => {
   const UserCreatedDomain = await new GetDomainByUserIdUseCase(
     new DomainServerRepository(),
-    new AuthServerRepository()
+    new SERVER_DI_REPOSITORY.Auth()
   ).getDomainByUserId();
 
   const isAlreadyUserCreatedDomain = !!UserCreatedDomain;

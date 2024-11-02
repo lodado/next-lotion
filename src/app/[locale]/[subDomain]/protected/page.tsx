@@ -1,5 +1,5 @@
+import { SERVER_DI_REPOSITORY } from "@/DI/index.server";
 import { GetUserInfoUseCase } from "@/entities/Auth/core";
-import { AuthServerRepository } from "@/entities/Auth/index.server";
 import { DomainServerRepository } from "@/features/blog/domain/models/server/repository";
 import { GetDomainByUserIdUseCase } from "@/features/blog/domain/models/core/usecase";
 
@@ -11,12 +11,12 @@ import React from "react";
 const webUrl = process.env.NEXT_PUBLIC_CLIENT_URL;
 
 const Page = async () => {
-  const isUserLogin = await new GetUserInfoUseCase(new AuthServerRepository()).isUserLogin();
+  const isUserLogin = await new GetUserInfoUseCase(new SERVER_DI_REPOSITORY.Auth()).isUserLogin();
   if (!isUserLogin) redirect("/");
 
   const isAlreadyUserCreatedDomain = await new GetDomainByUserIdUseCase(
     new DomainServerRepository(),
-    new AuthServerRepository()
+    new SERVER_DI_REPOSITORY.Auth()
   ).getDomainByUserId();
 
   if (!!isAlreadyUserCreatedDomain) {

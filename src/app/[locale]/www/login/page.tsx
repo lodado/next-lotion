@@ -1,5 +1,5 @@
+import { SERVER_DI_REPOSITORY } from "@/DI/index.server";
 import { GetUserInfoUseCase } from "@/entities/Auth/core";
-import { AuthServerRepository } from "@/entities/Auth/index.server";
  
 import { LoginPage } from "@/homepages/login";
 import { getLinkHref } from "@/shared/api";
@@ -10,7 +10,7 @@ import { redirect } from "next/navigation";
 import React from "react";
 
 const page = async () => {
-  const isLogin = await new GetUserInfoUseCase(new AuthServerRepository()).isUserLogin();
+  const isLogin = await new GetUserInfoUseCase(new SERVER_DI_REPOSITORY.Auth()).isUserLogin();
 
   if (isLogin) {
     redirect(await getLinkHref({ href: "/" }));

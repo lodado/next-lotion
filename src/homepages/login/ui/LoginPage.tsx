@@ -1,5 +1,5 @@
+import { SERVER_DI_REPOSITORY } from "@/DI/index.server";
 import { GetUserInfoUseCase } from "@/entities/Auth/core";
-import { AuthServerRepository } from "@/entities/Auth/index.server";
 
 import LoginForm from "@/features/login/ui/components/LoginForm";
 import { getLinkHref } from "@/shared/api";
@@ -12,7 +12,7 @@ import React from "react";
 const LoginPage = async () => {
   const t = await getTranslations("LoginDialogContainer");
 
-  const isLogin = await new GetUserInfoUseCase(new AuthServerRepository()).isUserLogin();
+  const isLogin = await new GetUserInfoUseCase(new SERVER_DI_REPOSITORY.Auth()).isUserLogin();
 
   if (isLogin) {
     redirect(await getLinkHref({ href: "/" }));
