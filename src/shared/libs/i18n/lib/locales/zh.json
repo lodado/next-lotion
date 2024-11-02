@@ -61,5 +61,9 @@
     "title": "发生错误",
     "defaultError": "发生了未知错误",
     "returnHome": "返回主页"
+  },
+  "LOGIN": {
+    "TOOLTIP-LASTLOGINTEXT": "🔑 上次登录",
+    "TOOLTIP-TEXT": "⚡️ 3秒内开始登录"
   }
 }

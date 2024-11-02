@@ -61,5 +61,9 @@
     "title": "Fehler aufgetreten",
     "defaultError": "Ein unbekannter Fehler ist aufgetreten.",
     "returnHome": "Zurück zur Startseite"
+  },
+  "LOGIN": {
+    "TOOLTIP-LASTLOGINTEXT": "🔑 Letzte Anmeldung",
+    "TOOLTIP-TEXT": "⚡️ Beginnen Sie in 3 Sekunden mit der Anmeldung"
   }
 }

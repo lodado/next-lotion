@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useState } from "react";
+import React, { PropsWithChildren, ReactNode, useState } from "react";
 
 import { LoginButton } from "@/features";
 import { Bell } from "lucide-react";
@@ -12,7 +12,7 @@ const LoginNavBarRoot = async ({ children }: PropsWithChildren) => {
   return (
     <>
       <NavigationProvider>
-        <nav className="page-nav w-screen grow-0 shrink-0 top-0 bg-background text-color-text-default shadow-md z-50">
+        <nav className="page-nav w-screen grow-0 shrink-0 top-0 bg-background text-color-text-default z-50">
           <div className="mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-[64px] px-5">{children}</div>
           </div>
@@ -22,18 +22,21 @@ const LoginNavBarRoot = async ({ children }: PropsWithChildren) => {
   );
 };
 
-const Header = () => (
-  <div className="flex items-center flex-shrink-0 flex-row gap-5">
-    <Logo />
-  </div>
+const Header = ({ mobileChildren }: { mobileChildren?: ReactNode }) => (
+  <>
+    <div className="w-[52px] flex-grow-0 flex sm:hidden items-center">{mobileChildren}</div>
+    <div className=" hidden sm:flex items-center flex-grow-0 flex-shrink-0 flex-row gap-5">
+      <Logo />
+    </div>
+  </>
 );
 
 const Footer = async ({ authRepository }: { authRepository: AuthRepositoryImpl }) => {
   const isLogin = await new GetUserInfoUseCase(authRepository).isUserLogin();
 
   return (
-    <div className="block">
-      <div className="flex items-center space-x-4">
+    <div className="flex flex-grow-0">
+      <div className="flex w-[90px] items-center space-x-4 flex-row justify-end">
         {isLogin ? (
           <>
             <IconButton variant="text">
@@ -51,6 +54,9 @@ const Footer = async ({ authRepository }: { authRepository: AuthRepositoryImpl }
 
 const Body = () => (
   <>
+    <div className="sm:hidden flex pl-3 flex-grow items-center justify-center flex-row gap-5">
+      <Logo />
+    </div>
     {/* Mobile menu button, consider for responsiveness */}
     {/* <MobileMenuToggleButton /> */}
     {/* <MobileMenuDropdown navLinks={navLinks} /> */}

@@ -1,17 +1,25 @@
 "use client";
 
 import { contextBuildHelper } from "@/shared";
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, { createContext, useContext, useState, ReactNode, useEffect } from "react";
 
 interface CategoryContextType {
   expandedCategories: number[];
   toggleCategory: (categoryId: number) => void;
+
+  isOpen: boolean;
+  toggleSidePanel: () => void;
 }
 
 export const [CategoryContext, useCategoryContext] = contextBuildHelper<CategoryContextType>({ id: "CategoryContext" });
 
 export const CategoryProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [expandedCategories, setExpandedCategories] = useState<number[]>([]);
+  const [isOpen, setIsOpen] = useState(true);
+
+  const toggleSidePanel = () => {
+    setIsOpen((prev) => !prev);
+  };
 
   const toggleCategory = (categoryId: number) => {
     setExpandedCategories((prev) =>
@@ -20,7 +28,12 @@ export const CategoryProvider: React.FC<{ children: ReactNode }> = ({ children }
   };
 
   return (
-    <CategoryContext expandedCategories={expandedCategories} toggleCategory={toggleCategory}>
+    <CategoryContext
+      isOpen={isOpen}
+      toggleSidePanel={toggleSidePanel}
+      expandedCategories={expandedCategories}
+      toggleCategory={toggleCategory}
+    >
       {children}
     </CategoryContext>
   );

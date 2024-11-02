@@ -1,6 +1,8 @@
 import { EDGE_DI_REPOSITORY } from "@/DI/edge.server";
 import { BlogPost, Category } from "@/features/blog/categories/models/entities/type";
+import SideFoldButton from "@/features/blog/categories/ui/components/SideFoldButton";
 import SidePanel from "@/features/blog/categories/ui/SidePanel";
+import { CategoryProvider } from "@/features/blog/categories/ui/SidePanelProvider";
 
 import Navigation from "@/widgets/Navigation/ui/Navigation";
 
@@ -13,24 +15,27 @@ const categories: Category[] = [
 ];
 
 const blogPosts: BlogPost[] = [
-  { id: 1, categoryName: "Travel", title: "Top 10 Adventure Destinations" },
-  { id: 2, categoryName: "Travel", title: "City Break: 48 Hours in Paris" },
-  { id: 3, categoryName: "Food", title: "Easy 30-Minute Dinner Recipes" },
-  { id: 4, categoryName: "Food", title: "Best Pizza Places in New York" },
-  { id: 5, categoryName: "Lifestyle", title: "Minimalist Home Decor Ideas" },
+  { id: 11, categoryName: "Travel", title: "Top 10 Adventure Destinations" },
+  { id: 222, categoryName: "Travel", title: "City Break: 48 Hours in Paris" },
+  { id: 333, categoryName: "Food", title: "Easy 30-Minute Dinner Recipes" },
+  { id: 4444, categoryName: "Food", title: "Best Pizza Places in New York" },
+  { id: 55555, categoryName: "Lifestyle", title: "Minimalist Home Decor Ideas" },
 ];
 
 const Layout = async ({ children }: PropsWithChildren) => {
   return (
     <div className="w-full page-content">
-      <Navigation.Root>
-        <Navigation.Header />
-        <Navigation.Footer authRepository={new EDGE_DI_REPOSITORY.Auth()} />
-      </Navigation.Root>
-      <div className="w-full flex flex-row grow-0 shrink-0 h-full">
-        <SidePanel categories={categories} blogPosts={blogPosts} />
-        {children}
-      </div>
+      <CategoryProvider>
+        <Navigation.Root>
+          <Navigation.Header mobileChildren={<SideFoldButton />} />
+          <Navigation.Body />
+          <Navigation.Footer authRepository={new EDGE_DI_REPOSITORY.Auth()} />
+        </Navigation.Root>
+        <div className="relative w-full flex flex-row grow-0 shrink-0 h-full">
+          <SidePanel categories={categories} blogPosts={blogPosts} />
+          {children}
+        </div>
+      </CategoryProvider>
     </div>
   );
 };

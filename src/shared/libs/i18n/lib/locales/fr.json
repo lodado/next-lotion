@@ -61,5 +61,9 @@
     "title": "Erreur survenue",
     "defaultError": "Une erreur inconnue est survenue.",
     "returnHome": "Retourner à la page d'accueil"
+  },
+  "LOGIN": {
+    "TOOLTIP-LASTLOGINTEXT": "🔑 Dernière connexion",
+    "TOOLTIP-TEXT": "⚡️ Commencez à vous connecter en 3 secondes"
   }
 }

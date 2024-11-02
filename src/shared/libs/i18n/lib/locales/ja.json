@@ -61,5 +61,9 @@
     "title": "エラーが発生しました",
     "defaultError": "不明なエラーが発生しました",
     "returnHome": "ホームページに戻る"
+  },
+  "LOGIN": {
+    "TOOLTIP-LASTLOGINTEXT": "🔑 最後のログイン",
+    "TOOLTIP-TEXT": "⚡️ 3秒でログインを開始してください"
   }
 }

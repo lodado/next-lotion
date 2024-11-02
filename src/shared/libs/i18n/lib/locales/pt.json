@@ -61,5 +61,9 @@
     "title": "Ocorreu um erro",
     "defaultError": "Ocorreu um erro desconhecido",
     "returnHome": "Voltar para a página inicial"
+  },
+  "LOGIN": {
+    "TOOLTIP-LASTLOGINTEXT": "🔑 Último login",
+    "TOOLTIP-TEXT": "⚡️ Comece a fazer login em 3 segundos"
   }
 }

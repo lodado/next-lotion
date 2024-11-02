@@ -61,5 +61,9 @@
     "title": "Error Occurred",
     "defaultError": "An unknown error has occurred.",
     "returnHome": "Return to Homepage"
+  },
+  "LOGIN": {
+    "TOOLTIP-LASTLOGINTEXT": "🔑 Last Login",
+    "TOOLTIP-TEXT": "⚡️ Start logging in within 3 seconds"
   }
 }

@@ -1,26 +1,29 @@
 "use client";
 
+import { useIsClient } from "@/shared/hooks";
 import { AnimatePresence, motion, MotionProps } from "framer-motion";
-import React, { ComponentProps, PropsWithChildren, useEffect, useState } from "react";
-import { set } from "zod";
+import React, { ComponentProps, PropsWithChildren, useEffect, useId, useState } from "react";
+import { startTransition } from "react";
 
 interface CustomMotionProps<Tag extends keyof JSX.IntrinsicElements> extends MotionProps {
   type?: Tag;
   children: React.ReactNode;
-  className: string;
+  className?: string;
 }
 
 export const AnimationRoot = ({ children, initial: _initial, ...rest }: ComponentProps<typeof AnimatePresence>) => {
   const [initial, setInitial] = useState(_initial ?? true);
+  const isClient = useIsClient();
+  const id = useId();
 
   useEffect(() => {
-    setTimeout(() => {
-      setInitial(true);
-    }, 2000);
+    if (isClient) {
+      startTransition(() => setInitial(true));
+    }
   }, []);
 
   return (
-    <AnimatePresence {...rest} initial={initial}>
+    <AnimatePresence key={id} {...rest} initial={initial}>
       {children}
     </AnimatePresence>
   );
@@ -33,9 +36,10 @@ export const Motion = <Tag extends keyof JSX.IntrinsicElements>({
   ...props
 }: CustomMotionProps<Tag>) => {
   const Component = type ? (motion as any)[type] : motion.div; // Using 'any' as a temporary workaround
+  const id = useId();
 
   return (
-    <Component className={className} {...props}>
+    <Component key={id} className={className} {...props}>
       {children}
     </Component>
   );

@@ -61,5 +61,9 @@
     "title": "Kesalahan Terjadi",
     "defaultError": "Kesalahan tidak dikenal telah terjadi",
     "returnHome": "Kembali ke Beranda"
+  },
+  "LOGIN": {
+    "TOOLTIP-LASTLOGINTEXT": "🔑 Login terakhir",
+    "TOOLTIP-TEXT": "⚡️ Mulai masuk dalam 3 detik"
   }
 }

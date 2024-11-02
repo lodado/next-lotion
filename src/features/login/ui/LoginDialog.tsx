@@ -15,7 +15,6 @@ export function generateStaticParams() {
 const LoginDialog = async () => {
   const locale = await getLocale();
   setServerComponentSSG(locale);
-  const t = await getI18n("LOGIN");
 
   return <LoginDialogContainer />;
 };

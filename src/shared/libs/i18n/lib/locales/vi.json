@@ -61,5 +61,9 @@
     "title": "Đã xảy ra lỗi",
     "defaultError": "Đã xảy ra lỗi không xác định",
     "returnHome": "Quay lại trang chủ"
+  },
+  "LOGIN": {
+    "TOOLTIP-LASTLOGINTEXT": "🔑 Đăng nhập lần cuối",
+    "TOOLTIP-TEXT": "⚡️ Bắt đầu đăng nhập trong 3 giây"
   }
 }

@@ -10,11 +10,11 @@ const categories: Category[] = [
 ];
 
 const blogPosts: BlogPost[] = [
-  { id: 1, categoryName: "Travel", title: "Top 10 Adventure Destinations" },
-  { id: 2, categoryName: "Travel", title: "City Break: 48 Hours in Paris" },
-  { id: 3, categoryName: "Food", title: "Easy 30-Minute Dinner Recipes" },
-  { id: 4, categoryName: "Food", title: "Best Pizza Places in New York" },
-  { id: 5, categoryName: "Lifestyle", title: "Minimalist Home Decor Ideas" },
+  { id: 10, categoryName: "Travel", title: "Top 10 Adventure Destinations" },
+  { id: 20, categoryName: "Travel", title: "City Break: 48 Hours in Paris" },
+  { id: 30, categoryName: "Food", title: "Easy 30-Minute Dinner Recipes" },
+  { id: 40, categoryName: "Food", title: "Best Pizza Places in New York" },
+  { id: 50, categoryName: "Lifestyle", title: "Minimalist Home Decor Ideas" },
 ];
 
 export default {

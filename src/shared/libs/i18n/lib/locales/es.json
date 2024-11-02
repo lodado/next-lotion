@@ -61,5 +61,9 @@
     "title": "Error Ocurrido",
     "defaultError": "Ha ocurrido un error desconocido.",
     "returnHome": "Regresar a la página de inicio"
+  },
+  "LOGIN": {
+    "TOOLTIP-LASTLOGINTEXT": "🔑 Último inicio de sesión",
+    "TOOLTIP-TEXT": "⚡️ Comienza a iniciar sesión en 3 segundos"
   }
 }
