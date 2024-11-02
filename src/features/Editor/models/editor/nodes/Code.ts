@@ -42,7 +42,7 @@ export default class Code extends BaseNode {
         tr = tr.replaceSelectionWith(node)
         return tr.setSelection(TextSelection.create(tr.doc, start + 1))
       }),
-    ]
+    ];
   }
 
   keys(): Record<string, Command> {

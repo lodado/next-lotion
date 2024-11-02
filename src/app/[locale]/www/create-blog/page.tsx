@@ -1,5 +1,4 @@
 import { SERVER_DI_REPOSITORY } from "@/DI/index.server";
-import { DomainServerRepository } from "@/features/blog/domain/models/server/repository";
 import { GetDomainByUserIdUseCase } from "@/features/blog/domain/models/core/usecase";
 
 import { CreateDomainPage } from "@/homepages/create-domain/index.server.";
@@ -32,7 +31,7 @@ export async function generateMetadata() {
 */
 const Page = async () => {
   const UserCreatedDomain = await new GetDomainByUserIdUseCase(
-    new DomainServerRepository(),
+    new SERVER_DI_REPOSITORY.Domain(),
     new SERVER_DI_REPOSITORY.Auth()
   ).getDomainByUserId();
 

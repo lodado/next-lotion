@@ -1,7 +1,7 @@
 type GenericObject = { [key: string]: any }
 
 function kebabToCamelCase(string: string): string {
-  return string.replace(/-./g, (match) => match[1].toUpperCase())
+  return string.replace(/-./g, (match) => match[1].toUpperCase());
 }
 
 function isObject(value: any): value is GenericObject {

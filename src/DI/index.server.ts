@@ -5,5 +5,5 @@ import { EditorServerRepository } from "@/features/Editor/models/index.server";
 export const SERVER_DI_REPOSITORY = {
   Auth: AuthServerRepository,
   Domain: DomainServerRepository,
-  EditorServerRepository: EditorServerRepository,
+  Editor: EditorServerRepository,
 };

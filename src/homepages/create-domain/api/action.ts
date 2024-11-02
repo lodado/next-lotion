@@ -1,9 +1,8 @@
-"use server";
+"use server";;
+import { SERVER_DI_REPOSITORY } from "@/DI/index.server";
 
 import { GetUserInfoUseCase } from "@/entities/Auth/core";
-import { AuthServerRepository } from "@/entities/index.server";
 import { Domain } from "@/features/blog/domain/models/core";
-import { DomainServerRepository } from "@/features/blog/domain/models/server/repository";
 import { CreateDomainUseCase, GetDomainUseCase } from "@/features/blog/domain/models/core/usecase";
 import { redirect } from "next/navigation";
 import { getLinkHref } from "@/shared/api";
@@ -20,13 +19,13 @@ export async function createBlogAction(formData: FormData) {
 
   const domain = new Domain({ domainName, domainLocation, description, userId, language, image: imageLink });
 
-  await new CreateDomainUseCase(new DomainServerRepository(), new AuthServerRepository()).execute(domain);
+  await new CreateDomainUseCase(new SERVER_DI_REPOSITORY.Domain(), new SERVER_DI_REPOSITORY.Auth()).execute(domain);
 
   redirect(await getLinkHref({ subDomain: `${domainLocation}`, href: "/" }));
 }
 
 export async function isDomainAddressAlreadyRegistered(domainAddress: string) {
-  const flag = await new GetDomainUseCase(new DomainServerRepository()).getDomainByDomainAddress(domainAddress);
+  const flag = await new GetDomainUseCase(new SERVER_DI_REPOSITORY.Domain()).getDomainByDomainAddress(domainAddress);
 
   return flag;
 }

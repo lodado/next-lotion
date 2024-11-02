@@ -1,15 +1,15 @@
-import React, { PropsWithChildren } from "react";
+import { SERVER_DI_REPOSITORY } from "@/DI/index.server";
 
+import React, { PropsWithChildren } from "react";
 import ClientProvider from "./ClientProvider";
-import { AuthProvider, AuthServerRepository, GetUserSessionInfoUseCase } from "@/entities/index.server";
+import { AuthProvider, GetUserSessionInfoUseCase } from "@/entities/index.server";
 import { Domain, domainInitialState, GetDomainByUserIdUseCase } from "@/features/blog/domain/models";
-import { DomainServerRepository } from "@/features/blog/domain/models/server/repository";
 
 const RootProvider = async ({ children }: PropsWithChildren) => {
-  const session = await new GetUserSessionInfoUseCase(new AuthServerRepository()).execute();
+  const session = await new GetUserSessionInfoUseCase(new SERVER_DI_REPOSITORY.Auth()).execute();
 
   const userDomain = session
-    ? await new GetDomainByUserIdUseCase(new DomainServerRepository(), new AuthServerRepository()).getDomainByUserId()
+    ? await new GetDomainByUserIdUseCase(new SERVER_DI_REPOSITORY.Domain(), new SERVER_DI_REPOSITORY.Auth()).getDomainByUserId()
     : undefined;
 
   return (
