@@ -1,3 +1,4 @@
+import { CLIENT_DI_REPOSITORY } from "@/DI/index";
 import { UpdateEditorNodeUseCase } from "./../models/core/usecase/UpdateEditorNodeUsecase";
 import { useEditorDispatch, useEditorSelector } from "./useEditorDispatcher";
 import { EditorView } from "prosemirror-view";
@@ -5,7 +6,6 @@ import { EditorNode, EditorRepositoryImpl, SET_EDITOR_CONTENT } from "../models"
 import { EditorIndexedDBRepository } from "../models/client/repository/EditorIndexedDBRepository";
 import React, { useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { GetEditorNodeUseCase } from "../models/core/usecase/GetEditorNodeUseCase";
-import { AuthClientRepository } from "@/entities";
 import { useSelector } from "@/shared/hooks";
  
 
@@ -23,7 +23,7 @@ const useEditorData = ({ view }: { view?: EditorView | null }) => {
   const handleSaveContent = useCallback(
     (editorRepository: EditorRepositoryImpl) => async () => {
       if (view) {
-        const authClientRepository = new AuthClientRepository(userInfo);
+        const authClientRepository = new CLIENT_DI_REPOSITORY.Auth(userInfo);
         const savedData = new EditorNode({ content: view.state.doc.toJSON() });
 
         try {
@@ -46,7 +46,7 @@ const useEditorData = ({ view }: { view?: EditorView | null }) => {
     (editorRepository: EditorRepositoryImpl) => async () => {
       if (view) {
         try {
-          const authClientRepository = new AuthClientRepository(userInfo);
+          const authClientRepository = new CLIENT_DI_REPOSITORY.Auth(userInfo);
 
           const savedNode = await new GetEditorNodeUseCase(editorRepository, authClientRepository).execute();
 
