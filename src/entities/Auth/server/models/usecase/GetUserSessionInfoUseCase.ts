@@ -1,9 +1,10 @@
-import { SERVER_DI_REPOSITORY } from "@/DI/index.server";
 import { NextAuthSessionResponse } from "../../type";
 import { mapRepositoryErrorToUseCaseError } from "@/shared/constants/error/error";
 
+import { AuthServerRepository } from "../index.server";
+
 export class GetUserSessionInfoUseCase {
-  constructor(private AuthRepository: SERVER_DI_REPOSITORY.Auth) {}
+  constructor(private AuthRepository: AuthServerRepository) {}
 
   async execute(): Promise<NextAuthSessionResponse | undefined> {
     try {

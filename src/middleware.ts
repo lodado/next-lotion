@@ -2,9 +2,8 @@
 
   
 import { NextMiddlewareResult } from "next/dist/server/web/types";
-import { NextMiddleware, NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { i18nMiddleware, withAuthApiMiddleware } from "./app/middlewares/index.server";
-import { cookies } from "next/headers";
 import { rateLimitMiddleware } from "./app/middlewares/rateLimitMiddleware";
 
 export const runtime = "nodejs";

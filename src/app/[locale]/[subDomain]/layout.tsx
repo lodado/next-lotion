@@ -1,4 +1,4 @@
-import { SERVER_DI_REPOSITORY } from "@/DI/index.server";
+import { EDGE_DI_REPOSITORY } from "@/DI/edge.server";
 import { BlogPost, Category } from "@/features/blog/categories/models/entities/type";
 import SidePanel from "@/features/blog/categories/ui/SidePanel";
 
@@ -22,16 +22,16 @@ const blogPosts: BlogPost[] = [
 
 const Layout = async ({ children }: PropsWithChildren) => {
   return (
-    (<div className="w-full page-content">
+    <div className="w-full page-content">
       <Navigation.Root>
         <Navigation.Header />
-        <Navigation.Footer authRepository={new SERVER_DI_REPOSITORY.Auth()} />
+        <Navigation.Footer authRepository={new EDGE_DI_REPOSITORY.Auth()} />
       </Navigation.Root>
       <div className="w-full flex flex-row grow-0 shrink-0 h-full">
         <SidePanel categories={categories} blogPosts={blogPosts} />
         {children}
       </div>
-    </div>)
+    </div>
   );
 };
 

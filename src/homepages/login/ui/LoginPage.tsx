@@ -1,3 +1,4 @@
+import { EDGE_DI_REPOSITORY } from "@/DI/edge.server";
 import { SERVER_DI_REPOSITORY } from "@/DI/index.server";
 import { GetUserInfoUseCase } from "@/entities/Auth/core";
 
@@ -12,7 +13,7 @@ import React from "react";
 const LoginPage = async () => {
   const t = await getTranslations("LoginDialogContainer");
 
-  const isLogin = await new GetUserInfoUseCase(new SERVER_DI_REPOSITORY.Auth()).isUserLogin();
+  const isLogin = await new GetUserInfoUseCase(new EDGE_DI_REPOSITORY.Auth()).isUserLogin();
 
   if (isLogin) {
     redirect(await getLinkHref({ href: "/" }));

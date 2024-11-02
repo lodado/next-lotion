@@ -1,11 +1,11 @@
 "use server";;
 import { SERVER_DI_REPOSITORY } from "@/DI/index.server";
-
-import { GetUserInfoUseCase } from "@/entities/Auth/core";
+ 
 import { Domain } from "@/features/blog/domain/models/core";
 import { CreateDomainUseCase, GetDomainUseCase } from "@/features/blog/domain/models/core/usecase";
 import { redirect } from "next/navigation";
 import { getLinkHref } from "@/shared/api";
+import { EDGE_DI_REPOSITORY } from "@/DI/edge.server";
 
 export async function createBlogAction(formData: FormData) {
   const domainLocation = formData.get("subdomain") as string;
@@ -19,7 +19,7 @@ export async function createBlogAction(formData: FormData) {
 
   const domain = new Domain({ domainName, domainLocation, description, userId, language, image: imageLink });
 
-  await new CreateDomainUseCase(new SERVER_DI_REPOSITORY.Domain(), new SERVER_DI_REPOSITORY.Auth()).execute(domain);
+  await new CreateDomainUseCase(new SERVER_DI_REPOSITORY.Domain(), new EDGE_DI_REPOSITORY.Auth()).execute(domain);
 
   redirect(await getLinkHref({ subDomain: `${domainLocation}`, href: "/" }));
 }

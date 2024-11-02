@@ -1,10 +1,9 @@
-import { SERVER_DI_REPOSITORY } from "@/DI/index.server";
- 
 import { NextRequest, NextResponse } from "next/server";
 import { GetUserInfoUseCase } from "@/entities/Auth/core/usecase/GetUserInfoUseCase";
+import { EDGE_DI_REPOSITORY } from "@/DI/edge.server";
 
 export const withAuthApiMiddleware = async (request: NextRequest, path: string, defaultLocale: string) => {
-  const user = await new GetUserInfoUseCase(new SERVER_DI_REPOSITORY.Auth()).execute();
+  const user = await new GetUserInfoUseCase(new EDGE_DI_REPOSITORY.Auth()).execute();
   const response = NextResponse.next();
 
   // private page

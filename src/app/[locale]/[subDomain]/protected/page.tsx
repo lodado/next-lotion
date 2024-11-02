@@ -1,4 +1,6 @@
+import { EDGE_DI_REPOSITORY } from "@/DI/edge.server";
 import { SERVER_DI_REPOSITORY } from "@/DI/index.server";
+
 import { GetUserInfoUseCase } from "@/entities/Auth/core";
 import { GetDomainByUserIdUseCase } from "@/features/blog/domain/models/core/usecase";
 
@@ -10,12 +12,12 @@ import React from "react";
 const webUrl = process.env.NEXT_PUBLIC_CLIENT_URL;
 
 const Page = async () => {
-  const isUserLogin = await new GetUserInfoUseCase(new SERVER_DI_REPOSITORY.Auth()).isUserLogin();
+  const isUserLogin = await new GetUserInfoUseCase(new EDGE_DI_REPOSITORY.Auth()).isUserLogin();
   if (!isUserLogin) redirect("/");
 
   const isAlreadyUserCreatedDomain = await new GetDomainByUserIdUseCase(
     new SERVER_DI_REPOSITORY.Domain(),
-    new SERVER_DI_REPOSITORY.Auth()
+    new EDGE_DI_REPOSITORY.Auth()
   ).getDomainByUserId();
 
   if (!!isAlreadyUserCreatedDomain) {

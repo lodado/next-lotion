@@ -8,6 +8,7 @@ import { redirect } from "next/navigation";
 import React from "react";
 
 import { getLinkHref } from "@/shared";
+import { EDGE_DI_REPOSITORY } from "@/DI/edge.server";
 
 /** 필요없으므로 지울것
 export async function generateMetadata() {
@@ -32,7 +33,7 @@ export async function generateMetadata() {
 const Page = async () => {
   const UserCreatedDomain = await new GetDomainByUserIdUseCase(
     new SERVER_DI_REPOSITORY.Domain(),
-    new SERVER_DI_REPOSITORY.Auth()
+    new EDGE_DI_REPOSITORY.Auth()
   ).getDomainByUserId();
 
   const isAlreadyUserCreatedDomain = !!UserCreatedDomain;
