@@ -1,7 +1,8 @@
 "use client";
 
+import debounce from "lodash-es/debounce";
 import { useEffect } from "react";
-import { debounce } from "lodash-es";
+ 
 
 // Hook 타입 정의
 interface UseWindowResizeProps {

@@ -1,14 +1,11 @@
 "use client";
 
-import { AnimationRoot, Motion, ScrollArea, Switch } from "@/shared/ui";
-import React, { useRef, useEffect, useState, useCallback } from "react";
+import { AnimationRoot, Motion } from "@/shared/ui";
+import React from "react";
 import { useCategoryContext } from "../SidePanelProvider";
 import CollapsedPanel from "./Collapsed/CollapsedPanel";
 import { cva } from "class-variance-authority";
-import { useIsClient, useWindowResize } from "@/shared/hooks";
-import { debounce } from "lodash-es";
-import { isMobile, NAVIGATION_HEIGHT } from "@/shared";
-import { set } from "zod";
+ 
 
 interface ScrollAreaProps {
   className?: string;

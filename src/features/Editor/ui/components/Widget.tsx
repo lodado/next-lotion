@@ -1,8 +1,8 @@
 import { Plugin } from "prosemirror-state";
  
 import { EditorReduxStore } from "../../models";
-import { debounce } from "lodash-es";
-
+import debounce from "lodash-es/debounce";
+ 
 let id = 0;
 
 const generateID = () => {
