@@ -5,36 +5,33 @@ import React, { useRef, useEffect, useState, useCallback } from "react";
 import { useCategoryContext } from "../SidePanelProvider";
 import CollapsedPanel from "./Collapsed/CollapsedPanel";
 import { cva } from "class-variance-authority";
-import { useWindowResize } from "@/shared/hooks";
+import { useIsClient, useWindowResize } from "@/shared/hooks";
 import { debounce } from "lodash-es";
-import { NAVIGATION_HEIGHT } from "@/shared";
+import { isMobile, NAVIGATION_HEIGHT } from "@/shared";
+import { set } from "zod";
 
 interface ScrollAreaProps {
   className?: string;
   children: React.ReactNode;
 }
 
-const duration = 0.2;
+const duration = 0.5;
 
 const animationVariants = {
-  open: {
+  opened: {
     scaleX: 1,
-    opacity: 1,
-    zIndex: 100,
+
     transition: {
-      scaleX: { duration, ease: "easeInOut" },
-      opacity: { duration },
-      zIndex: { duration },
+      scaleX: { duration: 0.3, ease: "easeInOut" },
     },
   },
+
   closed: {
-    scaleX: 0.2,
-    opacity: 0,
-    zIndex: -1,
+    scaleX: -0.4,
+    opacity: 1,
+
     transition: {
-      scaleX: { duration, ease: "easeInOut" },
-      opacity: { delay: duration },
-      zIndex: { delay: duration },
+      scaleX: { duration: 0.3, ease: "easeInOut" },
     },
   },
 };
@@ -52,34 +49,21 @@ const divStyles = cva("", {
 });
 
 const SidePanelContainer: React.FC<ScrollAreaProps> = ({ className = "", children }) => {
-  const { isOpen, toggleSidePanel } = useCategoryContext();
-  const [topPosition, setTopPosition] = useState(99999);
-  const [init, setInit] = useState(false);
-
-  const resizeCallback = useCallback(() => {
-    if (init) return;
-
-    if (window.innerWidth <= 550) {
-      toggleSidePanel();
-    }
-
-    setTimeout(() => setTopPosition(NAVIGATION_HEIGHT), 1000);
-    setInit(true);
-  }, []);
-
-  useWindowResize({ resizeCallback, debounceTime: 50 });
+  const { isOpen, onceToggled, toggleSidePanel } = useCategoryContext();
 
   return (
     <>
-      <div className={divStyles({ isOpen })} role="none presentation"></div>
-      <AnimationRoot initial={false}>
+      <div className={divStyles({ isOpen })} role="none presentation" />
+      <AnimationRoot initial={true}>
         {
           <Motion
             type="div"
-            style={{ transformOrigin: "left", top: `${topPosition}px` }}
-            className="fixed left-0 top-[64px] overflow-x-hidden overflow-y-auto bottom-0 w-screen sm:w-[12rem] max-h-screen px-[0.75rem] pt-[1rem]  bg-background border-t border-r border-color-border-input"
+            layout
+            style={{ originX: 0, top: `60px`, willChange: "transform, opacity" }}
+            className="fixed left-0 top-[64px] z-dialog overflow-x-hidden overflow-y-auto bottom-0 min-w-[250px]  sm:min-w-0 sm:max-w-[100vw] w-screen max-w-[66vw] sm:w-[12rem] max-h-screen px-[0.75rem] pt-[1rem]  bg-background border-t border-r border-color-border-input"
             variants={animationVariants}
-            animate={isOpen ? "open" : "closed"}
+            initial={"closed"}
+            animate={onceToggled && isOpen ? "opened" : "closed"}
           >
             <>{isOpen && children}</>
           </Motion>
