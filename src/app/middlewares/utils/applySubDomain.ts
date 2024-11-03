@@ -23,7 +23,7 @@ export const extractLanguageFromUrl = (url: string): string => {
  */
 export function applySubDomain(request: NextRequest, response: NextResponse) {
   const url = response.url;
-  const locale = response.headers.get("x-middleware-request-x-next-intl-locale")!;
+  const locale = response.headers.get("x-middleware-request-x-next-intl-locale") ?? "en";
   const hostname = request.headers.get("host")!;
 
   /**
@@ -54,10 +54,14 @@ export function applySubDomain(request: NextRequest, response: NextResponse) {
 
   console.log(NEXT_FOLDER_LIST, "NEXT_FOLDER_LIST");
   console.log(extractLanguageFromUrl(path), "extractLanguageFromUrl(path)");
-  
 
   if (subDomain !== hostname) {
-    parsedURL = `${locale ?? "en"}/${subDomain}` + parsedURL;
+    parsedURL = `${locale}/${subDomain}` + parsedURL;
+    console.log(parsedURL, "parsedURL 2");
+
+    console.log("rewriete", new URL(request.nextUrl.origin + `/${parsedURL}`), {
+      request: { headers },
+    });
 
     return NextResponse.rewrite(new URL(request.nextUrl.origin + `/${parsedURL}`), {
       request: { headers },
