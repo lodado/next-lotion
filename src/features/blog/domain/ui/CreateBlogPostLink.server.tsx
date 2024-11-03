@@ -20,6 +20,7 @@ const CreateBlogPostLink = async () => {
     <>
       {domainLocation && (
         <ServerLocaleLink
+          className="flex items-center w-[2.5rem] h-[2.5rem]"
           title={t("title")} // Referencing the translated title key
           subDomain={domainLocation}
           href={"/protected/create-blog-post"}

@@ -46,12 +46,14 @@ const Body = () => (
   </>
 );
 
+
+/** 나중 시안대로 바꿀꺼임 */
 const Footer = async ({ children, authRepository }: { children?: ReactNode; authRepository: AuthRepositoryImpl }) => {
   const isLogin = await new GetUserInfoUseCase(authRepository).isUserLogin();
 
   return (
     <div className="flex flex-grow-0">
-      <div className="flex min-w-[90px] items-center space-x-4 flex-row justify-end">
+      <div className="flex min-w-[90px] items-center gap-4 flex-row justify-end">
         {isLogin ? (
           <>
             {children}
