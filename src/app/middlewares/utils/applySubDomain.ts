@@ -42,6 +42,8 @@ export function applySubDomain(request: NextRequest, response: NextResponse) {
   const subDomain = hostname.split(".")[0];
 
   let parsedURL = `${extractLanguageFromUrl(path)}`;
+
+  console.log(subDomain, hostname, parsedURL, extractLanguageFromUrl(path), path);
  
 
   if (subDomain !== hostname) {

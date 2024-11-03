@@ -65,5 +65,8 @@
   "LOGIN": {
     "TOOLTIP-LASTLOGINTEXT": "🔑 最後のログイン",
     "TOOLTIP-TEXT": "⚡️ 3秒でログインを開始してください"
+  },
+  "CreateBlogPostLink": {
+    "title": "ブログ投稿を作成する"
   }
 }

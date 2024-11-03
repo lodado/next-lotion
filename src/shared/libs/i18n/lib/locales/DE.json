@@ -65,5 +65,8 @@
   "LOGIN": {
     "TOOLTIP-LASTLOGINTEXT": "🔑 Letzte Anmeldung",
     "TOOLTIP-TEXT": "⚡️ Beginnen Sie in 3 Sekunden mit der Anmeldung"
+  },
+  "CreateBlogPostLink": {
+    "title": "Blogbeitrag erstellen"
   }
 }

@@ -65,5 +65,8 @@
   "LOGIN": {
     "TOOLTIP-LASTLOGINTEXT": "🔑 Đăng nhập lần cuối",
     "TOOLTIP-TEXT": "⚡️ Bắt đầu đăng nhập trong 3 giây"
+  },
+  "CreateBlogPostLink": {
+    "title": "tạo bài viết blog"
   }
 }

@@ -65,5 +65,8 @@
   "LOGIN": {
     "TOOLTIP-LASTLOGINTEXT": "🔑 Dernière connexion",
     "TOOLTIP-TEXT": "⚡️ Commencez à vous connecter en 3 secondes"
+  },
+  "CreateBlogPostLink": {
+    "title": "créer un article de blog"
   }
 }

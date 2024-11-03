@@ -65,5 +65,8 @@
   "LOGIN": {
     "TOOLTIP-LASTLOGINTEXT": "🔑 Login terakhir",
     "TOOLTIP-TEXT": "⚡️ Mulai masuk dalam 3 detik"
+  },
+  "CreateBlogPostLink": {
+    "title": "buat postingan blog"
   }
 }

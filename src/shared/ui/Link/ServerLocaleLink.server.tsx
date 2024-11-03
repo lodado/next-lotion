@@ -9,6 +9,8 @@ const ServerLocaleLink = async (
   const { href = "", subDomain: _subDomain, custom = false, ...rest } = props;
   const linkHref = await getLinkHref(props);
 
+  console.log(linkHref);
+
   return <Link {...rest} href={linkHref!} />;
 };
 

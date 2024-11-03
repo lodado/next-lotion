@@ -65,5 +65,8 @@
   "LOGIN": {
     "TOOLTIP-LASTLOGINTEXT": "🔑 Son Giriş",
     "TOOLTIP-TEXT": "⚡️ 3 saniye içinde giriş yapmaya başlayın"
+  },
+  "CreateBlogPostLink": {
+    "title": "blog yazısı oluştur"
   }
 }

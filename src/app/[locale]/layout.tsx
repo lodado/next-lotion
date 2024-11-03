@@ -78,8 +78,6 @@ const RootLayout: React.FunctionComponent<LocaleProps> = ({ children, params: { 
         <RootProvider>
           <NextIntlClientProvider locale={locale} messages={messages}>
             {children}
-            {/* <PageLoading /> */}
-
             <GlobalDialogContainer />
           </NextIntlClientProvider>
         </RootProvider>

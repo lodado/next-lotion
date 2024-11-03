@@ -1,12 +1,16 @@
 import React, { PropsWithChildren, ReactNode, useState } from "react";
 
 import { LoginButton } from "@/features";
-import { Bell } from "lucide-react";
+import { Bell, SquarePen } from "lucide-react";
 import { IconButton } from "@/shared/ui";
 import { NavigationProvider } from "./Login/NavContext";
 import { Logo } from "./Login/components/Logo";
 import ProfileDropdown from "./Login/components/ProfileSelector";
 import { AuthRepositoryImpl, GetUserInfoUseCase } from "@/entities/Auth/core";
+import { ServerLocaleLink } from "@/shared/ui/index.server";
+
+import { GetDomainByUserIdUseCase } from "@/features/blog/domain/models";
+import { SERVER_DI_REPOSITORY } from "@/DI/index.server";
 
 const LoginNavBarRoot = async ({ children }: PropsWithChildren) => {
   return (
@@ -31,14 +35,27 @@ const Header = ({ mobileChildren }: { mobileChildren?: ReactNode }) => (
   </>
 );
 
-const Footer = async ({ authRepository }: { authRepository: AuthRepositoryImpl }) => {
+const Body = () => (
+  <>
+    <div className="sm:hidden flex pl-3 flex-grow items-center justify-center flex-row gap-5">
+      <Logo />
+    </div>
+    {/* Mobile menu button, consider for responsiveness */}
+    {/* <MobileMenuToggleButton /> */}
+    {/* <MobileMenuDropdown navLinks={navLinks} /> */}
+  </>
+);
+
+const Footer = async ({ children, authRepository }: { children?: ReactNode; authRepository: AuthRepositoryImpl }) => {
   const isLogin = await new GetUserInfoUseCase(authRepository).isUserLogin();
 
   return (
     <div className="flex flex-grow-0">
-      <div className="flex w-[90px] items-center space-x-4 flex-row justify-end">
+      <div className="flex min-w-[90px] items-center space-x-4 flex-row justify-end">
         {isLogin ? (
           <>
+            {children}
+
             <IconButton variant="text">
               <Bell />
             </IconButton>
@@ -51,17 +68,6 @@ const Footer = async ({ authRepository }: { authRepository: AuthRepositoryImpl }
     </div>
   );
 };
-
-const Body = () => (
-  <>
-    <div className="sm:hidden flex pl-3 flex-grow items-center justify-center flex-row gap-5">
-      <Logo />
-    </div>
-    {/* Mobile menu button, consider for responsiveness */}
-    {/* <MobileMenuToggleButton /> */}
-    {/* <MobileMenuDropdown navLinks={navLinks} /> */}
-  </>
-);
 
 const LoginNavBar = {
   Root: LoginNavBarRoot,

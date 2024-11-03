@@ -65,5 +65,8 @@
   "LOGIN": {
     "TOOLTIP-LASTLOGINTEXT": "🔑 최근 로그인",
     "TOOLTIP-TEXT": "⚡️ 3초만에 로그인으로 시작하세요"
+  },
+  "CreateBlogPostLink": {
+    "title": "블로그 게시물 작성"
   }
 }

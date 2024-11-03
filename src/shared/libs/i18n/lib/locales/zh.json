@@ -65,5 +65,8 @@
   "LOGIN": {
     "TOOLTIP-LASTLOGINTEXT": "🔑 上次登录",
     "TOOLTIP-TEXT": "⚡️ 3秒内开始登录"
+  },
+  "CreateBlogPostLink": {
+    "title": "创建博客文章"
   }
 }
