@@ -43,6 +43,19 @@ export function applySubDomain(request: NextRequest, response: NextResponse) {
 
   let parsedURL = `${extractLanguageFromUrl(path)}`;
 
+  console.log(subDomain, "subDomain");
+  console.log(hostname, "host");
+
+  console.log(path, "path");
+  console.log(parsedURL, "parsedURL");
+
+  console.log(requestUrl, "requestUrl");
+  console.log(locale, "locale");
+
+  console.log(NEXT_FOLDER_LIST, "NEXT_FOLDER_LIST");
+  console.log(extractLanguageFromUrl(path), "extractLanguageFromUrl(path)");
+  
+
   if (subDomain !== hostname) {
     parsedURL = `${locale ?? "en"}/${subDomain}` + parsedURL;
 
