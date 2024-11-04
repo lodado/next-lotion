@@ -59,10 +59,14 @@ export function applySubDomain(request: NextRequest, response: NextResponse) {
   if (subDomain !== hostname) {
     parsedURL = `${locale ?? "en"}/${subDomain}` + parsedURL;
 
+    console.log("imhere!", parsedURL);
+
     return NextResponse.rewrite(new URL(request.nextUrl.origin + `/${parsedURL}`), {
       request: { headers },
     });
   }
+
+  console.log("shit!");
 
   if (NEXT_FOLDER_LIST.includes(extractLanguageFromUrl(path))) return response;
 

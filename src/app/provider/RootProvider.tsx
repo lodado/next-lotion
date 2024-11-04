@@ -25,7 +25,7 @@ const RootProvider = async ({ children }: PropsWithChildren) => {
           domainId: -1, // null
           domainName: "",
           domainLocation: "",
-          createdTime: Date.now(),
+          createdTime: 0,
           description: "",
           image: "",
           language: "en",
