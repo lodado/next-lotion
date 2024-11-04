@@ -6,14 +6,14 @@ export const cspMiddleware = (request: NextRequest, response: NextResponse) => {
   const cspHeader = `
     default-src 'self';
     style-src 'self' 'unsafe-inline' spoqa.github.io cdn.jsdelivr.net data:;
-    img-src 'self' blob: data: ${supabaseProjectId}.supabase.co;
+    img-src 'self' blob: data: ${supabaseProjectId}.supabase.co vercel.live vercel.com;
     font-src 'self' cdnjs.cloudflare.com spoqa.github.io cdn.jsdelivr.net data:;
     script-src 'self' ${
       process.env.NODE_ENV !== "production" ? `'unsafe-eval'` : ""
-    } 'nonce-${nonce}' 'strict-dynamic' cdn.jsdelivr.net;
-    script-src-elem 'self' 'nonce-${nonce}';
+    } 'nonce-${nonce}' 'strict-dynamic' vercel.live vercel.com cdn.jsdelivr.net;
+    script-src-elem 'self' vercel.live vercel.com 'nonce-${nonce}';
     object-src 'none';
-    connect-src 'self' https://www.google-analytics.com https://o4506497206779904.ingest.sentry.io;
+    connect-src 'self' vercel.live vercel.com https://www.google-analytics.com https://o4506497206779904.ingest.sentry.io;
     base-uri 'self';
     form-action 'self';
     frame-ancestors 'none';
