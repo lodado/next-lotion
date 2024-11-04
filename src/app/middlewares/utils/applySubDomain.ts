@@ -52,6 +52,8 @@ export function applySubDomain(request: NextRequest, response: NextResponse) {
     });
   }
 
+  console.log("shit!");
+
   if (NEXT_FOLDER_LIST.includes(extractLanguageFromUrl(path))) return response;
 
   return NextResponse.rewrite(new URL(request.nextUrl.origin), {
