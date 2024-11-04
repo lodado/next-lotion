@@ -43,10 +43,9 @@ export function applySubDomain(request: NextRequest, response: NextResponse) {
 
   let parsedURL = `${extractLanguageFromUrl(path)}`;
 
-  console.log(subDomain, hostname, parsedURL, extractLanguageFromUrl(path), path);
- 
-
   if (subDomain !== hostname) {
+    parsedURL = `${locale ?? "en"}/${subDomain}` + parsedURL;
+
     return NextResponse.rewrite(new URL(request.nextUrl.origin + `/${parsedURL}`), {
       request: { headers },
     });
